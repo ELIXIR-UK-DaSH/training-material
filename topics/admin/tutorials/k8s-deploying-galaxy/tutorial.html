@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Galaxy Installation on Kubernetes</title>
+        
+            <!--
+<script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
+-->
+<!-- We let users opt-out, so if they've opted in, we need to append the plausible script to the body -->
+
+<script>
+var scriptElement = document.createElement("script");
+scriptElement.async = true;
+scriptElement.defer = true;
+scriptElement.setAttribute("data-domain", "training.galaxyproject.org");
+scriptElement.src = "https://plausible.galaxyproject.eu/js/plausible.js";
+
+// Appending the script element to the body
+if(localStorage.getItem('plausible-opt-out') !== 'opt-out' && navigator.doNotTrack !== "1") {
+	console.log("Plausible: opt-in");
+	// Wait for the document to be available
+	document.addEventListener("DOMContentLoaded", function(event) {
+		document.body.appendChild(scriptElement);
+	});
+}
+</script>
+
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<!--
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+-->
+<script type="text/javascript">
+var scriptElement = document.createElement("script");
+scriptElement.src = "https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js";
+scriptElement.integrity = "sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43";
+scriptElement.crossOrigin = "anonymous";
+
+if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack !== "1") {
+	console.log("Sentry: opt-in");
+	// Appending the script element to the body
+	document.addEventListener("DOMContentLoaded", function(event) {
+		document.body.appendChild(scriptElement);
+	});
+		
+	Sentry.init({
+	  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+	  release: "galaxy-training-network@2752a665e9cde64fc46b07701823f4c6cbe561b8",
+	  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+	  sampleRate: 0.1,
+	  tracesSampleRate: 0.1,
+	  // Capture Replay for no sessions by default
+	  replaysSessionSampleRate: 0.01,
+	  // plus for 1% of sessions with an error
+	  replaysOnErrorSampleRate: 0.01,
+	  // PII OFF
+	  sendDefaultPii: false, // Off by default but just in case.
+	  environment: "production",
+	});
+}
+</script>
+
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/admin/tutorials/k8s-deploying-galaxy/tutorial.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1697677722' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1697677722' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Galaxy Installation on Kubernetes">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2022-10-18 14:23:35 +0000">
+<meta name="DC.creator" content="Pablo Moreno">
+<meta name="DC.creator" content="Enis Afgan">
+<meta name="DC.creator" content="Nuwan Goonasekera">
+<meta name="DC.creator" content="Alex Mahmoud">
+<meta name="DC.creator" content="John Davis">
+
+        
+        
+        
+        
+        <meta name="description" content="Resources related to configuration and maintenance of Gal...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Galaxy Installation on Kubernetes">
+        <meta property="og:description" content="Resources related to configuration and maintenance of Gal...">
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        
+        <script type="application/ld+json">
+            
+
+
+{
+  "@context": "http://schema.org",
+  "@type": "LearningResource",
+  "http://purl.org/dc/terms/conformsTo": {
+    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
+    "@type": "CreativeWork"
+  },
+  "audience": {
+    "@type": "EducationalAudience",
+    "educationalRole": "Students"
+  },
+  "citation": {
+    "@type": "CreativeWork",
+    "name": "Community-Driven Data Analysis Training for Biology",
+    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
+  },
+  "copyrightHolder": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "dateModified": "2022-10-18 14:23:35 +0000",
+  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
+  "headline": "Galaxy Installation on Kubernetes",
+  "interactivityType": "mixed",
+  "isAccessibleForFree": true,
+  "isFamilyFriendly": true,
+  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
+  "producer": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "provider": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "sourceOrganization": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
+  "accessMode": [
+    "textual",
+    "visual"
+  ],
+  "accessModeSufficient": [
+    "textual",
+    "visual"
+  ],
+  "accessibilityControl": [
+    "fullKeyboardControl",
+    "fullMouseControl"
+  ],
+  "accessibilityFeature": [
+    "alternativeText",
+    "tableOfContents"
+  ],
+  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
+  "isPartOf": {
+    "@type": "CreativeWork",
+    "name": "Galaxy Server administration",
+    "description": "Resources related to configuration and maintenance of Galaxy servers",
+    "url": "https://training.galaxyproject.org/training-material/topics/admin/"
+  },
+  "learningResourceType": "hands-on tutorial",
+  "name": "Hands-on for 'Galaxy Installation on Kubernetes' tutorial",
+  "url": "https://training.galaxyproject.org/training-material/topics/admin/tutorials/k8s-deploying-galaxy/tutorial.html",
+  "timeRequired": "PT30M",
+  "teaches": "Have an understanding of how to use Galaxy's Helm chart\n - Be able to use Helm to install different flavors of Galaxy for different purposes",
+  "keywords": "admin, kubernetes",
+  "description": "The questions this  addresses are:\n - How do I deploy Galaxy on Kubernetes using Helm?\n - How can I create a simple replica of usegalaxy.org?\n\n\nThe objectives are:\n - Have an understanding of how to use Galaxy's Helm chart\n - Be able to use Helm to install different flavors of Galaxy for different purposes\n\n",
+  "inLanguage": {
+    "@type": "Language",
+    "name": "English",
+    "alternateName": "en"
+  },
+  "author": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/pcm32/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/pcm32/",
+      "name": "Pablo Moreno",
+      "image": "https://avatars.githubusercontent.com/pcm32",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/afgane/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/afgane/",
+      "name": "Enis Afgan",
+      "image": "https://avatars.githubusercontent.com/afgane",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/nuwang/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/nuwang/",
+      "name": "Nuwan Goonasekera",
+      "image": "https://avatars.githubusercontent.com/nuwang",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/almahmoud/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/almahmoud/",
+      "name": "Alex Mahmoud",
+      "image": "https://avatars.githubusercontent.com/almahmoud",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/jdavcs/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/jdavcs/",
+      "name": "John Davis",
+      "image": "https://avatars.githubusercontent.com/jdavcs",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ],
+      "identifier": "https://orcid.org/0000-0002-1363-1245",
+      "orcid": "https://orcid.org/0000-0002-1363-1245"
+    }
+  ],
+  "about": [
+    {
+      "@type": "CreativeWork",
+      "name": "Galaxy Server administration",
+      "description": "Resources related to configuration and maintenance of Galaxy servers",
+      "url": "https://training.galaxyproject.org/training-material/topics/admin/"
+    }
+  ],
+  "educationalLevel": "Intermediate",
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "kubernetes"
+    }
+  ],
+  "abstract": "# Galaxy Helm Chart"
+}
+        </script>
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc" data-brightness="auto" data-contrast="auto">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1697677722'></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                
+                    Galaxy Training!
+                
+            </a>
+
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/topics/admin" title="Go back to list of tutorials">
+                            <i class="far fa-folder" aria-hidden="true"></i> Galaxy Server administration
+                        </a>
+                        
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+	<a class="dropdown-item" href="/training-material/faqs/index.html" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="/training-material/topics/admin/faqs/" title="Check our FAQs for the Galaxy Server administration topic">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/admin/tutorials/k8s-deploying-galaxy/tutorial.md" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/admin/tutorials/k8s-deploying-galaxy/tutorial.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
+        
+
+		<a href="/training-material/preferences.html" class="dropdown-item">
+			<i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Themes have moved <span class="badge badge-secondary">New</span>
+		</a>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        
+        <div class="container main-content" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gitter -->
+
+
+
+
+
+
+<article class="tutorial topic-admin">
+    <h1 data-toc-skip>Galaxy Installation on Kubernetes</h1>
+    
+
+    <section aria-labelledby="overview-box" id="tutorial-metadata">
+    <div markdown="0">
+
+	<div class="contributors-line">
+		Authors: <a href="/training-material/hall-of-fame/pcm32/" class="contributor-badge contributor-pcm32"><img src="https://avatars.githubusercontent.com/pcm32?s=36" alt="Avatar" width="36" height="36">Pablo Moreno</a><a href="/training-material/hall-of-fame/afgane/" class="contributor-badge contributor-afgane"><img src="https://avatars.githubusercontent.com/afgane?s=36" alt="Avatar" width="36" height="36">Enis Afgan</a><a href="/training-material/hall-of-fame/nuwang/" class="contributor-badge contributor-nuwang"><img src="https://avatars.githubusercontent.com/nuwang?s=36" alt="Avatar" width="36" height="36">Nuwan Goonasekera</a><a href="/training-material/hall-of-fame/almahmoud/" class="contributor-badge contributor-almahmoud"><img src="https://avatars.githubusercontent.com/almahmoud?s=36" alt="Avatar" width="36" height="36">Alex Mahmoud</a><a href="/training-material/hall-of-fame/jdavcs/" class="contributor-badge contributor-jdavcs"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/jdavcs?s=36" alt="Avatar" width="36" height="36">John Davis</a>
+	</div>
+
+</div>
+
+
+    <blockquote class="overview">
+        <div id="overview-box" class="box-title">Overview</div>
+        
+        <img alt="Creative Commons License: CC-BY" class="float-right" style="border-width:0; display: inline-block; margin:0" src="/training-material/assets/images/cc-by.png"/>
+        
+        <strong><i class="far fa-question-circle" aria-hidden="true"></i> Questions:</strong>
+        <ul>
+        
+        <li><p>How do I deploy Galaxy on Kubernetes using Helm?</p>
+</li>
+        
+        <li><p>How can I create a simple replica of usegalaxy.org?</p>
+</li>
+        
+        </ul>
+
+        <strong><i class="fas fa-bullseye" aria-hidden="true"></i> Objectives: </strong>
+        <ul>
+        
+        <li><p>Have an understanding of how to use Galaxy’s Helm chart</p>
+</li>
+        
+        <li><p>Be able to use Helm to install different flavors of Galaxy for different purposes</p>
+</li>
+        
+        </ul>
+
+        
+
+        
+        <div><strong><i class="fas fa-hourglass-half" aria-hidden="true"></i> Time estimation:</strong> 30 minutes</div>
+        
+
+        
+        <div><strong><i class="fas fa-graduation-cap" aria-hidden="true"></i> Level: </strong>
+        
+
+
+ Intermediate <span class="visually-hidden">Intermediate</span>
+<span class="level intermediate" title="Intermediate Tutorial">
+  <i class="fas fa-graduation-cap" aria-hidden="true"></i> <i class="fas fa-graduation-cap" aria-hidden="true"></i> <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+</span>
+
+</div>
+        
+
+        
+
+        
+
+        <div id="supporting-materials"><strong><i class="fa fa-external-link" aria-hidden="true"></i> Supporting Materials:</strong></div>
+        <ul class="supporting_material">
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+            
+            
+                <li class="btn btn-default supporting_material">    <a class="topic-icon" href="/training-material/topics/admin/tutorials/k8s-deploying-galaxy/faqs/" title="Frequently Asked Questions">
+        <i class="far fa-question-circle" aria-hidden="true"></i> FAQs
+    </a>
+</li>
+            
+
+            <!-- Check the GTN Video Library for recordings of this tutorial or associated slides -->
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+            
+                
+            
+        </ul>
+
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 18, 2022 </div>
+        <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
+            
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+        </div>
+        
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00013">https://gxy.io/GTN:T00013</a> </div>
+        
+    </blockquote>
+    </section>
+
+    <div class="container">
+        <div class="row">
+            <!-- sidebar, which will move to the top on a small screen -->
+            <div class="col-sm-2 hide-when-printing">
+                <nav id="toc" data-toggle="toc" class="sticky-top" aria-label="Table of Contents"></nav>
+            </div>
+            <div class="col-sm-10">
+                 
+
+                <section aria-label="Tutorial Content" id="tutorial-content">
+                <h1 id="galaxy-helm-chart">Galaxy Helm Chart</h1>
+
+<h2 id="overview">Overview</h2>
+
+<p>Galaxy has a minimal number of required dependencies, which makes its basic
+installation quick for both users and developers. However, configuring a
+multi-user production instance is a complex undertaking due to Galaxy’s many
+interacting and dependent systems, components, and configurations. Software
+containerization has become the preferred method of addressing deployment
+challenges across operating environments. Containerization also requires
+orchestration, so that multiple containers can work together to deliver a
+complex application. <a href="https://kubernetes.io/">Kubernetes</a> has emerged as the
+primary container orchestration technology, as it is both container agnostic and
+widely adopted. Kubernetes allows managing, scaling, and deploying different
+pieces of an application–in a standardized way–while providing excellent tooling
+for doing so.</p>
+
+<p>In this tutorial, we’ll take a look at Kubernetes and <a href="https://helm.sh/">Helm</a>
+as tools for deploying containerized Galaxy. The goals for this model of
+deploying Galaxy is to use best-practices from the Galaxy community on how to
+deploy the Galaxy application in a well-defined package. This model can simplify
+deployment and management burden of running Galaxy. While it is possible to
+follow this tutorial by simply copying and pasting supplied commands, and a
+production-grade Galaxy will be installed, it is desirable to have a basic
+understanding of the container concepts and Kubernetes and Helm technologies.</p>
+
+<p>Some of the goals for deploying and running Galaxy in this mode include:</p>
+<ul>
+  <li>Design a mostly stateless model for running Galaxy where processes can be
+horizontally scaled as needed</li>
+  <li>Integrate components from the Galaxy project ecosystem to leverage existing
+resources</li>
+  <li>Provide a unified handling of Galaxy configurations</li>
+  <li>Minimize customized dependencies</li>
+  <li>Minimize the need to build custom components</li>
+</ul>
+
+<blockquote class="agenda">
+  <div class="box-title agenda-title" id="agenda">Agenda</div>
+
+<ol id="markdown-toc">
+  <li><a href="#galaxy-helm-chart" id="markdown-toc-galaxy-helm-chart">Galaxy Helm Chart</a>    <ol>
+      <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
+      <li><a href="#prerequisites" id="markdown-toc-prerequisites">Prerequisites</a></li>
+    </ol>
+  </li>
+  <li><a href="#downloading-the-galaxy-helm-chart" id="markdown-toc-downloading-the-galaxy-helm-chart">Downloading the Galaxy Helm Chart</a></li>
+  <li><a href="#deploying-galaxy" id="markdown-toc-deploying-galaxy">Deploying Galaxy</a>    <ol>
+      <li><a href="#deploying-the-default-configuration" id="markdown-toc-deploying-the-default-configuration">Deploying the Default Configuration</a></li>
+      <li><a href="#deploying-a-cvmfs-enabled-configuration" id="markdown-toc-deploying-a-cvmfs-enabled-configuration">Deploying a CVMFS-enabled Configuration</a></li>
+      <li><a href="#deleting-a-deployed-helm-release" id="markdown-toc-deleting-a-deployed-helm-release">Deleting a Deployed Helm Release</a></li>
+    </ol>
+  </li>
+  <li><a href="#next-steps" id="markdown-toc-next-steps">Next Steps</a></li>
+</ol>
+
+</blockquote>
+
+<h2 id="prerequisites">Prerequisites</h2>
+<p>We’ll be using the <a href="https://github.com/galaxyproject/galaxy-helm">Galaxy Helm chart</a> to install and manage a Galaxy
+deployment. To be able to use this chart, we’ll need access to a Kubernetes
+cluster, with Helm installed. For development and testing purposes this can be
+easily achieved by installing
+<a href="https://www.docker.com/products/kubernetes">Docker Desktop locally and enabling Kubernetes</a>. Afterwards, also install
+<a href="https://helm.sh">Helm</a>.</p>
+
+<p>For production deployments, we’ll also need some storage resources for data
+persistence. This can be done by either defining a <a href="https://kubernetes.io/docs/concepts/storage/storage-classes/">storage class</a> or
+creating a <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/">Persistent Volume and a corresponding Persistent Volume Claim</a>.
+Once created, just keep a note of the resources Persistent Volume Claim ID and
+to use later.</p>
+
+<p>For the CVMFS-enabled version of the chart (more on this below), it is also
+necessary to run Kubernetes version 1.13 or newer because we’ll be using the
+<a href="https://kubernetes.io/blog/2019/01/15/container-storage-interface-ga/">Container Storage Interface (CSI)</a>.</p>
+
+<h1 id="downloading-the-galaxy-helm-chart">Downloading the Galaxy Helm Chart</h1>
+<p>The Galaxy Helm Chart is currently under active development with enhancements
+continuously trickling in. As a result, there are no regular releases yet and
+instead we recommend just cloning the GitHub repository with the chart
+implementation. This will be the easiest method to keep up with chart changes
+for the time being.</p>
+
+<blockquote class="notranslate hands_on">
+  <div class="box-title hands-on-title" id="hands-on-download-the-chart"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Download the chart</div>
+
+  <p>Clone the chart repository from the machine where you would like to deploy
+  Galaxy and change into the chart directory.</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  git clone https://github.com/galaxyproject/galaxy-helm
+  <span class="nb">cd </span>galaxy-helm/galaxy
+</code></pre></div>  </div>
+
+</blockquote>
+
+<h1 id="deploying-galaxy">Deploying Galaxy</h1>
+<p>The Galaxy Helm chart packages best-practice solutions for deploying Galaxy
+into a single package that can be readily deployed as a unit. Behind the
+scenes, all the supporting services are started and configured into an
+interoperable system. Specifically, this involves starting a database service
+based on Postgres, using Nginx as a web proxy, and running an independently
+scalable set of web and job handler processes for Galaxy. This follows
+the production-quality deployment recommendation setup for Galaxy and leverages
+some of the Kubernetes features to help with running long-term services (e.g.,
+liveness probes that automatically restart stuck processes).</p>
+
+<h2 id="deploying-the-default-configuration">Deploying the Default Configuration</h2>
+<p>The default set of values for the Galaxy chart configures only a minimal set
+of Galaxy options necessary. The configured options are required for suitable
+operation of the system. Setting other options will depend on the environment
+and it’s best to refer to the general <a href="https://galaxyproject.org/admin/#configuration">Galaxy documentation</a>; we’ll
+also take a look at how to make configuration changes in the context of the
+chart later in this tutorial.</p>
+
+<blockquote class="notranslate hands_on">
+  <div class="box-title hands-on-title" id="hands-on-deploying-the-galaxy-helm-chart"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Deploying the Galaxy Helm Chart</div>
+
+  <ol>
+    <li>
+      <p>First, we need to fetch any dependencies for the chart. One of the
+advantages of using Helm is that we can reuse best-practice deployment
+methods for other software right out of the box by relying on published
+charts and integrating them into the Galaxy chart.</p>
+
+      <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>helm dependency update
+</code></pre></div>      </div>
+    </li>
+    <li>
+      <p>We can now deploy Galaxy via the Chart. Before running this command make
+sure you are in the chart source code directory (where <code class="language-plaintext highlighter-rouge">values.yaml</code> file
+resides) and note the trailing dot. Running this command will create a new
+Helm release (i.e., chart installation) called <code class="language-plaintext highlighter-rouge">galaxy</code>.</p>
+
+      <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>helm <span class="nb">install</span> <span class="nt">--name</span> galaxy <span class="nb">.</span>
+</code></pre></div>      </div>
+    </li>
+    <li>
+      <p>It will take about a minute or two for the database to be initialized,
+necessary containers downloaded, and Galaxy processes started. Ultimately,
+while this may depend on the Kubernetes cluster setup you are using,
+Galaxy should be available at the root URI for the given machine. We can
+always check the status of our release by typing <code class="language-plaintext highlighter-rouge">helm status galaxy</code>.</p>
+    </li>
+  </ol>
+
+</blockquote>
+
+<h2 id="deploying-a-cvmfs-enabled-configuration">Deploying a CVMFS-enabled Configuration</h2>
+<p>The Galaxy Helm chart also comes with a more comprehensive set of configuration
+options that leverage more of the Galaxy project ecosystem. In practice this
+means deploying Galaxy with the same toolset as that of
+<em><a href="https://usegalaxy.org/">usegalaxy.org</a></em> right out of the box. It’s important to note
+that this deployment configuration leverages all the same chart components but
+just defines more configuration options. Namely, we attach to the
+<a href="https://training.galaxyproject.org/training-material/topics/admin/tutorials/cvmfs/tutorial.html">Galaxy CVMFS</a> ready-only file system for retrieving the tool
+configurations while leveraging <a href="https://biocontainers.pro/#/">BioContainers</a> for resolving tool dependencies.</p>
+
+<blockquote class="notranslate hands_on">
+  <div class="box-title hands-on-title" id="hands-on-deploying-the-cvmfs-enabled-configuration"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Deploying the CVMFS-enabled Configuration</div>
+
+  <ol>
+    <li>
+      <p>If you are following this tutorial sequentially and have a release of
+Galaxy already running, let’s delete it (assuming that’s fine and you have
+no data to keep). More details about the deletion process are available in
+the <a href="#deleting-a-deployed-helm-release">Deleting a Deployment section</a>. If
+you’re just playing around, run <code class="language-plaintext highlighter-rouge">helm delete --purge galaxy</code>.</p>
+    </li>
+    <li>
+      <p>The CVMFS variant of the Galaxy chart has an additional dependency on the
+<a href="https://github.com/CloudVE/galaxy-cvmfs-csi-chart">Galaxy CVMFS chart</a>.
+We’ll deploy this chart into its own <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Namespace</a> to keep its resources
+nicely grouped. We’ll also fetch the chart from a packaged chart
+repository instead of its GitHub repo.</p>
+
+      <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl create namespace cvmfs
+helm repo add galaxy https://raw.githubusercontent.com/CloudVE/helm-charts/master/
+helm repo update
+helm <span class="nb">install</span> <span class="nt">--name</span> cvmfs <span class="nt">--namespace</span> cvmfs galaxy/galaxy-cvmfs-csi
+</code></pre></div>      </div>
+    </li>
+    <li>
+      <p>We can now install the CVMFS-enabled set of values.</p>
+
+      <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>helm <span class="nb">install</span> <span class="nt">--name</span> galaxy galaxy/galaxy
+</code></pre></div>      </div>
+    </li>
+    <li>
+      <p>Again, it will take a few minutes for Galaxy to start up. This time most of
+the waiting is due to the tool definition files to be cached on CVMFS and
+loaded into the tool panel. We can check the status of the deployment by
+running <code class="language-plaintext highlighter-rouge">helm status galaxy</code>. We can also watch the boot process by tailing
+the logs of the relevant container with a command similar to
+<code class="language-plaintext highlighter-rouge">kubectl logs -f galaxy-web-7568c58b94-hjl9w</code> where the last argument is
+the name of the desired pod, as printed following the <code class="language-plaintext highlighter-rouge">helm install</code>
+command. Once the boot process has completed, we can access Galaxy at
+<code class="language-plaintext highlighter-rouge">/galaxy/</code> URI (note the trailing <code class="language-plaintext highlighter-rouge">/</code>; it’s significant).</p>
+    </li>
+  </ol>
+
+</blockquote>
+
+<h2 id="deleting-a-deployed-helm-release">Deleting a Deployed Helm Release</h2>
+<p>After we’re done experimenting with an installation of the chart, we can just
+as easily delete all the resources as we’ve created them. However, that may
+not be desirable so make sure you understand the system you’re working on to
+avoid undesired surprises. Namely, deleting and recreating a Helm release is
+generally not a problem where the processes will just respawn and everything will go back to operational; however, underlying storage configuration may
+interfere here with all the application data being potentially lost. This
+predominantly depends on how the relevant storage class was configured.</p>
+
+<blockquote class="notranslate hands_on">
+  <div class="box-title hands-on-title" id="hands-on-deleting-a-deployed-helm-release"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Deleting a Deployed Helm Release</div>
+
+  <ol>
+    <li>
+      <p>Before we delete a deployment, let’s ensure we understand what will happen
+with the underlying storage used by Galaxy.</p>
+
+      <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>kubectl get pv
+NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                                   STORAGECLASS      REASON   AGE
+cvmfs-cache-pv                             1000Mi     RWX            Retain           Bound    cvmfs/cvmfs-cache-pvc                   manual                     31m
+pvc-55806281-96c6-11e9-8e96-0251cc6c62f4   1Gi        ROX            Delete           Bound    default/galaxy-cvmfs-gxy-data-pvc       cvmfs-gxy-data             28m
+pvc-5580c830-96c6-11e9-8e96-0251cc6c62f4   1Gi        ROX            Delete           Bound    default/galaxy-cvmfs-gxy-main-pvc       cvmfs-gxy-main             28m
+pvc-55814757-96c6-11e9-8e96-0251cc6c62f4   10Gi       RWX            Delete           Bound    default/galaxy-galaxy-pvc               nfs-provisioner            28m
+pvc-70d4cc48-96be-11e9-8e96-0251cc6c62f4   8Gi        RWO            Delete           Bound    default/data-galaxy-galaxy-postgres-0   nfs-provisioner            84m
+pvc-8cb27bc9-9679-11e9-8e96-0251cc6c62f4   100Gi      RWO            Delete           Bound    cloudman/data-nfs-provisioner-0         ebs-provisioner            9h
+</code></pre></div>      </div>
+
+      <p>As we can see in the command output, the storage resources associated with
+the current deployment have the reclaim policy set to <code class="language-plaintext highlighter-rouge">Delete</code>, which will
+happen once no resources are using the given resource. If what you see is
+the not the intended behavior, you can change the <a href="https://kubernetes.io/docs/tasks/administer-cluster/change-pv-reclaim-policy/">reclaim policy</a>.</p>
+    </li>
+    <li>
+      <p>Once we’re ok with the state of the resources and are ready to delete a
+a deployment, we can do so with the following commands:</p>
+
+      <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>helm delete <span class="nt">--purge</span> galaxy
+helm delete <span class="nt">--purge</span> cvmfs
+</code></pre></div>      </div>
+    </li>
+  </ol>
+
+</blockquote>
+
+<h1 id="next-steps">Next Steps</h1>
+<p>This tutorial covers the basics of getting Galaxy deployed on Kubernetes using
+Helm. There is a lot more to understanding all the configuration options for
+the chart and the available deployment models. For more info on some of these
+topics, take a look at the <a href="https://github.com/galaxyproject/galaxy-helm">Galaxy Helm chart</a> repository as well as
+<a href="../..">other tutorials</a> tagged with <em>kubernetes</em>. Also, feel free to reach out
+on Gitter: <a href="https://gitter.im/galaxyproject/FederatedGalaxy">https://gitter.im/galaxyproject/FederatedGalaxy</a>.</p>
+
+
+                </section>
+
+                <section aria-label="Tutorial Footer, Feedback, Citation" id="tutorial-footer">
+                
+                <blockquote class="key_points">
+                    <div class="box-title"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
+                    <ul>
+                        
+                        <li><p>Stock deployment of production Galaxy components on Kubernetes is simple</p>
+</li>
+                        
+                        <li><p>Helm chart allows easy configuration changes</p>
+</li>
+                        
+                    </ul>
+                </blockquote>
+                
+
+                <h1>Frequently Asked Questions</h1>
+                Have questions about this tutorial? Check out the <a href="faqs/">tutorial FAQ page</a> or the  <a href="/training-material/topics/admin/faqs/">FAQ page for the Galaxy Server administration topic</a> to see if your question is listed there.
+                If not, please ask your question on the <a href="https://gitter.im/Galaxy-Training-Network/Lobby">GTN Gitter Channel</a> or the
+                <a href="https://help.galaxyproject.org">Galaxy Help Forum</a>
+
+                
+
+                
+
+
+                
+
+                
+
+                <h1>Feedback</h1>
+                <p class="text-muted">Did you use this material as an instructor? Feel free to give us feedback on <a href="https://github.com/galaxyproject/training-material/issues/1452">how it went</a>.
+                <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
+                </p>
+
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Galaxy Installation on Kubernetes (Galaxy Server administration)" alt="Feedback form link">
+                    <img src="/training-material/shared/images/feedback.png" alt="Preview of the google form" />
+                </a>
+
+                <h1>Citing this Tutorial</h1>
+                <p>
+                    <ol>
+                        <li id="citation-text">
+                            Pablo Moreno, Enis Afgan, Nuwan Goonasekera, Alex Mahmoud, John Davis,  <b>Galaxy Installation on Kubernetes (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/admin/tutorials/k8s-deploying-galaxy/tutorial.html">https://training.galaxyproject.org/training-material/topics/admin/tutorials/k8s-deploying-galaxy/tutorial.html</a> Online; accessed TODAY
+                        </li>
+                        <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
+                        </li>
+                        <li>
+                        Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
+                        </li>
+                    </ol>
+                </p>
+
+                <!-- collapsible boxcontaining the BibTeX-formatted citation -->
+                <blockquote class="details">
+
+                  <div id="citation-bibtex" class="box-title">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false">
+                      <i class="fas fa-info-circle" aria-hidden="true"></i>
+                      <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
+                    </button>
+                   </div>
+                   <p style="display: none;">
+
+                   <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
+
+
+<code id="citation-code">@misc{admin-k8s-deploying-galaxy,
+author = "Pablo Moreno and Enis Afgan and Nuwan Goonasekera and Alex Mahmoud and John Davis",
+	title = "Galaxy Installation on Kubernetes (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/admin/tutorials/k8s-deploying-galaxy/tutorial.html}",
+	note = "[Online; accessed TODAY]"
+}
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
+                   </pre></div></div>
+                   </p>
+                </blockquote>
+
+                
+
+
+<script>
+// update the date on load, or leave fallback of 'today'
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+</script>
+
+                <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
+
+                
+
+                
+                <blockquote class="agenda follow-up">
+                    <div class="box-title">Go Further</div>
+                    <strong class="follow-up"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Do you want to extend your knowledge? Follow one of our recommended follow-up trainings:</strong>
+                    <ul>
+                        
+    <li>
+    
+        
+        
+        <a href="/training-material/topics/admin">Galaxy Server administration</a>
+        
+            <ul>
+                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                            
+                            <li> Managing Galaxy on Kubernetes:
+                            
+                            
+                                
+                                     <a href="/training-material/topics/admin/tutorials/k8s-managing-galaxy/tutorial.html"><i class="fas fa-laptop" aria-hidden="true"></i><span class="visually-hidden">tutorial</span> hands-on</a>
+                                
+                            
+                            </li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                
+            </ul>
+        
+    
+    </li>
+
+                    </ul>
+                </blockquote>
+                
+
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/admin/tutorials/k8s-deploying-galaxy/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools: []
+</code></pre></div>
+                </blockquote>
+		
+
+
+                </section>
+
+            </div>
+        </div>
+    </div>
+</article>
+<br/>
+<br/>
+<br/>
+
+        </div>
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/2752a665e9cde64fc46b07701823f4c6cbe561b8">2752a66</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00013">https://gxy.io/GTN:T00013</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/admin/tutorials/k8s-deploying-galaxy/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1697677722'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </body>
+</html>

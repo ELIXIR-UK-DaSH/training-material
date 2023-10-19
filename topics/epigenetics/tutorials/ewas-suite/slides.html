@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>EWAS Epigenome-Wide Association Studies Introduction</title>
+        
+            <!--
+<script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
+-->
+<!-- We let users opt-out, so if they've opted in, we need to append the plausible script to the body -->
+
+<script>
+var scriptElement = document.createElement("script");
+scriptElement.async = true;
+scriptElement.defer = true;
+scriptElement.setAttribute("data-domain", "training.galaxyproject.org");
+scriptElement.src = "https://plausible.galaxyproject.eu/js/plausible.js";
+
+// Appending the script element to the body
+if(localStorage.getItem('plausible-opt-out') !== 'opt-out' && navigator.doNotTrack !== "1") {
+	console.log("Plausible: opt-in");
+	// Wait for the document to be available
+	document.addEventListener("DOMContentLoaded", function(event) {
+		document.body.appendChild(scriptElement);
+	});
+}
+</script>
+
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<!--
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+-->
+<script type="text/javascript">
+var scriptElement = document.createElement("script");
+scriptElement.src = "https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js";
+scriptElement.integrity = "sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43";
+scriptElement.crossOrigin = "anonymous";
+
+if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack !== "1") {
+	console.log("Sentry: opt-in");
+	// Appending the script element to the body
+	document.addEventListener("DOMContentLoaded", function(event) {
+		document.body.appendChild(scriptElement);
+	});
+		
+	Sentry.init({
+	  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+	  release: "galaxy-training-network@2752a665e9cde64fc46b07701823f4c6cbe561b8",
+	  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+	  sampleRate: 0.1,
+	  tracesSampleRate: 0.1,
+	  // Capture Replay for no sessions by default
+	  replaysSessionSampleRate: 0.01,
+	  // plus for 1% of sessions with an error
+	  replaysOnErrorSampleRate: 0.01,
+	  // PII OFF
+	  sendDefaultPii: false, // Off by default but just in case.
+	  environment: "production",
+	});
+}
+</script>
+
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/epigenetics/tutorials/ewas-suite/slides.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="EWAS Epigenome-Wide Association Studies Introduction">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-05-24 08:25:52 +0000">
+<meta name="DC.creator" content="Katarzyna Kamieniecka">
+<meta name="DC.creator" content="Krzysztof Poterlowicz">
+
+        
+        
+        
+        
+        <meta name="description" content="DNA methylation is an epigenetic mechanism used by higher..." />
+        <meta property="og:site_name" content="Galaxy Training Network" />
+        <meta property="og:title" content="Galaxy Training: EWAS Epigenome-Wide Association Studies Introduction" />
+        <meta property="og:description" content="DNA methylation is an epigenetic mechanism used by higher..." />
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        <script type="application/ld+json">
+            
+
+
+{
+  "@context": "http://schema.org",
+  "@type": "LearningResource",
+  "http://purl.org/dc/terms/conformsTo": {
+    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
+    "@type": "CreativeWork"
+  },
+  "audience": {
+    "@type": "EducationalAudience",
+    "educationalRole": "Students"
+  },
+  "citation": {
+    "@type": "CreativeWork",
+    "name": "Community-Driven Data Analysis Training for Biology",
+    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
+  },
+  "copyrightHolder": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "dateModified": "2023-05-24 08:25:52 +0000",
+  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
+  "headline": "EWAS Epigenome-Wide Association Studies Introduction",
+  "interactivityType": "mixed",
+  "isAccessibleForFree": true,
+  "isFamilyFriendly": true,
+  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
+  "producer": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "provider": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "sourceOrganization": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
+  "accessMode": [
+    "textual",
+    "visual"
+  ],
+  "accessModeSufficient": [
+    "textual",
+    "visual"
+  ],
+  "accessibilityControl": [
+    "fullKeyboardControl",
+    "fullMouseControl"
+  ],
+  "accessibilityFeature": [
+    "alternativeText",
+    "tableOfContents"
+  ],
+  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
+  "isPartOf": {
+    "@type": "CreativeWork",
+    "name": "Epigenetics",
+    "description": "DNA methylation is an epigenetic mechanism used by higher eukaryotes and involved in e.g. gene expression, X-Chromosome inactivating, imprinting, and gene silencing of germline specific gene and repetitive elements.",
+    "url": "https://training.galaxyproject.org/training-material/topics/epigenetics/"
+  },
+  "learningResourceType": "slides",
+  "name": "Slides for 'EWAS Epigenome-Wide Association Studies Introduction' tutorial",
+  "url": "https://training.galaxyproject.org/training-material/topics/epigenetics/tutorials/ewas-suite/slides.html",
+  "keywords": "epigenetics",
+  "description": "",
+  "inLanguage": {
+    "@type": "Language",
+    "name": "English",
+    "alternateName": "en"
+  },
+  "competencyRequired": [
+    {
+      "@context": "http://schema.org",
+      "@type": "LearningResource",
+      "url": "https://training.galaxyproject.org/training-material/topics/introduction/",
+      "name": "Introduction to Galaxy Analyses",
+      "description": "Introduction to Galaxy Analyses",
+      "provider": {
+        "@type": "Organization",
+        "email": "galaxytrainingnetwork@gmail.com",
+        "name": "Galaxy Training Network",
+        "url": "https://galaxyproject.org/teach/gtn/"
+      }
+    },
+    {
+      "@context": "http://schema.org",
+      "@type": "LearningResource",
+      "url": "https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/quality-control/slides.html",
+      "name": "Quality Control",
+      "description": "Slides for 'Quality Control' tutorial",
+      "learningResourceType": "slides",
+      "interactivityType": "expositive",
+      "provider": {
+        "@type": "Organization",
+        "email": "galaxytrainingnetwork@gmail.com",
+        "name": "Galaxy Training Network",
+        "url": "https://galaxyproject.org/teach/gtn/"
+      }
+    },
+    {
+      "@context": "http://schema.org",
+      "@type": "LearningResource",
+      "url": "https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/quality-control/tutorial.html",
+      "name": "Quality Control",
+      "description": "Hands-on for 'Quality Control' tutorial",
+      "learningResourceType": "hands-on tutorial",
+      "interactivityType": "expositive",
+      "provider": {
+        "@type": "Organization",
+        "email": "galaxytrainingnetwork@gmail.com",
+        "name": "Galaxy Training Network",
+        "url": "https://galaxyproject.org/teach/gtn/"
+      }
+    },
+    {
+      "@context": "http://schema.org",
+      "@type": "LearningResource",
+      "url": "https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/mapping/slides.html",
+      "name": "Mapping",
+      "description": "Slides for 'Mapping' tutorial",
+      "learningResourceType": "slides",
+      "interactivityType": "expositive",
+      "provider": {
+        "@type": "Organization",
+        "email": "galaxytrainingnetwork@gmail.com",
+        "name": "Galaxy Training Network",
+        "url": "https://galaxyproject.org/teach/gtn/"
+      }
+    },
+    {
+      "@context": "http://schema.org",
+      "@type": "LearningResource",
+      "url": "https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/mapping/tutorial.html",
+      "name": "Mapping",
+      "description": "Hands-on for 'Mapping' tutorial",
+      "learningResourceType": "hands-on tutorial",
+      "interactivityType": "expositive",
+      "provider": {
+        "@type": "Organization",
+        "email": "galaxytrainingnetwork@gmail.com",
+        "name": "Galaxy Training Network",
+        "url": "https://galaxyproject.org/teach/gtn/"
+      }
+    }
+  ],
+  "author": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/kkamieniecka/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/kkamieniecka/",
+      "name": "Katarzyna Kamieniecka",
+      "image": "https://avatars.githubusercontent.com/kkamieniecka",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ],
+      "identifier": "https://orcid.org/0009-0004-2454-5950",
+      "orcid": "https://orcid.org/0009-0004-2454-5950"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/poterlowicz-lab/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/poterlowicz-lab/",
+      "name": "Krzysztof Poterlowicz",
+      "image": "https://avatars.githubusercontent.com/poterlowicz-lab",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ],
+      "identifier": "https://orcid.org/0000-0001-6173-5674",
+      "orcid": "https://orcid.org/0000-0001-6173-5674"
+    }
+  ],
+  "about": [
+    {
+      "@type": "CreativeWork",
+      "name": "Epigenetics",
+      "description": "DNA methylation is an epigenetic mechanism used by higher eukaryotes and involved in e.g. gene expression, X-Chromosome inactivating, imprinting, and gene silencing of germline specific gene and repetitive elements.",
+      "url": "https://training.galaxyproject.org/training-material/topics/epigenetics/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "http://edamontology.org/topic_3173",
+      "inDefinedTermSet": "http://edamontology.org",
+      "termCode": "topic_3173",
+      "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_3173"
+    }
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
+
+  ],
+  "abstract": "# What is the topic?"
+}
+        </script>
+    </head>
+  <body data-brightness="auto" data-contrast="auto">
+
+
+    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+    <textarea id="source">
+name: inverse
+layout: true
+class: center, middle, inverse
+
+<div class="my-header"><span>
+<a href="/training-material/topics/epigenetics" title="Return to topic page" ><i class="fa fa-level-up" aria-hidden="true"></i></a>
+
+<a href="https://github.com/galaxyproject/training-material/edit/main/topics/epigenetics/tutorials/ewas-suite/slides.html"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+
+</span></div>
+
+<div class="my-footer"><span>
+
+<img src="/training-material/assets/images/GTN-60px.png" alt="Galaxy Training Network" style="height: 40px;"/>
+
+</span></div>
+
+---
+
+
+
+<img src="/training-material/assets/images/GTNLogo1000.png" alt="Galaxy Training Network" class="cover-logo"/>
+
+
+# EWAS Epigenome-Wide Association Studies Introduction
+
+
+<div markdown="0">
+
+	<div class="contributors-line">
+		Authors: <a href="/training-material/hall-of-fame/kkamieniecka/" class="contributor-badge contributor-kkamieniecka"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/kkamieniecka?s=36" alt="Avatar" width="36" height="36">Katarzyna Kamieniecka</a><a href="/training-material/hall-of-fame/poterlowicz-lab/" class="contributor-badge contributor-poterlowicz-lab"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/poterlowicz-lab?s=36" alt="Avatar" width="36" height="36">Krzysztof Poterlowicz</a>
+	</div>
+
+</div>
+
+
+<!-- modified date -->
+<div class="footnote" style="bottom: 8em;">
+  <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Updated:  &nbsp;
+  <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:S00057">gxy.io/GTN:S00057</a>
+</div>
+
+
+<!-- other slide formats (video and plain-text) -->
+<div class="footnote" style="bottom: 6em;">
+
+
+  <i class="fas fa-file-alt" aria-hidden="true"></i><span class="visually-hidden">text-document</span><a href="slides-plain.html"> Plain-text slides</a>
+</div>
+
+
+<!-- usage tips -->
+<div class="footnote" style="bottom: 2em;">
+    <strong>Tip: </strong>press <kbd>P</kbd> to view the presenter notes
+    | <i class="fa fa-arrows" aria-hidden="true"></i><span class="visually-hidden">arrow-keys</span> Use arrow keys to move between slides
+
+</div>
+
+???
+Presenter notes contain extra information which might be useful if you intend to use these slides for teaching.
+
+Press `P` again to switch presenter notes off
+
+Press `C` to create a new window where the same presentation will be displayed.
+This window is linked to the main window. Changing slides on one will cause the
+slide to change on the other.
+
+Useful when presenting.
+
+
+
+---
+
+## Requirements
+
+Before diving into this slide deck, we recommend you to have a look at:
+
+
+
+    
+        
+        
+            
+        
+- [Introduction to Galaxy Analyses](/training-material/topics/introduction)
+    
+
+    
+        
+        
+            
+        
+- [Sequence analysis](/training-material/topics/sequence-analysis)
+    - Quality Control: [<i class="fab fa-slideshare" aria-hidden="true"></i><span class="visually-hidden">slides</span> slides](/training-material/topics/sequence-analysis/tutorials/quality-control/slides.html) - [<i class="fas fa-laptop" aria-hidden="true"></i><span class="visually-hidden">tutorial</span> hands-on](/training-material/topics/sequence-analysis/tutorials/quality-control/tutorial.html)
+    - Mapping: [<i class="fab fa-slideshare" aria-hidden="true"></i><span class="visually-hidden">slides</span> slides](/training-material/topics/sequence-analysis/tutorials/mapping/slides.html) - [<i class="fas fa-laptop" aria-hidden="true"></i><span class="visually-hidden">tutorial</span> hands-on](/training-material/topics/sequence-analysis/tutorials/mapping/tutorial.html)
+    
+
+
+
+
+
+
+---
+
+
+
+
+
+
+
+
+
+
+# What is the topic?
+Epigenome-wide association studies (EWAS) analyse genome-wide activity of epigenetic marks in  cohorts of different individuals to find associations between epigenetic variation and phenotype.
+
+---
+
+## Overview
+
+- Applications of EWAS
+- Infinium Human Methylation BeadChip
+- The Analysis
+- Integrative Approach
+---
+## Applications
+- **Population Studies**
+   - EWAS studies are the solution to explore gene-environment interactions on big scale
+- **Clinical**
+   - Genetic epidemiology is widely used in many progressive and incurable diseases i.e. cancers, autoimmune and neurological disorders
+
+.image-75[ ![Graphic showing chromosome being unwound into chromatin and dna. DNA methylation is highlighted on individual dna molecules. The graphic shows more and less accessible DNA between histones in a &apos;histone tail&apos;](../../images/Epigenetic_mechanisms.jpg)]
+
+&lt;small&gt;[*National Institutes of Health, 2005*](http://commonfund.nih.gov/epigenomics/figure.aspx)&lt;/small&gt;
+
+---
+### Infinium Human Methylation BeadChip
+&lt;small&gt;One of the most common techniques used in EWAS studies is the Infinium Human Methylation BeadChip array quantifying the DNA methylation level, providing high accuracy with low input DNA requirements.&lt;/small&gt;
+
+.image-80[![At a methylated DNA locus, a methylated bead allows for transcription elongation while an unmethylated one doesn&apos;t. At an unmethylated site, the opposite happens.](../../images/methylationassay.png)]
+
+&lt;small&gt;[*Illumina, 2018*](https://emea.illumina.com/)&lt;/small&gt;
+
+&lt;small&gt;The Infinium Methylation Assay uses two different bead types to detect changes in DNA methylation levels. In the figure we can see M - methylated and U - unmethylated bead types. Depending on the probe design, the bead signals are reported in different colors green or red.&lt;/small&gt;
+---
+## The Analysis
+.image-90[![.IDAT files are eread, preprocessed and normalised, QC happens, then genetic variation annotation, then DMP DMR finding, and finall functional annotation and visualisation](../../images/ewaschart1.png)]
+
+&lt;small&gt;The analysis combines 6 main steps:
+ 1. Raw intensity data loading (.idat files)
+ 2. Preprocessing and optional normalization
+ 3. Quality assessment and control step
+ 4. Differentially methylated positions (DMP)  and regions (DMR) finding with respect to a phenotype covariate
+ 5. Functional annotation and graphical representation
+&lt;/small&gt;
+.image-30[![Screenshot of the above workflow but as a Galaxy workflow](../../images/ewaschart2.png)]
+---
+## Integrative Approach
+Methylation patterns obtained from Infinium Human Methylation BeadChip data are compatibile with other platforms (gene expression, microRNA profiling) and thus become one of the most comprehensive solution to invastigate epigenome.
+
+---
+## Summary
+Epigenetic aberrations which involve DNA modifications give researchers an interest to identify novel non-genetic factors responsible for complex human phenotypes such as height, weight, and disease. To identify methylation changes researchers need to perform complicated and time consuming computational analysis.
+
+Here, the Infinium Human Methylation BeadChip pipeline becomes a solution  for this inconvenience and provides a simplified downstream analysis  including preprocessing, quality evaluation and differentially methylated regions detection in one complex set of tools developed and published under the Galaxy platform. Ready to be integrated with existing resources and reused in multiple ways.
+
+
+
+
+
+
+
+
+
+---
+
+## Thank You!
+
+This material is the result of a collaborative work. Thanks to the [Galaxy Training Network](https://training.galaxyproject.org) and all the contributors!
+
+<div markdown="0">
+
+	<div class="contributors-line">
+		Authors: <a href="/training-material/hall-of-fame/kkamieniecka/" class="contributor-badge contributor-kkamieniecka"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/kkamieniecka?s=36" alt="Avatar" width="36" height="36">Katarzyna Kamieniecka</a><a href="/training-material/hall-of-fame/poterlowicz-lab/" class="contributor-badge contributor-poterlowicz-lab"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/poterlowicz-lab?s=36" alt="Avatar" width="36" height="36">Krzysztof Poterlowicz</a>
+	</div>
+
+</div>
+
+
+<div style="display: flex;flex-direction: row;align-items: center;justify-content: center;">
+
+<img src="/training-material/assets/images/GTNLogo1000.png" alt="Galaxy Training Network" style="height: 100px;"/>
+
+
+</div>
+
+<a rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+This material is licensed under the Creative Commons Attribution 4.0 International License</a>.
+
+
+    </textarea>
+	<script src="/training-material/assets/js/remark-latest.min.js"></script>
+    <script src="/training-material/assets/js/theme.js"></script>
+    <script src="/training-material/assets/js/clipboard.min.js"></script>
+    <script>
+      var slideshow = remark.create({navigation: {scroll: false}, ratio: '16:9'});
+      var hljs = remark.highlighter.engine;
+      var snippets = document.querySelectorAll('code.remark-code');
+        [].forEach.call(snippets,function(snippet){
+          snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
+        });
+      var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
+        target:function(trigger){return trigger.parentElement;
+      }});
+    </script>
+
+    <script>
+        if(window.location.hostname === "galaxyproject.github.io") {
+            // Redirect
+            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
+            $('body').prepend("<div style='text-align: center'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
+
+            window.setTimeout(function(){
+                window.location.href = redirect;
+            }, 5000)
+
+        }
+    </script>
+        <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
+        <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
+
+    </body>
+</html>

@@ -1,0 +1,76 @@
+{
+  "layout": "tutorial_slides",
+  "logo": "GTN",
+  "title": "Tool Shed: sharing Galaxy tools",
+  "questions": [
+    "What is a Tool Shed?",
+    "How to install tools and workflows from a Tool Shed into a Galaxy instance?",
+    "What are the Tool Shed repository types?",
+    "How to publish with Planemo?"
+  ],
+  "objectives": [
+    "Discover what is a Tool Shed",
+    "Be able to install tools and workflows from a Tool Shed into a Galaxy instance",
+    "Be able to publish tools with Planemo"
+  ],
+  "time_estimation": "3h",
+  "subtopic": "tooldev",
+  "key_points": [
+    "Use Planemo",
+    "Contribute to the Main Tool Shed"
+  ],
+  "contributors": [
+    "abretaud",
+    "loraine-gueguen",
+    "slegras",
+    "bebatut"
+  ],
+  "short_id": "S00052",
+  "url": "/topics/dev/tutorials/toolshed/slides.html",
+  "topic_name": "dev",
+  "tutorial_name": "toolshed",
+  "dir": "topics/dev/tutorials/toolshed",
+  "id": "dev/toolshed",
+  "video_library": {
+    "tutorial": null,
+    "slides": null,
+    "demo": null,
+    "both": null,
+    "session": null
+  },
+  "hands_on": false,
+  "slides": true,
+  "api": "https://training.galaxyproject.org/training-material/api/topics/dev/tutorials/toolshed/tutorial.json",
+  "tools": [
+
+  ],
+  "supported_servers": [
+
+  ],
+  "topic_name_human": "Development in Galaxy",
+  "admin_install": {
+    "install_tool_dependencies": true,
+    "install_repository_dependencies": true,
+    "install_resolver_dependencies": true,
+    "tools": [
+
+    ]
+  },
+  "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools: []\n",
+  "tours": false,
+  "video": false,
+  "translations": {
+    "tutorial": [
+
+    ],
+    "slides": [
+
+    ],
+    "video": false
+  },
+  "type": "tutorial",
+  "redirect_from": [
+    "/short/dev/toolshed/slides",
+    "/short/S00052"
+  ]
+}

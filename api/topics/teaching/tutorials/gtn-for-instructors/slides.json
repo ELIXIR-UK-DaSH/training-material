@@ -1,0 +1,89 @@
+{
+  "layout": "tutorial_slides",
+  "logo": "GTN",
+  "title": "Overview of the Galaxy Training Material for Instructors",
+  "video": true,
+  "questions": [
+    "How can I use the GTN for teaching?",
+    "What resources are available?",
+    "Why is it a good choice?"
+  ],
+  "key_points": [
+    "GTN offers many, many resources for instructors"
+  ],
+  "time_estimation": "10M",
+  "contributions": {
+    "authorship": [
+      "hexylena"
+    ]
+  },
+  "short_id": "S00092",
+  "url": "/topics/teaching/tutorials/gtn-for-instructors/slides.html",
+  "topic_name": "teaching",
+  "tutorial_name": "gtn-for-instructors",
+  "dir": "topics/teaching/tutorials/gtn-for-instructors",
+  "id": "teaching/gtn-for-instructors",
+  "video_library": {
+    "tutorial": null,
+    "slides": null,
+    "demo": null,
+    "both": null,
+    "session": null
+  },
+  "hands_on": false,
+  "slides": true,
+  "api": "https://training.galaxyproject.org/training-material/api/topics/teaching/tutorials/gtn-for-instructors/tutorial.json",
+  "tools": [
+
+  ],
+  "supported_servers": [
+
+  ],
+  "topic_name_human": "Teaching and Hosting Galaxy training",
+  "admin_install": {
+    "install_tool_dependencies": true,
+    "install_repository_dependencies": true,
+    "install_resolver_dependencies": true,
+    "tools": [
+
+    ]
+  },
+  "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools: []\n",
+  "tours": false,
+  "translations": {
+    "tutorial": [
+
+    ],
+    "slides": [
+
+    ],
+    "video": true
+  },
+  "type": "tutorial",
+  "contributors": [
+    {
+      "name": "Helena Rasche",
+      "email": "hexylena@galaxians.org",
+      "orcid": "0000-0001-9760-8992",
+      "maintainer_contact": "gitter",
+      "matrix": "hexylena:matrix.org",
+      "joined": "2017-09",
+      "elixir_node": "nl",
+      "fediverse": "https://galaxians.garden/hexylena",
+      "fediverse_flavor": "akkoma",
+      "contact_for_training": false,
+      "location": {
+        "country": "NL",
+        "lat": 51.91,
+        "lon": 4.46
+      },
+      "id": "hexylena",
+      "url": "https://training.galaxyproject.org/training-material/api/contributors/hexylena.json",
+      "page": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/"
+    }
+  ],
+  "redirect_from": [
+    "/short/teaching/gtn-for-instructors/slides",
+    "/short/S00092"
+  ]
+}

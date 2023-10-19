@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Galaxy and Celery</title>
+        
+            <!--
+<script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
+-->
+<!-- We let users opt-out, so if they've opted in, we need to append the plausible script to the body -->
+
+<script>
+var scriptElement = document.createElement("script");
+scriptElement.async = true;
+scriptElement.defer = true;
+scriptElement.setAttribute("data-domain", "training.galaxyproject.org");
+scriptElement.src = "https://plausible.galaxyproject.eu/js/plausible.js";
+
+// Appending the script element to the body
+if(localStorage.getItem('plausible-opt-out') !== 'opt-out' && navigator.doNotTrack !== "1") {
+	console.log("Plausible: opt-in");
+	// Wait for the document to be available
+	document.addEventListener("DOMContentLoaded", function(event) {
+		document.body.appendChild(scriptElement);
+	});
+}
+</script>
+
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<!--
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+-->
+<script type="text/javascript">
+var scriptElement = document.createElement("script");
+scriptElement.src = "https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js";
+scriptElement.integrity = "sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43";
+scriptElement.crossOrigin = "anonymous";
+
+if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack !== "1") {
+	console.log("Sentry: opt-in");
+	// Appending the script element to the body
+	document.addEventListener("DOMContentLoaded", function(event) {
+		document.body.appendChild(scriptElement);
+	});
+		
+	Sentry.init({
+	  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+	  release: "galaxy-training-network@2752a665e9cde64fc46b07701823f4c6cbe561b8",
+	  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+	  sampleRate: 0.1,
+	  tracesSampleRate: 0.1,
+	  // Capture Replay for no sessions by default
+	  replaysSessionSampleRate: 0.01,
+	  // plus for 1% of sessions with an error
+	  replaysOnErrorSampleRate: 0.01,
+	  // PII OFF
+	  sendDefaultPii: false, // Off by default but just in case.
+	  environment: "production",
+	});
+}
+</script>
+
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/admin/tutorials/celery/slides-plain.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1697677722' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1697677722' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Galaxy and Celery">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-10-19 01:08:43 +0000">
+<meta name="DC.creator" content="Mira Kuntz">
+
+        
+        
+        
+        
+        <meta name="description" content="Collection of tutorials developed and maintained by the w...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Galaxy and Celery">
+        <meta property="og:description" content="Collection of tutorials developed and maintained by the w...">
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc" data-brightness="auto" data-contrast="auto">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1697677722'></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                
+                    Galaxy Training!
+                
+            </a>
+
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/hall-of-fame" title="Hall of Fame">
+                           <i class="fas fa-users" aria-hidden="true"></i><span class="visually-hidden">hall-of-fame</span> Contributors
+                        </a>
+
+                        
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+	<a class="dropdown-item" href="/training-material/faqs/index.html" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/./topics/admin/tutorials/celery/slides.html" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/admin/tutorials/celery/slides-plain.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+            </a>
+        
+
+		<a href="/training-material/preferences.html" class="dropdown-item">
+			<i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Themes have moved <span class="badge badge-secondary">New</span>
+		</a>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        
+        <div class="container main-content" role="main">
+        <section class="tutorial">
+	<a href="https://github.com/galaxyproject/training-material/blob/main//topics/admin/tutorials/celery/slides.html">View markdown source on GitHub</a>
+	<h1>Galaxy and Celery</h1>
+		<h2>Contributors</h2>
+<div markdown="0">
+
+	<div class="contributors-line">
+		
+<table class="contributions">
+	
+	<tr>
+		<td><abbr title="These people wrote the bulk of the tutorial, they may have done the analysis, built the workflow, and wrote the text themselves.">Author(s)</abbr></td>
+		<td>
+			<a href="/training-material/hall-of-fame/mira-miracoli/" class="contributor-badge contributor-mira-miracoli"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/mira-miracoli?s=36" alt="Avatar" width="36" height="36">Mira Kuntz</a>
+		</td>
+	</tr>
+	
+
+
+	
+
+	
+	<tr>
+		<td><abbr title="These people edited the text, either for spelling and grammar, flow, GTN-fit, or other similar editing categories">Editor(s)</abbr></td>
+		<td>
+			<a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge contributor-hexylena"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/hexylena?s=36" alt="Avatar" width="36" height="36">Helena Rasche</a></td>
+	</tr>
+	
+
+	
+
+	
+
+	
+</table>
+
+
+	</div>
+
+</div>
+
+
+		
+
+		
+
+		
+
+		<div><strong> <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Last modification:</strong> Oct 19, 2023 </div>
+
+	<hr />
+
+
+	<h2 id="can-you-eat-it">Can you eat it?</h2>
+
+<p>.pull-left[
+Celery is an asynchronous distributed task queue.</p>
+
+<p>It consists of:</p>
+
+<ul>
+  <li>Your Application that sends tasks</li>
+  <li>To a broker with queues</li>
+  <li>Celery workers that execute the tasks</li>
+  <li>A result backend to store the task results</li>
+</ul>
+
+<p>It’s written in Python, multiple other languages are supported.
+]</p>
+
+<p>.pull-right[
+	<img src="images/celery.png" alt="celery logo, a cartoon of a piece of celery" />
+]</p>
+
+<hr />
+
+<h2 id="so-many-features">So many features</h2>
+
+<p>.pull-left[</p>
+<ul>
+  <li>Different worker/process <a href="https://distributedpython.com/posts/celery-execution-pools-what-is-it-all-about/">pool options</a>, depending on your needs – I/O or CPU bound</li>
+  <li>CeleryBeat a scheduler for repeated tasks</li>
+  <li>Flower, a monitoring interface for
+    <ul>
+      <li>Showing tasks, queues and workers</li>
+      <li>Prometheus + Grafana integration
+]</li>
+    </ul>
+  </li>
+</ul>
+
+<p>.pull-right[
+	<img src="images/celery-logo.png" alt="celery logo, a cartoon of a piece of celery, now with the text celery next to it" />
+]</p>
+
+<hr />
+
+<h1 id="how-does-celery-improve-galaxy">How does Celery improve Galaxy?</h1>
+
+<hr />
+
+<p><strong>The Problem</strong></p>
+
+<p>The Galaxy Server should respond quickly to every request.<br />
+While this is easily possible for small instances with few users,<br />
+when scaling to thousands of users and millions of jobs,<br />
+without Celery, Gunicorn and the job handlers spend much of their time on I/O bound side tasks,<br />
+for example packing a zip for history export.</p>
+
+<p>This leads to slow responses and scheduling.</p>
+
+<hr />
+<p>.pull-left[
+<strong>The Solution</strong></p>
+
+<p>Queue asynchronous tasks with Celery<br />
+on a different node or even a whole cluster…</p>
+
+<p>]</p>
+
+<p>.pull-right[
+	<img src="images/galaxy+celery.png" alt="galaxy logo next to celery logo, with two purple hearts" />
+]</p>
+
+<hr />
+
+<p><img src="images/workflow.png" alt="A workflow diagram is shown with logos and arrows. Galaxy on the left sends tasks to rabbit MQ. Celery fetches tasks from Rabbit MQ and proceses them. Then celery sends results to the backend database. Finally Galaxy fetches those same results back from the backend." /></p>
+
+<hr />
+
+<h2 id="how-does-the-magic-work">How does the magic work?</h2>
+
+<ul>
+  <li>Celery loads the Galaxy code from NFS when you start the workers</li>
+  <li>Workers connect to the broker and fetch tasks from the queue</li>
+  <li>Since all the python modules are already loaded, it can execute the task directly, with almost no delay</li>
+  <li>Now it runs the code according to the task, for example a SQL update, or a file deletion on the NFS</li>
+  <li>Results are either sent directly back to the broker or stored e.g. in a Redis DB</li>
+</ul>
+
+<hr />
+
+<h2 id="what-is-celery-used-for">What is Celery used for</h2>
+
+<ul>
+  <li>Processing upload jobs</li>
+  <li>Processing metadata</li>
+  <li>Recalculating disk usage</li>
+  <li>Purging datasets</li>
+  <li>Changing datatypes</li>
+  <li>Preparing compressed downloads (histories, etc.)</li>
+  <li>Creating PDFs for Galaxy workflow reports</li>
+  <li>Cleaning up short term storage</li>
+  <li>Preparing history exports
+. . .</li>
+</ul>
+
+<hr />
+
+<p>.pull-left[</p>
+<h2 id="what-do-you-need-to-enable-celery">What do you need to enable Celery?</h2>
+
+<ul>
+  <li>A properly set up broker, for example with <a href="https://github.com/usegalaxy-eu/ansible-rabbitmq">UseGalaxy.eu RabbitMQ Ansible Role</a></li>
+  <li>A result backend, e.g. a Redis server, for example with <a href="https://github.com/geerlingguy/ansible-role-redis">geerlingguy’s Ansible Role</a></li>
+  <li>A shared filesystem (e.g. NFS) to which you export Galaxy’s root dir and which is mounted on the Celery nodes</li>
+  <li>Optional: Flower, the Celery UI, for example with <a href="https://github.com/usegalaxy-eu/flower-ansible-role">UseGalaxy.eu Flower Ansible Role</a> 
+]</li>
+</ul>
+
+<p>.pull-right[
+<img src="images/logos.png" alt="Collection of three logos, Galaxy, RabbitMQ, and celery" />
+]</p>
+
+<hr />
+
+<p>.pull-left[
+<img src="images/celery.png" alt="" />
+]</p>
+
+<p>.pull-right[</p>
+
+<h2 id="where-to-get-celery">Where to get Celery?</h2>
+
+<ul>
+  <li>It is in your Galaxy virtual environment (<code class="language-plaintext highlighter-rouge">venv</code>) already!</li>
+  <li>Mount the Galaxy root with <code class="language-plaintext highlighter-rouge">venv</code> and config dirs on your Celery node</li>
+  <li>Create an Ansible Playbook e.g. with <a href="https://github.com/usegalaxy-eu/ansible-galaxy-systemd">UseGalaxy.eu’s Systemd Role</a></li>
+  <li>For inspiration, you can check out GalaxyEU’s vars <a href="https://github.com/usegalaxy-eu/infrastructure-playbook/blob/master/group_vars/celerycluster.yml">file</a>
+]</li>
+</ul>
+
+<hr />
+<p>.pull-left[
+	<img src="images/docs.png" alt="screenshot of galaxy documentation page, linked in next section" />
+]
+.pull-right[</p>
+<h2 id="how-to-set-the-galaxy-config">How to set the Galaxy Config</h2>
+<ul>
+  <li><a href="https://docs.galaxyproject.org/en/latest/admin/options.html#amqp-internal-connection">Configuration in <code class="language-plaintext highlighter-rouge">galaxy.yml</code> file</a></li>
+  <li>Documentation still WIP</li>
+  <li>To connect to your broker, <code class="language-plaintext highlighter-rouge">celery_broker</code> can be set. Defaults to <code class="language-plaintext highlighter-rouge">amqp_internal_connection</code> otherwise</li>
+  <li><code class="language-plaintext highlighter-rouge">celery_conf</code> takes basically all <a href="https://docs.celeryq.dev/en/stable/getting-started/first-steps-with-celery.html">documented options</a></li>
+  <li>Set your <a href="https://docs.celeryq.dev/en/stable/getting-started/first-steps-with-celery.html#keeping-results"><code class="language-plaintext highlighter-rouge">result_backend</code></a> / Redis connection here</li>
+  <li>Celery, Flower and RabbitMQ are all well documented
+]</li>
+</ul>
+
+<hr />
+
+<p>.pull-top[</p>
+<h2 id="how-to-monitor-celery">How to monitor Celery</h2>
+<p>In the Flower dashboard you can monitor your workers live.<br />
+The screenshot below shows all registered workers and their status.
+]</p>
+
+<p>.pull-bottom[
+	<img src="images/flower-screenshot.png" alt="screenshot of the flower dashboard showing a bunch of workers" />
+]</p>
+
+<hr />
+
+<p>.pull-top[</p>
+<h2 id="how-to-monitor-celery-tasks">How to monitor Celery Tasks</h2>
+<p>In the ‘Tasks’ tab, you can click on each individual task and see all its details, like  <br />
+args, timestamp, worker, result and stack trace if it errored.
+]</p>
+
+<p>.pull-bottom[
+	<img src="images/flower-screenshot-task.png" alt="screenshot of a simple flower task" />
+]</p>
+
+<hr />
+
+<h2 id="take-home-message">Take Home Message</h2>
+<ul>
+  <li>Celery is a nice way to load off computation from your head-node</li>
+  <li>On the other hand you have to maintain a broker and monitor your Celery node/cluster</li>
+  <li>If you have strong load fluctuations, you might need to find a way to scale your Celery cluster flexibly</li>
+  <li>Not necessarily needed for smaller instances, but can be considered, if your head node has too high load or I/O</li>
+</ul>
+
+
+	<hr />
+
+
+
+
+
+
+
+
+<h2>Thank you!</h2>
+
+This material is the result of a collaborative work. Thanks to the <a href="https://training.galaxyproject.org" aria-label="Visit the GTN">Galaxy Training Network</a> and all the contributors!
+
+
+
+<img src="/training-material/assets/images/gat.png" alt="page logo" style="height: 100px;"/>
+
+
+
+This material is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+</section>
+
+
+
+
+
+
+
+
+        </div>
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/2752a665e9cde64fc46b07701823f4c6cbe561b8">2752a66</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/./topics/admin/tutorials/celery/slides.html" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1697677722'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </body>
+</html>

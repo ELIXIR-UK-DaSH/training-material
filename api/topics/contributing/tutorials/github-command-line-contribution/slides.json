@@ -1,0 +1,79 @@
+{
+  "layout": "tutorial_slides",
+  "title": "Contributing with GitHub via command-line",
+  "questions": [
+    "How can I contribute to an open-source project with GitHub?",
+    "What is the GitHub flow?"
+  ],
+  "objectives": [
+    "Fork a repository on GitHub",
+    "Clone a remote repository locally",
+    "Create a branch",
+    "Commit changes",
+    "Push changes to a remote repository",
+    "Create a pull request",
+    "Update a pull request"
+  ],
+  "time_estimation": "30m",
+  "subtopic": "contribute",
+  "key_points": [
+    "Work on your fork",
+    "1 branch = 1 feature",
+    "1 pull request = 1 branch",
+    "Be careful of the branch you're working on",
+    "Check the automated tests"
+  ],
+  "contributors": [
+    "cmonjeau",
+    "bebatut"
+  ],
+  "short_id": "S00041",
+  "url": "/topics/contributing/tutorials/github-command-line-contribution/slides.html",
+  "topic_name": "contributing",
+  "tutorial_name": "github-command-line-contribution",
+  "dir": "topics/contributing/tutorials/github-command-line-contribution",
+  "id": "contributing/github-command-line-contribution",
+  "video_library": {
+    "tutorial": null,
+    "slides": null,
+    "demo": null,
+    "both": null,
+    "session": null
+  },
+  "hands_on": true,
+  "slides": true,
+  "api": "https://training.galaxyproject.org/training-material/api/topics/contributing/tutorials/github-command-line-contribution/tutorial.json",
+  "tools": [
+
+  ],
+  "supported_servers": [
+
+  ],
+  "topic_name_human": "Contributing to the Galaxy Training Material",
+  "admin_install": {
+    "install_tool_dependencies": true,
+    "install_repository_dependencies": true,
+    "install_resolver_dependencies": true,
+    "tools": [
+
+    ]
+  },
+  "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools: []\n",
+  "tours": false,
+  "video": false,
+  "translations": {
+    "tutorial": [
+
+    ],
+    "slides": [
+
+    ],
+    "video": false
+  },
+  "type": "tutorial",
+  "logo": "GTN",
+  "redirect_from": [
+    "/short/contributing/github-command-line-contribution/slides",
+    "/short/S00041"
+  ]
+}

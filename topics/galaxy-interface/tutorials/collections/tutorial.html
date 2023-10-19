@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Using dataset collections</title>
+        
+            <!--
+<script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
+-->
+<!-- We let users opt-out, so if they've opted in, we need to append the plausible script to the body -->
+
+<script>
+var scriptElement = document.createElement("script");
+scriptElement.async = true;
+scriptElement.defer = true;
+scriptElement.setAttribute("data-domain", "training.galaxyproject.org");
+scriptElement.src = "https://plausible.galaxyproject.eu/js/plausible.js";
+
+// Appending the script element to the body
+if(localStorage.getItem('plausible-opt-out') !== 'opt-out' && navigator.doNotTrack !== "1") {
+	console.log("Plausible: opt-in");
+	// Wait for the document to be available
+	document.addEventListener("DOMContentLoaded", function(event) {
+		document.body.appendChild(scriptElement);
+	});
+}
+</script>
+
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<!--
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+-->
+<script type="text/javascript">
+var scriptElement = document.createElement("script");
+scriptElement.src = "https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js";
+scriptElement.integrity = "sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43";
+scriptElement.crossOrigin = "anonymous";
+
+if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack !== "1") {
+	console.log("Sentry: opt-in");
+	// Appending the script element to the body
+	document.addEventListener("DOMContentLoaded", function(event) {
+		document.body.appendChild(scriptElement);
+	});
+		
+	Sentry.init({
+	  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+	  release: "galaxy-training-network@2752a665e9cde64fc46b07701823f4c6cbe561b8",
+	  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+	  sampleRate: 0.1,
+	  tracesSampleRate: 0.1,
+	  // Capture Replay for no sessions by default
+	  replaysSessionSampleRate: 0.01,
+	  // plus for 1% of sessions with an error
+	  replaysOnErrorSampleRate: 0.01,
+	  // PII OFF
+	  sendDefaultPii: false, // Off by default but just in case.
+	  environment: "production",
+	});
+}
+</script>
+
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/collections/tutorial.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1697677722' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1697677722' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Using dataset collections">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-06-14 12:46:16 +0000">
+<meta name="DC.creator" content="Anton Nekrutenko">
+
+        
+        
+        
+        
+        <meta name="description" content="A collection of microtutorials explaining various feature...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Using dataset collections">
+        <meta property="og:description" content="A collection of microtutorials explaining various feature...">
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        
+        <script type="application/ld+json">
+            
+
+
+{
+  "@context": "http://schema.org",
+  "@type": "LearningResource",
+  "http://purl.org/dc/terms/conformsTo": {
+    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
+    "@type": "CreativeWork"
+  },
+  "audience": {
+    "@type": "EducationalAudience",
+    "educationalRole": "Students"
+  },
+  "citation": {
+    "@type": "CreativeWork",
+    "name": "Community-Driven Data Analysis Training for Biology",
+    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
+  },
+  "copyrightHolder": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "dateModified": "2023-06-14 12:46:16 +0000",
+  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
+  "headline": "Using dataset collections",
+  "interactivityType": "mixed",
+  "isAccessibleForFree": true,
+  "isFamilyFriendly": true,
+  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
+  "producer": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "provider": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "sourceOrganization": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
+  "accessMode": [
+    "textual",
+    "visual"
+  ],
+  "accessModeSufficient": [
+    "textual",
+    "visual"
+  ],
+  "accessibilityControl": [
+    "fullKeyboardControl",
+    "fullMouseControl"
+  ],
+  "accessibilityFeature": [
+    "alternativeText",
+    "tableOfContents"
+  ],
+  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
+  "isPartOf": {
+    "@type": "CreativeWork",
+    "name": "Using Galaxy and Managing your Data",
+    "description": "A collection of microtutorials explaining various features of the Galaxy user interface and manipulating data within Galaxy.",
+    "url": "https://training.galaxyproject.org/training-material/topics/galaxy-interface/"
+  },
+  "learningResourceType": "hands-on tutorial",
+  "name": "Hands-on for 'Using dataset collections' tutorial",
+  "url": "https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/collections/tutorial.html",
+  "timeRequired": "PT30M",
+  "teaches": "Understand and master dataset collections",
+  "keywords": "galaxy-interface, collections",
+  "description": "The questions this  addresses are:\n - How to manipulate large numbers of datasets at once?\n\n\nThe objectives are:\n - Understand and master dataset collections\n\n",
+  "inLanguage": {
+    "@type": "Language",
+    "name": "English",
+    "alternateName": "en"
+  },
+  "author": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/nekrut/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/nekrut/",
+      "name": "Anton Nekrutenko",
+      "image": "https://avatars.githubusercontent.com/nekrut",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ]
+    }
+  ],
+  "about": [
+    {
+      "@type": "CreativeWork",
+      "name": "Using Galaxy and Managing your Data",
+      "description": "A collection of microtutorials explaining various features of the Galaxy user interface and manipulating data within Galaxy.",
+      "url": "https://training.galaxyproject.org/training-material/topics/galaxy-interface/"
+    }
+  ],
+  "educationalLevel": "Intermediate",
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "collections"
+    }
+  ],
+  "abstract": "{% snippet faqs/gtn/galaxy_tested_with.md version=\"22.01\" %}"
+}
+        </script>
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc" data-brightness="auto" data-contrast="auto">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1697677722'></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                
+                    Galaxy Training!
+                
+            </a>
+
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/topics/galaxy-interface" title="Go back to list of tutorials">
+                            <i class="far fa-folder" aria-hidden="true"></i> Using Galaxy and Managing your Data
+                        </a>
+                        
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+	<a class="dropdown-item" href="/training-material/faqs/index.html" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="/training-material/topics/galaxy-interface/faqs/" title="Check our FAQs for the Using Galaxy and Managing your Data topic">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/galaxy-interface/tutorials/collections/tutorial.md" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/galaxy-interface/tutorials/collections/tutorial.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
+        
+
+		<a href="/training-material/preferences.html" class="dropdown-item">
+			<i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Themes have moved <span class="badge badge-secondary">New</span>
+		</a>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        
+        <div class="container main-content" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gitter -->
+
+
+
+
+
+
+<article class="tutorial topic-galaxy-interface">
+    <h1 data-toc-skip>Using dataset collections</h1>
+    
+
+    <section aria-labelledby="overview-box" id="tutorial-metadata">
+    <div markdown="0">
+
+	<div class="contributors-line">
+		Authors: <a href="/training-material/hall-of-fame/nekrut/" class="contributor-badge contributor-nekrut"><img src="https://avatars.githubusercontent.com/nekrut?s=36" alt="Avatar" width="36" height="36">Anton Nekrutenko</a>
+	</div>
+
+</div>
+
+
+    <blockquote class="overview">
+        <div id="overview-box" class="box-title">Overview</div>
+        
+        <img alt="Creative Commons License: CC-BY" class="float-right" style="border-width:0; display: inline-block; margin:0" src="/training-material/assets/images/cc-by.png"/>
+        
+        <strong><i class="far fa-question-circle" aria-hidden="true"></i> Questions:</strong>
+        <ul>
+        
+        <li><p>How to manipulate large numbers of datasets at once?</p>
+</li>
+        
+        </ul>
+
+        <strong><i class="fas fa-bullseye" aria-hidden="true"></i> Objectives: </strong>
+        <ul>
+        
+        <li><p>Understand and master dataset collections</p>
+</li>
+        
+        </ul>
+
+        
+
+        
+        <div><strong><i class="fas fa-hourglass-half" aria-hidden="true"></i> Time estimation:</strong> 30 minutes</div>
+        
+
+        
+        <div><strong><i class="fas fa-graduation-cap" aria-hidden="true"></i> Level: </strong>
+        
+
+
+ Intermediate <span class="visually-hidden">Intermediate</span>
+<span class="level intermediate" title="Intermediate Tutorial">
+  <i class="fas fa-graduation-cap" aria-hidden="true"></i> <i class="fas fa-graduation-cap" aria-hidden="true"></i> <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+</span>
+
+</div>
+        
+
+        
+
+        
+
+        <div id="supporting-materials"><strong><i class="fa fa-external-link" aria-hidden="true"></i> Supporting Materials:</strong></div>
+        <ul class="supporting_material">
+            
+
+            
+                <li class="btn btn-default supporting_material">
+
+
+<a class="btn btn-default topic-icon" title="Zenodo datasets used in this tutorial" href="https://doi.org/10.5281/zenodo.5119008">
+    <i class="far fa-copy" aria-hidden="true"></i>&nbsp;Datasets
+</a>
+
+</li>
+            
+
+            
+
+            
+
+            
+
+            
+            
+            
+                <li class="btn btn-default supporting_material">    <a class="topic-icon" href="/training-material/topics/galaxy-interface/tutorials/collections/faqs/" title="Frequently Asked Questions">
+        <i class="far fa-question-circle" aria-hidden="true"></i> FAQs
+    </a>
+</li>
+            
+
+            <!-- Check the GTN Video Library for recordings of this tutorial or associated slides -->
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<!-- GTN Video Library true -->
+  
+<li class="btn btn-default supporting_material">
+  
+    <a href="#" class="btn btn-default dropdown-toggle topic-icon" data-toggle="dropdown" aria-expanded="false" title="Latest recordings of this tutorial in the GTN Video Library">
+        <i class="fas fa-video" aria-hidden="true"></i><span class="visually-hidden">video</span>&nbsp;Recordings
+    </a>
+    <ul class="dropdown-menu">
+        
+        
+
+        
+        
+        
+
+        <li>
+            <a class="dropdown-item" href="https://gallantries.github.io/video-library/videos/galaxy-interface/collections/tutorial" title="View GTN Video Library for this Tutorial">
+                <i class="fas fa-video" aria-hidden="true"></i><span class="visually-hidden">video</span> Tutorial (May 2023)
+            </a>
+        </li>
+        
+        
+        
+        
+    </ul>
+  
+</li>
+  
+   
+
+
+
+            
+                
+                <li class="btn btn-default supporting_material">
+
+
+
+
+
+
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
+        <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>&nbsp;Available on these Galaxies 
+    </a>
+    <ul class="dropdown-menu">
+        
+	<li class="dropdown-header">
+		<b>Known Working</b>
+	</li>
+	
+	
+
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.eu" title="">
+			UseGalaxy.eu <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org" title="">
+			UseGalaxy.org (Main) <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org.au" title="">
+			UseGalaxy.org.au <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+    
+    
+    
+	<li class="dropdown-header">
+		<b>Possibly Working</b>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://galaxytrakr.org/" title="">
+			GalaxyTrakr
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://galaxy.hyphy.org/" title="">
+			HyPhy HIV NGS Tools
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.be/" title="">
+			UseGalaxy.be
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.fr/" title="">
+			UseGalaxy.fr
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.no/" title="">
+			UseGalaxy.no
+		</a>
+	</li>
+    
+    
+
+    
+    </ul>
+
+</li>
+                
+            
+        </ul>
+
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Jun 14, 2023 </div>
+        <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
+            
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+        </div>
+        
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00146">https://gxy.io/GTN:T00146</a> </div>
+        
+    </blockquote>
+    </section>
+
+    <div class="container">
+        <div class="row">
+            <!-- sidebar, which will move to the top on a small screen -->
+            <div class="col-sm-2 hide-when-printing">
+                <nav id="toc" data-toggle="toc" class="sticky-top" aria-label="Table of Contents"></nav>
+            </div>
+            <div class="col-sm-10">
+                 
+
+                <section aria-label="Tutorial Content" id="tutorial-content">
+                <!--SNIPPET-->
+<blockquote class="warning">   <div class="box-title warning-title" id="warning-compatible-versions-of-galaxy"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Warning: Compatible Versions of Galaxy</div>   <p>This tutorial has been tested to work with 22.01</p>   <ul>   <li>Galaxy’s Interface <strong>may</strong> be different to the Galaxy where you are following this tutorial.</li>   <li>✅ All tutorial steps will still be able to be followed (potentially with minor differences for moved buttons or changed icons.)</li>   <li>✅ Tools will all still work</li> </ul> </blockquote>
+<p><!--END_SNIPPET--></p>
+
+<p>Here we will show Galaxy features designed to help with the analysis of large numbers of samples. When you have just a few samples - clicking through them is easy. But once you’ve got hundreds - it becomes very annoying. In Galaxy we have introduced <strong>Dataset collections</strong> that allow you to combine numerous datasets in a single entity that can be easily manipulated.</p>
+
+<h1 id="getting-data">Getting data</h1>
+
+<p>First, we need to upload datasets. Cut and paste the following URLs to Galaxy upload tool (see a <i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden">tip</span> <strong>Tip</strong> on how to do this <a href="#tip-upload-fastqsanger-datasets-via-links">below</a>).</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://zenodo.org/record/5119008/files/M117-bl_1.fq.gz
+https://zenodo.org/record/5119008/files/M117-bl_2.fq.gz
+https://zenodo.org/record/5119008/files/M117-ch_1.fq.gz
+https://zenodo.org/record/5119008/files/M117-ch_2.fq.gz
+https://zenodo.org/record/5119008/files/M117C1-bl_1.fq.gz
+https://zenodo.org/record/5119008/files/M117C1-bl_2.fq.gz
+https://zenodo.org/record/5119008/files/M117C1-ch_1.fq.gz
+https://zenodo.org/record/5119008/files/M117C1-ch_2.fq.gz
+</code></pre></div></div>
+
+<blockquote class="notranslate hands_on">
+  <div class="box-title hands-on-title" id="hands-on-set-format-to-fastqsanger-gz"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Set format to `fastqsanger.gz`</div>
+  <p>The above datasets are in <code class="language-plaintext highlighter-rouge">fastqsanger.gz</code> format. It is necessary to explicitly set format in Galaxy. The <i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden">tip</span> <strong>Tip</strong> section below explains how to upload these data and set the correct format. There is a variety of <a href="https://en.wikipedia.org/wiki/FASTQ_format">fastq format flavors</a> and it is difficult to guess them automatically.</p>
+
+  <!--SNIPPET-->
+  <blockquote class="tip">   <div class="box-title tip-title" id="tip-upload-fastqsanger-datasets-via-links"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-upload-fastqsanger-datasets-via-links" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Upload fastqsanger datasets via links<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>     <p>Click on <strong>Upload Data</strong> on the top of the left panel:</p>     <p><img src="/training-material/faqs/galaxy/images/upload_data_button.png" alt="UploadDataButton" /></p>   </li>   <li>     <p>Click on <strong>Paste/Fetch</strong>:</p>     <p><img src="/training-material/faqs/galaxy/images/paste_fetch_data_button.png" alt="PasteFetchButton" /></p>   </li>   <li>     <p>Paste URL into text box that would appear:</p>     <p><img src="/training-material/faqs/galaxy/images/paste_fetch_data_modal.png" alt="PasteFetchModal" /></p>   </li>   <li>     <p>Set <strong>Type (set all)</strong> to <code class="language-plaintext highlighter-rouge">fastqsanger</code> or, if your data is compressed as in URLs above (they have <code class="language-plaintext highlighter-rouge">.gz</code> extensions), to <code class="language-plaintext highlighter-rouge">fastqsanger.gz</code></p>     <p><img src="/training-material/faqs/galaxy/images/paste_fetch_set_data_type.png" alt="ChangeTypeDropDown" />:</p>   </li> </ol> </blockquote>
+  <p><!--END_SNIPPET--></p>
+</blockquote>
+
+<h2 id="about-these-datasets">About these datasets</h2>
+
+<p>These datasets represent genomic DNA (enriched for mitochondria via a long range PCR) isolated from blood (<code class="language-plaintext highlighter-rouge">bl</code>) and cheek (buccal swab, <code class="language-plaintext highlighter-rouge">ch</code>) of mother (<code class="language-plaintext highlighter-rouge">M117</code>) and her child (<code class="language-plaintext highlighter-rouge">M117C1</code>) that was sequenced on an Illumina miSeq machine as paired-read library (250-bp reads; see our <a href="http://www.pnas.org/content/111/43/15474.abstract">2014</a> manuscript for <strong>Methods</strong>):</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">M117-bl_1</code> - family 117, mother, <em>forward</em> (<strong>F</strong>) reads from <strong>blood</strong></li>
+  <li><code class="language-plaintext highlighter-rouge">M117-bl_2</code> - family 117, mother, <em>reverse</em> (<strong>R</strong>) reads from <strong>blood</strong></li>
+  <li><code class="language-plaintext highlighter-rouge">M117-ch_1</code> - family 117, mother, <em>forward</em> (<strong>F</strong>) reads from <strong>cheek</strong></li>
+  <li><code class="language-plaintext highlighter-rouge">M117-ch_2</code> - family 117, mother, <em>reverse</em> (<strong>R</strong>) reads from <strong>cheek</strong></li>
+  <li><code class="language-plaintext highlighter-rouge">M117C1-bl_1</code>- family 117, child, <em>forward</em> (<strong>F</strong>) reads from <strong>blood</strong></li>
+  <li><code class="language-plaintext highlighter-rouge">M117C1-bl_2</code>- family 117, child, <em>reverse</em> (<strong>R</strong>) reads from <strong>blood</strong></li>
+  <li><code class="language-plaintext highlighter-rouge">M117C1-ch_1</code>- family 117, child, <em>forward</em> (<strong>F</strong>) reads from <strong>cheek</strong></li>
+  <li><code class="language-plaintext highlighter-rouge">M117C1-ch_2</code>- family 117, child, <em>reverse</em> (<strong>R</strong>) reads from <strong>cheek</strong></li>
+</ul>
+
+<h1 id="creating-a-paired-dataset-collection">Creating a paired dataset collection</h1>
+
+<p>You can see that there are eight datasets forming four pairs. Obviously, we can manipulate them one-by-one (e.g., start four mapping jobs, call variants four times and so on), but this will unnecessarily tedious. Moreover, imagine if you have 100s or 1,000s of pairs: it will be impossible to process them individually.</p>
+
+<p>This is exactly why we developed collections. Dataset collections allow combining multiple datasets into a single entity. Thus instead of dealing with four, a hundred, or a thousand of individual datasets you have only one item in Galaxy history to deal with.</p>
+
+<p>Because our data is <em>paired</em> we need to create a hierarchical collection called <strong>Paired Dataset Collection</strong> or <strong>Paired Collection</strong>. In such collection there are two layers. The first layer corresponds to individual samples (e.g., <code class="language-plaintext highlighter-rouge">M117-bl</code>). The second layer represent <code class="language-plaintext highlighter-rouge">forward</code> and <code class="language-plaintext highlighter-rouge">reverse</code> reads corresponding to each sample:</p>
+
+<figure id="figure-1" style="max-width: 90%; margin:auto;"><div style="overflow-x: auto"><object data="../../images/collections/paired_collection.svg" type="image/svg+xml" alt="paired collection. ">paired collection.</object></div><a target="_blank" href="../../images/collections/paired_collection.svg" rel="noopener noreferrer"><small>Open image in new tab</small></a><figcaption><span class="figcaption-prefix"><strong>Figure 1</strong>:</span> The logic of Paired Collection. Here <em>N</em> datasets are bundled into a paired collection with two layers. The first layer corresponds to samples and the second to forward and reverse reads within each sample.</figcaption></figure>
+
+<p>To begin creating a collection we need to select datasets we would like to bundle. This is done using checkbox button of Galaxy’s history menu. Fig. 2 below shows this process.</p>
+
+<figure id="figure-2" style="max-width: 90%; margin:auto;"><img src="../../images/collections/select_multiple_datasets.gif" alt="selecting multiple datasets. " width="2560" height="1328" loading="lazy" /><a target="_blank" href="../../images/collections/select_multiple_datasets.gif" rel="noopener noreferrer"><small>Open image in new tab</small></a><figcaption><span class="figcaption-prefix"><strong>Figure 2</strong>:</span> Selecting multiple datasets and creating a paired collection.</figcaption></figure>
+
+<p>The above process ended with appearance of Galaxy collection wizard. In this case Galaxy automatically assigned pairs using the <code class="language-plaintext highlighter-rouge">_1</code> and <code class="language-plaintext highlighter-rouge">_2</code> endings of dataset names. Let’s however pretend that this did not happen. Click on <strong>Unpair all</strong> (highlighted in red in the figure above) link and then on <strong>Filters</strong> link (see animation in Fig. 3). The interface will change into its unpaired state.</p>
+
+<p>Here datasets containing the first (forward) and the second (reverse) read are differentiated by having <code class="language-plaintext highlighter-rouge">_1</code> and <code class="language-plaintext highlighter-rouge">_2</code> in the filename. We can use this feature in dataset collection wizard to pair our datasets.  Type <code class="language-plaintext highlighter-rouge">_1</code> in the left <strong>Filter text</strong> text box and <code class="language-plaintext highlighter-rouge">_2</code> in the right. You will see that the dataset collection wizard will automatically filter lists on each side of the interface. Now you can either click <strong>Auto pair</strong> if pairs look good to you (proper combinations of datasets are listed in each line) or pair each forward/reverse group individually by pressing <strong>Pair these datasets</strong> button separating each pair.</p>
+
+<p>Now it is time to name the collection: type <code class="language-plaintext highlighter-rouge">M117-collection</code> in <strong>Name</strong> text box and create the collection by clicking <strong>Create collection</strong>. A new item will appear in the history.</p>
+
+<figure id="figure-3" style="max-width: 90%; margin:auto;"><img src="../../images/collections/using_collection_wizard.gif" alt="using collection wizard. " width="1440" height="900" loading="lazy" /><a target="_blank" href="../../images/collections/using_collection_wizard.gif" rel="noopener noreferrer"><small>Open image in new tab</small></a><figcaption><span class="figcaption-prefix"><strong>Figure 3</strong>:</span> Working with collection wizard. Text above this figure explains each step.</figcaption></figure>
+
+<p>Clicking on collection will expand it to show four pairs it contains (panel <strong>B</strong>). Clicking individual pairs will expand them further to reveal <strong>forward</strong> and <strong>reverse</strong> datasets (panel <strong>C</strong>). Expanding these further will enable one to see individual datasets (panel <strong>D</strong>).</p>
+
+<figure id="figure-4" style="max-width: 90%; margin:auto;"><img src="../../images/collections/expanding_collection.gif" alt="expanding collection. " width="1440" height="900" loading="lazy" /><a target="_blank" href="../../images/collections/expanding_collection.gif" rel="noopener noreferrer"><small>Open image in new tab</small></a><figcaption><span class="figcaption-prefix"><strong>Figure 4</strong>:</span> To look what is inside a collection, just click on it.</figcaption></figure>
+
+<h1 id="processing-data-organized-as-a-collection">Processing data organized as a collection</h1>
+
+<p>By now we see that a collection can be used to bundle a large number of items into a single history item. Galaxy tools take collection as input. Let’s map reads contained in collection <code class="language-plaintext highlighter-rouge">M117-collection</code> against human mitochondrial genome. Before we can do this we need to upload mitochondrial genome using the following URL (see a <i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden">tip</span> <strong>Tip</strong> on how to do this <a href="#tip-importing-via-links">below</a>):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://zenodo.org/record/5119008/files/chrM.fa.gz
+</code></pre></div></div>
+
+<blockquote class="notranslate hands_on">
+  <div class="box-title hands-on-title" id="hands-on-set-format-to-fasta-gz"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Set format to `fasta.gz`</div>
+  <p>The above dataset is in <code class="language-plaintext highlighter-rouge">fasta.gz</code> format. The <i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden">tip</span> <strong>Tip</strong> section below explains how to upload these data and set the correct format.</p>
+
+  <!--SNIPPET-->
+  <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-via-links"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-via-links" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing via links<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Copy the link location</li>   <li>     <p>Click <i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden">galaxy-upload</span> <strong>Upload Data</strong> at the top of the tool panel</p>   </li>   <li>     <p>Click <strong>Reset</strong> button at the bottom of the form. If the button is greyed out -&gt; skip to the next step.</p>   </li>   <li>Select <i class="fa fa-edit" aria-hidden="true"></i><span class="visually-hidden">galaxy-wf-edit</span> <strong>Paste/Fetch Data</strong></li>   <li>     <p>Paste the link(s) into the text field</p>     <p><code class="language-plaintext highlighter-rouge">https://zenodo.org/record/5119008/files/chrM.fa.gz</code></p>   </li>   <li>     <p>Change <strong>Type (set all):</strong> from “Auto-detect” to <code class="language-plaintext highlighter-rouge">fasta.gz</code></p>   </li>   <li>     <p>Press <strong>Start</strong></p>   </li>   <li><strong>Close</strong> the window</li> </ul> </blockquote>
+  <p><!--END_SNIPPET--></p>
+</blockquote>
+
+<h2 id="mapping-reads">Mapping reads</h2>
+
+<p><strong>BWA-MEM</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> is a widely used sequence aligner for short-read sequencing datasets such as those we are analysing in this tutorial. (You can find the tool by typing <code class="language-plaintext highlighter-rouge">BWA MEM</code> in the search box at the top left corner of Galaxy interface).</p>
+
+<blockquote class="notranslate hands_on">
+  <div class="box-title hands-on-title" id="hands-on-map-sequencing-reads-to-reference-genome"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Map sequencing reads to reference genome</div>
+
+  <p>Run <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/devteam/bwa/bwa_mem/0.7.17.1" title="Map with BWA-MEM tool" aria-role="link"><strong>Map with BWA-MEM</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/devteam/bwa/bwa_mem/0.7.17.1</span></span> with the following parameters:</p>
+  <ul>
+    <li><em>“Will you select a reference genome from your history or use a built-in index?”</em>: <code class="language-plaintext highlighter-rouge">Use a genome from history and build index</code>
+      <ul>
+        <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Use the following dataset as the reference sequence”</em>: <code class="language-plaintext highlighter-rouge">chrM.fa.gz</code> (The mitochondrial genome we just uploaded)</li>
+      </ul>
+    </li>
+    <li><em>“Single or Paired-end reads”</em>: <code class="language-plaintext highlighter-rouge">Paired Collection</code>
+      <ul>
+        <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Select a paired collection”</em>: <code class="language-plaintext highlighter-rouge">M117-collection</code> (the collection we built at the beginning of this tutorial.)</li>
+      </ul>
+    </li>
+    <li><em>“Set read groups information?”</em>: <code class="language-plaintext highlighter-rouge">Do not set</code></li>
+    <li><em>“Select analysis mode”</em>: <code class="language-plaintext highlighter-rouge">1.Simple Illumina mode</code></li>
+  </ul>
+
+  <p>The interface should look like this:</p>
+
+  <hr />
+
+  <p><a href="../../images/collections/bwa_mem_interface_coll_tut.png" rel="noopener noreferrer"><img src="../../images/collections/bwa_mem_interface_coll_tut.png" alt="bwa_mem_interface. " width="832" height="940" loading="lazy" /></a></p>
+
+  <hr />
+
+  <ul>
+    <li>Click <strong>Run Tool</strong> button</li>
+  </ul>
+
+</blockquote>
+
+<p>You will see jobs being submitted and new datasets appearing in the history. Because our collection contains four paired datasets Galaxy will actually generate four separate <code class="language-plaintext highlighter-rouge">BWA-MEM</code> jobs. In the end this <code class="language-plaintext highlighter-rouge">BWA-MEM</code> run will produce a new collection containing four (4) BAM datasets. Let’s look at this collection by clicking on it (panel <strong>A</strong> in the figure below). You can see that now this collection is no longer paired (compared to the collection we created in the beginning of this tutorial). This is because <code class="language-plaintext highlighter-rouge">BWA-MEM</code> takes forward and reverse data as input, but produces only a single BAM dataset as the output. So what we have in the result is a <em>list</em> of four dataset (BAM files; panel <strong>B</strong>). If you click on any of the datasets you will see that it is indeed a BAM dataset (panel <strong>C</strong>).</p>
+
+<p><a href="../../images/collections/collection_expansion.svg" rel="noopener noreferrer"><img src="../../images/collections/collection_expansion.svg" alt="bwa_memCollection_ABC. " width="900" height="390" loading="lazy" /></a></p>
+
+<h2 id="calling-variants">Calling variants</h2>
+
+<p>After we mapped reads against the mitochondrial genome, we can now call variants. In this step a variant calling tool <code class="language-plaintext highlighter-rouge">lofreq</code> will take a collection of BAM datasets (the one produced by <code class="language-plaintext highlighter-rouge">BWA-MEM</code>), identify differences between reads and the reference, and output these differences as a collection of <a href="https://en.wikipedia.org/wiki/Variant_Call_Format">VCF</a> datasets.</p>
+
+<blockquote class="notranslate hands_on">
+  <div class="box-title hands-on-title" id="hands-on-call-variants"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Call variants</div>
+
+  <p>Run <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/lofreq_call/lofreq_call/2.1.5+galaxy1" title="Call variants tool" aria-role="link"><strong>Call variants</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/lofreq_call/lofreq_call/2.1.5+galaxy1</span></span> with the following parameters:</p>
+  <ul>
+    <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Input reads in BAM format”</em>: <code class="language-plaintext highlighter-rouge">Map with BWA-MEM...</code> (output of <strong>BWA-MEM</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>)</li>
+    <li><em>“Choose the source for the reference genome”</em>: <code class="language-plaintext highlighter-rouge">History</code>
+      <ul>
+        <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Reference”</em>: <code class="language-plaintext highlighter-rouge">chrM.fa.gz (as fasta)</code> (Input dataset)</li>
+      </ul>
+    </li>
+    <li><em>“Call variants across”</em>: <code class="language-plaintext highlighter-rouge">Whole reference</code></li>
+    <li><em>“Types of variants to call”</em>: <code class="language-plaintext highlighter-rouge">SNVs and indels</code></li>
+  </ul>
+
+  <p>The interface should look like this:</p>
+
+  <hr />
+
+  <p><a href="../../images/collections/lofreq_interface.png" rel="noopener noreferrer"><img src="../../images/collections/lofreq_interface.png" alt="lofreq_interface. " width="848" height="1002" loading="lazy" /></a></p>
+
+  <hr />
+
+  <ul>
+    <li>Click <strong>Run Tool</strong> button</li>
+  </ul>
+
+</blockquote>
+
+<h2 id="create-table-of-variants-using-snpsift-extract-fields">Create table of variants using <strong>SnpSift Extract Fields</strong></h2>
+
+<p>We will now convert VCF datasets into tab delimited format as it will be easier to work with. This will be done with <code class="language-plaintext highlighter-rouge">SNPSift</code>: a tool specifically designed for manipulation of tab-delimited data.</p>
+
+<blockquote class="notranslate hands_on">
+  <div class="box-title hands-on-title" id="hands-on-create-table-of-variants"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Create table of variants</div>
+
+  <p>Run <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/snpsift/snpSift_extractFields/4.3+t.galaxy0" title="SnpSift Extract Fields tool" aria-role="link"><strong>SnpSift Extract Fields</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/snpsift/snpSift_extractFields/4.3+t.galaxy0</span></span> with the following parameters:</p>
+  <ul>
+    <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Variant input file in VCF format”</em>: <code class="language-plaintext highlighter-rouge">Call variants on collection...</code> (output of <strong>Call variants with lofreq</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>)</li>
+    <li><em>“Fields to extract”</em>: <code class="language-plaintext highlighter-rouge">CHROM POS REF ALT QUAL DP AF SB DP4</code></li>
+    <li><em>“One effect per line”</em>: <code class="language-plaintext highlighter-rouge">Yes</code></li>
+  </ul>
+
+  <p>The interface should look like this:</p>
+
+  <hr />
+
+  <p><a href="../../images/collections/snpsift_interface.png" rel="noopener noreferrer"><img src="../../images/collections/snpsift_interface.png" alt="snpsift_interface. " width="1354" height="846" loading="lazy" /></a></p>
+
+  <hr />
+
+  <ul>
+    <li>Click <strong>Run Tool</strong> button</li>
+  </ul>
+
+</blockquote>
+
+<p>As a result of this operation we now have a collection of four tab delimited files. Yet, ultimately we want to summaize these data as one final table. The next step does just that.</p>
+
+<h2 id="collapse-data-into-a-single-dataset">Collapse data into a single dataset</h2>
+
+<p>We now extracted meaningful fields from VCF datasets. But they still exist as a collection. To move towards secondary analysis we need to <strong>collapse</strong> this collection into a single dataset. For more information about collapsing collections see this video:</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ypuFZ1RKMIY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<blockquote class="notranslate hands_on">
+  <div class="box-title hands-on-title" id="hands-on-collapse-a-collection"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Collapse a collection</div>
+
+  <p>Run <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/nml/collapse_collections/collapse_dataset/4.0" title="Collapse Collection tool" aria-role="link"><strong>Collapse Collection</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/nml/collapse_collections/collapse_dataset/4.0</span></span> with the following parameters:</p>
+  <ul>
+    <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“Collection of files to collapse into single dataset”</em>: <code class="language-plaintext highlighter-rouge">SnpSift Extract Fields ...</code> (output of <strong>SnpSift Extract Fields</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>)</li>
+    <li>“<em>Keep one header line</em>”: <code class="language-plaintext highlighter-rouge">Yes</code></li>
+    <li>“<em>Prepend File name</em>”: <code class="language-plaintext highlighter-rouge">Yes</code></li>
+    <li>“<em>Where to add dataset name</em>”: <code class="language-plaintext highlighter-rouge">Same line and each line in dataset</code></li>
+  </ul>
+
+  <p>The interface should look like this:</p>
+
+  <hr />
+
+  <p><a href="../../images/collections/collapse_collection.png" rel="noopener noreferrer"><img src="../../images/collections/collapse_collection.png" alt="snpsift_interface. " width="854" height="527" loading="lazy" /></a></p>
+
+  <hr />
+
+  <ul>
+    <li>Click <strong>Run Tool</strong> button</li>
+  </ul>
+
+</blockquote>
+
+<p>You can see that this tool takes lines from all collection elements (in our case we have two), add element name as the first column, and pastes everything together. So if we have a collection as an input:</p>
+
+<blockquote class="code-in">
+  <div class="box-title code-in-title" id="code-in-a-collection-with-two-items"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: A collection with two items</div>
+  <p>A collection element named <code class="language-plaintext highlighter-rouge">M117-bl.fq</code></p>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>chrM   152 T C  3707.0 1242 0.99 0 2,2,540,697
+chrM 16519 T C 35149.0 1033 0.99 0 1,1,611,420
+</code></pre></div>  </div>
+
+  <p>A collection element named <code class="language-plaintext highlighter-rouge">M117-ch.fq</code>:</p>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>chrM   152 T C  4098.0 1440 0.99 0 0,1,575,863
+chrM 16519 T C 36574.0 1039 0.99 2 3,0,713,321
+</code></pre></div>  </div>
+
+  <p>A collection element named <code class="language-plaintext highlighter-rouge">M117C1-bl.fq</code>:</p>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>chrM   152 T C  4888.0 1235 1.00 0 0,0,548,687
+chrM 16519 T C 35220.0 1042 0.99 0 0,0,598,443
+</code></pre></div>  </div>
+
+  <p>A collection element named <code class="language-plaintext highlighter-rouge">M117C1-ch.fq</code>:</p>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>chrM   152 T C  2757.0 1413 0.99 0 2,2,576,833
+chrM 16455 G A    54.0  100 0.04 0 89,7,4,0
+chrM 16519 T C 36363.0 1061 0.99 6 3,4,691,362
+</code></pre></div>  </div>
+
+</blockquote>
+
+<p>We will have a single dataset as the output:</p>
+
+<blockquote class="code-out">
+  <div class="box-title code-out-title" id="code-out-a-single-dataset"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output: A single dataset</div>
+
+  <p>then the <strong>Collapse Collection</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> will produce this:</p>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>M117-bl.fq   chrM   152 T C  3707.0 1242 0.99 0 2,2,540,697
+M117-bl.fq   chrM 16519 T C 35149.0 1033 0.99 0 1,1,611,420
+M117-ch.fq   chrM   152 T C  4098.0 1440 0.99 0 0,1,575,863
+M117-ch.fq   chrM 16519 T C 36574.0 1039 0.99 2 3,0,713,321
+M117C1-bl.fq chrM   152 T C  4888.0 1235 1.00 0 0,0,548,687
+M117C1-bl.fq chrM 16519 T C 35220.0 1042 0.99 0 0,0,598,443
+M117C1-ch.fq chrM   152 T C  2757.0 1413 0.99 0 2,2,576,833
+M117C1-ch.fq chrM 16455 G A    54.0  100 0.04 0 89,7,4,0
+M117C1-ch.fq chrM 16519 T C 36363.0 1061 0.99 6 3,4,691,362
+</code></pre></div>  </div>
+</blockquote>
+
+<p>you can see that added a column with dataset ID taken from collection element name.</p>
+
+<h2 id="we-did-not-fake-this">We did not fake this:</h2>
+<p>The history described in this page is accessible directly from here:</p>
+
+<ul>
+  <li>History <a href="https://usegalaxy.org/u/cartman/h/collection-tutorial"><strong>Collections (full analysis)</strong></a></li>
+</ul>
+
+<p>From there you can import histories to make them your own.</p>
+
+<h1 id="collection-operations">Collection operations</h1>
+
+<p>In this brief analysis we took four paired datasets, created a collection, analyzed this collection and finally created a single report. Such “lifecycle” is shown in the figure below. Here we started with eight fastq datasets representing four paired end samples. A paired collection was reduced to a list of BAM datasets by <code class="language-plaintext highlighter-rouge">BWA-MEM</code>. Varinat calling by <code class="language-plaintext highlighter-rouge">lofreq</code> and field extraction with <code class="language-plaintext highlighter-rouge">SnpEff</code> maintained collection structure: these tools processed four individual datasets changing their formats from BAM to VCF, and from VCF to Tab-delimited. Finally, we collapsed collection by merging its content into a single dataset.</p>
+
+<figure id="figure-5" style="max-width: 90%; margin:auto;"><div style="overflow-x: auto"><object data="../../images/collections/collection_lifecycle.svg" type="image/svg+xml" alt="Collection lifecycle. ">Collection lifecycle.</object></div><a target="_blank" href="../../images/collections/collection_lifecycle.svg" rel="noopener noreferrer"><small>Open image in new tab</small></a><figcaption><span class="figcaption-prefix"><strong>Figure 5</strong>:</span> Collection lifecycle. Arrows = individual fastq datasets; Four shades of yellow = four samples analyzed in this example.</figcaption></figure>
+
+<p>The last step of our analysis, collapsing a collection, is an example of a <em>collection operation</em>. Galaxy contains an entire section of tools designed for handling of collection data. These can be classified as:</p>
+
+<ul>
+  <li>Tools that manipulate elements within a collection</li>
+  <li>Tools that change collection structure</li>
+  <li>Tools that combine elements of a collection</li>
+</ul>
+
+<p>Let’s look at these categories in more detail:</p>
+
+<h2 id="tools-that-manipulate-elements-within-a-collection">Tools that manipulate elements within a collection</h2>
+
+<h3 id="extract-dataset">Extract dataset</h3>
+
+<p><i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Extract dataset</strong> extracts datasets from a collection based on either position or identifier.</p>
+
+<p>The tool allow extracting datasets based on position (<strong>The first dataset</strong> and <strong>Select by index</strong> options) or name (<strong>Select belement identifier</strong> option). This tool effectively collapses the inner-most collection into a dataset. For nested collections (e.g a list of lists of lists: outer:middle:inner, extracting the inner dataset element) a new list is created where the selected element takes the position of the inner-most collection (so outer:middle, where middle is not a collection but the inner dataset element).</p>
+
+<h3 id="filter-empty">Filter empty</h3>
+
+<p><i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Filter empty</strong> removes empty elements from a collection.</p>
+
+<p>This tool takes a dataset collection and filters out (removes) empty datasets. This is useful for continuing a multi-sample analysis when downstream tools require datasets to have content.</p>
+
+<p><a href="../../images/collections/filter_empty.svg" rel="noopener noreferrer"><img src="../../images/collections/filter_empty.svg" alt="Filtering empty datasets. " width="530" height="210" loading="lazy" /></a></p>
+
+<h3 id="filter-failed-datasets">Filter failed datasets</h3>
+
+<p><i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Filter failed datasets</strong> removes datasets in error (red) from a collection.</p>
+
+<p>This tool takes a dataset collection and filters out (removes) datasets in the failed (red) state. This is useful for continuing a multi-sample analysis when one or more of the samples fails at some point.</p>
+
+<p><a href="../../images/collections/filter_error.svg" rel="noopener noreferrer"><img src="../../images/collections/filter_error.svg" alt="filter_failed. " width="530" height="210" loading="lazy" /></a></p>
+
+<h3 id="build-list">Build list</h3>
+
+<p><i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Build list</strong> creates a new list collection from individual datasets or collections.</p>
+
+<p>This tool combines individual datasets or collections into a new collection. The simplest scenario is building a new colection from individual datasets (case <strong>A</strong> in the image below). You can merge a collection with individual dataset(s). In this case (see <strong>B</strong> in the image below) the individual dataset(s) will be merged with each element of the input collection to create a nested collection. Finally, two or more collection can be merged together creating a nested collection (case <strong>C</strong> in the image below).</p>
+
+<p><a href="../../images/collections/build_list.svg" rel="noopener noreferrer"><img src="../../images/collections/build_list.svg" alt="Build list. " width="820" height="530" loading="lazy" /></a></p>
+
+<h3 id="filter-collection">Filter collection</h3>
+
+<p><i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Filter collection</strong> removes elements from a collection using a list supplied in a file.</p>
+
+<p>This tools allow filtering elements from a data collection.  It takes an input collection and a text file with names (i.e. identifiers). The tool behaviour is controlled by <strong>How should the elements to remove be determined?</strong> drop-down. It has the following options:</p>
+
+<h4 id="remove-if-identifiers-are-absent-from-file">Remove if identifiers are ABSENT from file</h4>
+
+<p>Given a collection:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Collection: [Dataset A] 
+             [Dataset B] 
+             [Dataset X]
+</code></pre></div></div>
+
+<p>and a text file:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>             A
+             B
+             Z
+</code></pre></div></div>
+
+<p>the tool will return two collections:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ (filtered):  [Dataset A]
+              [Dataset B]
+
+ (discarded): [Dataset X]
+</code></pre></div></div>
+
+<h4 id="remove-if-identifiers-are-present-in-file">Remove if identifiers are PRESENT in file</h4>
+
+<p>Given a collection:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Collection: [Dataset A] 
+             [Dataset B] 
+             [Dataset X]
+</code></pre></div></div>
+<p>and a text file:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>             A
+             B
+             Z
+</code></pre></div></div>
+
+<p>the tool will return two collections:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> (filtered):  [Dataset X]
+
+ (discarded): [Dataset A]
+              [Dataset B]
+
+</code></pre></div></div>
+
+<h3 id="relabel-identifiers">Relabel identifiers</h3>
+
+<p><i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>  <strong>Relabel identifiers</strong> changes identifiers of datasets within a collection using identifiers from a supplied file.</p>
+
+<p>New identifiers can be supplied as either a simple list or a tab-delimited file mapping old identifier to the new ones. This is controlled using <strong>How should the new identifiers be specified?</strong> drop-down:</p>
+
+<h4 id="using-lines-in-a-simple-text-file">Using lines in a simple text file</h4>
+
+<p>Given a collection:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Collection: [Dataset A] 
+             [Dataset B] 
+             [Dataset X]
+</code></pre></div></div>
+
+<p>and a simple text file:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>             Alpha
+             Beta
+             Gamma
+</code></pre></div></div>
+
+<p>the tool will return:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Collection: [Dataset Alpha] 
+             [Dataset Beta] 
+             [Dataset Gamma]
+</code></pre></div></div>
+
+<h4 id="map-original-identifiers-to-new-ones-using-a-two-column-table">Map original identifiers to new ones using a two column table</h4>
+
+<p>Given a collection:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Collection: [Dataset A] 
+             [Dataset B] 
+             [Dataset X]
+</code></pre></div></div>
+
+<p>and a simple text file (you can see that entries do not have to be in order here):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>             B Beta
+             X Gamma
+             A Alpha
+</code></pre></div></div>
+
+<p>the tool will return:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Collection: [Dataset Alpha] 
+             [Dataset Beta] 
+             [Dataset Gamma]
+</code></pre></div></div>
+
+<h3 id="sort-collection">Sort collection</h3>
+
+<p><i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Sort collection</strong> sorts dataset collection alphabetically, numerically, or using predetermined order from a supplied file.</p>
+
+<h4 id="numeric-sort">Numeric sort</h4>
+
+<p>The tool sort in ascending order. When <em>numeric</em> sort is chosen, the tool ignores non-numeric characters. For example, if a collection contains the following elements:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Collection: [Horse123] 
+             [Donkey543] 
+             [Mule176]
+</code></pre></div></div>
+
+<p>The tool will output:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Collection: [Horse123]
+             [Mule176] 
+             [Donkey543] 
+</code></pre></div></div>
+
+<h4 id="sorting-from-file">Sorting from file</h4>
+
+<p>Alternative, one can supply a single column text file containing elements identifiers in the desired sort order. For example, suppose there a collection:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Collection: [Horse123] 
+             [Donkey543] 
+             [Mule176]
+</code></pre></div></div>
+
+<p>and a file specifying sort order:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Donkey543
+ Horse123 
+ Mule176
+</code></pre></div></div>
+
+<p>the output will predictably look like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Collection: [Donkey543] 
+             [Horse123] 
+             [Mule176]
+</code></pre></div></div>
+
+<h3 id="tag-collection">Tag collection</h3>
+
+<p><i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>  <strong>Tag collection</strong> adds tags (including name: and group: tags) to collection elements.</p>
+
+<p>The relationship between element names and tags is specified in a two column tab-delimited file. This file may contain less entries than elements in the collection. In that case only matching list identifiers will be tagged.</p>
+
+<p>To create name: or group: tags prepend them with <code class="language-plaintext highlighter-rouge">#</code> (you can also use <code class="language-plaintext highlighter-rouge">name:</code>) or <code class="language-plaintext highlighter-rouge">group:</code>, respectively.</p>
+
+<p>More about tags</p>
+
+<blockquote class="tip">
+  <div class="box-title tip-title" id="tip-more-about-tags"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-more-about-tags" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: More about tags<span class="fold-unfold fa fa-minus-square"></span></button></div>
+  <p>Galaxy allows tagging datasets to facilitate analyses. There are several types of tags including simple tags, name tags, and group tags. <strong>Simple</strong> tags allow you to attach an alternative label to a dataset, which will make it easier to find it later. <strong>Name</strong> tags allow you to track propagation of a dataset through the analyses: all datasets derived from the initial dataset labeled with a name tag will inherit it. Finally, <strong>group</strong> tags allow you to label group of datasets. This is useful. for example, for differential expression analysis where you can have two groups of datasets labeled as “treatment” and “control”.</p>
+
+  <p>To learn mote about tags go to <a href="https://training.galaxyproject.org/training-material/search?query=tags">training site</a>.</p>
+</blockquote>
+
+<h2 id="tools-that-change-collection-structure">Tools that change collection structure</h2>
+
+<h3 id="flatten-collection">Flatten collection</h3>
+
+<p><i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Flatten collection</strong> collapses nested collection into a simple list.</p>
+
+<p>This tool takes nested collections such as a list of lists or a list of dataset pairs and produces a flat list from the inputs. It effectively “flattens” the hierarchy. The collection identifiers are merged together (using <code class="language-plaintext highlighter-rouge">_</code> as default) to create new collection identifiers in the flattened result:</p>
+
+<p><a href="../../images/collections/flatten.svg" rel="noopener noreferrer"><img src="../../images/collections/flatten.svg" alt="Flatten collection. " width="530" height="330" loading="lazy" /></a></p>
+
+<h3 id="merge-collections">Merge collections</h3>
+
+<p><i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>  <strong>Merge collections</strong> takes two or more collections and creates a single collection from them.</p>
+
+<p>By default the tool assumes that collections that are being merged have unique dataset names. If it not the case only one (the first) of the datasets with a repeated name will be included in the merged collection. For example, suppose you have two collections. Each has two datasets named “A” and “B”:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Collection 1: [Dataset A] 
+               [Dataset B] 
+               [Dataset X]
+ Collection 2: [Dataset A] 
+               [Dataset B] 
+               [Dataset Y]
+</code></pre></div></div>
+
+<p>Merging them will produce a single collection with only two datasets:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Merged Collection: [Dataset A] 
+                    [Dataset B] 
+                    [Dataset X] 
+                    [Dataset Y]
+</code></pre></div></div>
+
+<p>This behavior can be changed by clicking on “<em>Advanced Options</em>” link. The following options are available:</p>
+
+<h4 id="keep-first-instance-default-behavior">Keep first instance (Default behavior)</h4>
+
+<p>Input:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Collection 1: [Dataset A] 
+               [Dataset B] 
+               [Dataset X]
+ Collection 2: [Dataset A] 
+               [Dataset B] 
+               [Dataset Y]
+</code></pre></div></div>
+
+<p>Output:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Merged Collection: [Dataset A] 
+                    [Dataset B] 
+                    [Dataset X] 
+                    [Dataset Y]
+</code></pre></div></div>
+
+<p>Here if two collection have identical dataset names, a dataset is chosen from the <em>first</em> collection.</p>
+
+<h4 id="keep-last-instance">Keep last instance</h4>
+
+<p>Input:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Collection 1: [Dataset A] 
+               [Dataset B] 
+               [Dataset X]
+ Collection 2: [Dataset A] 
+               [Dataset B] 
+               [Dataset Y]
+</code></pre></div></div>
+
+<p>Output:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Merged Collection: [Dataset A] 
+                    [Dataset B] 
+                    [Dataset X] 
+                    [Dataset Y]
+</code></pre></div></div>
+
+<p>Here if two collection have identical dataset names, a dataset is chosen from the <em>last</em> collection.</p>
+
+<h4 id="append-suffix-to-conflicted-element-identifiers">Append suffix to conflicted element identifiers</h4>
+
+<p>Input:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Collection 1: [Dataset A] 
+               [Dataset B] 
+               [Dataset X]
+ Collection 2: [Dataset A] 
+               [Dataset B] 
+               [Dataset Y]
+</code></pre></div></div>
+
+<p>Output:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Merged Collection: [Dataset A_1] 
+                    [Dataset B_1]
+                    [Dataset A_2] 
+                    [Dataset B_2]  
+                    [Dataset X] 
+                    [Dataset Y]
+</code></pre></div></div>
+
+<h4 id="append-suffix-to-conflicted-element-identifiers-after-first-on-encountered">Append suffix to conflicted element identifiers after first on encountered</h4>
+
+<p>Input:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ Collection 1: [Dataset A] 
+               [Dataset B] 
+               [Dataset X]
+ Collection 2: [Dataset A] 
+               [Dataset B] 
+               [Dataset Y]
+</code></pre></div></div>
+
+<p>Output:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Merged Collection: [Dataset A] 
+                    [Dataset B]
+                    [Dataset A_2] 
+                    [Dataset B_2]  
+                    [Dataset X] 
+                    [Dataset Y]
+</code></pre></div></div>
+
+<h4 id="append-suffix-to-every-element-identifier">Append suffix to every element identifier</h4>
+
+<p>Input:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Collection 1: [Dataset A] 
+               [Dataset B] 
+               [Dataset X]
+ Collection 2: [Dataset A] 
+               [Dataset B] 
+               [Dataset Y]
+</code></pre></div></div>
+
+<p>Output:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Merged Collection: [Dataset A_1] 
+                    [Dataset B_2]
+                    [Dataset A_2] 
+                    [Dataset B_2]  
+                    [Dataset X_1] 
+                    [Dataset Y_2]
+</code></pre></div></div>
+
+<h4 id="fail-collection-creation">Fail collection creation</h4>
+
+<p>This option will simply trigger an error.</p>
+
+<h3 id="zip-collection">Zip collection</h3>
+
+<p><i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Zip collection</strong> takes two collections and creates a paired collection from them.</p>
+
+<p>If you have one collection containing only forward reads and one containing only reverse, this tools will “zip” them together into a simple paired collection. For example, given two collections with <code class="language-plaintext highlighter-rouge">forward</code> and <code class="language-plaintext highlighter-rouge">reverse</code> reads they can be “zipped” into a single paired collection:</p>
+
+<p><a href="../../images/collections/zip.svg" rel="noopener noreferrer"><img src="../../images/collections/zip.svg" alt="Zip collection. " width="620" height="586" loading="lazy" /></a></p>
+
+<h3 id="unzip-collection">Unzip collection</h3>
+
+<p><i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Unzip collection</strong> takes a paired collection and “unzips” it into two simple dataset collections (lists of datasets).</p>
+
+<p>Given a paired collection of forward and reverse reads this tool will “unzip” it into two collections containing forward and reverse reads, respectively:</p>
+
+<p><a href="../../images/collections/unzip.svg" rel="noopener noreferrer"><img src="../../images/collections/unzip.svg" alt="Unzip collection. " width="620" height="575" loading="lazy" /></a></p>
+
+<h2 id="tools-that-combine-elements-of-a-collection">Tools that combine elements of a collection</h2>
+
+<h3 id="column-join">Column join</h3>
+
+<p><i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Column join</strong> merges elements of a collection on a given column.</p>
+
+<p>If you have a collection with three elements (image below), merging it on the first column will first produce a union on values found in the first column of each elements and then paste elements having the same value side-by-side:</p>
+
+<p><a href="../../images/collections/join_on_column.svg" rel="noopener noreferrer"><img src="../../images/collections/join_on_column.svg" alt="Column join. " width="360" height="470" loading="lazy" /></a></p>
+
+<h3 id="collapse-collection">Collapse collection</h3>
+
+<p><i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Collapse collection</strong> merges elements together (head-to-tail) in the order of the collection. Its power comes from the ability to add identifiers when it performs the merge. Identifiers can be added in variety of ways specified by the <strong>Prepend File name</strong> option as shown in the figure below (we used option <strong>A</strong> in the last step of this tutorial). <strong>A</strong> = <code class="language-plaintext highlighter-rouge">Same line and each line in dataset</code>; <strong>B</strong> = <code class="language-plaintext highlighter-rouge">Same line and only once per dataset</code>; <strong>C</strong> =  <code class="language-plaintext highlighter-rouge">Line above</code></p>
+
+<p><a href="../../images/collections/collapse_collection.svg" rel="noopener noreferrer"><img src="../../images/collections/collapse_collection.svg" alt="Collapse collection. " width="880" height="720" loading="lazy" /></a></p>
+
+<!-- GTN:IGNORE:002 -->
+
+                </section>
+
+                <section aria-label="Tutorial Footer, Feedback, Citation" id="tutorial-footer">
+                
+                <blockquote class="key_points">
+                    <div class="box-title"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
+                    <ul>
+                        
+                        <li><p>Multiple datasets can be combined in a collection.</p>
+</li>
+                        
+                        <li><p>This significantly simplifies the analysis.</p>
+</li>
+                        
+                        <li><p>This tutorial showed how to (1) create collection, (2) run tools on a collection, (3) combine collection elements into a final analysis results.</p>
+</li>
+                        
+                        <li><p>There is a variety of <strong>Collection operation</strong> tools allowing to perform a variety of transformations.</p>
+</li>
+                        
+                    </ul>
+                </blockquote>
+                
+
+                <h1>Frequently Asked Questions</h1>
+                Have questions about this tutorial? Check out the <a href="faqs/">tutorial FAQ page</a> or the  <a href="/training-material/topics/galaxy-interface/faqs/">FAQ page for the Using Galaxy and Managing your Data topic</a> to see if your question is listed there.
+                If not, please ask your question on the <a href="https://gitter.im/Galaxy-Training-Network/Lobby">GTN Gitter Channel</a> or the
+                <a href="https://help.galaxyproject.org">Galaxy Help Forum</a>
+
+                
+
+                
+
+
+                
+
+                
+
+                <h1>Feedback</h1>
+                <p class="text-muted">Did you use this material as an instructor? Feel free to give us feedback on <a href="https://github.com/galaxyproject/training-material/issues/1452">how it went</a>.
+                <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
+                </p>
+
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Using dataset collections (Using Galaxy and Managing your Data)" alt="Feedback form link">
+                    <img src="/training-material/shared/images/feedback.png" alt="Preview of the google form" />
+                </a>
+
+                <h1>Citing this Tutorial</h1>
+                <p>
+                    <ol>
+                        <li id="citation-text">
+                            Anton Nekrutenko,  <b>Using dataset collections (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/collections/tutorial.html">https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/collections/tutorial.html</a> Online; accessed TODAY
+                        </li>
+                        <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
+                        </li>
+                        <li>
+                        Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
+                        </li>
+                    </ol>
+                </p>
+
+                <!-- collapsible boxcontaining the BibTeX-formatted citation -->
+                <blockquote class="details">
+
+                  <div id="citation-bibtex" class="box-title">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false">
+                      <i class="fas fa-info-circle" aria-hidden="true"></i>
+                      <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
+                    </button>
+                   </div>
+                   <p style="display: none;">
+
+                   <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
+
+
+<code id="citation-code">@misc{galaxy-interface-collections,
+author = "Anton Nekrutenko",
+	title = "Using dataset collections (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/collections/tutorial.html}",
+	note = "[Online; accessed TODAY]"
+}
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
+                   </pre></div></div>
+                   </p>
+                </blockquote>
+
+                
+
+
+<script>
+// update the date on load, or leave fallback of 'today'
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+</script>
+
+                <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
+
+                
+
+                
+
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/galaxy-interface/tutorials/collections/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools:
+- name: bwa
+  owner: devteam
+  revisions: 3fe632431b68
+  tool_panel_section_label: Using Galaxy and Managing your Data
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: lofreq_call
+  owner: iuc
+  revisions: e1461b5c52a0
+  tool_panel_section_label: Using Galaxy and Managing your Data
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: snpsift
+  owner: iuc
+  revisions: 5fab4f81391d
+  tool_panel_section_label: Using Galaxy and Managing your Data
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: collapse_collections
+  owner: nml
+  revisions: 25136a2b0cfe
+  tool_panel_section_label: Using Galaxy and Managing your Data
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+</code></pre></div>
+                </blockquote>
+		
+
+
+                </section>
+
+            </div>
+        </div>
+    </div>
+</article>
+<br/>
+<br/>
+<br/>
+
+        </div>
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/2752a665e9cde64fc46b07701823f4c6cbe561b8">2752a66</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00146">https://gxy.io/GTN:T00146</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/galaxy-interface/tutorials/collections/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1697677722'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </body>
+</html>

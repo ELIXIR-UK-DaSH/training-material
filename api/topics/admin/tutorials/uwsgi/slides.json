@@ -1,0 +1,58 @@
+{
+  "layout": "tutorial_slides",
+  "logo": "assets/images/gat.png",
+  "title": "uWSGI",
+  "contributors": [
+    "natefoo",
+    "slugger70"
+  ],
+  "subtopic": "deprecated",
+  "short_id": "S00028",
+  "url": "/topics/admin/tutorials/uwsgi/slides.html",
+  "topic_name": "admin",
+  "tutorial_name": "uwsgi",
+  "dir": "topics/admin/tutorials/uwsgi",
+  "id": "admin/uwsgi",
+  "video_library": {
+    "tutorial": null,
+    "slides": null,
+    "demo": null,
+    "both": null,
+    "session": null
+  },
+  "hands_on": false,
+  "slides": true,
+  "api": "https://training.galaxyproject.org/training-material/api/topics/admin/tutorials/uwsgi/tutorial.json",
+  "tools": [
+
+  ],
+  "supported_servers": [
+
+  ],
+  "topic_name_human": "Galaxy Server administration",
+  "admin_install": {
+    "install_tool_dependencies": true,
+    "install_repository_dependencies": true,
+    "install_resolver_dependencies": true,
+    "tools": [
+
+    ]
+  },
+  "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools: []\n",
+  "tours": false,
+  "video": false,
+  "translations": {
+    "tutorial": [
+
+    ],
+    "slides": [
+
+    ],
+    "video": false
+  },
+  "type": "tutorial",
+  "redirect_from": [
+    "/short/admin/uwsgi/slides",
+    "/short/S00028"
+  ]
+}

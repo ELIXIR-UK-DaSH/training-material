@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Pangeo ecosystem 101 for everyone</title>
+        
+            <!--
+<script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
+-->
+<!-- We let users opt-out, so if they've opted in, we need to append the plausible script to the body -->
+
+<script>
+var scriptElement = document.createElement("script");
+scriptElement.async = true;
+scriptElement.defer = true;
+scriptElement.setAttribute("data-domain", "training.galaxyproject.org");
+scriptElement.src = "https://plausible.galaxyproject.eu/js/plausible.js";
+
+// Appending the script element to the body
+if(localStorage.getItem('plausible-opt-out') !== 'opt-out' && navigator.doNotTrack !== "1") {
+	console.log("Plausible: opt-in");
+	// Wait for the document to be available
+	document.addEventListener("DOMContentLoaded", function(event) {
+		document.body.appendChild(scriptElement);
+	});
+}
+</script>
+
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<!--
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+-->
+<script type="text/javascript">
+var scriptElement = document.createElement("script");
+scriptElement.src = "https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js";
+scriptElement.integrity = "sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43";
+scriptElement.crossOrigin = "anonymous";
+
+if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack !== "1") {
+	console.log("Sentry: opt-in");
+	// Appending the script element to the body
+	document.addEventListener("DOMContentLoaded", function(event) {
+		document.body.appendChild(scriptElement);
+	});
+		
+	Sentry.init({
+	  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+	  release: "galaxy-training-network@2752a665e9cde64fc46b07701823f4c6cbe561b8",
+	  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+	  sampleRate: 0.1,
+	  tracesSampleRate: 0.1,
+	  // Capture Replay for no sessions by default
+	  replaysSessionSampleRate: 0.01,
+	  // plus for 1% of sessions with an error
+	  replaysOnErrorSampleRate: 0.01,
+	  // PII OFF
+	  sendDefaultPii: false, // Off by default but just in case.
+	  environment: "production",
+	});
+}
+</script>
+
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/climate/tutorials/pangeo/slides.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Pangeo ecosystem 101 for everyone">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2022-02-28 20:47:27 +0000">
+<meta name="DC.creator" content="Anne Fouilloux">
+<meta name="DC.creator" content="Ryan Abernathey">
+
+        
+        
+        
+        
+        <meta name="description" content="Learn to analyze climate data through Galaxy." />
+        <meta property="og:site_name" content="Galaxy Training Network" />
+        <meta property="og:title" content="Galaxy Training: Pangeo ecosystem 101 for everyone" />
+        <meta property="og:description" content="Learn to analyze climate data through Galaxy." />
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        <script type="application/ld+json">
+            
+
+
+{
+  "@context": "http://schema.org",
+  "@type": "LearningResource",
+  "http://purl.org/dc/terms/conformsTo": {
+    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
+    "@type": "CreativeWork"
+  },
+  "audience": {
+    "@type": "EducationalAudience",
+    "educationalRole": "Students"
+  },
+  "citation": {
+    "@type": "CreativeWork",
+    "name": "Community-Driven Data Analysis Training for Biology",
+    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
+  },
+  "copyrightHolder": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "dateModified": "2022-02-28 20:47:27 +0000",
+  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
+  "headline": "Pangeo ecosystem 101 for everyone",
+  "interactivityType": "mixed",
+  "isAccessibleForFree": true,
+  "isFamilyFriendly": true,
+  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
+  "producer": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "provider": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "sourceOrganization": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
+  "accessMode": [
+    "textual",
+    "visual"
+  ],
+  "accessModeSufficient": [
+    "textual",
+    "visual"
+  ],
+  "accessibilityControl": [
+    "fullKeyboardControl",
+    "fullMouseControl"
+  ],
+  "accessibilityFeature": [
+    "alternativeText",
+    "tableOfContents"
+  ],
+  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
+  "isPartOf": {
+    "@type": "CreativeWork",
+    "name": "Climate",
+    "description": "Learn to analyze climate data through Galaxy.",
+    "url": "https://training.galaxyproject.org/training-material/topics/climate/"
+  },
+  "learningResourceType": "slides",
+  "name": "Slides for 'Pangeo ecosystem 101 for everyone' tutorial",
+  "url": "https://training.galaxyproject.org/training-material/topics/climate/tutorials/pangeo/slides.html",
+  "timeRequired": "PT15M",
+  "teaches": "Understand Pangeo, its community and software ecosystem\n - Learn how to use Pangeo within Galaxy.\n - Learn to cite and support Pangeo.",
+  "keywords": "climate, climate",
+  "description": "The questions this  addresses are:\n - What are Pangeo and its ecosystem?\n - Why Pangeo?\n - What is the Pangeo Software Ecosystem?\n - How can I use Pangeo in Galaxy?\n - How to cite and support Pangeo?\n\n\nThe objectives are:\n - Understand Pangeo, its community and software ecosystem\n - Learn how to use Pangeo within Galaxy.\n - Learn to cite and support Pangeo.\n\n",
+  "inLanguage": {
+    "@type": "Language",
+    "name": "English",
+    "alternateName": "en"
+  },
+  "competencyRequired": [
+    {
+      "@context": "http://schema.org",
+      "@type": "LearningResource",
+      "url": "https://training.galaxyproject.org/training-material/topics/introduction/",
+      "name": "Introduction to Galaxy Analyses",
+      "description": "Introduction to Galaxy Analyses",
+      "provider": {
+        "@type": "Organization",
+        "email": "galaxytrainingnetwork@gmail.com",
+        "name": "Galaxy Training Network",
+        "url": "https://galaxyproject.org/teach/gtn/"
+      }
+    }
+  ],
+  "author": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/annefou/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/annefou/",
+      "name": "Anne Fouilloux",
+      "image": "https://avatars.githubusercontent.com/annefou",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ],
+      "identifier": "https://orcid.org/0000-0002-1784-2920",
+      "orcid": "https://orcid.org/0000-0002-1784-2920"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/rabernat/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/rabernat/",
+      "name": "Ryan Abernathey",
+      "image": "https://avatars.githubusercontent.com/rabernat",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ],
+      "identifier": "https://orcid.org/0000-0001-5999-4917",
+      "orcid": "https://orcid.org/0000-0001-5999-4917"
+    }
+  ],
+  "about": [
+    {
+      "@type": "CreativeWork",
+      "name": "Climate",
+      "description": "Learn to analyze climate data through Galaxy.",
+      "url": "https://training.galaxyproject.org/training-material/topics/climate/"
+    }
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "climate"
+    }
+  ],
+  "abstract": "## Pangeo in a nutshell"
+}
+        </script>
+    </head>
+  <body data-brightness="auto" data-contrast="auto">
+
+
+    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+    <textarea id="source">
+name: inverse
+layout: true
+class: center, middle, inverse
+
+<div class="my-header"><span>
+<a href="/training-material/topics/climate" title="Return to topic page" ><i class="fa fa-level-up" aria-hidden="true"></i></a>
+
+<a href="https://github.com/galaxyproject/training-material/edit/main/topics/climate/tutorials/pangeo/slides.html"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+
+</span></div>
+
+<div class="my-footer"><span>
+
+<img src="/training-material/assets/images/GTN-60px.png" alt="Galaxy Training Network" style="height: 40px;"/>
+
+</span></div>
+
+---
+
+
+
+<img src="/training-material/assets/images/GTNLogo1000.png" alt="Galaxy Training Network" class="cover-logo"/>
+
+
+# Pangeo ecosystem 101 for everyone
+
+
+<div markdown="0">
+
+	<div class="contributors-line">
+		Authors: <a href="/training-material/hall-of-fame/annefou/" class="contributor-badge contributor-annefou"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/annefou?s=36" alt="Avatar" width="36" height="36">Anne Fouilloux</a><a href="/training-material/hall-of-fame/rabernat/" class="contributor-badge contributor-rabernat"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/rabernat?s=36" alt="Avatar" width="36" height="36">Ryan Abernathey</a>
+	</div>
+
+</div>
+
+
+<!-- modified date -->
+<div class="footnote" style="bottom: 8em;">
+  <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Updated:  &nbsp;
+  <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:S00038">gxy.io/GTN:S00038</a>
+</div>
+
+
+<!-- other slide formats (video and plain-text) -->
+<div class="footnote" style="bottom: 6em;">
+
+  <i class="far fa-play-circle" aria-hidden="true"></i><span class="visually-hidden">video-slides</span> <a href="/training-material/videos/watch.html?v=/climate/tutorials/pangeo/slides">Video slides</a> |
+
+
+  <i class="fas fa-file-alt" aria-hidden="true"></i><span class="visually-hidden">text-document</span><a href="slides-plain.html"> Plain-text slides</a>
+</div>
+
+
+<!-- usage tips -->
+<div class="footnote" style="bottom: 2em;">
+    <strong>Tip: </strong>press <kbd>P</kbd> to view the presenter notes
+    | <i class="fa fa-arrows" aria-hidden="true"></i><span class="visually-hidden">arrow-keys</span> Use arrow keys to move between slides
+
+</div>
+
+???
+Presenter notes contain extra information which might be useful if you intend to use these slides for teaching.
+
+Press `P` again to switch presenter notes off
+
+Press `C` to create a new window where the same presentation will be displayed.
+This window is linked to the main window. Changing slides on one will cause the
+slide to change on the other.
+
+Useful when presenting.
+
+
+
+---
+
+## Requirements
+
+Before diving into this slide deck, we recommend you to have a look at:
+
+
+
+    
+        
+        
+            
+        
+- [Introduction to Galaxy Analyses](/training-material/topics/introduction)
+    
+
+
+
+
+
+
+---
+
+
+
+
+
+
+
+### &lt;i class=&quot;far fa-question-circle&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;visually-hidden&quot;&gt;question&lt;/span&gt; Questions
+
+
+- What are Pangeo and its ecosystem?
+
+- Why Pangeo?
+
+- What is the Pangeo Software Ecosystem?
+
+- How can I use Pangeo in Galaxy?
+
+- How to cite and support Pangeo?
+
+
+---
+
+
+
+### &lt;i class=&quot;fas fa-bullseye&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;visually-hidden&quot;&gt;objectives&lt;/span&gt; Objectives
+
+
+- Understand Pangeo, its community and software ecosystem
+
+- Learn how to use Pangeo within Galaxy.
+
+- Learn to cite and support Pangeo.
+
+
+---
+
+
+## Pangeo in a nutshell
+
+**A Community platform for Big Data geoscience**
+
+- Open Community
+- Open Source Software
+- Open Source Infrastructure
+
+**Funders**
+
+&lt;div class=&quot;centre&quot;&gt;&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/1/12/NSF.svg&quot; alt=&quot;NSF Logo&quot; width=&quot;120&quot;&gt;
+  &lt;img src=&quot;https://static.wixstatic.com/media/a8b87d_92e16cb7795f467b8c105af31fded270~mv2.png&quot; alt=&quot;EarthCube Logo&quot; width=&quot;300&quot;&gt;
+  &lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/e/e5/NASA_logo.svg&quot; alt=&quot;NASA Logo&quot; width=&quot;120&quot;&gt;
+  &lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Moore_Foundation_Logo.jpg/1920px-Moore_Foundation_Logo.jpg&quot; alt=&quot;MOORE Logo By Gordon and Betty Moore Foundation - Own work, Public Domain&quot; width=&quot;250&quot;&gt;
+&lt;/div&gt;
+
+
+???
+
+- Pangeo is first and foremost a community promoting open, reproducible, and scalable science.
+- This community provides documentation, develops and maintains Open Source software, and deploys computing infrastructure to make scientific research and programming easier.
+- Pangeo is funded through many different projects in USA, Europe and Australia but the main funders are NSF, EarthCube, NASA and the Gordon and Betty Moore foundation.
+
+---
+
+## Motivations
+
+There are several building crises facing the geoscience community:
+
+.left[- *Big Data*: datasets are growing too rapidly and legacy software tools for scientific analysis can’t handle them. This is a major obstacle to scientific progress.]
+.left[- *Technology Gap*: a growing gap between the technological sophistication of industry solutions (high) and scientific software (low).]
+.left[- *Reproducibility*: a fragmentation of software tools and environments renders most geoscience research effectively unreproducible and prone to failure.]
+
+???
+
+- The Pangeo Project has been motivated by several building crises faced by the geoscience community: Big data, Technology gap and Reproducibility crisis.
+- Indeed, datasets are are growing too rapidly and legacy software tools for scientific analysis can’t handle them. This is a major obstacle to scientific progress.
+- Another obstacle concerns the growing gap between the technological sophistication of industry solutions (high) and scientific software (low).
+- Finally, the fragmentation of software tools and environments renders most geoscience research effectively unreproducible and prone to failure.
+
+---
+
+## Goals
+
+Pangeo aims to address these challenges through a unified, collaborative effort.
+
+*The mission of Pangeo is to cultivate an ecosystem in which the next generation of open-source analysis tools for ocean, atmosphere
+and climate science can be developed, distributed, and sustained. These tools must be scalable in order to meet the current and future
+challenges of big data, and these solutions should leverage the existing expertise outside of the geoscience community.*
+
+???
+
+- Pangeo aims to address these challenges through a unified, collaborative effort.
+- The mission of Pangeo is to favor the development of open-source analysis tools for ocean, atmosphere and climate science. 
+- These tools must be scalable in order to meet the current and future challenges of big data.
+- These solutions should leverage the existing expertise outside of the geoscience community.
+
+---
+
+## The Pangeo Approach
+
+![Pangeo approach](../../images/pangeo-dev-process.png)
+
+*Source*: [Pangeo 2.0](https://medium.com/pangeo/pangeo-2-0-2bedf099582d) by Ryan Abernathey, December 22, 2020.
+
+???
+
+- To address the issues mentioned earlier, an agile development methodology needs to be adopted.
+- Challenges related to scientific use cases as well as Open-Source software libraries, HPC and cloud infrastructure need for answering these scientific questions cannot be tackled separately.
+- For example, scientific users are most often identifying bugs/bottlenecks.
+- Then they can &quot;immediately&quot; report them to developers.
+- And help developers to define priorities for future releases.
+- Scientific users and developers also provide relevant inputs to HPC and cloud infrastructure providers on the current trend in the community.
+
+---
+
+## The Pangeo Software ecosystem
+
+![Pangeo approach](../../images/pangeo-ecosystem-2020.png )
+
+*Source*: [Pangeo Tutorial - Ocean Sciences 2020](https://speakerdeck.com/rabernat/pangeo-tutorial-ocean-sciences-2020?slide=28) by Ryan Abernathey, February 17, 2020.
+
+???
+- The Pangeo software ecosystem involves open source tools such as X-array, iris, dask, jupyter, and many other packages.
+- There is no single software package called Pangeo.
+- The Pangeo project serves as a coordination point between scientists, software, and computing infrastructure.
+- On this figure, the python packages are &quot;layered&quot; based on their dependencies.
+- At the &quot;bottom&quot;, we have the Python programming language itself.
+- On the second layer, we can find NumPy or Jupyter Notebooks that are very common Python packages and that you may know already.
+- X-array makes an intensive use of Numpy for its underlying data structures.
+- Iris has what we call a &quot;high-level&quot; user interface with many functions for analysing and visualising Earth Science data.
+
+---
+
+## Pangeo Galaxy Tools
+
+**A growing number of tools available to non Python programmers**
+
+.left[Xarray Galaxy tools:
+
+- Manipulate netCDF with Zarr e.g. Cloud Optimized Data available soon;
+- Visualize geographical ([CF-Convention](https://cfconventions.org/)) netCDF on a map;
+- &quot;Convert&quot; to tabular data to increase interoperability with other Galaxy Tools;
+- **Graphical User Interface**: learn about the concepts without being hindered by Python programming.]
+
+*Our objective is to bridge the gap between disciplines and add tools on demand to help cross-disciplinary research*
+
+???
+
+- If you are not familiar with Python or any other programming languages, you may wonder whether there are &quot;Pangeo tools&quot; with a graphical user interface.
+- We have indeed wrapped a number of tools using Python packages from the Pangeo software stack.
+- For instance, Galaxy tools using X-array are available in Galaxy.
+- Even if you are a Python programmer but for instance not very familiar with Earth Science data, learning X-array concepts from Galaxy Tools can be useful.
+- The main objective is to bridge the gap between disciplines and add tools on demand to help cross-disciplinary research.
+
+---
+## How to cite and support Pangeo
+
+- Cite Pangeo when using Xarray Galaxy Tools:
+    -  &lt;span class=&quot;citation&quot;&gt;&lt;a href=&quot;https://doi.org/10.6084/m9.figshare.5361094.v1&quot;&gt;Abernathey &lt;i&gt;et al.&lt;/i&gt; 2017&lt;/a&gt;&lt;/span&gt;, &lt;span class=&quot;citation&quot;&gt;&lt;a href=&quot;https://doi.org/10.1109/mcse.2021.3059437&quot;&gt;Abernathey &lt;i&gt;et al.&lt;/i&gt; 2021&lt;/a&gt;&lt;/span&gt;, &lt;span class=&quot;citation&quot;&gt;&lt;a href=&quot;https://doi.org/10.1002/essoar.10506344.2&quot;&gt;Gentemann &lt;i&gt;et al.&lt;/i&gt; 2021&lt;/a&gt;&lt;/span&gt; and &lt;span class=&quot;citation&quot;&gt;&lt;a href=&quot;https://doi.org/10.1145/3411764.3445518&quot;&gt;Sambasivan &lt;i&gt;et al.&lt;/i&gt; 2021&lt;/a&gt;&lt;/span&gt;
+- Report issues, wishes and thank the Pangeo Community whenever you use tools from the Pangeo software stack!
+
+???
+- Like any Open Source community, it is important to acknowledge the community effort to provide open and easy to use Python packages and the associated Galaxy Tools.
+- We encourage you to cite &lt;span class=&quot;citation&quot;&gt;&lt;a href=&quot;https://doi.org/10.6084/m9.figshare.5361094.v1&quot;&gt;Abernathey &lt;i&gt;et al.&lt;/i&gt; 2017&lt;/a&gt;&lt;/span&gt;, &lt;span class=&quot;citation&quot;&gt;&lt;a href=&quot;https://doi.org/10.1109/mcse.2021.3059437&quot;&gt;Abernathey &lt;i&gt;et al.&lt;/i&gt; 2021&lt;/a&gt;&lt;/span&gt;, &lt;span class=&quot;citation&quot;&gt;&lt;a href=&quot;https://doi.org/10.1002/essoar.10506344.2&quot;&gt;Gentemann &lt;i&gt;et al.&lt;/i&gt; 2021&lt;/a&gt;&lt;/span&gt; and &lt;span class=&quot;citation&quot;&gt;&lt;a href=&quot;https://doi.org/10.1145/3411764.3445518&quot;&gt;Sambasivan &lt;i&gt;et al.&lt;/i&gt; 2021&lt;/a&gt;&lt;/span&gt; in your pangeo-dev-process when using Xarray Galaxy Tools.
+- As mentioned earlier, user feedback is important for improving open source tools and packages. Report issues, wishes and thank the Pangeo Community whenever you use tools from the Pangeo software stack!
+
+---
+
+## Learn more
+
+- Web: [https://pangeo.io](https://pangeo.io/)
+- Discourse: [https://discourse.pangeo.io/](https://discourse.pangeo.io/)
+- Github: [https://github.com/pangeo-data](https://github.com/pangeo-data)
+- Twitter: [@pangeo_data](https://twitter.com/pangeo_data)
+
+???
+
+- If you want to learn more about Pangeo, visit the Pangeo website pangeo.io, or github reposity github.com/pangeo-data.
+- Get help on discourse at discourse.pangeo.io and follow Pangeo on Twitter @pangeo_data.
+
+
+
+
+---
+### &lt;i class=&quot;fas fa-key&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;visually-hidden&quot;&gt;keypoints&lt;/span&gt; Key points
+
+
+- Pangeo is an inclusive community promoting open, reproducible and scalable science.
+
+
+
+
+
+
+
+---
+
+## Thank You!
+
+This material is the result of a collaborative work. Thanks to the [Galaxy Training Network](https://training.galaxyproject.org) and all the contributors!
+
+<div markdown="0">
+
+	<div class="contributors-line">
+		Authors: <a href="/training-material/hall-of-fame/annefou/" class="contributor-badge contributor-annefou"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/annefou?s=36" alt="Avatar" width="36" height="36">Anne Fouilloux</a><a href="/training-material/hall-of-fame/rabernat/" class="contributor-badge contributor-rabernat"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/rabernat?s=36" alt="Avatar" width="36" height="36">Ryan Abernathey</a>
+	</div>
+
+</div>
+
+
+<div style="display: flex;flex-direction: row;align-items: center;justify-content: center;">
+
+<img src="/training-material/assets/images/GTNLogo1000.png" alt="Galaxy Training Network" style="height: 100px;"/>
+
+
+</div>
+
+<a rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+This material is licensed under the Creative Commons Attribution 4.0 International License</a>.
+
+
+    </textarea>
+	<script src="/training-material/assets/js/remark-latest.min.js"></script>
+    <script src="/training-material/assets/js/theme.js"></script>
+    <script src="/training-material/assets/js/clipboard.min.js"></script>
+    <script>
+      var slideshow = remark.create({navigation: {scroll: false}, ratio: '16:9'});
+      var hljs = remark.highlighter.engine;
+      var snippets = document.querySelectorAll('code.remark-code');
+        [].forEach.call(snippets,function(snippet){
+          snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
+        });
+      var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
+        target:function(trigger){return trigger.parentElement;
+      }});
+    </script>
+
+    <script>
+        if(window.location.hostname === "galaxyproject.github.io") {
+            // Redirect
+            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
+            $('body').prepend("<div style='text-align: center'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
+
+            window.setTimeout(function(){
+                window.location.href = redirect;
+            }, 5000)
+
+        }
+    </script>
+        <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
+        <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
+
+    </body>
+</html>

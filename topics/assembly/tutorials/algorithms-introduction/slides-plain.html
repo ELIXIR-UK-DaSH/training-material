@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Deeper look into Genome Assembly algorithms</title>
+        
+            <!--
+<script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
+-->
+<!-- We let users opt-out, so if they've opted in, we need to append the plausible script to the body -->
+
+<script>
+var scriptElement = document.createElement("script");
+scriptElement.async = true;
+scriptElement.defer = true;
+scriptElement.setAttribute("data-domain", "training.galaxyproject.org");
+scriptElement.src = "https://plausible.galaxyproject.eu/js/plausible.js";
+
+// Appending the script element to the body
+if(localStorage.getItem('plausible-opt-out') !== 'opt-out' && navigator.doNotTrack !== "1") {
+	console.log("Plausible: opt-in");
+	// Wait for the document to be available
+	document.addEventListener("DOMContentLoaded", function(event) {
+		document.body.appendChild(scriptElement);
+	});
+}
+</script>
+
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<!--
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+-->
+<script type="text/javascript">
+var scriptElement = document.createElement("script");
+scriptElement.src = "https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js";
+scriptElement.integrity = "sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43";
+scriptElement.crossOrigin = "anonymous";
+
+if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack !== "1") {
+	console.log("Sentry: opt-in");
+	// Appending the script element to the body
+	document.addEventListener("DOMContentLoaded", function(event) {
+		document.body.appendChild(scriptElement);
+	});
+		
+	Sentry.init({
+	  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+	  release: "galaxy-training-network@2752a665e9cde64fc46b07701823f4c6cbe561b8",
+	  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+	  sampleRate: 0.1,
+	  tracesSampleRate: 0.1,
+	  // Capture Replay for no sessions by default
+	  replaysSessionSampleRate: 0.01,
+	  // plus for 1% of sessions with an error
+	  replaysOnErrorSampleRate: 0.01,
+	  // PII OFF
+	  sendDefaultPii: false, // Off by default but just in case.
+	  environment: "production",
+	});
+}
+</script>
+
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/assembly/tutorials/algorithms-introduction/slides-plain.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1697677722' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1697677722' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Deeper look into Genome Assembly algorithms">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-10-19 01:08:43 +0000">
+<meta name="DC.creator" content="Anthony Bretaudeau">
+<meta name="DC.creator" content="Simon Gladman">
+<meta name="DC.creator" content="Anton Nekrutenko">
+<meta name="DC.creator" content="Delphine Lariviere">
+
+        
+        
+        
+        
+        <meta name="description" content="Collection of tutorials developed and maintained by the w...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Deeper look into Genome Assembly algorithms">
+        <meta property="og:description" content="Collection of tutorials developed and maintained by the w...">
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc" data-brightness="auto" data-contrast="auto">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1697677722'></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                
+                    Galaxy Training!
+                
+            </a>
+
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/hall-of-fame" title="Hall of Fame">
+                           <i class="fas fa-users" aria-hidden="true"></i><span class="visually-hidden">hall-of-fame</span> Contributors
+                        </a>
+
+                        
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+	<a class="dropdown-item" href="/training-material/faqs/index.html" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/./topics/assembly/tutorials/algorithms-introduction/slides.html" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/assembly/tutorials/algorithms-introduction/slides-plain.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+            </a>
+        
+
+		<a href="/training-material/preferences.html" class="dropdown-item">
+			<i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Themes have moved <span class="badge badge-secondary">New</span>
+		</a>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        
+        <div class="container main-content" role="main">
+        <section class="tutorial">
+	<a href="https://github.com/galaxyproject/training-material/blob/main//topics/assembly/tutorials/algorithms-introduction/slides.html">View markdown source on GitHub</a>
+	<h1>Deeper look into Genome Assembly algorithms</h1>
+		<h2>Contributors</h2>
+<div markdown="0">
+
+	<div class="contributors-line">
+		Authors: <a href="/training-material/hall-of-fame/abretaud/" class="contributor-badge contributor-abretaud"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/abretaud?s=36" alt="Avatar" width="36" height="36">Anthony Bretaudeau</a><a href="/training-material/hall-of-fame/slugger70/" class="contributor-badge contributor-slugger70"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/slugger70?s=36" alt="Avatar" width="36" height="36">Simon Gladman</a><a href="/training-material/hall-of-fame/nekrut/" class="contributor-badge contributor-nekrut"><img src="https://avatars.githubusercontent.com/nekrut?s=36" alt="Avatar" width="36" height="36">Anton Nekrutenko</a><a href="/training-material/hall-of-fame/delphine-l/" class="contributor-badge contributor-delphine-l"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/delphine-l?s=36" alt="Avatar" width="36" height="36">Delphine Lariviere</a>
+	</div>
+
+</div>
+
+
+		
+		<h2>Questions</h2>
+		<ul>
+		
+		<li><p>What are the main types of assembly algorithms?</p>
+</li>
+		
+		<li><p>How do they perform with short and long reads?</p>
+</li>
+		
+		<li><p>How to improve assemblies using other technologies?</p>
+</li>
+		
+		</ul>
+		
+
+		
+
+		
+
+		<div><strong> <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Last modification:</strong> Oct 19, 2023 </div>
+
+	<hr />
+
+
+	<h1 id="different-types-of-input-data">Different types of input data</h1>
+
+<ul>
+  <li>Short reads (Illumina): numerous 👍, high quality 👍, cheap 👍, short 👎</li>
+  <li>Long reads (PacBio, Nanopore): longer 👍, fewer 👎, (many) more errors 👎</li>
+</ul>
+
+<p>Genome Assembly can be done with:</p>
+<ul>
+  <li>only short reads</li>
+  <li>only long reads</li>
+  <li>both (hybrid assembly)</li>
+</ul>
+
+<p>Specific algorithms for each</p>
+
+<hr />
+
+<h1 id="genome-assembly-algorithms">Genome Assembly algorithms</h1>
+
+<p>Detect overlaps between reads to build the longest possible sequences</p>
+
+<p>Algorithms use graphs to represent overlapping reads/words</p>
+
+<p>Two steps:</p>
+
+<ul>
+  <li>Build a (huge) graph while reading the input data</li>
+  <li>Try to find the longest paths traversing the graph</li>
+</ul>
+
+<p>Two main types of algorithms:</p>
+
+<ul>
+  <li>Short reads: de Bruijn Graphs</li>
+  <li>Long reads: OLC (Overlap Layout Consensus)</li>
+</ul>
+
+<hr />
+
+<h1 id="olc-overlap-layout-consensus">OLC (Overlap Layout Consensus)</h1>
+
+<p>The older, first used for Sanger sequencing</p>
+
+<p>Compare all reads, look for read overlaps</p>
+
+<p>If a <em>suffix</em> of one read is similar to a <em>prefix</em> of another read…</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TCTATATCTCGGCTCTAGG    &lt;- read 1
+    ||||||| |||||||
+    TATCTCGACTCTAGGCC  &lt;- read 2
+</code></pre></div></div>
+
+<p>…then they may overlap within the genome.</p>
+
+<hr />
+
+<h2 id="directed-graphs">Directed graphs</h2>
+
+<p>We build a <em>directed graph</em> where directed <em>edges</em> connect <em>nodes</em> representing overlapping reads:
+<img src="../../images/dag.png" alt="Image showing example reads represented as nodes, and an overlap between two reads as an edge" /></p>
+
+<blockquote>
+  <p><strong>Directed graph</strong> representing overlapping reads. (Image from <a href="http://www.cs.jhu.edu/~langmea/resources/lecture_notes/assembly_scs.pdf">Ben Langmead</a>).</p>
+</blockquote>
+
+<hr />
+
+<h2 id="directed-graphs-1">Directed graphs</h2>
+
+<p>For example, consider these 15 three letter reads:</p>
+
+<p>TAA AAT ATG TGC GCC CCA CAT ATG TGG GGG GGA GAT ATG TGT GTT</p>
+
+<p>We’re lucky, we know the corresponding genome sequence is TAATGCCATGGGATGTT</p>
+
+<p>So the 15 reads can be represented as the following directed graph:</p>
+
+<p><img src="../../images/4.6.png" alt="A graph representing the 15 overlapping example reads" /></p>
+
+<hr />
+
+<p><strong>However</strong>, in real life we do not know the actual genome! All we have is a collection of reads. Let’s first build an overlap graph by connecting two 3-mers if suffix of one is equal to the prefix of the other:</p>
+
+<blockquote>
+  <p><img src="../../images/4.7.png" alt="All possible overlap connections for our 3-mer collection" /></p>
+
+  <p><strong>Overlap graph</strong>. All possible overlap connections for our 3-mer collection. (Fig. 4.7 from <a href="http://bioinformaticsalgorithms.com/">CP</a>)</p>
+</blockquote>
+
+<p>So to determine the sequence of the underlying genome we are looking for a path in this graph that visits every node (3-mer) once. Such path is called <a href="https://en.wikipedia.org/wiki/Hamiltonian_path">Hamiltonian path</a> and it may not be unique.</p>
+
+<hr />
+
+<p>For example for our 3-mer collection there are two possible Hamiltonian paths:</p>
+
+<p><img src="../../images/4.9a.png" alt="First possible Hamiltonian path" />
+<img src="../../images/4.9b.png" alt="Second possible Hamiltonian path" /></p>
+
+<p><strong>Two Hamiltonian paths for the 15 3-mers</strong>. Edges spelling “genomes” <code>TAATGCCATGGGATGTT</code> and <code>TAATGGGATGCCATGTT</code> are highlighted in black. (Fig. 4.9. from <a href="http://bioinformaticsalgorithms.com/">[CP](http://bioinformaticsalgorithms.com/)</a>).</p>
+
+<hr />
+
+<p>The reason for this “duality” is the fact that we have a <em>repeat</em>: 3-mer <code>ATG</code> is present three times in our data (<font color="green">green</font>, <font color="red">red</font>, and <font color="blue">blue</font>). Repeats cause a lot of trouble in genome assembly.</p>
+
+<hr />
+
+<h1 id="limits-of-olc">Limits of OLC</h1>
+
+<ul>
+  <li>Computationally intensive</li>
+  <li>Doesn’t perform well with Illumina (massive amount of short reads)</li>
+</ul>
+
+<p>=&gt; deBruijn Graphs</p>
+
+<hr />
+
+<h1 id="de-bruijn-graphs"><strong>de Bruijn Graphs</strong></h1>
+
+<p>Based on a counter-intuitive idea</p>
+
+<ul>
+  <li>Hash all reads in overlapping fixed-length words</li>
+  <li>Words = k-mers of size k</li>
+  <li>Build a directed graph where nodes are k-mers and edges represent overlaps between k-mers</li>
+</ul>
+
+<hr />
+
+<h1 id="what-are-k-mers"><strong>What are K-mers?</strong></h1>
+<p><img src="../../images/kmers01.png" alt="K-mers are subwords of length k of a string" /></p>
+
+<hr />
+
+<h1 id="k-mers-de-bruijn-graph"><strong>K-mers de Bruijn graph</strong></h1>
+<p><img src="../../images/ex1-1.png" alt="Example with 4 english words" /></p>
+
+<hr />
+
+<h1 id="k-mers-de-bruijn-graph-1"><strong>K-mers de Bruijn graph</strong></h1>
+<p><img src="../../images/ex1-2.png" alt="Example with 4 english words" /></p>
+
+<hr />
+
+<h1 id="k-mers-de-bruijn-graph-2"><strong>K-mers de Bruijn graph</strong></h1>
+<p><img src="../../images/ex1-3.png" alt="Example with 4 english words" /></p>
+
+<hr />
+
+<h1 id="k-mers-de-bruijn-graph-3"><strong>K-mers de Bruijn graph</strong></h1>
+<p><img src="../../images/ex1-4.png" alt="Example with 4 english words" /></p>
+
+<hr />
+
+<h1 id="the-problem-of-repeats"><strong>The problem of repeats</strong></h1>
+<p><img src="../../images/ex2-1.png" alt="Example with a word containing repeats: Mississippi" /></p>
+
+<hr />
+
+<h1 id="the-problem-of-repeats-1"><strong>The problem of repeats</strong></h1>
+<p><img src="../../images/ex2-2.png" alt="Example with a word containing repeats: Mississippi" /></p>
+
+<hr />
+
+<h1 id="the-problem-of-repeats-2"><strong>The problem of repeats</strong></h1>
+<p><img src="../../images/ex2-3.png" alt="Example with a word containing repeats: Mississippi" /></p>
+
+<hr />
+
+<h1 id="the-problem-of-repeats-3"><strong>The problem of repeats</strong></h1>
+<p><img src="../../images/ex2-4.png" alt="Example with a word containing repeats: Mississippi" /></p>
+
+<hr />
+
+<h1 id="different-k"><strong>Different k</strong></h1>
+<p><img src="../../images/ex2a-1.png" alt="Effect of the size of k" />
+—</p>
+<h1 id="different-k-1"><strong>Different k</strong></h1>
+<p><img src="../../images/ex2a-2.png" alt="Effect of the size of k" />
+—</p>
+<h1 id="different-k-2"><strong>Different k</strong></h1>
+<p><img src="../../images/ex2a-3.png" alt="Effect of the size of k" />
+—</p>
+<h1 id="different-k-3"><strong>Different k</strong></h1>
+<p><img src="../../images/ex2a-4.png" alt="Effect of the size of k" /></p>
+
+<hr />
+<h1 id="choose-k-wisely"><strong>Choose k wisely</strong></h1>
+
+<ul>
+  <li>Lower k
+    <ul>
+      <li>More connections</li>
+      <li>Less chance of resolving small repeats</li>
+      <li>Higher k-mer coverage</li>
+    </ul>
+  </li>
+  <li>Higher k
+    <ul>
+      <li>Less connections</li>
+      <li>More chance of resolving small repeats</li>
+      <li>Lower k-mer coverage</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong><em>Optimum value for k will balance these effects.</em></strong></p>
+
+<hr />
+
+<h1 id="read-errors"><strong>Read errors</strong></h1>
+<p>.image-75[<img src="../../images/ex3-head.png" alt="Example of english words with errors" />]
+<img src="../../images/blank.png" alt="Example of english words with errors" />
+—</p>
+
+<h1 id="read-errors-1"><strong>Read errors</strong></h1>
+<p>.image-75[<img src="../../images/ex3-head.png" alt="Example of english words with errors" />]
+<img src="../../images/ex3-2.png" alt="Example of english words with errors" />
+—</p>
+<h1 id="read-errors-2"><strong>Read errors</strong></h1>
+<p>.image-75[<img src="../../images/ex3-head.png" alt="Example of english words with errors" />]
+<img src="../../images/ex3-3.png" alt="Example of english words with errors" />
+—</p>
+<h1 id="read-errors-3"><strong>Read errors</strong></h1>
+<p>.image-75[<img src="../../images/ex3-head.png" alt="Example of english words with errors" />]
+<img src="../../images/ex3-4.png" alt="Example of english words with errors" /></p>
+
+<hr />
+
+<h1 id="coverage-or-sequencing-depth">Coverage (or sequencing depth)</h1>
+
+<p>The number of unique reads that contain a given nucleotide in the reconstructed sequence.</p>
+
+<p><img src="../../images/coverage.png" alt="Aligned reads showing the notion of coverage" /></p>
+
+<p>Source: <a href="https://commons.wikimedia.org/wiki/File:Read,_read_length_and_read_depth_to_achieve_a_read_depth">Wikimedia</a></p>
+
+<p><strong>Estimated coverage</strong></p>
+
+<p><strong>(number of reads x read length)</strong> / <strong>estimated size of the genome</strong></p>
+
+<p>1,000,000 reads x 150bp / 10Mb = <strong>15X</strong></p>
+
+<hr />
+<h1 id="more-coverage"><strong>More coverage</strong></h1>
+
+<ul>
+  <li>Errors won’t be duplicated in every read</li>
+  <li>Most reads will be error free</li>
+  <li>We can count the frequency of each k-mer</li>
+  <li>Annotate the graph with the frequencies</li>
+  <li>Use the frequency data to clean the de Bruijn graph</li>
+</ul>
+
+<h2 id="more-coverage-depth-will-help-overcome-errors"><strong><em>More coverage depth will help overcome errors!</em></strong></h2>
+<h1 id="read-errors-revisited"><strong>Read errors revisited</strong></h1>
+<p><img src="../../images/ex3a.png" alt="Graph annotated with coverage" /></p>
+
+<hr />
+
+<h1 id="de-bruijn-graph-assembly-process"><strong>de Bruijn graph assembly process</strong></h1>
+
+<ol>
+  <li>Select a value for k</li>
+  <li>“Hash” the reads (make the kmers)</li>
+  <li>Count the kmers</li>
+  <li>Make the de Bruijn graph</li>
+  <li>Perform graph simplification steps</li>
+  <li>Read off contigs from simplified graph</li>
+</ol>
+
+<hr />
+<h1 id="make-contigs"><strong>Make contigs</strong></h1>
+
+<ul>
+  <li>Find an unbalanced node in the graph</li>
+  <li>Follow the chain of nodes and “read off” the bases to produce the contigs</li>
+  <li>Where there is an ambiguous divergence/convergence, stop the current contig and start a new one.</li>
+  <li>Re-trace the reads through the contigs to help with repeat resolution</li>
+</ul>
+
+<hr />
+
+<h1 id="assembly-in-real-life">Assembly in real life</h1>
+
+<p>In this topic we’ve learned about two ways of representing the relationship between reads derived from a genome we are trying to assemble:</p>
+
+<ol>
+  <li><strong>Overlap graphs</strong> - nodes are reads, edges are overlaps between reads.</li>
+  <li><strong>De Bruijn graphs</strong> - nodes are overlaps, edges are reads.</li>
+</ol>
+
+<hr />
+
+<h1 id="overlap-graph">Overlap graph</h1>
+
+<p><img src="../../images/4.7.png" alt="An example overlap graph" /></p>
+
+<hr />
+
+<h1 id="de-bruijn-graph---same-data">de Bruijn Graph - same data</h1>
+
+<p><img src="../../images/4.13f.png" alt="An example de Bruijn graph" /></p>
+
+<hr />
+
+<p>Whatever the representation will be it will be messy:</p>
+
+<p><img src="../../images/t12_mess.png" alt="An example of a real-life, noisy graph" /></p>
+
+<p>A fragment of a very large De Bruijn graph (Image from <a href="https://github.com/BenLangmead/ads1-slides/blob/master/0580_asm__practice.pdf">BL</a>).</p>
+
+<hr />
+
+<p>There are multiple reasons for such messiness:</p>
+
+<p><strong>Sequence errors</strong></p>
+
+<p>Sequencing machines do not give perfect data. This results in spurious deviations on the graph. Some sequencing technologies such as Oxford Nanopore have very high error rate of ~15%.</p>
+
+<blockquote>
+  <p><img src="../../images/t12_errors.png" alt="Zoom on graph region containing sequencing errors" /></p>
+
+  <p>Graph components resulting from sequencing errors (Image from <a href="https://github.com/BenLangmead/ads1-slides/blob/master/0580_asm__practice.pdf">BL</a>).</p>
+</blockquote>
+
+<hr />
+
+<p><strong>Ploidy</strong></p>
+
+<p>As we discussed earlier humans are diploid and there are multiple differences between maternal and paternal genomes. This creates “bubbles” on assembly graphs:</p>
+
+<blockquote>
+  <p><img src="../../images/t12_bubble.png" alt="Impact of diploid genome sequencing on graphs" /></p>
+
+  <p>Bubbles due to a heterozygous site  (Image from <a href="https://github.com/BenLangmead/ads1-slides/blob/master/0580_asm__practice.pdf">BL</a>).</p>
+</blockquote>
+
+<hr />
+
+<p><strong>Repeats</strong></p>
+
+<p>As we’ve seen the third law of assembly is unbeatable. As a result some regions of the genome simply cannot be resolved and are reported in segments called <em>contigs</em>:</p>
+
+<blockquote>
+  <p><img src="../../images/t12_contigs.png" alt="Impact of repeats on graphs" /></p>
+
+  <p>The following “genomic” segment will be reported in three pieces corresponding to regions flanking the repeat and repeat itself (Image from <a href="https://github.com/BenLangmead/ads1-slides/blob/master/0580_asm__practice.pdf">BL</a>).</p>
+</blockquote>
+
+<hr />
+
+<h1 id="what-to-do-with-my-reads">What to do with my reads?</h1>
+
+<ul>
+  <li>Short reads =&gt; DBG assemblers (e.g. Spades, ABySS, DISCOVAR, Velvet, …)</li>
+  <li>Long reads =&gt; OLC assemblers (e.g Canu, Falcon, Hgap4, …)</li>
+  <li>Short + Long reads =&gt; hybrid assemblers (e.g. Unicycler, …)</li>
+</ul>
+
+<p>Hybrid assembly: long reads to resolve repeats, short reads to correct errors</p>
+
+<p>Other data and tools for polishing (scaffolding, gap filling, …)</p>
+
+<hr />
+
+<h1 id="other-data-optical-maps">Other data: Optical maps</h1>
+
+<p><img src="../../images/Optical_mapping.jpg" alt="Optical mapping workflow" />
+(Source: <a href="https://en.wikipedia.org/wiki/Optical_mapping#/media/File:Optical_mapping.jpg">Wikimedia</a>)</p>
+
+<p>Use for scaffolding by comparing the restriction map with the predicted restriction sites in the contig sequences</p>
+
+<hr />
+
+<h1 id="other-data--hi-c">Other data:  Hi-C</h1>
+
+<p><img src="../../images/hic.jpg" alt="Hi-C sequencing workflow" />
+(Source: Dovetail genomics)</p>
+
+<p>Sequence chunks of genome colocalized</p>
+
+<hr />
+
+<h1 id="other-data-linked-reads">Other data: Linked-Reads</h1>
+
+<p><img src="../../images/linked_reads.png" alt="Linked-Reads workflow" />
+(Source: 10X)</p>
+
+<p>Reads grouped by physical regions on the genome thanks to barcodes</p>
+
+<p>10X Genomics (discontinued in 2020)</p>
+
+
+	<hr />
+
+
+
+
+
+
+
+
+<h2>Thank you!</h2>
+
+This material is the result of a collaborative work. Thanks to the <a href="https://training.galaxyproject.org" aria-label="Visit the GTN">Galaxy Training Network</a> and all the contributors!
+
+
+<img src="/training-material/assets/images/GTNLogo1000.png" alt="Galaxy Training Network" style="height: 100px;"/>
+
+
+This material is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+</section>
+
+
+
+
+
+        </div>
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/2752a665e9cde64fc46b07701823f4c6cbe561b8">2752a66</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/./topics/assembly/tutorials/algorithms-introduction/slides.html" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1697677722'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </body>
+</html>

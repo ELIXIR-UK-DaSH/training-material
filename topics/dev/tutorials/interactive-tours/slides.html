@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Galaxy Interactive Tours</title>
+        
+            <!--
+<script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
+-->
+<!-- We let users opt-out, so if they've opted in, we need to append the plausible script to the body -->
+
+<script>
+var scriptElement = document.createElement("script");
+scriptElement.async = true;
+scriptElement.defer = true;
+scriptElement.setAttribute("data-domain", "training.galaxyproject.org");
+scriptElement.src = "https://plausible.galaxyproject.eu/js/plausible.js";
+
+// Appending the script element to the body
+if(localStorage.getItem('plausible-opt-out') !== 'opt-out' && navigator.doNotTrack !== "1") {
+	console.log("Plausible: opt-in");
+	// Wait for the document to be available
+	document.addEventListener("DOMContentLoaded", function(event) {
+		document.body.appendChild(scriptElement);
+	});
+}
+</script>
+
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<!--
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+-->
+<script type="text/javascript">
+var scriptElement = document.createElement("script");
+scriptElement.src = "https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js";
+scriptElement.integrity = "sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43";
+scriptElement.crossOrigin = "anonymous";
+
+if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack !== "1") {
+	console.log("Sentry: opt-in");
+	// Appending the script element to the body
+	document.addEventListener("DOMContentLoaded", function(event) {
+		document.body.appendChild(scriptElement);
+	});
+		
+	Sentry.init({
+	  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+	  release: "galaxy-training-network@2752a665e9cde64fc46b07701823f4c6cbe561b8",
+	  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+	  sampleRate: 0.1,
+	  tracesSampleRate: 0.1,
+	  // Capture Replay for no sessions by default
+	  replaysSessionSampleRate: 0.01,
+	  // plus for 1% of sessions with an error
+	  replaysOnErrorSampleRate: 0.01,
+	  // PII OFF
+	  sendDefaultPii: false, // Off by default but just in case.
+	  environment: "production",
+	});
+}
+</script>
+
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/dev/tutorials/interactive-tours/slides.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Galaxy Interactive Tours">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2021-07-09 11:43:26 +0000">
+<meta name="DC.creator" content="Bérénice Batut">
+<meta name="DC.creator" content="Björn Grüning">
+
+        
+        
+        
+        
+        <meta name="description" content="Galaxy is an open-source project. Everyone can contribute..." />
+        <meta property="og:site_name" content="Galaxy Training Network" />
+        <meta property="og:title" content="Galaxy Training: Galaxy Interactive Tours" />
+        <meta property="og:description" content="Galaxy is an open-source project. Everyone can contribute..." />
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        <script type="application/ld+json">
+            
+
+
+{
+  "@context": "http://schema.org",
+  "@type": "LearningResource",
+  "http://purl.org/dc/terms/conformsTo": {
+    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
+    "@type": "CreativeWork"
+  },
+  "audience": {
+    "@type": "EducationalAudience",
+    "educationalRole": "Students"
+  },
+  "citation": {
+    "@type": "CreativeWork",
+    "name": "Community-Driven Data Analysis Training for Biology",
+    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
+  },
+  "copyrightHolder": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "dateModified": "2021-07-09 11:43:26 +0000",
+  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
+  "headline": "Galaxy Interactive Tours",
+  "interactivityType": "mixed",
+  "isAccessibleForFree": true,
+  "isFamilyFriendly": true,
+  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
+  "producer": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "provider": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "sourceOrganization": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
+  "accessMode": [
+    "textual",
+    "visual"
+  ],
+  "accessModeSufficient": [
+    "textual",
+    "visual"
+  ],
+  "accessibilityControl": [
+    "fullKeyboardControl",
+    "fullMouseControl"
+  ],
+  "accessibilityFeature": [
+    "alternativeText",
+    "tableOfContents"
+  ],
+  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
+  "isPartOf": {
+    "@type": "CreativeWork",
+    "name": "Development in Galaxy",
+    "description": "Galaxy is an open-source project. Everyone can contribute to its development with core Galaxy development, integration of softwares in Galaxy environment, ...",
+    "url": "https://training.galaxyproject.org/training-material/topics/dev/"
+  },
+  "learningResourceType": "slides",
+  "name": "Slides for 'Galaxy Interactive Tours' tutorial",
+  "url": "https://training.galaxyproject.org/training-material/topics/dev/tutorials/interactive-tours/slides.html",
+  "timeRequired": "PT3H",
+  "teaches": "Discover what is a Galaxy Interactive Tour\n - Be able to create a Galaxy Interactive Tour\n - Be able to add a Galaxy Interactive Tour in a Galaxy instance",
+  "keywords": "dev",
+  "description": "The questions this  addresses are:\n - What is a Galaxy Interactive Tour?\n - How to create a Galaxy Interactive Tour?\n\n\nThe objectives are:\n - Discover what is a Galaxy Interactive Tour\n - Be able to create a Galaxy Interactive Tour\n - Be able to add a Galaxy Interactive Tour in a Galaxy instance\n\n",
+  "inLanguage": {
+    "@type": "Language",
+    "name": "English",
+    "alternateName": "en"
+  },
+  "author": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
+      "name": "Bérénice Batut",
+      "image": "https://avatars.githubusercontent.com/bebatut",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ],
+      "identifier": "https://orcid.org/0000-0001-9852-1987",
+      "orcid": "https://orcid.org/0000-0001-9852-1987"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bgruening/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bgruening/",
+      "name": "Björn Grüning",
+      "image": "https://avatars.githubusercontent.com/bgruening",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ],
+      "identifier": "https://orcid.org/0000-0002-3079-6586",
+      "orcid": "https://orcid.org/0000-0002-3079-6586"
+    }
+  ],
+  "about": [
+    {
+      "@type": "CreativeWork",
+      "name": "Development in Galaxy",
+      "description": "Galaxy is an open-source project. Everyone can contribute to its development with core Galaxy development, integration of softwares in Galaxy environment, ...",
+      "url": "https://training.galaxyproject.org/training-material/topics/dev/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "http://edamontology.org/topic_3372",
+      "inDefinedTermSet": "http://edamontology.org",
+      "termCode": "topic_3372",
+      "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_3372"
+    }
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
+
+  ],
+  "abstract": "### What are Galaxy Interactive Tours?"
+}
+        </script>
+    </head>
+  <body data-brightness="auto" data-contrast="auto">
+
+
+    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+    <textarea id="source">
+name: inverse
+layout: true
+class: center, middle, inverse
+
+<div class="my-header"><span>
+<a href="/training-material/topics/dev" title="Return to topic page" ><i class="fa fa-level-up" aria-hidden="true"></i></a>
+
+<a href="https://github.com/galaxyproject/training-material/edit/main/topics/dev/tutorials/interactive-tours/slides.html"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+
+</span></div>
+
+<div class="my-footer"><span>
+
+<img src="/training-material/assets/images/GTN-60px.png" alt="Galaxy Training Network" style="height: 40px;"/>
+
+</span></div>
+
+---
+
+
+
+<img src="/training-material/assets/images/GTNLogo1000.png" alt="Galaxy Training Network" class="cover-logo"/>
+
+
+# Galaxy Interactive Tours
+
+
+<div markdown="0">
+
+	<div class="contributors-line">
+		Authors: <a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/bebatut?s=36" alt="Avatar" width="36" height="36">Bérénice Batut</a><a href="/training-material/hall-of-fame/bgruening/" class="contributor-badge contributor-bgruening"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/bgruening?s=36" alt="Avatar" width="36" height="36">Björn Grüning</a>
+	</div>
+
+</div>
+
+
+<!-- modified date -->
+<div class="footnote" style="bottom: 8em;">
+  <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Updated:  &nbsp;
+  <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:S00049">gxy.io/GTN:S00049</a>
+</div>
+
+
+<!-- other slide formats (video and plain-text) -->
+<div class="footnote" style="bottom: 6em;">
+
+
+  <i class="fas fa-file-alt" aria-hidden="true"></i><span class="visually-hidden">text-document</span><a href="slides-plain.html"> Plain-text slides</a>
+</div>
+
+
+<!-- usage tips -->
+<div class="footnote" style="bottom: 2em;">
+    <strong>Tip: </strong>press <kbd>P</kbd> to view the presenter notes
+    | <i class="fa fa-arrows" aria-hidden="true"></i><span class="visually-hidden">arrow-keys</span> Use arrow keys to move between slides
+
+</div>
+
+???
+Presenter notes contain extra information which might be useful if you intend to use these slides for teaching.
+
+Press `P` again to switch presenter notes off
+
+Press `C` to create a new window where the same presentation will be displayed.
+This window is linked to the main window. Changing slides on one will cause the
+slide to change on the other.
+
+Useful when presenting.
+
+
+
+---
+
+
+
+
+
+
+
+### &lt;i class=&quot;far fa-question-circle&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;visually-hidden&quot;&gt;question&lt;/span&gt; Questions
+
+
+- What is a Galaxy Interactive Tour?
+
+- How to create a Galaxy Interactive Tour?
+
+
+---
+
+
+
+### &lt;i class=&quot;fas fa-bullseye&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;visually-hidden&quot;&gt;objectives&lt;/span&gt; Objectives
+
+
+- Discover what is a Galaxy Interactive Tour
+
+- Be able to create a Galaxy Interactive Tour
+
+- Be able to add a Galaxy Interactive Tour in a Galaxy instance
+
+
+---
+
+
+### What are Galaxy Interactive Tours?
+
+![Gif showing an interactive tour. The interface goes through uploading a dataset and several popups show up on the UI to help guide the user in a simple analysis.](../../images/galaxy_tour_demo.gif)
+
+An awesome way to learn how to use Galaxy or a specific tool, isn&apos;t it?
+
+---
+
+### How does it work?
+
+![Screenshot of part of a tour, the tour is written in YAML and has a steps section with the various steps.](../../images/galaxy_tour_yml.png)
+
+A single YAML file: [core.galaxy_ui.yaml](https://raw.githubusercontent.com/galaxyproject/galaxy/097300ea6219e14b66b23a0e05f2808b16f10015/config/plugins/tours/core.galaxy_ui.yaml)
+
+---
+
+### At the top of the YAML:&lt;br&gt;Metadata related to the Tour
+
+```
+id: galaxy_ui
+name: Galaxy UI
+description: A gentle introduction to the Galaxy User Interface
+title_default: &quot;Welcome to Galaxy&quot;
+```
+
+---
+
+### Content of the YAML:&lt;br&gt;Steps of the Tour
+
+```
+# A tour is made of several steps, each of them beginning with a dash &apos;-&apos;
+steps:
+    - title: &quot;Welcome to Galaxy&quot;
+      content: &quot;This short tour will guide you through Galaxy&apos;s user interface.&lt;br&gt;
+                You can navigate with your arrow keys and leave the tour at any
+                time point with &apos;Escape&apos; or the &apos;End tour&apos; button.&quot;
+      backdrop: true
+
+    - title: &quot;Upload your data&quot;
+      element: &quot;.upload-button&quot;
+      content: &quot;Galaxy supports many ways to get in your data.&lt;br&gt;
+               Use this button to upload your data.&quot;
+      placement: &quot;right&quot;
+      postclick:
+        - &quot;.upload-button&quot;
+```
+
+---
+
+### Definition of a step
+
+Argument | Description
+---  | ---
+`title`  | Header of each step-container
+`content` | Text that is shown to the user
+`element` | [JQuery Selector](https://api.jquery.com/category/selectors/) of the element you want to describe / click
+`placement` | Placement of the text box relative to the selected element
+`preclick` or `postclick` | Elements that receive a click() event before (`preclick`) or after (`postclick`) the step is shown
+`textinsert` | Text to insert if element is a text box (e.g. tool search or upload)
+`backdrop` | `true/false`: 	Show a dark backdrop behind the popover and its element, highlighting the current step
+
+.footnote[[Full reference of the properties](https://bootstraptour.com/api/)]
+
+---
+
+### How to obtain the JQuery Selector of the element?
+
+![A gif showing the &apos;inspect element&apos; tool in the browser being used to find the ID of an element.](../../images/interactive_tour_element_grabbing.gif)
+
+---
+
+### Want to integrate Interactive Tours in your Galaxy instance?
+
+- Select a YAML file
+  - [From our community collection of Interactive Tours](https://github.com/galaxyproject/galaxy-tours)
+  - Create one by yourself
+- Copy it to your tours directory or your Galaxy instance
+  - default: `config/plugins/tours`
+  - configurable via `tour_config_dir` in `galaxy.yml`
+- Restart Galaxy or reload the tour with the API, e.g.:
+  - `curl GALAXY_URL/api/tours/TOUR_FILE_NAME -d key=ADMIN_API_KEY`
+
+---
+
+### Want to contribute?
+
+- Create Tours and share them with the world!
+  - on the [community collection of Interactive Tours](https://github.com/galaxyproject/galaxy-tours) or
+  - add them to the [Galaxy Training Network](https://training.galaxyproject.org/training-material)
+- Improve the Tours implementation
+- Improve creating of Tours
+  - by enhancing the [Galaxy Tour Builder](https://github.com/dannon/tourbuilder) web extension
+
+---
+
+### Developing the Tours logic
+
+- Tours initialisation: `lib/galaxy/tours/__init__.py`
+- JavaScript logic: `client/galaxy/scripts/mvc/tours.js`
+- Tour styles: `client/galaxy/style/less/tour.less`
+- API: `lib/galaxy/webapps/galaxy/api/tours.py`
+  - `lib/galaxy/webapps/galaxy/buildapp.py`
+- bootstrap-tour library: `client/galaxy/scripts/libs/bootstrap-tour.js`
+
+
+
+
+---
+### &lt;i class=&quot;fas fa-key&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;visually-hidden&quot;&gt;keypoints&lt;/span&gt; Key points
+
+
+- An Interactive Tour is easy to create: just a yaml file to fill
+
+- Use the Developper Tools of find the JQuery Selector
+
+- Help yourself by using the available web plugins and record an interactive tour
+
+
+
+
+
+
+
+---
+
+## Thank You!
+
+This material is the result of a collaborative work. Thanks to the [Galaxy Training Network](https://training.galaxyproject.org) and all the contributors!
+
+<div markdown="0">
+
+	<div class="contributors-line">
+		Authors: <a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/bebatut?s=36" alt="Avatar" width="36" height="36">Bérénice Batut</a><a href="/training-material/hall-of-fame/bgruening/" class="contributor-badge contributor-bgruening"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/bgruening?s=36" alt="Avatar" width="36" height="36">Björn Grüning</a>
+	</div>
+
+</div>
+
+
+<div style="display: flex;flex-direction: row;align-items: center;justify-content: center;">
+
+<img src="/training-material/assets/images/GTNLogo1000.png" alt="Galaxy Training Network" style="height: 100px;"/>
+
+
+</div>
+
+<a rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+This material is licensed under the Creative Commons Attribution 4.0 International License</a>.
+
+
+    </textarea>
+	<script src="/training-material/assets/js/remark-latest.min.js"></script>
+    <script src="/training-material/assets/js/theme.js"></script>
+    <script src="/training-material/assets/js/clipboard.min.js"></script>
+    <script>
+      var slideshow = remark.create({navigation: {scroll: false}, ratio: '16:9'});
+      var hljs = remark.highlighter.engine;
+      var snippets = document.querySelectorAll('code.remark-code');
+        [].forEach.call(snippets,function(snippet){
+          snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
+        });
+      var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
+        target:function(trigger){return trigger.parentElement;
+      }});
+    </script>
+
+    <script>
+        if(window.location.hostname === "galaxyproject.github.io") {
+            // Redirect
+            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
+            $('body').prepend("<div style='text-align: center'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
+
+            window.setTimeout(function(){
+                window.location.href = redirect;
+            }, 5000)
+
+        }
+    </script>
+        <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
+        <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
+
+    </body>
+</html>

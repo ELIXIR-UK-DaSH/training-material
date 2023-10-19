@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Options for using Galaxy</title>
+        
+            <!--
+<script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
+-->
+<!-- We let users opt-out, so if they've opted in, we need to append the plausible script to the body -->
+
+<script>
+var scriptElement = document.createElement("script");
+scriptElement.async = true;
+scriptElement.defer = true;
+scriptElement.setAttribute("data-domain", "training.galaxyproject.org");
+scriptElement.src = "https://plausible.galaxyproject.eu/js/plausible.js";
+
+// Appending the script element to the body
+if(localStorage.getItem('plausible-opt-out') !== 'opt-out' && navigator.doNotTrack !== "1") {
+	console.log("Plausible: opt-in");
+	// Wait for the document to be available
+	document.addEventListener("DOMContentLoaded", function(event) {
+		document.body.appendChild(scriptElement);
+	});
+}
+</script>
+
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<!--
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+-->
+<script type="text/javascript">
+var scriptElement = document.createElement("script");
+scriptElement.src = "https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js";
+scriptElement.integrity = "sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43";
+scriptElement.crossOrigin = "anonymous";
+
+if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack !== "1") {
+	console.log("Sentry: opt-in");
+	// Appending the script element to the body
+	document.addEventListener("DOMContentLoaded", function(event) {
+		document.body.appendChild(scriptElement);
+	});
+		
+	Sentry.init({
+	  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+	  release: "galaxy-training-network@2752a665e9cde64fc46b07701823f4c6cbe561b8",
+	  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+	  sampleRate: 0.1,
+	  tracesSampleRate: 0.1,
+	  // Capture Replay for no sessions by default
+	  replaysSessionSampleRate: 0.01,
+	  // plus for 1% of sessions with an error
+	  replaysOnErrorSampleRate: 0.01,
+	  // PII OFF
+	  sendDefaultPii: false, // Off by default but just in case.
+	  environment: "production",
+	});
+}
+</script>
+
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/introduction/tutorials/options-for-using-galaxy/slides.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Options for using Galaxy">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2022-09-16 13:37:09 +0000">
+<meta name="DC.creator" content="Dave Clements">
+<meta name="DC.creator" content="Anthony Bretaudeau">
+<meta name="DC.creator" content="Anne Pajon">
+<meta name="DC.creator" content="Nicola Soranzo">
+<meta name="DC.creator" content="Alaa Elghamry">
+
+        
+        
+        
+        
+        <meta name="description" content="Galaxy is a scientific workflow, data integration, and da..." />
+        <meta property="og:site_name" content="Galaxy Training Network" />
+        <meta property="og:title" content="Galaxy Training: Options for using Galaxy" />
+        <meta property="og:description" content="Galaxy is a scientific workflow, data integration, and da..." />
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        <script type="application/ld+json">
+            
+
+
+{
+  "@context": "http://schema.org",
+  "@type": "LearningResource",
+  "http://purl.org/dc/terms/conformsTo": {
+    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
+    "@type": "CreativeWork"
+  },
+  "audience": {
+    "@type": "EducationalAudience",
+    "educationalRole": "Students"
+  },
+  "citation": {
+    "@type": "CreativeWork",
+    "name": "Community-Driven Data Analysis Training for Biology",
+    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
+  },
+  "copyrightHolder": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "dateModified": "2022-09-16 13:37:09 +0000",
+  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
+  "headline": "Options for using Galaxy",
+  "interactivityType": "mixed",
+  "isAccessibleForFree": true,
+  "isFamilyFriendly": true,
+  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
+  "producer": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "provider": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "sourceOrganization": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
+  "accessMode": [
+    "textual",
+    "visual"
+  ],
+  "accessModeSufficient": [
+    "textual",
+    "visual"
+  ],
+  "accessibilityControl": [
+    "fullKeyboardControl",
+    "fullMouseControl"
+  ],
+  "accessibilityFeature": [
+    "alternativeText",
+    "tableOfContents"
+  ],
+  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
+  "isPartOf": {
+    "@type": "CreativeWork",
+    "name": "Introduction to Galaxy Analyses",
+    "description": "Galaxy is a scientific workflow, data integration, and data and analysis persistence and publishing platform that aims to make computational biology accessible to research scientists that do not have computer programming experience. ",
+    "url": "https://training.galaxyproject.org/training-material/topics/introduction/"
+  },
+  "learningResourceType": "slides",
+  "name": "Slides for 'Options for using Galaxy' tutorial",
+  "url": "https://training.galaxyproject.org/training-material/topics/introduction/tutorials/options-for-using-galaxy/slides.html",
+  "keywords": "introduction",
+  "description": "The questions this  addresses are:\n - Which Galaxy instance should I use?\n\n",
+  "inLanguage": {
+    "@type": "Language",
+    "name": "English",
+    "alternateName": "en"
+  },
+  "author": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/tnabtaf/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/tnabtaf/",
+      "name": "Dave Clements",
+      "image": "https://avatars.githubusercontent.com/tnabtaf",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ],
+      "identifier": "https://orcid.org/0000-0002-9970-6657",
+      "orcid": "https://orcid.org/0000-0002-9970-6657"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/abretaud/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/abretaud/",
+      "name": "Anthony Bretaudeau",
+      "image": "https://avatars.githubusercontent.com/abretaud",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ],
+      "identifier": "https://orcid.org/0000-0003-0914-2470",
+      "orcid": "https://orcid.org/0000-0003-0914-2470"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/pajanne/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/pajanne/",
+      "name": "Anne Pajon",
+      "image": "https://avatars.githubusercontent.com/pajanne",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/nsoranzo/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/nsoranzo/",
+      "name": "Nicola Soranzo",
+      "image": "https://avatars.githubusercontent.com/nsoranzo",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ],
+      "identifier": "https://orcid.org/0000-0003-3627-5340",
+      "orcid": "https://orcid.org/0000-0003-3627-5340"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/alaaelghamry/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/alaaelghamry/",
+      "name": "Alaa Elghamry",
+      "image": "https://avatars.githubusercontent.com/alaaelghamry",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ]
+    }
+  ],
+  "about": [
+    {
+      "@type": "CreativeWork",
+      "name": "Introduction to Galaxy Analyses",
+      "description": "Galaxy is a scientific workflow, data integration, and data and analysis persistence and publishing platform that aims to make computational biology accessible to research scientists that do not have computer programming experience. ",
+      "url": "https://training.galaxyproject.org/training-material/topics/introduction/"
+    }
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
+
+  ],
+  "abstract": "# Options for using Galaxy"
+}
+        </script>
+    </head>
+  <body data-brightness="auto" data-contrast="auto">
+
+
+    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+    <textarea id="source">
+name: inverse
+layout: true
+class: center, middle, inverse
+
+<div class="my-header"><span>
+<a href="/training-material/topics/introduction" title="Return to topic page" ><i class="fa fa-level-up" aria-hidden="true"></i></a>
+
+<a href="https://github.com/galaxyproject/training-material/edit/main/topics/introduction/tutorials/options-for-using-galaxy/slides.html"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+
+</span></div>
+
+<div class="my-footer"><span>
+
+<img src="/training-material/assets/images/GTN-60px.png" alt="Galaxy Training Network" style="height: 40px;"/>
+
+</span></div>
+
+---
+
+
+
+<img src="/training-material/assets/images/GTNLogo1000.png" alt="Galaxy Training Network" class="cover-logo"/>
+
+
+# Options for using Galaxy
+
+
+<div markdown="0">
+
+	<div class="contributors-line">
+		Authors: <a href="/training-material/hall-of-fame/tnabtaf/" class="contributor-badge contributor-tnabtaf"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/tnabtaf?s=36" alt="Avatar" width="36" height="36">Dave Clements</a><a href="/training-material/hall-of-fame/abretaud/" class="contributor-badge contributor-abretaud"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/abretaud?s=36" alt="Avatar" width="36" height="36">Anthony Bretaudeau</a><a href="/training-material/hall-of-fame/pajanne/" class="contributor-badge contributor-pajanne"><img src="https://avatars.githubusercontent.com/pajanne?s=36" alt="Avatar" width="36" height="36">Anne Pajon</a><a href="/training-material/hall-of-fame/nsoranzo/" class="contributor-badge contributor-nsoranzo"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/nsoranzo?s=36" alt="Avatar" width="36" height="36">Nicola Soranzo</a><a href="/training-material/hall-of-fame/alaaelghamry/" class="contributor-badge contributor-alaaelghamry"><img src="https://avatars.githubusercontent.com/alaaelghamry?s=36" alt="Avatar" width="36" height="36">Alaa Elghamry</a>
+	</div>
+
+</div>
+
+
+<!-- modified date -->
+<div class="footnote" style="bottom: 8em;">
+  <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Updated:  &nbsp;
+  <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:S00075">gxy.io/GTN:S00075</a>
+</div>
+
+
+<!-- other slide formats (video and plain-text) -->
+<div class="footnote" style="bottom: 6em;">
+
+  <i class="far fa-play-circle" aria-hidden="true"></i><span class="visually-hidden">video-slides</span> <a href="/training-material/videos/watch.html?v=/introduction/tutorials/options-for-using-galaxy/slides">Video slides</a> |
+
+
+  <i class="fas fa-file-alt" aria-hidden="true"></i><span class="visually-hidden">text-document</span><a href="slides-plain.html"> Plain-text slides</a>
+</div>
+
+
+<!-- usage tips -->
+<div class="footnote" style="bottom: 2em;">
+    <strong>Tip: </strong>press <kbd>P</kbd> to view the presenter notes
+    | <i class="fa fa-arrows" aria-hidden="true"></i><span class="visually-hidden">arrow-keys</span> Use arrow keys to move between slides
+
+</div>
+
+???
+Presenter notes contain extra information which might be useful if you intend to use these slides for teaching.
+
+Press `P` again to switch presenter notes off
+
+Press `C` to create a new window where the same presentation will be displayed.
+This window is linked to the main window. Changing slides on one will cause the
+slide to change on the other.
+
+Useful when presenting.
+
+
+
+---
+
+
+
+
+
+
+
+### &lt;i class=&quot;far fa-question-circle&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;visually-hidden&quot;&gt;question&lt;/span&gt; Questions
+
+
+- Which Galaxy instance should I use?
+
+
+---
+
+
+
+
+# Options for using Galaxy
+
+---
+
+### Options for using Galaxy
+
+Galaxy is available in many ways, each with different configurations and capabilities
+
+Here are some options
+
+???
+
+Many workshops use Galaxy instances that go away once the workshop is done.
+This deck lists options for using Galaxy outside of a training context.
+
+---
+
+### usegalaxy.org
+
+- [usegalaxy.org](https://usegalaxy.org/) is the Galaxy Project&apos;s public server
+- Hosted at the [Texas Advanced Computing Center (TACC)](https://www.tacc.utexas.edu/)
+- Lots of
+  - tools
+  - reference genomes
+  - compute power
+  - storage
+- But also very busy
+  - Averages 250,000 jobs *per month* in 2016
+  - A single resource cannot scale to meet the demand of the entire world, nor can it support all wanted tools, genomes, ...
+
+???
+- usegalaxy.org is the public server, it&apos;s hosted at the Texas Advanced Computing Center.
+- It has lots of tools, reference genomes, computer power, and free storage also.
+- But it&apos;s also very busy, in 2016 it had an average of 250,000 jobs per month, that sometimes could slow down the process
+- The world of data analysis is huge and full of tools , genomes , and resources
+-  A single resource cannot scale to meet the demand of the entire world
+---
+
+### Public Galaxy Servers
+
+[.image-25[![GalaxEast a powerful omics galaxy](../../images/public_server_galaxeast.png)]](https://galaxyproject.org/public-galaxy-servers/#galaxeast)
+[.image-25[![80+ galaxy servers and counting](../../images/public_servers_odometer_count.png)]](https://galaxyproject.org/public-galaxy-servers/)
+[.image-25[![GigaGalaxy&apos;s logo mentioning integrated publishing of workflows](../../images/public_server_gigagalaxy.png)]](https://galaxyproject.org/public-galaxy-servers/#gigagalaxy)
+[.image-25[![Prove your point, genome statistics made simple with the Genomic Hyperbrowser](../../images/public_server_genomichyperbrowser.png)]](https://hyperbrowser.uio.no/hb/)
+[.image-25[![Unreadable tiny text with a head the Lanuage Application Grid](../../images/public_server_lappsgrid.png)]](https://galaxy.lappsgrid.org/)
+
+???
+- There are currently more than 80 public Galaxy servers, and the number keeps growing.
+- for example, GalaxyEast, an open and powerful galaxy instance for integrative omics data analysis
+- the Genomic Hyperbrowser to Manage and Analyze collections of genome-wide datasets.
+- Galaxy Platform Directory which  lists platforms where you can use or deploy your own Galaxy Server with minimal effort.
+
+---
+
+### Public Galaxy Servers
+
+1. General purpose genomics servers
+1. Domain specific servers&lt;br /&gt;
+   Can be specific to:
+   - *Research methods*: ChIP-Seq, RNA-Seq, repeats, ...
+   - *Organisms*: Pathogens, phage, rice, poplars (!), ...
+   - *Non-genomic domains*: image analysis, social science, natural language processing, ...
+1. Tool servers
+   - Host specific tools to make them easy to access and run
+
+Complete list: [bit.ly/gxyServers ](https://bit.ly/gxyServers)
+
+???
+
+- There are three types of servers
+- First is general-purpose genomics servers.
+- The second is domain-specific servers, which can be specific to: Research methods, Organisms or Non-genomic domains
+- the third type is Tool servers , the tool servers host specific tools to make them easy to access and run
+
+---
+
+### Semi-public Galaxy services
+
+Access based on geography or community membership
+
+| Geography  | Resource |
+| ---------- | -------- |
+| Australia  | [Genomics Virtual Lab (GVL)](https://launch.genome.edu.au/launch)  |
+| Canada | [GenAP](https://www.genap.ca/) |
+| Norway | [Norwegian e-Infrastructure for Life Sciences (NeLS)](https://nels.bioinfo.no/) |
+| US | [Jetstream](https://galaxyproject.org/cloud/jetstream/) |
+
+Complete list: [bit.ly/gxysemipublic ](https://bit.ly/gxysemipublic)
+
+???
+- There are some semi-public galaxy servers for which access is restricted according to the user&apos;s geographic location or community membership
+- In Australia there is the Genomics Virtual Lab
+- In Canada there is GenAP
+- In Norway there is Norwegian e-Infrastructure for Life Sciences
+- In the US there is Jetstream
+
+---
+
+.pull-left[
+### Public clouds via CloudLaunch
+
+.left[[CloudLaunch](https://launch.usegalaxy.org/) currently only supports:]
+- Jetstream (covered above)
+- **Amazon Web Services** (AWS)
+  - You need to create an AWS account (which requires a
+    credit card) and then provide your public and secret keys to CloudLaunch
+
+]
+
+.pull-right[
+[.image-75[![Illegible screenshot of Galaxy Cloud Launch with a form for entering data.](../../images/cloudlaunch_empty.png)]](https://launch.usegalaxy.org/)
+]
+
+???
+- In addition to servers there is also Public clouds via Galaxy CloudLaunch
+- Unfortunetly it currently only supports Jetstream and Amazon Web Services
+- You first need to create an Amazon Web Services account (which requires a credit card) and then provide your
+ public and secret keys to CloudLaunch
+
+---
+
+.pull-left[
+### CloudLaunch / CloudMan instances
+
+- Comes with 100&apos;s of tools and many pre-defined reference genomes
+- CloudLaunch starts a CloudMan-based Galaxy instance
+  - **CloudMan** is a cloud management tool that moves much / all of the cloud management work into a Graphical user interface
+]
+
+.pull-right[
+[.image-75[![Screenshot of a Galaxy Cloud Man instance](../../../../shared/images/cloudman_based_server_landing_page.png)]](https://wiki.galaxyproject.org/CloudMan)
+]
+
+???
+- CloudLaunch Comes with hundredss of tools and many pre-defined reference genomes.
+- CloudLaunch starts a Galaxy instance called CloudMan.
+- CloudMan is a cloud management tool that moves so much of the cloud management work into a Graphical user interface.
+---
+
+### CloudMan
+
+[.image-25[![CloudMan interface with two compute nodes shown busy.](../../../../shared/images/cloudman_management_console_showing_autoscaled_w_1_worker.png)]](https://wiki.galaxyproject.org/CloudMan)
+
+CloudMan enables you to statically or dynamically scale compute power
+
+- This example shows a Galaxy Server with a head node and one worker node, and that is configured to scale up to 5 worker nodes, if demand justifies it
+- Cloud instances can be incredibly cost effective, but only if you are actually using them when they are up
+  - Paying to have a cloud instance up for two weeks that you only use for 8 hours is not cost effective
+- **It is very important to shut down and remove everything when you are done**
+
+???
+- CloudMan enables you to statically or dynamically scale compute power
+- Cloud instances can be incredibly cost effective only if you are actually using them when they are up.
+- you can&apos;t have a cloud instance up for two weeks when you only use for 8 hours
+- It is very important to shut down and remove everything when you are done
+---
+
+### Run your own Galaxy locally
+
+- Galaxy is [open source software](https://getgalaxy.org/) and can be installed on local compute infrastructure, from lab servers to institutional compute clusters
+- Installing Galaxy locally is relatively easy, but
+  - the initial install does not include reference genomes and only has a few tools
+  - installing tools and genomes, setting up authentication, and connecting to institutional compute resources all takes work
+- There are hundreds of local Galaxy installs around the world
+  - Installing tools and genomes has become much easier in recent years, and can now often be done with the Galaxy Admin GUI
+  - Authentication and connecting to institutional compute resources is still heavy lifting
+
+???
+- Galaxy is open source software which means it&apos;s free to use locally
+- it can be installed on local compute infrastructure, from lab servers to institutional compute clusters.
+- Installing Galaxy locally is relatively easy, but you have to consider this
+- the initial install does not include reference genomes and only has a few tools
+- installing tools and genomes, setting up authentication, and connecting to institutional compute resources all takes work
+- installing has become much easier and can now be done with the Galaxy Admin GUI
+- Authentication and connecting to institutional compute resources is still heavy lifting
+---
+
+### Commercial support
+
+- You can buy a preconfigured Galaxy server from [BioTeam](https://bioteam.net/) or [NABE&lt;sup&gt;3&lt;/sup&gt; International](http://www.nabe-intl.co.jp/seq/takerugalaxy.html)
+- [Globus Genomics](http://globusgenomics.org/) provides cloud-based Galaxy servers
+- [Commercially provided consulting and training](https://galaxyproject.org/support/commercial/) are also available
+
+???
+- Commercial solutions are also available, for example:
+- You can buy a preconfigured Galaxy server from BioTeam
+- Globus Genomics also provides cloud-based Galaxy servers
+---
+
+### Which Galaxy instance to use?
+
+- Choose based on
+  - size of datasets, available storage, backup
+  - data security
+  - computational requirements
+  - tools installed
+???
+- In conclusion, choosing which Galaxy instance to use depends on multiple factors like: size of datasets, available storage, backup
+- you also need to consider data security, computational requirements, and the tools installed
+
+
+
+
+
+
+
+
+
+
+---
+
+## Thank You!
+
+This material is the result of a collaborative work. Thanks to the [Galaxy Training Network](https://training.galaxyproject.org) and all the contributors!
+
+<div markdown="0">
+
+	<div class="contributors-line">
+		Authors: <a href="/training-material/hall-of-fame/tnabtaf/" class="contributor-badge contributor-tnabtaf"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/tnabtaf?s=36" alt="Avatar" width="36" height="36">Dave Clements</a><a href="/training-material/hall-of-fame/abretaud/" class="contributor-badge contributor-abretaud"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/abretaud?s=36" alt="Avatar" width="36" height="36">Anthony Bretaudeau</a><a href="/training-material/hall-of-fame/pajanne/" class="contributor-badge contributor-pajanne"><img src="https://avatars.githubusercontent.com/pajanne?s=36" alt="Avatar" width="36" height="36">Anne Pajon</a><a href="/training-material/hall-of-fame/nsoranzo/" class="contributor-badge contributor-nsoranzo"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/nsoranzo?s=36" alt="Avatar" width="36" height="36">Nicola Soranzo</a><a href="/training-material/hall-of-fame/alaaelghamry/" class="contributor-badge contributor-alaaelghamry"><img src="https://avatars.githubusercontent.com/alaaelghamry?s=36" alt="Avatar" width="36" height="36">Alaa Elghamry</a>
+	</div>
+
+</div>
+
+
+<div style="display: flex;flex-direction: row;align-items: center;justify-content: center;">
+
+<img src="/training-material/assets/images/GTNLogo1000.png" alt="Galaxy Training Network" style="height: 100px;"/>
+
+
+</div>
+
+<a rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+This material is licensed under the Creative Commons Attribution 4.0 International License</a>.
+
+
+    </textarea>
+	<script src="/training-material/assets/js/remark-latest.min.js"></script>
+    <script src="/training-material/assets/js/theme.js"></script>
+    <script src="/training-material/assets/js/clipboard.min.js"></script>
+    <script>
+      var slideshow = remark.create({navigation: {scroll: false}, ratio: '16:9'});
+      var hljs = remark.highlighter.engine;
+      var snippets = document.querySelectorAll('code.remark-code');
+        [].forEach.call(snippets,function(snippet){
+          snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
+        });
+      var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
+        target:function(trigger){return trigger.parentElement;
+      }});
+    </script>
+
+    <script>
+        if(window.location.hostname === "galaxyproject.github.io") {
+            // Redirect
+            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
+            $('body').prepend("<div style='text-align: center'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
+
+            window.setTimeout(function(){
+                window.location.href = redirect;
+            }, 5000)
+
+        }
+    </script>
+        <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
+        <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
+
+    </body>
+</html>

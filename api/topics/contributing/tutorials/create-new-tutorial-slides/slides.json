@@ -1,0 +1,104 @@
+{
+  "layout": "tutorial_slides",
+  "logo": "GTN",
+  "title": "Creating Slides",
+  "video": true,
+  "questions": [
+    "How to format slides?",
+    "How do we add presenter notes?",
+    "How to use the features of the slide show tool?",
+    "What sort of content should be included in slides?"
+  ],
+  "objectives": [
+    "Create a new set of slides",
+    "Add presenter comments"
+  ],
+  "time_estimation": null,
+  "subtopic": "writing",
+  "key_points": [
+    "Slides are often presented before the hands-on portion, provide relevant background information",
+    "Provide examples that are relevant to your audience"
+  ],
+  "contributors": [
+    "hexylena",
+    "bebatut",
+    "shiltemann"
+  ],
+  "short_id": "S00040",
+  "url": "/topics/contributing/tutorials/create-new-tutorial-slides/slides.html",
+  "topic_name": "contributing",
+  "tutorial_name": "create-new-tutorial-slides",
+  "dir": "topics/contributing/tutorials/create-new-tutorial-slides",
+  "id": "contributing/create-new-tutorial-slides",
+  "video_library": {
+    "tutorial": null,
+    "slides": {
+      "description": "This lecture goes through the process of how to create a slide deck, common things you should bear in mind while you're writing them, and how to enable the amazing slides-to-video features for your slide decks! This video itself was produced automatically from the GTN's slide decks, anyone making edits to these slides will cause them to be rebuilt, making organising videos for events easier than ever.\n",
+      "materials": [
+        {
+          "link": "topics/contributing/tutorials/create-new-tutorial-slides/slides.html",
+          "title": "Creating Slides for the GTN",
+          "type": "Slides"
+        }
+      ],
+      "tags": [
+        "contributing"
+      ],
+      "type": "Lecture",
+      "versions": [
+        {
+          "captions": [
+            "galaxycommunity"
+          ],
+          "date": "2021-02-15",
+          "galaxy_version": "21.01",
+          "length": "5M",
+          "link": "Gm1MKAwuLxg",
+          "speakers": [
+            "awspolly"
+          ]
+        }
+      ],
+      "gtn_id": "contributing/create-new-tutorial-slides",
+      "title": "Creating Slides",
+      "captioned": true
+    },
+    "demo": null,
+    "both": null,
+    "session": null
+  },
+  "hands_on": false,
+  "slides": true,
+  "api": "https://training.galaxyproject.org/training-material/api/topics/contributing/tutorials/create-new-tutorial-slides/tutorial.json",
+  "tools": [
+
+  ],
+  "supported_servers": [
+
+  ],
+  "topic_name_human": "Contributing to the Galaxy Training Material",
+  "admin_install": {
+    "install_tool_dependencies": true,
+    "install_repository_dependencies": true,
+    "install_resolver_dependencies": true,
+    "tools": [
+
+    ]
+  },
+  "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools: []\n",
+  "tours": false,
+  "translations": {
+    "tutorial": [
+
+    ],
+    "slides": [
+
+    ],
+    "video": true
+  },
+  "type": "tutorial",
+  "redirect_from": [
+    "/short/contributing/create-new-tutorial-slides/slides",
+    "/short/S00040"
+  ]
+}

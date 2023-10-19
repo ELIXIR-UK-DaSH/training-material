@@ -1,0 +1,73 @@
+{
+  "layout": "tutorial_slides",
+  "logo": "GTN",
+  "title": "Prerequisites for building software/conda packages",
+  "subtopic": "dependencies",
+  "questions": [
+    "What does 'installing a software' means on a Linux architecture?",
+    "Why my compilations always fail?",
+    "How to solve common compiling and installation issues?"
+  ],
+  "objectives": [
+    "Learn how to compile and install tools using standard procedures.",
+    "Learn needed tricks to write conda build.sh files."
+  ],
+  "time_estimation": "1h",
+  "key_points": [
+    "There is a common procedure to compile and install many tools: `./configure && make && make install`",
+    "Some exotic tools require adjustements to compile or install properly",
+    "Pay attention to INSTALL and README files, and to documentation"
+  ],
+  "contributors": [
+    "abretaud",
+    "cmonjeau"
+  ],
+  "short_id": "S00046",
+  "url": "/topics/dev/tutorials/conda_sys/slides.html",
+  "topic_name": "dev",
+  "tutorial_name": "conda_sys",
+  "dir": "topics/dev/tutorials/conda_sys",
+  "id": "dev/conda_sys",
+  "video_library": {
+    "tutorial": null,
+    "slides": null,
+    "demo": null,
+    "both": null,
+    "session": null
+  },
+  "hands_on": false,
+  "slides": true,
+  "api": "https://training.galaxyproject.org/training-material/api/topics/dev/tutorials/conda_sys/tutorial.json",
+  "tools": [
+
+  ],
+  "supported_servers": [
+
+  ],
+  "topic_name_human": "Development in Galaxy",
+  "admin_install": {
+    "install_tool_dependencies": true,
+    "install_repository_dependencies": true,
+    "install_resolver_dependencies": true,
+    "tools": [
+
+    ]
+  },
+  "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools: []\n",
+  "tours": false,
+  "video": false,
+  "translations": {
+    "tutorial": [
+
+    ],
+    "slides": [
+
+    ],
+    "video": false
+  },
+  "type": "tutorial",
+  "redirect_from": [
+    "/short/dev/conda_sys/slides",
+    "/short/S00046"
+  ]
+}

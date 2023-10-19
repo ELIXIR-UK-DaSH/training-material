@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Galaxy Training!</title>
+        
+            <!--
+<script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
+-->
+<!-- We let users opt-out, so if they've opted in, we need to append the plausible script to the body -->
+
+<script>
+var scriptElement = document.createElement("script");
+scriptElement.async = true;
+scriptElement.defer = true;
+scriptElement.setAttribute("data-domain", "training.galaxyproject.org");
+scriptElement.src = "https://plausible.galaxyproject.eu/js/plausible.js";
+
+// Appending the script element to the body
+if(localStorage.getItem('plausible-opt-out') !== 'opt-out' && navigator.doNotTrack !== "1") {
+	console.log("Plausible: opt-in");
+	// Wait for the document to be available
+	document.addEventListener("DOMContentLoaded", function(event) {
+		document.body.appendChild(scriptElement);
+	});
+}
+</script>
+
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<!--
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+-->
+<script type="text/javascript">
+var scriptElement = document.createElement("script");
+scriptElement.src = "https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js";
+scriptElement.integrity = "sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43";
+scriptElement.crossOrigin = "anonymous";
+
+if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack !== "1") {
+	console.log("Sentry: opt-in");
+	// Appending the script element to the body
+	document.addEventListener("DOMContentLoaded", function(event) {
+		document.body.appendChild(scriptElement);
+	});
+		
+	Sentry.init({
+	  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+	  release: "galaxy-training-network@2752a665e9cde64fc46b07701823f4c6cbe561b8",
+	  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+	  sampleRate: 0.1,
+	  tracesSampleRate: 0.1,
+	  // Capture Replay for no sessions by default
+	  replaysSessionSampleRate: 0.01,
+	  // plus for 1% of sessions with an error
+	  replaysOnErrorSampleRate: 0.01,
+	  // PII OFF
+	  sendDefaultPii: false, // Off by default but just in case.
+	  environment: "production",
+	});
+}
+</script>
+
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1697677722' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1697677722' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2016-10-18 12:18:07 +0000">
+
+        
+        
+        
+        
+        <meta name="description" content="Collection of tutorials developed and maintained by the w...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training">
+        <meta property="og:description" content="Collection of tutorials developed and maintained by the w...">
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc" data-brightness="auto" data-contrast="auto">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1697677722'></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                
+                    Galaxy Training!
+                
+            </a>
+
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/hall-of-fame" title="Hall of Fame">
+                           <i class="fas fa-users" aria-hidden="true"></i><span class="visually-hidden">hall-of-fame</span> Contributors
+                        </a>
+
+                        
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+	<a class="dropdown-item" href="/training-material/faqs/index.html" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/index.md" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+            </a>
+        
+
+		<a href="/training-material/preferences.html" class="dropdown-item">
+			<i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Themes have moved <span class="badge badge-secondary">New</span>
+		</a>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        
+        <div class="container main-content" role="main">
+        
+
+
+
+<section>
+    <h1>Welcome to Galaxy Training!</h1>
+    <p class="lead">
+        Collection of tutorials developed and maintained by the worldwide Galaxy community
+    </p>
+
+    
+
+    
+
+    <div class="row">
+        <div class="col-lg-7 col-md-7 col-sm-12">
+            <h2>Galaxy for Scientists</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Topic</th>
+                        <th scope="col">Tutorials</th>
+                    </tr>
+                </thead>
+                <tbody>
+                
+                    
+                    
+                    
+                    <tr>
+                        
+                        <td><a href="/training-material/topics/introduction/">Introduction to Galaxy Analyses</a></td>
+                        <td>12</td>
+                    </tr>
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    <tr>
+                        
+                        <td><a href="/training-material/topics/assembly/">Assembly</a></td>
+                        <td>17</td>
+                    </tr>
+                    
+                    
+                
+                    
+                    
+                    
+                    <tr>
+                        
+                        <td><a href="/training-material/topics/climate/">Climate</a></td>
+                        <td>7</td>
+                    </tr>
+                    
+                    
+                
+                    
+                    
+                    
+                    <tr>
+                        
+                        <td><a href="/training-material/topics/computational-chemistry/">Computational chemistry</a></td>
+                        <td>8</td>
+                    </tr>
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                    
+                    <tr>
+                        
+                        <td><a href="/training-material/topics/covid19/">SARS-CoV-2</a></td>
+                        <td>9</td>
+                    </tr>
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                    
+                    <tr>
+                        
+                        <td><a href="/training-material/topics/ecology/">Ecology</a></td>
+                        <td>16</td>
+                    </tr>
+                    
+                    
+                
+                    
+                    
+                    
+                    <tr>
+                        
+                        <td><a href="/training-material/topics/epigenetics/">Epigenetics</a></td>
+                        <td>9</td>
+                    </tr>
+                    
+                    
+                
+                    
+                    
+                    
+                    <tr>
+                        
+                        <td><a href="/training-material/topics/evolution/">Evolution</a></td>
+                        <td>2</td>
+                    </tr>
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                    
+                    <tr>
+                        
+                        <td><a href="/training-material/topics/genome-annotation/">Genome Annotation</a></td>
+                        <td>15</td>
+                    </tr>
+                    
+                    
+                
+                    
+                    
+                    
+                    <tr>
+                        
+                        <td><a href="/training-material/topics/imaging/">Imaging</a></td>
+                        <td>7</td>
+                    </tr>
+                    
+                    
+                
+                    
+                    
+                    
+                    <tr>
+                        
+                        <td><a href="/training-material/topics/metabolomics/">Metabolomics</a></td>
+                        <td>8</td>
+                    </tr>
+                    
+                    
+                
+                    
+                    
+                    
+                    <tr>
+                        
+                        <td><a href="/training-material/topics/metagenomics/">Metagenomics</a></td>
+                        <td>12</td>
+                    </tr>
+                    
+                    
+                
+                    
+                    
+                    
+                    <tr>
+                        
+                        <td><a href="/training-material/topics/one-health/">One Health</a></td>
+                        <td>9</td>
+                    </tr>
+                    
+                    
+                
+                    
+                    
+                    
+                    <tr>
+                        
+                        <td><a href="/training-material/topics/proteomics/">Proteomics</a></td>
+                        <td>27</td>
+                    </tr>
+                    
+                    
+                
+                    
+                    
+                    
+                    <tr>
+                        
+                        <td><a href="/training-material/topics/sequence-analysis/">Sequence analysis</a></td>
+                        <td>5</td>
+                    </tr>
+                    
+                    
+                
+                    
+                    
+                    
+                    <tr>
+                        
+                        <td><a href="/training-material/topics/single-cell/">Single Cell</a></td>
+                        <td>26</td>
+                    </tr>
+                    
+                    
+                
+                    
+                    
+                    
+                    <tr>
+                        
+                        <td><a href="/training-material/topics/statistics/">Statistics and machine learning</a></td>
+                        <td>17</td>
+                    </tr>
+                    
+                    
+                
+                    
+                    
+                    
+                    <tr>
+                        
+                        <td><a href="/training-material/topics/synthetic-biology/">Synthetic Biology</a></td>
+                        <td>3</td>
+                    </tr>
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                    
+                    <tr>
+                        
+                        <td><a href="/training-material/topics/transcriptomics/">Transcriptomics</a></td>
+                        <td>23</td>
+                    </tr>
+                    
+                    
+                
+                    
+                    
+                    
+                    <tr>
+                        
+                        <td><a href="/training-material/topics/variant-analysis/">Variant Analysis</a></td>
+                        <td>15</td>
+                    </tr>
+                    
+                    
+                
+                    
+                    
+                    
+                    <tr>
+                        
+                        <td><a href="/training-material/topics/visualisation/">Visualisation</a></td>
+                        <td>3</td>
+                    </tr>
+                    
+                    
+                
+                </tbody>
+            </table>
+
+            <h2>Galaxy Tips & Tricks</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Topic</th>
+                        <th scope="col">Tutorials</th>
+                    </tr>
+                </thead>
+                <tbody>
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                    
+                    <tr>
+                        
+                        <td><a href="/training-material/topics/galaxy-interface/">Using Galaxy and Managing your Data</a></td>
+                        <td>22</td>
+                    </tr>
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                </tbody>
+            </table>
+
+            <h2>Data Science Survival Kit</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Topic</th>
+                        <th scope="col">Tutorials</th>
+                    </tr>
+                </thead>
+                <tbody>
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                    
+                    <tr>
+                        
+                        <td><a href="/training-material/topics/data-science/">Foundations of Data Science</a></td>
+                        <td>41</td>
+                    </tr>
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                    
+                    <tr>
+                        
+                        <td><a href="/training-material/topics/fair/">FAIR Data, Workflows, and Research</a></td>
+                        <td>11</td>
+                    </tr>
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                </tbody>
+            </table>
+
+            <h2>Galaxy for Developers and Admins</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Topic</th>
+                        <th scope="col">Tutorials</th>
+                    </tr>
+                </thead>
+                <tbody>
+                
+                    
+                    
+                
+                    
+                    
+                    
+                    <tr>
+                        
+                        <td><a href="/training-material/topics/admin/">Galaxy Server administration</a></td>
+                        <td>48</td>
+                    </tr>
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                    
+                    <tr>
+                        
+                        <td><a href="/training-material/topics/dev/">Development in Galaxy</a></td>
+                        <td>21</td>
+                    </tr>
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                </tbody>
+            </table>
+
+            <h2>How to contribute?</h2>
+
+            <p>First off, thanks for taking the time to contribute!</p>
+
+            <p>You can report mistakes or errors, create more contents, etc. Whatever is your background, there is probably a way to do it: via the GitHub website, via command-line. If you feel it is too much, you can even write it with any text editor and contact us: we will work together to integrate it.</p>
+
+            <p>To get you started, check our <a href="/training-material/topics/contributing/">dedicated tutorials</a> or our <a href="/training-material/faq">Frequently Asked Questions</a></p>
+
+            <h2>Galaxy for Contributors and Instructors</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Topic</th>
+                        <th scope="col">Tutorials</th>
+                    </tr>
+                </thead>
+                <tbody>
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                    
+                    <tr>
+                        
+                        <td><a href="/training-material/topics/contributing/">Contributing to the Galaxy Training Material</a></td>
+                        <td>20</td>
+                    </tr>
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                    
+                    <tr>
+                        
+                        <td><a href="/training-material/topics/teaching/">Teaching and Hosting Galaxy training</a></td>
+                        <td>15</td>
+                    </tr>
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="col-lg-5 col-md-5 col-sm-12">
+            <!-- GTN video -->
+            <div class="col-12">
+                <h2> Welcome to the GTN!</h2>
+                <p> Find out more about Galaxy Training Network</p>
+                <iframe width="100%" height="314" src="https://www.youtube-nocookie.com/embed/lDqWxzWNk1k" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube video highlighting GTN features. Video does not need audio."></iframe>
+                <p>Video created by Geert Bonamie.</p>
+            </div>
+                <!-- GTN news  -->
+            <div class="col-12" id="news">
+                 <h2><a href="/training-material/news.html">The latest GTN news</a> <a class="float-right" href="/training-material/feed.xml"><i class="fas fa-rss" aria-hidden="true"></i><span class="visually-hidden">rss-feed</span></a></h2>
+                 <p> Read about new tutorials, features, events and more! </p>
+                 
+
+<div class="newstable">
+<div class="list-group">
+ 
+ 
+ <a class="list-group-item" href="/training-material/news/2023/10/12/sc_subdomain.html">
+   <p class="list-group-item-text">Oct 12, 2023</p>
+   <div class="list-group-item-heading">
+   
+   
+   
+   
+   Single cell subdomain re-launch: Unified and feedback-driven </div>
+ </a>
+ 
+ <a class="list-group-item" href="/training-material/news/2023/10/05/wendi.html">
+   <p class="list-group-item-text">Oct 5, 2023</p>
+   <div class="list-group-item-heading">
+   
+   
+   <i class="fas fa-bullhorn" aria-hidden="true"></i>
+   
+   New Feature: Embeddable GTN Tutorial Lists and UseGalaxy Workflow List Widgets </div>
+ </a>
+ 
+ <a class="list-group-item" href="/training-material/news/2023/07/20/prefs.html">
+   <p class="list-group-item-text">Jul 20, 2023</p>
+   <div class="list-group-item-heading">
+   
+   
+   <i class="fas fa-bullhorn" aria-hidden="true"></i>
+   
+   New Feature: GTN User Preferences </div>
+ </a>
+ 
+ <a class="list-group-item" href="https://ai4life.eurobioimaging.eu/ai4life-teams-up-with-galaxy-training-network-gtn-to-enhance-training-resources/">
+   <p class="list-group-item-text">Jun 27, 2023</p>
+   <div class="list-group-item-heading">
+   
+   
+   
+   
+   AI4Life teams up with GTN to enhance training resources </div>
+ </a>
+ 
+ <a class="list-group-item" href="/training-material/news/2023/06/21/fair.html">
+   <p class="list-group-item-text">Jun 21, 2023</p>
+   <div class="list-group-item-heading">
+   
+   <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+   
+   
+   ELIXIR-UK Fellow Launches New FAIR Data Management Training </div>
+ </a>
+ 
+</div>
+</div>
+
+                 <p><a href="/training-material/news.html">See all news</a>
+            </div>
+                <!-- Galaxy community video  -->
+                <div class="col-12">
+                <h2>Meet & Join the Community!</h2>
+                <p> Find out how you can become part of the Galaxy community</p>
+                <iframe width="100%" height="314" src="https://www.youtube-nocookie.com/embed/-1MPdxmRs8U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube video highlighting the GTN Community. Video has english language audio and subtitles."></iframe>
+                <p>Video created by Beatriz Serrano-Solano</p>
+           </div>
+                 <!-- GTN Tweets -->
+          <div class="col-12">
+            <h2>GTN Toots</h2>
+	    <a rel="me" href="https://mstdn.science/@gtn">Follow us on Mastodon</a>
+          </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-7 col-md-7 col-sm-12">
+           <!-- Our awesome Contributors -->
+        <div class="col-12">
+            <h2>Contributor Hall of Fame</h2>
+
+            <p>
+             <!--SNIPPET--> <!-- tutorial stats --> <div class="row" style="color: var(--text-color-boxtitle)"> <div class="col-md-3 col-sm-6 col-6">  <div class="gtn-card color-comment">    <div class="card-title-small">326</div>    <div class="card-text-small">Contributors</div>  </div> </div> <div class="col-md-3 col-sm-6 col-6">  <div class="gtn-card color-agenda">    <div class="card-title-small">29</div>    <div class="card-text-small">Topics</div>  </div> </div> <div class="col-md-3 col-sm-6 col-6">  <div class="gtn-card color-tip">    <div class="card-title-small">370</div>    <div class="card-text-small">Tutorials</div>  </div> </div> <div class="col-md-3 col-sm-6 col-6">  <div class="gtn-card color-handson">    <div class="card-title-small">8.3</div>    <div class="card-text-small">Years</div>  </div> </div> </div> <!--END_SNIPPET-->
+			</p>
+            <p>
+			This project would not be possible without the many amazing community contributors!
+			</p>
+			<p>
+		<a class="btn btn-info" href="/training-material/hall-of-fame">View the Hall of Fame</a>
+
+        <a class="btn btn-warning" href="/training-material/stats">View all GTN stats</a>
+
+			</p>
+			<p>Do you want to help with this project and join our Hall of Fame? Please see our <a href="/training-material/topics/contributing/">dedicated tutorials</a> or our <a href="/training-material/faq">Frequently Asked Questions</a> to get you started.</p>
+
+        </div>
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-12">
+          <div class="col-12">
+                        <h2>The Galaxy Training Network</h2>
+                        <script src="/training-material/assets/js/leaflet-1.9.3.js"></script>
+
+<div id="map" style="width: 100%; height: 300px"></div>
+<script>
+	const map = L.map('map').setView([0, 0], 1);
+
+	const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		maxZoom: 19,
+		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+	}).addTo(map);
+
+	function onEachFeature(feature, layer) {
+		let orcid = "";
+		if(feature.properties.orcid !== null && feature.properties.orcid !== undefined){
+			orcid = `<a href="https://orcid.org/${feature.properties.orcid}"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/></a>`
+		}
+		let available = "";
+		if(feature.properties.contact_for_training === true){
+			available = `Available to for trainings 🧑‍🏫`
+		}
+
+		let popupContent = `
+			<table><tr>
+			<td style="min-width: 120px">
+				<b>${feature.properties.name}</b> ${orcid}<br>
+				<a href="${feature.properties.url}">See Profile</a><br>
+				Joined ${feature.properties.joined}<br>
+				${available}
+			</td>
+			<td style="min-width: 120px">
+				<img src="https://avatars.githubusercontent.com/${feature.properties.id}?s=120" width="120" height="120" style="width: 120px !important; height: 120px !important;" alt="github avatar">
+			</td>
+			</tr></table>
+
+		`;
+		layer.bindPopup(popupContent);
+	}
+
+	const gtn_colors = [
+		'#86D486',
+		'#8A9AD0',
+		'#B8C3EA',
+		'#FFA1A1',
+		'#FFE19E',
+		'#ddd',
+		'#de8875',
+		'#dfe5f9',
+		'#fb99d0',
+		'#ffecc1',
+	];
+
+	function randomGtnColor(){
+		return gtn_colors[Math.floor(Math.random() * gtn_colors.length)];
+	}
+
+	fetch('/training-material/api/contributors.geojson')
+		.then(response => response.json())
+		.then(data => {
+			// Do something with the data
+			const trainerLayer = L.geoJSON([data], {
+				style(feature) {
+					return feature.properties && feature.properties.style;
+				},
+				onEachFeature,
+				pointToLayer(feature, latlng) {
+					return L.circleMarker(latlng, {
+						radius: 8,
+						fillColor: randomGtnColor(),
+						color: '#000',
+						weight: 1,
+						opacity: 1,
+						fillOpacity: 0.8
+					});
+				}
+			}).addTo(map);
+
+		})
+		.catch(error => {
+			console.error('Error:', error);
+		});
+
+</script>
+
+
+            </div>
+          </div>
+        </div>
+        <h2 id="acknowledgment-and-funding">Acknowledgment and Funding</h2>
+    <p>
+            More information about this project can be found in our <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">publication in PLOS Computational Biology</a>.
+            We would like to thank all <a href="/training-material/hall-of-fame">contributors</a> to our Galaxy
+            training materials, the Galaxy community for their constant support, and our funding sources:
+    </p>
+
+    <p>
+            <a class="logo" href="https://www.denbi.de/"><img loading="lazy" src="https://raw.githubusercontent.com/bgruening/rbc_docs/master/logo/deNBI_Logo_rgb.png" alt="de.NBI" width="15%" style="max-width:100%;"></a>
+            <a class="logo" href="https://www.nih.gov"><img loading="lazy" src="/training-material/shared/images/nih.png" alt="National Institutes of Health" width="7%" style="max-width:100%;"></a>
+            <a class="logo" href="https://www.sfb992.uni-freiburg.de/"><img loading="lazy" src="https://raw.githubusercontent.com/bgruening/presentations/bce348bb606c312d531c479e63a66efc2bc38d44/shared/resources/img/MEDEP.jpg" alt="Collaborative Research Centre 992" width="15%" style="max-width:100%;"></a>
+            <a class="logo" href="https://www.ie-freiburg.mpg.de"><img loading="lazy" src="https://raw.githubusercontent.com/bgruening/presentations/master/shared/resources/img/14_MPI_IE_logo_mit_180.gif" alt="Max Planck Institute of Immunology and Epigenetics" width="15%" style="max-width:100%;"></a>
+            <a class="logo" href="https://www.uni-freiburg.de/"><img loading="lazy" src="https://raw.githubusercontent.com/bgruening/presentations/a2e38e4b007994af798320db3a0131c4bb891c0e/shared/resources/img/logo_freiburg.jpg" alt="University of Freiburg" width="15%" style="max-width:100%;"></a>
+            <a class="logo" href="http://www.psu.edu"><img loading="lazy" src="/training-material/shared/images/psu.png" alt="The Pennsylvania State University" width="5%" style="max-width:100%;"></a>
+            <a class="logo" href="https://www.france-bioinformatique.fr/"><img loading="lazy" src="/training-material/shared/images/ifb.png" alt="Institut Français de Bioinformatique" width="15%" style="max-width:100%;"></a>
+            <a class="logo" href="https://www.elixir-europe.org/"><img loading="lazy" src="/training-material/shared/images/elixir.png" alt="Elixir" width="10%" style="max-width:100%;"></a>
+            <a class="logo" href="https://www.elixir-europe.org/excelerate/"><img loading="lazy" src="/training-material/shared/images/Excelerate_whitebackground.png" alt="Elixir Excelerate" width="15%" style="max-width:100%;"></a>
+            <a class="logo" href="https://www.nsf.gov"><img loading="lazy" src="/training-material/shared/images/nsf.gif" alt="National Science Foundation" width="7%" style="max-width:100%;"></a>
+            <a class="logo" href="https://www.erasmusmc.nl"><img loading="lazy" src="/training-material/shared/images/logo-erasmusmc.png" alt="Erasmus Mecial Center" width="15%" style="max-width:100%;"></a>
+            <a class="logo" href="https://cineca-project.eu"><img loading="lazy" src="/training-material/shared/images/CINECA_logo.png" alt="CINECA project" width="15%" style="max-width:100%;"></a>
+            <a class="logo" href="https://gallantries.github.io/"><img loading="lazy" src="/training-material/shared/images/Gallantries_logo.png" alt="Gallantries Project" width="15%" style="max-width:100%;"></a>
+            <a class="logo" href="https://ec.europa.eu/programmes/erasmus-plus/node_en"><img loading="lazy" src="/training-material/shared/images/EU-logo-beneficaires-gallantries.jpg" alt="EU Erasmus+ programme" width="15%" style="max-width:100%;"></a>
+            <a class="logo" href="https://www.avans.nl"><img loading="lazy" src="/training-material/shared/images/logo-avans.png" alt="Avans University of Applied Sciences" width="15%" style="max-width:100%;"></a>
+            <a class="logo" href="https://www.ebi.ac.uk"><img loading="lazy"  src="https://raw.githubusercontent.com/nomadscientist/scrnaseq_training/d0fccaa9dc8dc8615eb7146d6c5e96bd36f11f3a/EMBL_EBI_Logo_black.svg" alt="European Bioinformatics Institute" width="15%" style="max-width:100%;"></a>
+            <a class="logo" href="https://mrc.ukri.org"><img loading="lazy"  src="https://raw.githubusercontent.com/nomadscientist/scrnaseq_training/master/logo.png" alt="UK Medical Research Council" width="15%" style="max-width:100%;"></a>
+     </p>
+    </div>
+</section>
+
+        </div>
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/2752a665e9cde64fc46b07701823f4c6cbe561b8">2752a66</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/index.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1697677722'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </body>
+</html>

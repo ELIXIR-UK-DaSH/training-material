@@ -1,0 +1,272 @@
+{
+  "layout": "tutorial_slides",
+  "redirect_from": [
+    "/short/epigenetics/formation_of_super-structures_on_xi/slides",
+    "/short/S00058"
+  ],
+  "title": "ChIP-seq data analysis",
+  "zenodo_link": "",
+  "tags": [
+    "ChIP-seq"
+  ],
+  "questions": [
+    "What is ChIP-seq?"
+  ],
+  "objectives": [
+    "Identify ChIP-seq data"
+  ],
+  "time_estimation": "15M",
+  "key_points": [
+    ""
+  ],
+  "contributors": [
+    "LeilyR",
+    "bebatut"
+  ],
+  "short_id": "S00058",
+  "url": "/topics/epigenetics/tutorials/formation_of_super-structures_on_xi/slides.html",
+  "topic_name": "epigenetics",
+  "tutorial_name": "formation_of_super-structures_on_xi",
+  "dir": "topics/epigenetics/tutorials/formation_of_super-structures_on_xi",
+  "id": "epigenetics/formation_of_super-structures_on_xi",
+  "video_library": {
+    "tutorial": null,
+    "slides": null,
+    "demo": null,
+    "both": null,
+    "session": null
+  },
+  "hands_on": true,
+  "slides": true,
+  "workflows": [
+    {
+      "workflow": "formation_of_super_structures_on_xi.ga",
+      "tests": true,
+      "url": "https://training.galaxyproject.org/training-material/topics/epigenetics/tutorials/formation_of_super-structures_on_xi/workflows/formation_of_super_structures_on_xi.ga",
+      "path": "topics/epigenetics/tutorials/formation_of_super-structures_on_xi/workflows/formation_of_super_structures_on_xi.ga",
+      "wfid": "epigenetics-formation_of_super-structures_on_xi",
+      "wfname": "formation_of_super_structures_on_xi",
+      "trs_endpoint": "https://training.galaxyproject.org/training-material/api/ga4gh/trs/v2/tools/epigenetics-formation_of_super-structures_on_xi/versions/formation_of_super_structures_on_xi",
+      "license": "CC-BY-4.0",
+      "creators": [
+        {
+          "class": "Person",
+          "identifier": "0000-0002-2301-112X",
+          "name": "Friederike Dündar"
+        },
+        {
+          "class": "Person",
+          "identifier": "0000-0002-7427-6478",
+          "name": "Anika Erxleben"
+        },
+        {
+          "class": "Person",
+          "identifier": "0000-0001-9852-1987",
+          "name": "Bérénice Batut"
+        },
+        {
+          "class": "Person",
+          "identifier": "0000-0002-5570-9338",
+          "name": "Vivek Bhardwaj"
+        },
+        {
+          "class": "Person",
+          "identifier": "0000-0002-9142-417X",
+          "name": "Fidel Ramirez"
+        },
+        {
+          "class": "Person",
+          "identifier": "0009-0007-0755-3643",
+          "name": "Leily Rabbani"
+        },
+        {
+          "class": "Person",
+          "identifier": "0000-0002-5192-126X",
+          "name": "Pavankumar Videm"
+        }
+      ],
+      "test_results": null
+    }
+  ],
+  "api": "https://training.galaxyproject.org/training-material/api/topics/epigenetics/tutorials/formation_of_super-structures_on_xi/tutorial.json",
+  "tools": [
+    "Filter1",
+    "cat1",
+    "toolshed.g2.bx.psu.edu/repos/bgruening/deeptools_bam_compare/deeptools_bam_compare/3.5.1.0.0",
+    "toolshed.g2.bx.psu.edu/repos/bgruening/deeptools_bam_coverage/deeptools_bam_coverage/3.5.1.0.0",
+    "toolshed.g2.bx.psu.edu/repos/bgruening/deeptools_compute_matrix/deeptools_compute_matrix/3.5.1.0.0",
+    "toolshed.g2.bx.psu.edu/repos/bgruening/deeptools_multi_bam_summary/deeptools_multi_bam_summary/3.5.1.0.0",
+    "toolshed.g2.bx.psu.edu/repos/bgruening/deeptools_plot_correlation/deeptools_plot_correlation/3.5.1.0.0",
+    "toolshed.g2.bx.psu.edu/repos/bgruening/deeptools_plot_fingerprint/deeptools_plot_fingerprint/3.5.1.0.0",
+    "toolshed.g2.bx.psu.edu/repos/bgruening/deeptools_plot_heatmap/deeptools_plot_heatmap/3.5.1.0.1",
+    "toolshed.g2.bx.psu.edu/repos/bgruening/trim_galore/trim_galore/0.6.7+galaxy0",
+    "toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.5.0+galaxy0",
+    "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.73+galaxy0",
+    "toolshed.g2.bx.psu.edu/repos/devteam/samtools_idxstats/samtools_idxstats/2.0.4",
+    "toolshed.g2.bx.psu.edu/repos/iuc/bedtools/bedtools_mergebed/2.30.0",
+    "toolshed.g2.bx.psu.edu/repos/iuc/bedtools/bedtools_sortbed/2.30.0+galaxy2",
+    "toolshed.g2.bx.psu.edu/repos/iuc/macs2/macs2_callpeak/2.2.7.1+galaxy0"
+  ],
+  "supported_servers": {
+    "exact": [
+      {
+        "url": "https://usegalaxy.eu",
+        "name": "UseGalaxy.eu",
+        "usegalaxy": "true"
+      },
+      {
+        "url": "https://usegalaxy.fr/",
+        "name": "UseGalaxy.fr",
+        "usegalaxy": "true"
+      },
+      {
+        "url": "https://usegalaxy.org",
+        "name": "UseGalaxy.org (Main)",
+        "usegalaxy": "true"
+      },
+      {
+        "url": "https://usegalaxy.org.au",
+        "name": "UseGalaxy.org.au",
+        "usegalaxy": "true"
+      }
+    ],
+    "inexact": [
+      {
+        "url": "https://galaxy.mesocentre.uca.fr",
+        "name": "Galaxy@AuBi",
+        "usegalaxy": "false"
+      },
+      {
+        "url": "https://usegalaxy.be/",
+        "name": "UseGalaxy.be",
+        "usegalaxy": "true"
+      },
+      {
+        "url": "https://usegalaxy.no/",
+        "name": "UseGalaxy.no",
+        "usegalaxy": "true"
+      }
+    ]
+  },
+  "topic_name_human": "Epigenetics",
+  "admin_install": {
+    "install_tool_dependencies": true,
+    "install_repository_dependencies": true,
+    "install_resolver_dependencies": true,
+    "tools": [
+      {
+        "name": "deeptools_bam_compare",
+        "owner": "bgruening",
+        "revisions": "de72ba3ed6f2",
+        "tool_panel_section_label": "Epigenetics",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "deeptools_bam_coverage",
+        "owner": "bgruening",
+        "revisions": "12af64f93288",
+        "tool_panel_section_label": "Epigenetics",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "deeptools_compute_matrix",
+        "owner": "bgruening",
+        "revisions": "9470f29702f8",
+        "tool_panel_section_label": "Epigenetics",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "deeptools_multi_bam_summary",
+        "owner": "bgruening",
+        "revisions": "004aea905d4d",
+        "tool_panel_section_label": "Epigenetics",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "deeptools_plot_correlation",
+        "owner": "bgruening",
+        "revisions": "fd408d755394",
+        "tool_panel_section_label": "Epigenetics",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "deeptools_plot_fingerprint",
+        "owner": "bgruening",
+        "revisions": "793665fff0f8",
+        "tool_panel_section_label": "Epigenetics",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "deeptools_plot_heatmap",
+        "owner": "bgruening",
+        "revisions": "ba6efa77fb79",
+        "tool_panel_section_label": "Epigenetics",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "trim_galore",
+        "owner": "bgruening",
+        "revisions": "cd7e644cae1d",
+        "tool_panel_section_label": "Epigenetics",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "bowtie2",
+        "owner": "devteam",
+        "revisions": "03e9b2fbc005",
+        "tool_panel_section_label": "Epigenetics",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "fastqc",
+        "owner": "devteam",
+        "revisions": "3d0c7bdf12f5",
+        "tool_panel_section_label": "Epigenetics",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "samtools_idxstats",
+        "owner": "devteam",
+        "revisions": "7def34e6cf4d",
+        "tool_panel_section_label": "Epigenetics",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "bedtools",
+        "owner": "iuc",
+        "revisions": "a1a923cd89e8",
+        "tool_panel_section_label": "Epigenetics",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "bedtools",
+        "owner": "iuc",
+        "revisions": "a1a923cd89e8",
+        "tool_panel_section_label": "Epigenetics",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "macs2",
+        "owner": "iuc",
+        "revisions": "640d3af5d833",
+        "tool_panel_section_label": "Epigenetics",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      }
+    ]
+  },
+  "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: deeptools_bam_compare\n  owner: bgruening\n  revisions: de72ba3ed6f2\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: deeptools_bam_coverage\n  owner: bgruening\n  revisions: 12af64f93288\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: deeptools_compute_matrix\n  owner: bgruening\n  revisions: 9470f29702f8\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: deeptools_multi_bam_summary\n  owner: bgruening\n  revisions: 004aea905d4d\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: deeptools_plot_correlation\n  owner: bgruening\n  revisions: fd408d755394\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: deeptools_plot_fingerprint\n  owner: bgruening\n  revisions: 793665fff0f8\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: deeptools_plot_heatmap\n  owner: bgruening\n  revisions: ba6efa77fb79\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: trim_galore\n  owner: bgruening\n  revisions: cd7e644cae1d\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: bowtie2\n  owner: devteam\n  revisions: 03e9b2fbc005\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: fastqc\n  owner: devteam\n  revisions: 3d0c7bdf12f5\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: samtools_idxstats\n  owner: devteam\n  revisions: 7def34e6cf4d\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: bedtools\n  owner: iuc\n  revisions: a1a923cd89e8\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: bedtools\n  owner: iuc\n  revisions: a1a923cd89e8\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: macs2\n  owner: iuc\n  revisions: 640d3af5d833\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
+  "tours": false,
+  "video": false,
+  "translations": {
+    "tutorial": [
+
+    ],
+    "slides": [
+
+    ],
+    "video": false
+  },
+  "type": "tutorial",
+  "logo": "GTN",
+  "class": "enlarge120"
+}
