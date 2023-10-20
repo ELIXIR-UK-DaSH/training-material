@@ -1,7 +1,7 @@
 ---
 layout: tutorial_hands_on
 
-title: 'Filter, plot, and explore single cell RNA-seq data (Seurat, R)'
+title: 'Filter, Plot, and Explore with Seurat in RStudio'
 subtopic: single-cell-CS-code
 priority: 2
 zenodo_link: 'https://zenodo.org/record/7053673'
@@ -35,8 +35,9 @@ requirements:
 
 
 tags:
-- 10x
-- paper-replication
+- single-cell
+- seurat
+- rstudio
 
 contributions:
   authorship:
@@ -54,8 +55,6 @@ notebook:
   language: r
   snippet: topics/single-cell/tutorials/scrna-case_FilterPlotandExploreRStudio/preamble.md
 ---
-
-{% snippet topics/single-cell/faqs/notebook_warning.md %}
 
 # Setting your environment
 First thing's first, we need to load the packages we will be using. In order to use any functions of a package, we must first call the library of that package. In your console (likely in the lower left corner of your RStudio window), run the following lines of code to do so:

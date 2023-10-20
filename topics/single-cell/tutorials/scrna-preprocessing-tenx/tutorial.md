@@ -8,6 +8,7 @@ redirect_from:
   - /topics/transcriptomics/tutorials/scrna-preprocessing-tenx/tutorial
 zenodo_link: "https://zenodo.org/record/3457880"
 tags:
+  - single-cell
   - 10x
 questions:
   - What is 10X?
