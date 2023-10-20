@@ -46,26 +46,22 @@ layout: base
         <h3 id="st-{{ section.section | slugify }}">{{ section.section }}</h3>
         <p>{{ section.description | markdownify }}</p>
 
-	{% if section.tutorials %}
         {% assign material_list = site | convert_to_material_list: section.tutorials %}
 	{% include _includes/tutorial_list.html sub=material_list %}
-	{% endif %}
     {% endfor %}
 </section>
 
 <hr style="margin-top: 6em"/>
 <section>
 	<!-- Maintained by -->
-	<h2 id="editorial-board">Editorial Board</h2>
-	<p>This material is reviewed by our Editorial Board:</p>
-	{% assign editorial_board = pathway.editorial_board %}
-	{% include _includes/contributor-list.html contributors=editorial_board badge=true %}
+	<h2 id="maintainers">Maintained by</h2>
+	<p>This material is maintained by:</p>
+	{% assign maintainers = pathway.maintainers | sorted %}
+	{% include _includes/contributor-list.html contributors=maintainers badge=true %}
 
-	{% if pathway.funding %}
 	<h2 id="funders">Funders</h2>
 	<p>This material was funded by:</p>
 	{% assign funders = pathway.funding | sorted %}
 	{% include _includes/contributor-list.html contributors=funders badge=true %}
-	{% endif %}
 
 </section>

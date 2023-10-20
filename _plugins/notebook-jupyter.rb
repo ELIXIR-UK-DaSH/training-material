@@ -35,7 +35,7 @@ def json_boxify(h, page)
   h
 end
 
-def jupyter_pre_render(site)
+Jekyll::Hooks.register :site, :pre_render do |site|
   puts '[GTN/Notebooks] Rendering'
 
   site.config['__rendered_notebook_cache'] = {}
@@ -48,7 +48,7 @@ def jupyter_pre_render(site)
     notebook_language = page.data['notebook'].fetch('language', 'python')
 
     # Tag our source page
-    page.data['tags'] = page.data['tags'] || []
+    page.data['tags'] = [] unless page.data.key? 'tags'
     page.data['tags'].push('jupyter-notebook')
 
     puts "[GTN/Notebooks] Rendering #{notebook_language} #{fn}"
@@ -117,7 +117,8 @@ def jupyter_pre_render(site)
   end
 end
 
-def jupyter_post_write(site)
+# Basically like `PageWithoutAFile`, we just write out the ones we'd created earlier.
+Jekyll::Hooks.register :site, :post_write do |site|
   site.config['__rendered_notebook_cache'].each do |_path, info|
     # Create if missing
     FileUtils.mkdir_p(info['dir'])
@@ -125,13 +126,4 @@ def jupyter_post_write(site)
     File.write(info['path1'], info['content1'])
     File.write(info['path2'], info['content2'])
   end
-end
-
-Jekyll::Hooks.register :site, :pre_render do |site|
-  jupyter_pre_render(site)
-end
-
-# Basically like `PageWithoutAFile`, we just write out the ones we'd created earlier.
-Jekyll::Hooks.register :site, :post_write do |site|
-  jupyter_post_write(site)
 end

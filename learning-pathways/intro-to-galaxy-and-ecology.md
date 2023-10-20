@@ -13,7 +13,7 @@ tags: [beginner]
 cover-image: assets/images/galaxy-e-logo.png
 cover-image-alt: "Drawing of an Ecological System"
 
-editorial_board:
+maintainers:
 - yvanlebras
 funding:
 - erasmusplus

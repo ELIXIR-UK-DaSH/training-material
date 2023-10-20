@@ -7,7 +7,7 @@ requirements:
 - type: internal
   topic_name: introduction
 docker_image: ''
-editorial_board:
+maintainers:
 - cstritt
 - pvanheus
 edam_ontology: ["topic_3299"]

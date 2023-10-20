@@ -9,6 +9,6 @@ requirements:
   - type: "internal"
     topic_name: introduction
 
-editorial_board:
+maintainers:
   - shiltemann
   - hexylena

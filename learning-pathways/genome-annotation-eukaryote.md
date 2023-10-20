@@ -8,7 +8,7 @@ tags: [genome annotation, eukaryote]
 
 cover-image: assets/images/gga.png
 cover-image-alt: "Galaxy Genome Annotation logo"
-editorial_board:
+maintainers:
 - abretaud
 funding:
 - erasmusplus

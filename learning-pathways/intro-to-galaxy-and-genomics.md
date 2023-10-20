@@ -3,7 +3,7 @@ layout: learning-pathway
 tags: [beginner]
 type: use
 
-editorial_board:
+maintainers:
 - shiltemann
 funding:
 - erasmusplus
