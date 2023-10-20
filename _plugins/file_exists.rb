@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Jekyll
   ##
   # This class adds a tag that checks if a file exists.

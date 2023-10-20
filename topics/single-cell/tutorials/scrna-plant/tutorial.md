@@ -2,11 +2,12 @@
 layout: tutorial_hands_on
 title: "Analysis of plant scRNA-Seq Data with Scanpy"
 subtopic: end-to-end
-priority: 3
+priority: 5
 redirect_from:
   - /topics/transcriptomics/tutorials/scrna-plant/tutorial
 zenodo_link: 'https://zenodo.org/record/4597857'
 tags:
+  - single-cell
   - plants
   - paper-replication
 questions:

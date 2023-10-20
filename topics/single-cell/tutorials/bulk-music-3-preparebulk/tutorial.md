@@ -1,9 +1,9 @@
 ---
 layout: tutorial_hands_on
-subtopic: datamanipulation
-priority: 2
+subtopic: deconvo
+priority: 3
 
-title: Bulk matrix to ESet | Creating the bulk RNA-seq dataset for deconvolution
+title: Creating the bulk RNA-seq dataset for deconvolution
 zenodo_link: 'https://zenodo.org/record/7319173'
 questions:
 - Where can I find good quality RNA-seq datasets?
@@ -25,8 +25,11 @@ contributions:
     - MarisaJL
 
 tags:
+  - single-cell
+  - human
+  - deconvolution
+  - bulk
   - transcriptomics
-  - data management
 
 requirements:
   -
@@ -79,7 +82,7 @@ We explored the [expression atlas](https://www.ebi.ac.uk/gxa/experiments), brows
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
 >
 > 3. Rename the datasets as needed
->
+> 
 > 4. Check that the datatype is tabular
 >
 >    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="tabular" %}
@@ -139,8 +142,8 @@ Now let's take care of the excessively wordy header titles - and note that often
 >        - {% icon param-repeat %} *"Insert Check"*
 >            - *"Find Regex"*: `Sample Characteristic\[sex\]`
 >            - *"Replacement"*: `Sex`
->
-> 2. Change the datatype to tabular
+> 
+> 2. Change the datatype to tabular 
 >    
 >    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="tabular" %}
 {: .hands_on}
@@ -204,7 +207,7 @@ While it's awesome that there's a gene name column, unfortunately the gene names
 >
 {: .hands_on}
 
-Now that your data is in a format of having a rows of ENS IDs and samples as columns, you can apply the handy ENS ID collapsing workflow as we did in the scRNA-seq reference. If you have already imported this workflow during the first tutorial, then you can use it again now.
+Now that your data is in a format of having a rows of ENS IDs and samples as columns, you can apply the handy ENS ID collapsing workflow as we did in the scRNA-seq reference. If you have already imported this workflow during the first tutorial, then you can use it again now. 
 
 > <hands-on-title> Convert from Ensembl to GeneSymbol using workflow </hands-on-title>
 >
@@ -301,5 +304,3 @@ You can find the [workflow for generating the ESet object](https://usegalaxy.eu/
 ![7 boxes in the workflow editor and a subworkflow box for converting Ensembl to GeneSymbol](../../images/bulk-music/workflow-bulk.png "Workflow: Generating the bulk ESet Objects")
 
 This tutorial is part of the [https://singlecell.usegalaxy.eu](https://singlecell.usegalaxy.eu) portal ({% cite tekman2020single %}).
-
-{% snippet topics/single-cell/faqs/user_community_join.md %}

@@ -18,7 +18,7 @@ $("blockquote.solution>.box-title>button,blockquote.details>.box-title>button,bl
 	var parentBlockquote = button.parents("blockquote")[0];
 
 	// Collapse every child of the blockquote, that is NOT a box-title
-    $(">*:not(.box-title)", parentBlockquote).toggleClass("box-collapsed");
+    $(">*:not(.box-title)", parentBlockquote).toggle();
 	// And toggle our icon
     $(">span.fold-unfold", button).toggleClass("fa-plus-square fa-minus-square");
 
@@ -34,7 +34,7 @@ $("blockquote.solution>.box-title>button,blockquote.details>.box-title>button,bl
 // collapse some box types by default
 // LEGACY
  $(".solution>h3,.details>h3,.tip>h3").each(function() {
-    $(">*:not(h3)", $(this.parent)).toggle("box-collapsed");
+    $(">*:not(h3)", $(this.parent)).toggle();
     $(this).append("<span role='button' class='fold-unfold fa fa-plus-square'></span>");
 });
 
@@ -167,31 +167,17 @@ function fixDiffPresentation(codeBlock){
 	})
 }
 
-// For admin training
+<!--  For admin training -->
 document.querySelectorAll("article.topic-admin section#tutorial-content div.language-diff pre code").forEach(codeBlock => fixDiffPresentation(codeBlock))
 document.querySelectorAll("article.topic-data-science section#tutorial-content div.language-diff pre code").forEach(codeBlock => fixDiffPresentation(codeBlock))
 
-// Redirects
-if(window.location.hostname === "galaxyproject.github.io") {
-	// Redirect
-	var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-	$('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-	window.setTimeout(function(){
-	window.location.href = redirect;
-	}, 5000)
-}
-
-// Copy paste buttons
-document.querySelectorAll('div.highlight').forEach((snippet) => {
-	// Google translate has additional #text nodes mixed in with
-	// the pre for some reason.
-	var gtn_snippet_pres = [...snippet.childNodes].filter(x => x.tagName == "PRE")
-	if(gtn_snippet_pres && gtn_snippet_pres.length > 0){
-		gtn_snippet_pres[0].insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet tabindex="0"><i class="fa fa-copy"></i>&nbsp;Copy</button>');
+$("#theme-selector button").click(function(evt){
+	var theme = $(evt.target).data('theme');
+	setTheme(theme);
+	if(theme === "straya"){
+		$("body").addClass('downunder');
+		setTimeout(function(){
+			$("body").removeClass('downunder');
+		}, 8000);
 	}
-});
-
-var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-    target:function(trigger){return trigger.nextElementSibling;
-}});
+})

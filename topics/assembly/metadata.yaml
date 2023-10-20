@@ -16,7 +16,7 @@ requirements:
     tutorials:
       - quality-control
 
-editorial_board:
+maintainers:
   - slugger70
   - nekrut
   - delphine-l

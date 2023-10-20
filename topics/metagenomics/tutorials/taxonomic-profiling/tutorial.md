@@ -24,8 +24,6 @@ contributions:
     - sophia120199
     - bebatut
     - paulzierep
-   funding:
-    - erasmusplus
 tags:
 - metagenomics
 - taxonomic profiling

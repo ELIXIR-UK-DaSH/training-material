@@ -7,5 +7,5 @@ requirements:
 - type: internal
   topic_name: introduction
 docker_image: ''
-editorial_board:
+maintainers:
 - annefou

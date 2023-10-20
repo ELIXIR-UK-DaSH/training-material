@@ -11,8 +11,10 @@ subtopics:
   - id: ro-crate
     title: "Make workflows FAIR with RO-Crate"
     description: "This section brought to you by the BY-COVID project, and will teach you how to make your research objects more FAIR with practical, hands-on advice."
-
-editorial_board:
+  - id: implementation
+    title: "Implementing FAIR"
+    description: "Enabling and supporting the reuse of data is one of the core aims of the FAIR principles, and the preceding lessons looked at the reusability of data from different frameworks angles."
+maintainers:
   - simleo
   - ilveroluca
   - stain

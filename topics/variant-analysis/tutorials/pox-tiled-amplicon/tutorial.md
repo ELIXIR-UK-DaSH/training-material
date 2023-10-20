@@ -25,14 +25,9 @@ requirements:
     tutorials:
       - collections
       - upload-rules
-contributions:
-  authorship:
-  - wm75
-  - TKlingstrom
-  funding:
-  - by-covid
-  - elixir-converge
-  - h2020-defend
+contributors:
+- wm75
+- TKlingstrom
 tags:
 - virology
 - one-health

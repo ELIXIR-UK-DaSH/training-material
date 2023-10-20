@@ -10,7 +10,7 @@ requirements:
     type: internal
     topic_name: introduction
 
-editorial_board:
+maintainers:
   - lecorguille
   - melpetera
   - foellmelanie
