@@ -24,11 +24,9 @@ key_points:
   - Apollo allows a group to view and manually refine predicted genome annotations
   - Use Apollo to edit annotations within your group.
   - Export manual annotations as GFF3.
-contributions:
-  authorship:
-    - abretaud
-  funding:
-    - erasmusplus
+contributors:
+  - abretaud
+  - erasmusplus
 
 requirements:
   - type: "internal"
@@ -110,9 +108,9 @@ In this tutorial we use the same data as in the [Funannotate](../funannotate/tut
 >     -> `{{ page.title }}`):
 >
 >    ```
->    https://zenodo.org/record/3270822/files/genome.fasta
->    https://zenodo.org/record/3270822/files/annotation.gff3
->    https://zenodo.org/record/3270822/files/rnaseq.bam
+>    https://zenodo.org/api/files/042ff43f-cd53-45ec-90cf-781fe53e3771/genome.fasta
+>    https://zenodo.org/api/files/042ff43f-cd53-45ec-90cf-781fe53e3771/annotation.gff3
+>    https://zenodo.org/api/files/042ff43f-cd53-45ec-90cf-781fe53e3771/rnaseq.bam
 >    ```
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}

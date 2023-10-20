@@ -4,7 +4,16 @@ layout: base
 
 {% assign contributors = site.data['contributors'] %}
 
-{% assign sorted_topics = site | list_topics_ids %}
+{% assign sorted_topics = "" | split: "," %}
+{% assign sorted_topics_pre = site.data | sort | order: "title" %}
+
+{% for topic in sorted_topics_pre %}
+    {% if topic[0] == "introduction" %}
+        {% assign sorted_topics = sorted_topics | unshift: topic %}
+    {% else %}
+        {% assign sorted_topics = sorted_topics | push: topic %}
+    {% endif %}
+{% endfor %}
 
 <section>
     <h1>Welcome to {{ site.title }}</h1>
@@ -32,21 +41,20 @@ layout: base
     <div class="row">
         <div class="col-lg-7 col-md-7 col-sm-12">
             <h2>Galaxy for Scientists</h2>
-            <table class="table table-striped">
+            <table class="table table-striped" role="presentation">
                 <thead>
                     <tr>
-                        <th scope="col">Topic</th>
-                        <th scope="col">Tutorials</th>
+                        <th>Topic</th>
+                        <th role="presentation">Tutorials</th>
                     </tr>
                 </thead>
                 <tbody>
-                {% for topic_name in sorted_topics %}
-                    {% assign topic = site.data[topic_name] %}
-                    {% if topic.type == "use" %}
-                    {% if topic.draft != true or jekyll.environment != "production" %}
+                {% for topic in sorted_topics %}
+                    {% if topic[1].type == "use" %}
+                    {% if topic[1].draft != true or jekyll.environment != "production" %}
                     <tr>
-                        {% assign tutorial_number = site | topic_filter_tutorial_count:topic.name %}
-                        <td><a href="{{ site.baseurl }}/topics/{{ topic.name }}/">{{ topic.title }}</a>{% if topic.draft %} <div class="label label-default tutorial_tag" style="{{ 'work-in-progress' | colour_tag }}">work-in-progress</div>{% endif %}</td>
+                        {% assign tutorial_number = site | topic_filter:topic[1].name | topic_count %}
+                        <td><a href="{{ site.baseurl }}/topics/{{ topic[1].name }}/">{{ topic[1].title }}</a>{% if topic[1].draft %} <div class="label label-default tutorial_tag" style="{{ 'work-in-progress' | colour_tag }}">work-in-progress</div>{% endif %}</td>
                         <td>{{ tutorial_number }}</td>
                     </tr>
                     {% endif %}
@@ -59,18 +67,17 @@ layout: base
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">Topic</th>
-                        <th scope="col">Tutorials</th>
+                        <th>Topic</th>
+                        <th>Tutorials</th>
                     </tr>
                 </thead>
                 <tbody>
-                {% for topic_name in sorted_topics %}
-                    {% assign topic = site.data[topic_name] %}
-                    {% if topic.type == "basics" %}
-                    {% if topic.draft != true or jekyll.environment != "production" %}
+                {% for topic in sorted_topics %}
+                    {% if topic[1].type == "basics" %}
+                    {% if topic[1].draft != true or jekyll.environment != "production" %}
                     <tr>
-                        {% assign tutorial_number = site | topic_filter:topic.name | topic_count %}
-                        <td><a href="{{ site.baseurl }}/topics/{{ topic.name }}/">{{ topic.title }}</a>{% if topic.draft %} <div class="label label-default tutorial_tag" style="{{ 'work-in-progress' | colour_tag }}">work-in-progress</div>{% endif %}</td>
+                        {% assign tutorial_number = site | topic_filter:topic[1].name | topic_count %}
+                        <td><a href="{{ site.baseurl }}/topics/{{ topic[1].name }}/">{{ topic[1].title }}</a>{% if topic[1].draft %} <div class="label label-default tutorial_tag" style="{{ 'work-in-progress' | colour_tag }}">work-in-progress</div>{% endif %}</td>
                         <td>{{ tutorial_number }}</td>
                     </tr>
                     {% endif %}
@@ -83,18 +90,17 @@ layout: base
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">Topic</th>
-                        <th scope="col">Tutorials</th>
+                        <th>Topic</th>
+                        <th>Tutorials</th>
                     </tr>
                 </thead>
                 <tbody>
-                {% for topic_name in sorted_topics %}
-                    {% assign topic = site.data[topic_name] %}
-                    {% if topic.type == "data-science" %}
-                    {% if topic.draft != true or jekyll.environment != "production" %}
+                {% for topic in sorted_topics %}
+                    {% if topic[1].type == "data-science" %}
+                    {% if topic[1].draft != true or jekyll.environment != "production" %}
                     <tr>
-                        {% assign tutorial_number = site | topic_filter:topic.name | topic_count %}
-                        <td><a href="{{ site.baseurl }}/topics/{{ topic.name }}/">{{ topic.title }}</a>{% if topic.draft %} <div class="label label-default tutorial_tag" style="{{ 'work-in-progress' | colour_tag }}">work-in-progress</div>{% endif %}</td>
+                        {% assign tutorial_number = site | topic_filter:topic[1].name | topic_count %}
+                        <td><a href="{{ site.baseurl }}/topics/{{ topic[1].name }}/">{{ topic[1].title }}</a>{% if topic[1].draft %} <div class="label label-default tutorial_tag" style="{{ 'work-in-progress' | colour_tag }}">work-in-progress</div>{% endif %}</td>
                         <td>{{ tutorial_number }}</td>
                     </tr>
                     {% endif %}
@@ -107,18 +113,17 @@ layout: base
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">Topic</th>
-                        <th scope="col">Tutorials</th>
+                        <th>Topic</th>
+                        <th>Tutorials</th>
                     </tr>
                 </thead>
                 <tbody>
-                {% for topic_name in sorted_topics %}
-                    {% assign topic = site.data[topic_name] %}
-                    {% if topic.type == "admin-dev" %}
-                    {% if topic.draft != true or jekyll.environment != "production" %}
+                {% for topic in sorted_topics %}
+                    {% if topic[1].type == "admin-dev" %}
+                    {% if topic[1].draft != true or jekyll.environment != "production" %}
                     <tr>
-                        {% assign tutorial_number = site | topic_filter:topic.name | topic_count %}
-                        <td><a href="{{ site.baseurl }}/topics/{{ topic.name }}/">{{ topic.title }}</a>{% if topic.draft %} <div class="label label-default tutorial_tag" style="{{ 'work-in-progress' | colour_tag }}">work-in-progress</div>{% endif %}</td>
+                        {% assign tutorial_number = site | topic_filter:topic[1].name | topic_count %}
+                        <td><a href="{{ site.baseurl }}/topics/{{ topic[1].name }}/">{{ topic[1].title }}</a>{% if topic[1].draft %} <div class="label label-default tutorial_tag" style="{{ 'work-in-progress' | colour_tag }}">work-in-progress</div>{% endif %}</td>
                         <td>{{ tutorial_number }}</td>
                     </tr>
                     {% endif %}
@@ -139,18 +144,17 @@ layout: base
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">Topic</th>
-                        <th scope="col">Tutorials</th>
+                        <th>Topic</th>
+                        <th>Tutorials</th>
                     </tr>
                 </thead>
                 <tbody>
-                {% for topic_name in sorted_topics %}
-                    {% assign topic = site.data[topic_name] %}
-                    {% if topic.type == "instructors" %}
-                    {% if topic.draft != true or jekyll.environment != "production" %}
+                {% for topic in sorted_topics %}
+                    {% if topic[1].type == "instructors" %}
+                    {% if topic[1].draft != true or jekyll.environment != "production" %}
                     <tr>
-                        {% assign tutorial_number = site | topic_filter:topic.name | topic_count %}
-                        <td><a href="{{ site.baseurl }}/topics/{{ topic.name }}/">{{ topic.title }}</a>{% if topic.draft %} <div class="label label-default tutorial_tag" style="{{ 'work-in-progress' | colour_tag }}">work-in-progress</div>{% endif %}</td>
+                        {% assign tutorial_number = site | topic_filter:topic[1].name | topic_count %}
+                        <td><a href="{{ site.baseurl }}/topics/{{ topic[1].name }}/">{{ topic[1].title }}</a>{% if topic[1].draft %} <div class="label label-default tutorial_tag" style="{{ 'work-in-progress' | colour_tag }}">work-in-progress</div>{% endif %}</td>
                         <td>{{ tutorial_number }}</td>
                     </tr>
                     {% endif %}
@@ -185,6 +189,9 @@ layout: base
            </div>
                  <!-- GTN Tweets -->
           <div class="col-12">
+            <h2>GTN Tweets</h2>
+            <a class="twitter-timeline" data-height="500" href="https://twitter.com/gxytraining?ref_src=twsrc%5Etfw">Tweets by gxytraining</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
             <h2>GTN Toots</h2>
 	    <a rel="me" href="https://mstdn.science/@gtn">Follow us on Mastodon</a>
           </div>
@@ -196,27 +203,34 @@ layout: base
            <!-- Our awesome Contributors -->
         <div class="col-12">
             <h2>Contributor Hall of Fame</h2>
-
-            <p>
-             {% snippet faqs/gtn/gtn_stats.md compact=true %}
-			</p>
-            <p>
-			This project would not be possible without the many amazing community contributors!
+	    <div class="row">
+		<div class="col-md-6">
+			<p>
+			This project would not be possible without the many amazing community contributors! 
 			</p>
 			<p>
-		<a class="btn btn-info" href="{{ site.baseurl }}/hall-of-fame">View the Hall of Fame</a>
-
-        <a class="btn btn-warning" href="{{ site.baseurl }}/stats">View all GTN stats</a>
-
+				Check out the full <a class="btn btn-primary" href="{{ site.baseurl }}/hall-of-fame">Hall of Fame</a>.
 			</p>
 			<p>Do you want to help with this project and join our Hall of Fame? Please see our <a href="{{ site.baseurl }}/topics/contributing/">dedicated tutorials</a> or our <a href="{{ site.baseurl }}/faq">Frequently Asked Questions</a> to get you started.</p>
+		</div>
+		<div class="col-md-6">
+		<a  href="{{ site.baseurl }}/hall-of-fame" class="logo">
+		<div class="gtn-card color-agenda" style="color: black">
+			{% assign contributors = site.data['contributors'] | where_exp: "item", "item.halloffame != 'no'" | sort: "joined" %}
+			<div class="card-title">{{ contributors | size }}</div>
+			<div class="card-text">Contributors</div>
+		</div>
+		</a>
+		</div>
+	</div>
+
 
         </div>
         </div>
         <div class="col-lg-5 col-md-5 col-sm-12">
           <div class="col-12">
                         <h2>The Galaxy Training Network</h2>
-                        {% include _includes/map.html height=300 %}
+                        {% include _includes/map.html %}
 
             </div>
           </div>
@@ -249,3 +263,11 @@ layout: base
      </p>
     </div>
 </section>
+
+<!-- Gitter -->
+<script>
+  ((window.gitter = {}).chat = {}).options = {
+  room: '{{ site.gitter_url | remove: "https://gitter.im/" }}'
+  };
+</script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>

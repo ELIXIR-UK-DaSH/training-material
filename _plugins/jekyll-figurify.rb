@@ -40,11 +40,12 @@ module Jekyll
 
         %(
           <div style="overflow-x: auto">
-          <object data="#{url}" #{style} type="image/svg+xml" alt="#{alt}">
+          <object data="#{url}" #{style} type="image/svg+xml">
             #{fallback}
             #{alt}
           </object>
           </div>
+          <small><a href="#{url}">Open image in new tab</a></small>
         )
       else
         %(
@@ -81,7 +82,6 @@ module Jekyll
           %(
             <figure id="figure-#{num_figure}" style="max-width: 90%; margin:auto;">
               #{image}
-              <a target="_blank" href="#{url}" rel="noopener noreferrer"><small>Open image in new tab</small></a>
               <figcaption>
                 <span class="figcaption-prefix"><strong>#{prefix}#{num_figure}</strong>:</span> #{title}
               </figcaption>
@@ -103,9 +103,7 @@ module Jekyll
         end
 
         %(
-        <a href="#{url}" rel="noopener noreferrer">
           <img src="#{url}"  alt="#{alt}" #{style} #{dimensions} loading="lazy">
-        </a>
         ).split("\n").map(&:strip).join
       end
     end

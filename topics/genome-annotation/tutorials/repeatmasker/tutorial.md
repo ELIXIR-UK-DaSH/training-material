@@ -15,16 +15,14 @@ level: Introductory
 key_points:
   - RepeatMasker can be used to soft-mask a genome
   - It is an essential first step before running structural annotation pipelines
-contributions:
-  authorship:
-    - abretaud
-    - alexcorm
-    - lleroi
-    - r1corre
-    - stephanierobin
-    - jkreplak
-  funding:
-    - erasmusplus
+contributors:
+  - abretaud
+  - alexcorm
+  - lleroi
+  - r1corre
+  - stephanierobin
+  - erasmusplus
+  - jkreplak
 
 abbreviations:
   SINEs: Short Interspersed Nuclear Elements
@@ -85,9 +83,9 @@ In this tutorial you will learn how to soft-mask the genome sequence of a small 
 >     -> `{{ page.title }}`):
 >
 >    ```
->    https://zenodo.org/record/7085837/files/genome_raw.fasta
->    https://zenodo.org/record/7085837/files/Muco_library_RM2.fasta
->    https://zenodo.org/record/7085837/files/Muco_library_EDTA.fasta
+>    https://zenodo.org/api/files/debdbbfd-4739-4f2d-bb79-814ac032c8b5/genome_raw.fasta
+>    https://zenodo.org/api/files/debdbbfd-4739-4f2d-bb79-814ac032c8b5/Muco_library_RM2.fasta
+>    https://zenodo.org/api/files/debdbbfd-4739-4f2d-bb79-814ac032c8b5/Muco_library_EDTA.fasta
 >    ```
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}

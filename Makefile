@@ -97,7 +97,6 @@ build: clean api/swagger.json ## build files but do not run a server (You can sp
 check-frontmatter: ## Validate the frontmatter
 	$(ACTIVATE_ENV) && \
 		bundle exec ruby bin/validate-frontmatter.rb
-		bundle exec ruby bin/validate-other.rb
 .PHONY: check-frontmatter
 
 check-contributors: ## Validate the contributors.yaml file
@@ -234,7 +233,6 @@ annotate: ## annotate the tutorials with usable Galaxy instances
 	${ACTIVATE_ENV} && \
 	wget https://github.com/hexylena/toolshed-version-database/raw/main/guid-rev.json -O metadata/toolshed-revisions.json && \
 	python bin/supported-fetch.py
-	bin/workflows-fetch.rb
 .PHONY: annotate
 
 rebuild-search-index: ## Rebuild search index

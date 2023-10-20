@@ -2,8 +2,8 @@
 layout: tutorial_hands_on
 
 title: "Clustering 3K PBMCs with Scanpy"
-subtopic: firstsc
-priority: 2
+subtopic: end-to-end
+priority: 4
 redirect_from:
   - /topics/transcriptomics/tutorials/scrna-scanpy-pbmc3k/tutorial
 zenodo_link: 'https://zenodo.org/record/3581213'
@@ -33,6 +33,7 @@ requirements:
         - scrna-preprocessing
         - scrna-preprocessing-tenx
 tags:
+- single-cell
 - 10x
 contributors:
 - bebatut

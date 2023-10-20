@@ -274,8 +274,6 @@ module Jekyll
 
     def convert_to_material_list(site, materials)
       # [{"name"=>"introduction", "topic"=>"admin"}]
-      return [] if materials.nil?
-
       materials.map do |m|
         if m.key?('name') && m.key?('topic')
           found = TopicFilter.fetch_tutorial_material(site, m['topic'], m['name'])
@@ -315,27 +313,6 @@ module Jekyll
       'GTN_TRS_ERROR'
     end
 
-    def layout_to_human(layout)
-      case layout
-      when /slides/
-        'Slides'
-      when /tutorial_hands_on/
-        'Hands-on'
-      when 'faq'
-        'FAQs'
-      when 'news'
-        'News'
-      end
-    end
-
-    def topic_name_from_page(page, site)
-      if page.key? 'topic_name'
-        site.data[page['topic_name']]['title']
-      else
-        site.data.fetch(page['url'].split('/')[2], { 'title' => '' })['title']
-      end
-    end
-
     ##
     # Get the topic of a page's path
     # Params:
@@ -358,7 +335,6 @@ module Jekyll
     # +String+:: The URL of the default link
     def get_default_link(material)
       return 'NO LINK' if material.nil?
-      return 'NO LINK' if material == true
 
       url = nil
 

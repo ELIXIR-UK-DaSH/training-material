@@ -136,19 +136,15 @@ module Gtn
       box_safe_final
     end
 
-    def self.format_box_title(title, box_type, lang = 'en', noprefix: false)
+    def self.format_box_title(title, box_type, lang = 'en')
       lang = 'en' if (lang == '') || lang.nil?
       title_fmted = (!title.nil? && title.length.positive? ? ": #{title}" : '')
-      if noprefix && !title.nil?
-        title
-      else
-        "#{@@BOX_TITLES[lang][box_type]}#{title_fmted}"
-      end
+      "#{@@BOX_TITLES[lang][box_type]}#{title_fmted}"
     end
 
-    def self.generate_collapsible_title(box_type, title, lang = 'en', key, contents: false, noprefix: false)
+    def self.generate_collapsible_title(box_type, title, lang = 'en', key, contents: false)
       box_id = get_id(box_type, title, key)
-      box_title = format_box_title(title, box_type, lang, noprefix: noprefix)
+      box_title = format_box_title(title, box_type, lang)
       refers_to_contents = contents ? '-contents' : ''
       # These are all collapsed by default, details, tip, and solution.
       # rubocop:disable Layout/LineLength
@@ -163,9 +159,9 @@ module Gtn
       # rubocop:enable Layout/LineLength
     end
 
-    def self.generate_static_title(box_type, title, lang = 'en', key, noprefix: false)
+    def self.generate_static_title(box_type, title, lang = 'en', key)
       box_id = get_id(box_type, title, key)
-      box_title = format_box_title(title, box_type, lang, noprefix: noprefix)
+      box_title = format_box_title(title, box_type, lang)
 
       puts "Static | typ=#{box_type} | t=#{title} | l=#{lang} | k=#{key}" if title.nil?
 
@@ -182,12 +178,12 @@ module Gtn
       title.gsub(/"/, '&quot;')
     end
 
-    def self.generate_title(box_type, title, lang = 'en', key, contents: false, noprefix: false)
+    def self.generate_title(box_type, title, lang = 'en', key, contents: false)
       title = safe_title(title)
       if @@COLLAPSIBLE_BOXES.include?(box_type)
-        generate_collapsible_title(box_type, title, lang, key, contents: contents, noprefix: noprefix)
+        generate_collapsible_title(box_type, title, lang, key, contents: contents)
       else
-        generate_static_title(box_type, title, lang, key, noprefix: noprefix)
+        generate_static_title(box_type, title, lang, key)
       end
     end
 

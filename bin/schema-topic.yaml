@@ -97,7 +97,7 @@ mapping:
                       description: |
                         `false` to hide your topic from the production GTN. This is useful if you need a topic for a workshop, but have not finished making it up to GTN standards.
 
-    editorial_board:
+    maintainers:
         type: seq
         required: true
         sequence:

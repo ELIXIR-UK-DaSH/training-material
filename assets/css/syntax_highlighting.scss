@@ -31,11 +31,16 @@
   color: #f8f8f2;
   font-style: italic;
 }
-
-.gr, .gt {
+.gr {
   color: #fb7caa;
 }
-.gh, .go {
+.gt {
+  color: #fb7caa;
+}
+.gh {
+  color: #b1b0b0;
+}
+.go {
   color: #b1b0b0;
 }
 .gp {
@@ -47,41 +52,148 @@
 .gu {
   color: #b1b0b0;
 }
-.k, .kv, .kc, .kd, .kp, .kr, .kt {
-	color: #66d9ef;
-	font-weight: bold;
+.k, .kv {
+  color: #66d9ef;
+  font-weight: bold;
+}
+.kc {
+  color: #66d9ef;
+  font-weight: bold;
+}
+.kd {
+  color: #66d9ef;
+  font-weight: bold;
+}
+.kp {
+  color: #66d9ef;
+  font-weight: bold;
+}
+.kr {
+  color: #66d9ef;
+  font-weight: bold;
+}
+.kt {
+  color: #66d9ef;
+  font-weight: bold;
 }
 .nt {
   color: rgb(238, 134, 172);
 }
-.kn, .ow, .o {
+.kn {
   color: rgb(238, 134, 172);
   font-weight: bold;
 }
-
-.mf, .mh, .il, .mi, .mo, .m, .mb, .mx, .se {
+.ow {
+  color: rgb(238, 134, 172);
+  font-weight: bold;
+}
+.o {
+  color: rgb(238, 134, 172);
+  font-weight: bold;
+}
+.mf {
   color: #b997ff;
 }
-.sb, .sc, .sd, .s2, .sh, .si, .sx, .sr, .s1, .ss, .s, .sa, .dl {
+.mh {
+  color: #b997ff;
+}
+.il {
+  color: #b997ff;
+}
+.mi {
+  color: #b997ff;
+}
+.mo {
+  color: #b997ff;
+}
+.m, .mb, .mx {
+  color: #b997ff;
+}
+.se {
+  color: #b997ff;
+}
+.sb {
+  color: #d7d787;
+}
+.sc {
+  color: #d7d787;
+}
+.sd {
+  color: #d7d787;
+}
+.s2 {
+  color: #d7d787;
+}
+.sh {
+  color: #d7d787;
+}
+.si {
+  color: #d7d787;
+}
+.sx {
+  color: #d7d787;
+}
+.sr {
+  color: #d7d787;
+}
+.s1 {
+  color: #d7d787;
+}
+.ss {
+  color: #d7d787;
+}
+.s, .sa, .dl {
   color: #d7d787;
 }
 .na {
   color: #a6e22e;
 }
-
-.nc, .nd, .ne, .nf, .fm {
+.nc {
+  color: #a6e22e;
+  font-weight: bold;
+}
+.nd {
+  color: #a6e22e;
+  font-weight: bold;
+}
+.ne {
+  color: #a6e22e;
+  font-weight: bold;
+}
+.nf, .fm {
   color: #a6e22e;
   font-weight: bold;
 }
 .no {
   color: #66d9ef;
 }
-
-
-.nb, .ni, .nn, .vc, .vg, .vi, .nv, .vm, .w, .bp {
+.bp {
   color: #f8f8f2;
 }
-
+.nb {
+  color: #f8f8f2;
+}
+.ni {
+  color: #f8f8f2;
+}
+.nn {
+  color: #f8f8f2;
+}
+.vc {
+  color: #f8f8f2;
+}
+.vg {
+  color: #f8f8f2;
+}
+.vi {
+  color: #f8f8f2;
+}
+.nv, .vm {
+  color: #f8f8f2;
+}
+.w {
+  color: #f8f8f2;
+}
 .nl {
   color: #f8f8f2;
   font-weight: bold;

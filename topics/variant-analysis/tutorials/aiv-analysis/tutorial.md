@@ -23,7 +23,6 @@ contributors:
 - wm75
 tags:
 - virology
-- one-health
 ---
 
 
