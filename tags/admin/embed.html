@@ -6,63 +6,42 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Galaxy Training!</title>
         
-            <!--
-<script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
--->
-<!-- We let users opt-out, so if they've opted in, we need to append the plausible script to the body -->
-
-<script>
-var scriptElement = document.createElement("script");
-scriptElement.async = true;
-scriptElement.defer = true;
-scriptElement.setAttribute("data-domain", "training.galaxyproject.org");
-scriptElement.src = "https://plausible.galaxyproject.eu/js/plausible.js";
-
-// Appending the script element to the body
-if(localStorage.getItem('plausible-opt-out') !== 'opt-out' && navigator.doNotTrack !== "1") {
-	console.log("Plausible: opt-in");
-	// Wait for the document to be available
-	document.addEventListener("DOMContentLoaded", function(event) {
-		document.body.appendChild(scriptElement);
-	});
-}
-</script>
-
-<!-- JavaScript Error Monitoring, and performance tracking. -->
-<!--
+            <!-- JavaScript Error Monitoring, and performance tracking. -->
 <script
   src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
   integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
   crossorigin="anonymous"
 ></script>
--->
 <script type="text/javascript">
-var scriptElement = document.createElement("script");
-scriptElement.src = "https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js";
-scriptElement.integrity = "sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43";
-scriptElement.crossOrigin = "anonymous";
-
 if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack !== "1") {
 	console.log("Sentry: opt-in");
-	// Appending the script element to the body
-	document.addEventListener("DOMContentLoaded", function(event) {
-		document.body.appendChild(scriptElement);
-	});
-		
 	Sentry.init({
-	  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
-	  release: "galaxy-training-network@2752a665e9cde64fc46b07701823f4c6cbe561b8",
-	  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
-	  sampleRate: 0.1,
-	  tracesSampleRate: 0.1,
-	  // Capture Replay for no sessions by default
-	  replaysSessionSampleRate: 0.01,
-	  // plus for 1% of sessions with an error
-	  replaysOnErrorSampleRate: 0.01,
-	  // PII OFF
-	  sendDefaultPii: false, // Off by default but just in case.
-	  environment: "production",
+		dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+		release: "galaxy-training-network@dc7204bc447eca1a8a7410a3ad547549d9454270",
+		integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+		sampleRate: 0.1,
+		tracesSampleRate: 0.1,
+		// Capture Replay for no sessions by default
+		replaysSessionSampleRate: 0.01,
+		// plus for 1% of sessions with an error
+		replaysOnErrorSampleRate: 0.01,
+		// PII OFF
+		sendDefaultPii: false, // Off by default but just in case.
+		environment: "production",
 	});
+}
+</script>
+
+<!-- Page view tracking -->
+<script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
+<script>
+if(localStorage.getItem('plausible-opt-out') !== 'opt-out' && navigator.doNotTrack !== "1") {
+	localStorage.removeItem("plausible_ignore")
+	console.log("Plausible: opt-in");
+} else {
+	// if they're opting-out, or DNT
+	// we might get one page by accident but we won't get future ones.
+	localStorage.setItem("plausible_ignore", "true")
 }
 </script>
 
@@ -75,8 +54,8 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
         <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
-        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1698801183' as='script'>
-<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1698801183' as='script'>
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1698855886' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1698855886' as='script'>
         <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
         <link rel="manifest" href="/training-material/manifest.json">
         <meta name="theme-color" content="#2c3143"/>
@@ -101,7 +80,7 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
         
     </head>
     <body data-brightness="auto" data-contrast="auto">
-        <script src='/training-material/assets/js/bundle.theme.js?v=1698801183'></script>
+        <script src='/training-material/assets/js/bundle.theme.js?v=1698855886'></script>
         <section class="tutorials-list by_tag_admin topic-type-">
 
 
@@ -313,7 +292,7 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ff9cd8; --color-darker: #ff75ce; --color-dimmed: #ff89d3;" title="Click to show all tutorials tagged ansible">ansible</a>
+              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ffcfeb; --color-darker: #ffaadd; --color-dimmed: #ffbde4;" title="Click to show all tutorials tagged ansible">ansible</a>
               
             
             </div>
@@ -618,9 +597,9 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ff9cd8; --color-darker: #ff75ce; --color-dimmed: #ff89d3;" title="Click to show all tutorials tagged ansible">ansible</a>
+              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ffcfeb; --color-darker: #ffaadd; --color-dimmed: #ffbde4;" title="Click to show all tutorials tagged ansible">ansible</a>
               
-              <a href="/training-material/search?query=automation" class="label label-default tutorial_tag" style="--color-primary: #c9aeff; --color-darker: #ba93ff; --color-dimmed: #c2a0ff;" title="Click to show all tutorials tagged automation">automation</a>
+              <a href="/training-material/search?query=automation" class="label label-default tutorial_tag" style="--color-primary: #e3d7ff; --color-darker: #d0b9ff; --color-dimmed: #dac8ff;" title="Click to show all tutorials tagged automation">automation</a>
               
             
             </div>
@@ -767,11 +746,11 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=jobs" class="label label-default tutorial_tag" style="--color-primary: #00d85c; --color-darker: #00c151; --color-dimmed: #00cc57;" title="Click to show all tutorials tagged jobs">jobs</a>
+              <a href="/training-material/search?query=jobs" class="label label-default tutorial_tag" style="--color-primary: #00fe6e; --color-darker: #00e261; --color-dimmed: #00f067;" title="Click to show all tutorials tagged jobs">jobs</a>
               
-              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ff9cd8; --color-darker: #ff75ce; --color-dimmed: #ff89d3;" title="Click to show all tutorials tagged ansible">ansible</a>
+              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ffcfeb; --color-darker: #ffaadd; --color-dimmed: #ffbde4;" title="Click to show all tutorials tagged ansible">ansible</a>
               
-              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffa2a6; --color-darker: #ff8086; --color-dimmed: #ff9296;" title="Click to show all tutorials tagged git-gat">git-gat</a>
+              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffd2d3; --color-darker: #ffafb2; --color-dimmed: #ffc1c3;" title="Click to show all tutorials tagged git-gat">git-gat</a>
               
             
             </div>
@@ -1181,7 +1160,7 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffa2a6; --color-darker: #ff8086; --color-dimmed: #ff9296;" title="Click to show all tutorials tagged git-gat">git-gat</a>
+              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffd2d3; --color-darker: #ffafb2; --color-dimmed: #ffc1c3;" title="Click to show all tutorials tagged git-gat">git-gat</a>
               
             
             </div>
@@ -1471,11 +1450,11 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ff9cd8; --color-darker: #ff75ce; --color-dimmed: #ff89d3;" title="Click to show all tutorials tagged ansible">ansible</a>
+              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ffcfeb; --color-darker: #ffaadd; --color-dimmed: #ffbde4;" title="Click to show all tutorials tagged ansible">ansible</a>
               
-              <a href="/training-material/search?query=storage" class="label label-default tutorial_tag" style="--color-primary: #ff9ae1; --color-darker: #ff73d9; --color-dimmed: #ff88dd;" title="Click to show all tutorials tagged storage">storage</a>
+              <a href="/training-material/search?query=storage" class="label label-default tutorial_tag" style="--color-primary: #ffcfef; --color-darker: #ffa9e4; --color-dimmed: #ffbce9;" title="Click to show all tutorials tagged storage">storage</a>
               
-              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffa2a6; --color-darker: #ff8086; --color-dimmed: #ff9296;" title="Click to show all tutorials tagged git-gat">git-gat</a>
+              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffd2d3; --color-darker: #ffafb2; --color-dimmed: #ffc1c3;" title="Click to show all tutorials tagged git-gat">git-gat</a>
               
             
             </div>
@@ -1760,9 +1739,9 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=wireguard" class="label label-default tutorial_tag" style="--color-primary: #4dc8ff; --color-darker: #00b4ec; --color-dimmed: #00befa;" title="Click to show all tutorials tagged wireguard">wireguard</a>
+              <a href="/training-material/search?query=wireguard" class="label label-default tutorial_tag" style="--color-primary: #b9e2ff; --color-darker: #74cfff; --color-dimmed: #9ad8ff;" title="Click to show all tutorials tagged wireguard">wireguard</a>
               
-              <a href="/training-material/search?query=networking" class="label label-default tutorial_tag" style="--color-primary: #ff99e7; --color-darker: #ff71e1; --color-dimmed: #ff86e4;" title="Click to show all tutorials tagged networking">networking</a>
+              <a href="/training-material/search?query=networking" class="label label-default tutorial_tag" style="--color-primary: #ffcff2; --color-darker: #ffa8ea; --color-dimmed: #ffbcee;" title="Click to show all tutorials tagged networking">networking</a>
               
             
             </div>
@@ -1909,9 +1888,9 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=wireguard" class="label label-default tutorial_tag" style="--color-primary: #4dc8ff; --color-darker: #00b4ec; --color-dimmed: #00befa;" title="Click to show all tutorials tagged wireguard">wireguard</a>
+              <a href="/training-material/search?query=wireguard" class="label label-default tutorial_tag" style="--color-primary: #b9e2ff; --color-darker: #74cfff; --color-dimmed: #9ad8ff;" title="Click to show all tutorials tagged wireguard">wireguard</a>
               
-              <a href="/training-material/search?query=networking" class="label label-default tutorial_tag" style="--color-primary: #ff99e7; --color-darker: #ff71e1; --color-dimmed: #ff86e4;" title="Click to show all tutorials tagged networking">networking</a>
+              <a href="/training-material/search?query=networking" class="label label-default tutorial_tag" style="--color-primary: #ffcff2; --color-darker: #ffa8ea; --color-dimmed: #ffbcee;" title="Click to show all tutorials tagged networking">networking</a>
               
             
             </div>
@@ -2058,11 +2037,11 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=ga4gh" class="label label-default tutorial_tag" style="--color-primary: #ff9fc1; --color-darker: #ff7bae; --color-dimmed: #ff8eb7;" title="Click to show all tutorials tagged ga4gh">ga4gh</a>
+              <a href="/training-material/search?query=ga4gh" class="label label-default tutorial_tag" style="--color-primary: #ffd1df; --color-darker: #ffadc8; --color-dimmed: #ffbfd4;" title="Click to show all tutorials tagged ga4gh">ga4gh</a>
               
-              <a href="/training-material/search?query=beacon" class="label label-default tutorial_tag" style="--color-primary: #ff9fbe; --color-darker: #ff7cab; --color-dimmed: #ff8eb4;" title="Click to show all tutorials tagged beacon">beacon</a>
+              <a href="/training-material/search?query=beacon" class="label label-default tutorial_tag" style="--color-primary: #ffd1de; --color-darker: #ffadc6; --color-dimmed: #ffbfd2;" title="Click to show all tutorials tagged beacon">beacon</a>
               
-              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffa2a6; --color-darker: #ff8086; --color-dimmed: #ff9296;" title="Click to show all tutorials tagged git-gat">git-gat</a>
+              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffd2d3; --color-darker: #ffafb2; --color-dimmed: #ffc1c3;" title="Click to show all tutorials tagged git-gat">git-gat</a>
               
             
             </div>
@@ -2209,9 +2188,9 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ff9cd8; --color-darker: #ff75ce; --color-dimmed: #ff89d3;" title="Click to show all tutorials tagged ansible">ansible</a>
+              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ffcfeb; --color-darker: #ffaadd; --color-dimmed: #ffbde4;" title="Click to show all tutorials tagged ansible">ansible</a>
               
-              <a href="/training-material/search?query=storage" class="label label-default tutorial_tag" style="--color-primary: #ff9ae1; --color-darker: #ff73d9; --color-dimmed: #ff88dd;" title="Click to show all tutorials tagged storage">storage</a>
+              <a href="/training-material/search?query=storage" class="label label-default tutorial_tag" style="--color-primary: #ffcfef; --color-darker: #ffa9e4; --color-dimmed: #ffbce9;" title="Click to show all tutorials tagged storage">storage</a>
               
             
             </div>
@@ -2744,9 +2723,9 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=data" class="label label-default tutorial_tag" style="--color-primary: #00d945; --color-darker: #00c13c; --color-dimmed: #00cd41;" title="Click to show all tutorials tagged data">data</a>
+              <a href="/training-material/search?query=data" class="label label-default tutorial_tag" style="--color-primary: #00ff53; --color-darker: #00e349; --color-dimmed: #00f14e;" title="Click to show all tutorials tagged data">data</a>
               
-              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffa2a6; --color-darker: #ff8086; --color-dimmed: #ff9296;" title="Click to show all tutorials tagged git-gat">git-gat</a>
+              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffd2d3; --color-darker: #ffafb2; --color-dimmed: #ffc1c3;" title="Click to show all tutorials tagged git-gat">git-gat</a>
               
             
             </div>
@@ -2893,7 +2872,7 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=authentication" class="label label-default tutorial_tag" style="--color-primary: #dfa5ff; --color-darker: #d785ff; --color-dimmed: #db96ff;" title="Click to show all tutorials tagged authentication">authentication</a>
+              <a href="/training-material/search?query=authentication" class="label label-default tutorial_tag" style="--color-primary: #eed3ff; --color-darker: #e3b2ff; --color-dimmed: #e8c3ff;" title="Click to show all tutorials tagged authentication">authentication</a>
               
             
             </div>
@@ -3426,11 +3405,11 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ff9cd8; --color-darker: #ff75ce; --color-dimmed: #ff89d3;" title="Click to show all tutorials tagged ansible">ansible</a>
+              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ffcfeb; --color-darker: #ffaadd; --color-dimmed: #ffbde4;" title="Click to show all tutorials tagged ansible">ansible</a>
               
-              <a href="/training-material/search?query=deploying" class="label label-default tutorial_tag" style="--color-primary: #ffa491; --color-darker: #ff8461; --color-dimmed: #ff947b;" title="Click to show all tutorials tagged deploying">deploying</a>
+              <a href="/training-material/search?query=deploying" class="label label-default tutorial_tag" style="--color-primary: #ffd3cb; --color-darker: #ffb1a2; --color-dimmed: #ffc2b7;" title="Click to show all tutorials tagged deploying">deploying</a>
               
-              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffa2a6; --color-darker: #ff8086; --color-dimmed: #ff9296;" title="Click to show all tutorials tagged git-gat">git-gat</a>
+              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffd2d3; --color-darker: #ffafb2; --color-dimmed: #ffc1c3;" title="Click to show all tutorials tagged git-gat">git-gat</a>
               
             
             </div>
@@ -3715,9 +3694,9 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ff9cd8; --color-darker: #ff75ce; --color-dimmed: #ff89d3;" title="Click to show all tutorials tagged ansible">ansible</a>
+              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ffcfeb; --color-darker: #ffaadd; --color-dimmed: #ffbde4;" title="Click to show all tutorials tagged ansible">ansible</a>
               
-              <a href="/training-material/search?query=interactive-tools" class="label label-default tutorial_tag" style="--color-primary: #ffa581; --color-darker: #ff863a; --color-dimmed: #ff9664;" title="Click to show all tutorials tagged interactive-tools">interactive-tools</a>
+              <a href="/training-material/search?query=interactive-tools" class="label label-default tutorial_tag" style="--color-primary: #ffd3c6; --color-darker: #ffb296; --color-dimmed: #ffc3af;" title="Click to show all tutorials tagged interactive-tools">interactive-tools</a>
               
             
             </div>
@@ -4165,13 +4144,13 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ff9cd8; --color-darker: #ff75ce; --color-dimmed: #ff89d3;" title="Click to show all tutorials tagged ansible">ansible</a>
+              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ffcfeb; --color-darker: #ffaadd; --color-dimmed: #ffbde4;" title="Click to show all tutorials tagged ansible">ansible</a>
               
-              <a href="/training-material/search?query=monitoring" class="label label-default tutorial_tag" style="--color-primary: #ffa57e; --color-darker: #ff8630; --color-dimmed: #ff9660;" title="Click to show all tutorials tagged monitoring">monitoring</a>
+              <a href="/training-material/search?query=monitoring" class="label label-default tutorial_tag" style="--color-primary: #ffd3c5; --color-darker: #ffb294; --color-dimmed: #ffc3ae;" title="Click to show all tutorials tagged monitoring">monitoring</a>
               
-              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffa2a6; --color-darker: #ff8086; --color-dimmed: #ff9296;" title="Click to show all tutorials tagged git-gat">git-gat</a>
+              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffd2d3; --color-darker: #ffafb2; --color-dimmed: #ffc1c3;" title="Click to show all tutorials tagged git-gat">git-gat</a>
               
-              <a href="/training-material/search?query=broken" class="label label-default tutorial_tag" style="--color-primary: #ffaa00; --color-darker: #e39700; --color-dimmed: #f1a000;" title="Click to show all tutorials tagged broken">broken</a>
+              <a href="/training-material/search?query=broken" class="label label-default tutorial_tag" style="--color-primary: #ffd5b1; --color-darker: #ffb65b; --color-dimmed: #ffc58d;" title="Click to show all tutorials tagged broken">broken</a>
               
             
             </div>
@@ -4318,11 +4297,11 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ff9cd8; --color-darker: #ff75ce; --color-dimmed: #ff89d3;" title="Click to show all tutorials tagged ansible">ansible</a>
+              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ffcfeb; --color-darker: #ffaadd; --color-dimmed: #ffbde4;" title="Click to show all tutorials tagged ansible">ansible</a>
               
-              <a href="/training-material/search?query=monitoring" class="label label-default tutorial_tag" style="--color-primary: #ffa57e; --color-darker: #ff8630; --color-dimmed: #ff9660;" title="Click to show all tutorials tagged monitoring">monitoring</a>
+              <a href="/training-material/search?query=monitoring" class="label label-default tutorial_tag" style="--color-primary: #ffd3c5; --color-darker: #ffb294; --color-dimmed: #ffc3ae;" title="Click to show all tutorials tagged monitoring">monitoring</a>
               
-              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffa2a6; --color-darker: #ff8086; --color-dimmed: #ff9296;" title="Click to show all tutorials tagged git-gat">git-gat</a>
+              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffd2d3; --color-darker: #ffafb2; --color-dimmed: #ffc1c3;" title="Click to show all tutorials tagged git-gat">git-gat</a>
               
             
             </div>
@@ -4627,11 +4606,11 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=monitoring" class="label label-default tutorial_tag" style="--color-primary: #ffa57e; --color-darker: #ff8630; --color-dimmed: #ff9660;" title="Click to show all tutorials tagged monitoring">monitoring</a>
+              <a href="/training-material/search?query=monitoring" class="label label-default tutorial_tag" style="--color-primary: #ffd3c5; --color-darker: #ffb294; --color-dimmed: #ffc3ae;" title="Click to show all tutorials tagged monitoring">monitoring</a>
               
-              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ff9cd8; --color-darker: #ff75ce; --color-dimmed: #ff89d3;" title="Click to show all tutorials tagged ansible">ansible</a>
+              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ffcfeb; --color-darker: #ffaadd; --color-dimmed: #ffbde4;" title="Click to show all tutorials tagged ansible">ansible</a>
               
-              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffa2a6; --color-darker: #ff8086; --color-dimmed: #ff9296;" title="Click to show all tutorials tagged git-gat">git-gat</a>
+              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffd2d3; --color-darker: #ffafb2; --color-dimmed: #ffc1c3;" title="Click to show all tutorials tagged git-gat">git-gat</a>
               
             
             </div>
@@ -4914,9 +4893,9 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=tools" class="label label-default tutorial_tag" style="--color-primary: #ff9ec8; --color-darker: #ff79b8; --color-dimmed: #ff8dc0;" title="Click to show all tutorials tagged tools">tools</a>
+              <a href="/training-material/search?query=tools" class="label label-default tutorial_tag" style="--color-primary: #ffd0e2; --color-darker: #ffaccf; --color-dimmed: #ffbed8;" title="Click to show all tutorials tagged tools">tools</a>
               
-              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffa2a6; --color-darker: #ff8086; --color-dimmed: #ff9296;" title="Click to show all tutorials tagged git-gat">git-gat</a>
+              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffd2d3; --color-darker: #ffafb2; --color-dimmed: #ffc1c3;" title="Click to show all tutorials tagged git-gat">git-gat</a>
               
             
             </div>
@@ -5873,9 +5852,9 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ff9cd8; --color-darker: #ff75ce; --color-dimmed: #ff89d3;" title="Click to show all tutorials tagged ansible">ansible</a>
+              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ffcfeb; --color-darker: #ffaadd; --color-dimmed: #ffbde4;" title="Click to show all tutorials tagged ansible">ansible</a>
               
-              <a href="/training-material/search?query=systemd" class="label label-default tutorial_tag" style="--color-primary: #85d000; --color-darker: #76b900; --color-dimmed: #7dc400;" title="Click to show all tutorials tagged systemd">systemd</a>
+              <a href="/training-material/search?query=systemd" class="label label-default tutorial_tag" style="--color-primary: #9df400; --color-darker: #8bd900; --color-dimmed: #94e700;" title="Click to show all tutorials tagged systemd">systemd</a>
               
             
             </div>
@@ -6032,7 +6011,7 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=kubernetes" class="label label-default tutorial_tag" style="--color-primary: #ffa0bb; --color-darker: #ff7ca7; --color-dimmed: #ff8fb1;" title="Click to show all tutorials tagged kubernetes">kubernetes</a>
+              <a href="/training-material/search?query=kubernetes" class="label label-default tutorial_tag" style="--color-primary: #ffd1dd; --color-darker: #ffadc4; --color-dimmed: #ffc0d0;" title="Click to show all tutorials tagged kubernetes">kubernetes</a>
               
             
             </div>
@@ -6179,9 +6158,9 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=jobs" class="label label-default tutorial_tag" style="--color-primary: #00d85c; --color-darker: #00c151; --color-dimmed: #00cc57;" title="Click to show all tutorials tagged jobs">jobs</a>
+              <a href="/training-material/search?query=jobs" class="label label-default tutorial_tag" style="--color-primary: #00fe6e; --color-darker: #00e261; --color-dimmed: #00f067;" title="Click to show all tutorials tagged jobs">jobs</a>
               
-              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffa2a6; --color-darker: #ff8086; --color-dimmed: #ff9296;" title="Click to show all tutorials tagged git-gat">git-gat</a>
+              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffd2d3; --color-darker: #ffafb2; --color-dimmed: #ffc1c3;" title="Click to show all tutorials tagged git-gat">git-gat</a>
               
             
             </div>
@@ -6386,9 +6365,9 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ff9cd8; --color-darker: #ff75ce; --color-dimmed: #ff89d3;" title="Click to show all tutorials tagged ansible">ansible</a>
+              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ffcfeb; --color-darker: #ffaadd; --color-dimmed: #ffbde4;" title="Click to show all tutorials tagged ansible">ansible</a>
               
-              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffa2a6; --color-darker: #ff8086; --color-dimmed: #ff9296;" title="Click to show all tutorials tagged git-gat">git-gat</a>
+              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffd2d3; --color-darker: #ffafb2; --color-dimmed: #ffc1c3;" title="Click to show all tutorials tagged git-gat">git-gat</a>
               
             
             </div>
@@ -6736,9 +6715,9 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ff9cd8; --color-darker: #ff75ce; --color-dimmed: #ff89d3;" title="Click to show all tutorials tagged ansible">ansible</a>
+              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ffcfeb; --color-darker: #ffaadd; --color-dimmed: #ffbde4;" title="Click to show all tutorials tagged ansible">ansible</a>
               
-              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffa2a6; --color-darker: #ff8086; --color-dimmed: #ff9296;" title="Click to show all tutorials tagged git-gat">git-gat</a>
+              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffd2d3; --color-darker: #ffafb2; --color-dimmed: #ffc1c3;" title="Click to show all tutorials tagged git-gat">git-gat</a>
               
             
             </div>
@@ -7389,11 +7368,11 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ff9cd8; --color-darker: #ff75ce; --color-dimmed: #ff89d3;" title="Click to show all tutorials tagged ansible">ansible</a>
+              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ffcfeb; --color-darker: #ffaadd; --color-dimmed: #ffbde4;" title="Click to show all tutorials tagged ansible">ansible</a>
               
-              <a href="/training-material/search?query=jobs" class="label label-default tutorial_tag" style="--color-primary: #00d85c; --color-darker: #00c151; --color-dimmed: #00cc57;" title="Click to show all tutorials tagged jobs">jobs</a>
+              <a href="/training-material/search?query=jobs" class="label label-default tutorial_tag" style="--color-primary: #00fe6e; --color-darker: #00e261; --color-dimmed: #00f067;" title="Click to show all tutorials tagged jobs">jobs</a>
               
-              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffa2a6; --color-darker: #ff8086; --color-dimmed: #ff9296;" title="Click to show all tutorials tagged git-gat">git-gat</a>
+              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffd2d3; --color-darker: #ffafb2; --color-dimmed: #ffc1c3;" title="Click to show all tutorials tagged git-gat">git-gat</a>
               
             
             </div>
@@ -7678,11 +7657,11 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ff9cd8; --color-darker: #ff75ce; --color-dimmed: #ff89d3;" title="Click to show all tutorials tagged ansible">ansible</a>
+              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ffcfeb; --color-darker: #ffaadd; --color-dimmed: #ffbde4;" title="Click to show all tutorials tagged ansible">ansible</a>
               
-              <a href="/training-material/search?query=deploying" class="label label-default tutorial_tag" style="--color-primary: #ffa491; --color-darker: #ff8461; --color-dimmed: #ff947b;" title="Click to show all tutorials tagged deploying">deploying</a>
+              <a href="/training-material/search?query=deploying" class="label label-default tutorial_tag" style="--color-primary: #ffd3cb; --color-darker: #ffb1a2; --color-dimmed: #ffc2b7;" title="Click to show all tutorials tagged deploying">deploying</a>
               
-              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffa2a6; --color-darker: #ff8086; --color-dimmed: #ff9296;" title="Click to show all tutorials tagged git-gat">git-gat</a>
+              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffd2d3; --color-darker: #ffafb2; --color-dimmed: #ffc1c3;" title="Click to show all tutorials tagged git-gat">git-gat</a>
               
             
             </div>
@@ -7912,9 +7891,9 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ff9cd8; --color-darker: #ff75ce; --color-dimmed: #ff89d3;" title="Click to show all tutorials tagged ansible">ansible</a>
+              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ffcfeb; --color-darker: #ffaadd; --color-dimmed: #ffbde4;" title="Click to show all tutorials tagged ansible">ansible</a>
               
-              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffa2a6; --color-darker: #ff8086; --color-dimmed: #ff9296;" title="Click to show all tutorials tagged git-gat">git-gat</a>
+              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffd2d3; --color-darker: #ffafb2; --color-dimmed: #ffc1c3;" title="Click to show all tutorials tagged git-gat">git-gat</a>
               
             
             </div>
@@ -8121,13 +8100,13 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ff9cd8; --color-darker: #ff75ce; --color-dimmed: #ff89d3;" title="Click to show all tutorials tagged ansible">ansible</a>
+              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ffcfeb; --color-darker: #ffaadd; --color-dimmed: #ffbde4;" title="Click to show all tutorials tagged ansible">ansible</a>
               
-              <a href="/training-material/search?query=training" class="label label-default tutorial_tag" style="--color-primary: #ff97f1; --color-darker: #ff6eed; --color-dimmed: #ff84ef;" title="Click to show all tutorials tagged training">training</a>
+              <a href="/training-material/search?query=training" class="label label-default tutorial_tag" style="--color-primary: #ffcef7; --color-darker: #ffa7f2; --color-dimmed: #ffbbf5;" title="Click to show all tutorials tagged training">training</a>
               
-              <a href="/training-material/search?query=jobs" class="label label-default tutorial_tag" style="--color-primary: #00d85c; --color-darker: #00c151; --color-dimmed: #00cc57;" title="Click to show all tutorials tagged jobs">jobs</a>
+              <a href="/training-material/search?query=jobs" class="label label-default tutorial_tag" style="--color-primary: #00fe6e; --color-darker: #00e261; --color-dimmed: #00f067;" title="Click to show all tutorials tagged jobs">jobs</a>
               
-              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffa2a6; --color-darker: #ff8086; --color-dimmed: #ff9296;" title="Click to show all tutorials tagged git-gat">git-gat</a>
+              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffd2d3; --color-darker: #ffafb2; --color-dimmed: #ffc1c3;" title="Click to show all tutorials tagged git-gat">git-gat</a>
               
             
             </div>
@@ -8332,7 +8311,7 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ff9cd8; --color-darker: #ff75ce; --color-dimmed: #ff89d3;" title="Click to show all tutorials tagged ansible">ansible</a>
+              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ffcfeb; --color-darker: #ffaadd; --color-dimmed: #ffbde4;" title="Click to show all tutorials tagged ansible">ansible</a>
               
             
             </div>
@@ -8537,11 +8516,11 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=jobs" class="label label-default tutorial_tag" style="--color-primary: #00d85c; --color-darker: #00c151; --color-dimmed: #00cc57;" title="Click to show all tutorials tagged jobs">jobs</a>
+              <a href="/training-material/search?query=jobs" class="label label-default tutorial_tag" style="--color-primary: #00fe6e; --color-darker: #00e261; --color-dimmed: #00f067;" title="Click to show all tutorials tagged jobs">jobs</a>
               
-              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ff9cd8; --color-darker: #ff75ce; --color-dimmed: #ff89d3;" title="Click to show all tutorials tagged ansible">ansible</a>
+              <a href="/training-material/search?query=ansible" class="label label-default tutorial_tag" style="--color-primary: #ffcfeb; --color-darker: #ffaadd; --color-dimmed: #ffbde4;" title="Click to show all tutorials tagged ansible">ansible</a>
               
-              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffa2a6; --color-darker: #ff8086; --color-dimmed: #ff9296;" title="Click to show all tutorials tagged git-gat">git-gat</a>
+              <a href="/training-material/search?query=git-gat" class="label label-default tutorial_tag" style="--color-primary: #ffd2d3; --color-darker: #ffafb2; --color-dimmed: #ffc1c3;" title="Click to show all tutorials tagged git-gat">git-gat</a>
               
             
             </div>
@@ -9222,7 +9201,7 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=kubernetes" class="label label-default tutorial_tag" style="--color-primary: #ffa0bb; --color-darker: #ff7ca7; --color-dimmed: #ff8fb1;" title="Click to show all tutorials tagged kubernetes">kubernetes</a>
+              <a href="/training-material/search?query=kubernetes" class="label label-default tutorial_tag" style="--color-primary: #ffd1dd; --color-darker: #ffadc4; --color-dimmed: #ffc0d0;" title="Click to show all tutorials tagged kubernetes">kubernetes</a>
               
             
             </div>
@@ -9369,11 +9348,11 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=terraform" class="label label-default tutorial_tag" style="--color-primary: #ffa1ac; --color-darker: #ff7f90; --color-dimmed: #ff919e;" title="Click to show all tutorials tagged terraform">terraform</a>
+              <a href="/training-material/search?query=terraform" class="label label-default tutorial_tag" style="--color-primary: #ffd2d6; --color-darker: #ffafb7; --color-dimmed: #ffc1c7;" title="Click to show all tutorials tagged terraform">terraform</a>
               
-              <a href="/training-material/search?query=deploying" class="label label-default tutorial_tag" style="--color-primary: #ffa491; --color-darker: #ff8461; --color-dimmed: #ff947b;" title="Click to show all tutorials tagged deploying">deploying</a>
+              <a href="/training-material/search?query=deploying" class="label label-default tutorial_tag" style="--color-primary: #ffd3cb; --color-darker: #ffb1a2; --color-dimmed: #ffc2b7;" title="Click to show all tutorials tagged deploying">deploying</a>
               
-              <a href="/training-material/search?query=cloud" class="label label-default tutorial_tag" style="--color-primary: #ffa2a4; --color-darker: #ff8184; --color-dimmed: #ff9294;" title="Click to show all tutorials tagged cloud">cloud</a>
+              <a href="/training-material/search?query=cloud" class="label label-default tutorial_tag" style="--color-primary: #ffd2d3; --color-darker: #ffafb1; --color-dimmed: #ffc1c2;" title="Click to show all tutorials tagged cloud">cloud</a>
               
             
             </div>
@@ -9575,6 +9554,6 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
 </section>
 
 
-        <script src='/training-material/assets/js/bundle.main.js?v=1698801183'></script>
+        <script src='/training-material/assets/js/bundle.main.js?v=1698855886'></script>
     </body>
 </html>

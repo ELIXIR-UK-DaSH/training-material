@@ -116,6 +116,9 @@
         ],
         "editing": [
           "hexylena"
+        ],
+        "funding": [
+          "ELIXIR-UK-DaSH"
         ]
       },
       "subtopic": "fair-data",
@@ -203,11 +206,145 @@
           "id": "hexylena",
           "url": "https://training.galaxyproject.org/training-material/api/contributors/hexylena.json",
           "page": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/"
+        },
+        {
+          "name": "DASH UK",
+          "joined": "2023-10",
+          "avatar": "https://github.com/galaxyproject/training-material/blob/main/shared/images/dash.png?raw=true",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/ELIXIR-UK-DaSH.json",
+          "funder": true,
+          "funding_system": "ukri",
+          "funding_id": "MR/V038966/1",
+          "funding_statement": "This Fellowship was funded through the ELIXIR-UK DaSH project as part of the UKRI Innovation Scholars: Data Science Training in Health and Bioscience call (DaSH). (MR/V038966/1). The project aims to embed Research Data Management (RDM) know-how into UK universities and institutes by producing and delivering training in FAIR data stewardship using ELIXIR-UK knowledge and resources.",
+          "id": "ELIXIR-UK-DaSH",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/ELIXIR-UK-DaSH/"
         }
       ],
       "urls": {
         "hands_on": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/fair-intro/tutorial.json",
         "slides": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/fair-intro/tutorial.json"
+      }
+    },
+    {
+      "layout": "tutorial_hands_on",
+      "title": "Making clinical datasets FAIR",
+      "abbreviations": {
+        "FAIR": "Findable, Accessible, Interoperable, Reusable",
+        "DOI": "Digital Object Identifier"
+      },
+      "zenodo_link": "",
+      "questions": [
+        "Why make clinical data FAIR?",
+        "How to make clinical data FAIR?",
+        "test"
+      ],
+      "objectives": [
+        "Learn how to make clinical datasets FAIR",
+        "Recognise why FAIR datasets are important"
+      ],
+      "time_estimation": "1H",
+      "key_points": [
+        "FAIR data are data that meet principles of findability, accessibility, interoperability, and reusability (FAIR)."
+      ],
+      "tags": [
+        "fair",
+        "open",
+        "data stewardship"
+      ],
+      "priority": 1,
+      "contributions": {
+        "authorship": [
+          "SNG888"
+        ],
+        "editing": [
+          "kkamieniecka",
+          "tb143"
+        ]
+      },
+      "subtopic": "fair-data",
+      "requirements": [
+        {
+          "type": "internal",
+          "topic_name": "fair",
+          "tutorials": [
+            "fair-intro"
+          ]
+        }
+      ],
+      "short_id": "T00368",
+      "url": "/topics/fair/tutorials/fair-clinical/tutorial.html",
+      "topic_name": "fair",
+      "tutorial_name": "fair-clinical",
+      "dir": "topics/fair/tutorials/fair-clinical",
+      "id": "fair/fair-clinical",
+      "video_library": {
+        "tutorial": null,
+        "slides": null,
+        "demo": null,
+        "both": null,
+        "session": null
+      },
+      "hands_on": true,
+      "slides": false,
+      "api": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/fair-clinical/tutorial.json",
+      "tools": [
+
+      ],
+      "supported_servers": [
+
+      ],
+      "topic_name_human": "FAIR Data, Workflows, and Research",
+      "admin_install": {
+        "install_tool_dependencies": true,
+        "install_repository_dependencies": true,
+        "install_resolver_dependencies": true,
+        "tools": [
+
+        ]
+      },
+      "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools: []\n",
+      "tours": false,
+      "video": false,
+      "translations": {
+        "tutorial": [
+
+        ],
+        "slides": [
+
+        ],
+        "video": false
+      },
+      "type": "tutorial",
+      "contributors": [
+        {
+          "name": "Sandra Ng",
+          "email": "s.ng@qmul.ac.uk",
+          "joined": "2023-07",
+          "id": "SNG888",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/SNG888.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/SNG888/"
+        },
+        {
+          "name": "Katarzyna Kamieniecka",
+          "twitter": "katemurat",
+          "orcid": "0009-0004-2454-5950",
+          "joined": "2018-08",
+          "elixir_node": "uk",
+          "id": "kkamieniecka",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/kkamieniecka.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/kkamieniecka/"
+        },
+        {
+          "name": "Tim Beck",
+          "joined": "2023-09",
+          "id": "tb143",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/tb143.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/tb143/"
+        }
+      ],
+      "urls": {
+        "hands_on": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/fair-clinical/tutorial.json",
+        "slides": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/fair-clinical/tutorial.json"
       }
     },
     {
@@ -446,6 +583,157 @@
     },
     {
       "layout": "tutorial_hands_on",
+      "title": "Sequence data submission to ENA",
+      "abbreviations": {
+        "ENA": "European Nucleotide Archive"
+      },
+      "zenodo_link": "",
+      "questions": [
+        "I am new to sequence submission to a repository.",
+        "How do I submit sequences and metadata to ENA using the Webin portal and cURL?"
+      ],
+      "objectives": [
+        "To populate ENA metadata objects through the Webin portal",
+        "To submit raw reads to ENA using FTP"
+      ],
+      "time_estimation": "1H",
+      "key_points": [
+        "Use ENA Webin interactive portal to submit metadata",
+        "Preparation of metadata and sequence data for the submission",
+        "Use cURL to submit read fastq files"
+      ],
+      "requirements": [
+        {
+          "type": "none",
+          "title": "Web browser"
+        },
+        {
+          "type": "none",
+          "title": "A linux-based machine or linux emulator"
+        },
+        {
+          "type": "none",
+          "title": "Read data in fastq format"
+        }
+      ],
+      "tags": [
+        "FAIR",
+        "ENA"
+      ],
+      "priority": 1,
+      "contributions": {
+        "authorship": [
+          "sonalhenson"
+        ],
+        "editing": [
+          "kkamieniecka",
+          "smza",
+          "poterlowicz-lab"
+        ],
+        "funding": [
+          "ELIXIR-UK-DaSH"
+        ]
+      },
+      "subtopic": "fair-data",
+      "short_id": null,
+      "url": "/topics/fair/tutorials/fair-ena/tutorial.html",
+      "topic_name": "fair",
+      "tutorial_name": "fair-ena",
+      "dir": "topics/fair/tutorials/fair-ena",
+      "id": "fair/fair-ena",
+      "video_library": {
+        "tutorial": null,
+        "slides": null,
+        "demo": null,
+        "both": null,
+        "session": null
+      },
+      "hands_on": true,
+      "slides": false,
+      "api": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/fair-ena/tutorial.json",
+      "tools": [
+
+      ],
+      "supported_servers": [
+
+      ],
+      "topic_name_human": "FAIR Data, Workflows, and Research",
+      "admin_install": {
+        "install_tool_dependencies": true,
+        "install_repository_dependencies": true,
+        "install_resolver_dependencies": true,
+        "tools": [
+
+        ]
+      },
+      "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools: []\n",
+      "tours": false,
+      "video": false,
+      "translations": {
+        "tutorial": [
+
+        ],
+        "slides": [
+
+        ],
+        "video": false
+      },
+      "type": "tutorial",
+      "contributors": [
+        {
+          "name": "Sonal Henson",
+          "joined": "2023-09",
+          "id": "sonalhenson",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/sonalhenson.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/sonalhenson/"
+        },
+        {
+          "name": "Katarzyna Kamieniecka",
+          "twitter": "katemurat",
+          "orcid": "0009-0004-2454-5950",
+          "joined": "2018-08",
+          "elixir_node": "uk",
+          "id": "kkamieniecka",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/kkamieniecka.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/kkamieniecka/"
+        },
+        {
+          "name": "Munazah Andrabi",
+          "joined": "2023-09",
+          "id": "smza",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/smza.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/smza/"
+        },
+        {
+          "name": "Krzysztof Poterlowicz",
+          "twitter": "bioinfbrad",
+          "orcid": "0000-0001-6173-5674",
+          "joined": "2017-09",
+          "elixir_node": "uk",
+          "id": "poterlowicz-lab",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/poterlowicz-lab.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/poterlowicz-lab/"
+        },
+        {
+          "name": "DASH UK",
+          "joined": "2023-10",
+          "avatar": "https://github.com/galaxyproject/training-material/blob/main/shared/images/dash.png?raw=true",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/ELIXIR-UK-DaSH.json",
+          "funder": true,
+          "funding_system": "ukri",
+          "funding_id": "MR/V038966/1",
+          "funding_statement": "This Fellowship was funded through the ELIXIR-UK DaSH project as part of the UKRI Innovation Scholars: Data Science Training in Health and Bioscience call (DaSH). (MR/V038966/1). The project aims to embed Research Data Management (RDM) know-how into UK universities and institutes by producing and delivering training in FAIR data stewardship using ELIXIR-UK knowledge and resources.",
+          "id": "ELIXIR-UK-DaSH",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/ELIXIR-UK-DaSH/"
+        }
+      ],
+      "urls": {
+        "hands_on": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/fair-ena/tutorial.json",
+        "slides": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/fair-ena/tutorial.json"
+      }
+    },
+    {
+      "layout": "tutorial_hands_on",
       "title": "Exporting Workflow Run RO-Crates from Galaxy",
       "time_estimation": "30m",
       "questions": [
@@ -580,6 +868,9 @@
         ],
         "editing": [
           "hexylena"
+        ],
+        "funding": [
+          "ELIXIR-UK-DaSH"
         ]
       },
       "subtopic": "fair-data",
@@ -676,6 +967,18 @@
           "id": "hexylena",
           "url": "https://training.galaxyproject.org/training-material/api/contributors/hexylena.json",
           "page": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/"
+        },
+        {
+          "name": "DASH UK",
+          "joined": "2023-10",
+          "avatar": "https://github.com/galaxyproject/training-material/blob/main/shared/images/dash.png?raw=true",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/ELIXIR-UK-DaSH.json",
+          "funder": true,
+          "funding_system": "ukri",
+          "funding_id": "MR/V038966/1",
+          "funding_statement": "This Fellowship was funded through the ELIXIR-UK DaSH project as part of the UKRI Innovation Scholars: Data Science Training in Health and Bioscience call (DaSH). (MR/V038966/1). The project aims to embed Research Data Management (RDM) know-how into UK universities and institutes by producing and delivering training in FAIR data stewardship using ELIXIR-UK knowledge and resources.",
+          "id": "ELIXIR-UK-DaSH",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/ELIXIR-UK-DaSH/"
         }
       ],
       "urls": {
@@ -854,6 +1157,9 @@
         ],
         "editing": [
           "hexylena"
+        ],
+        "funding": [
+          "ELIXIR-UK-DaSH"
         ]
       },
       "subtopic": "fair-data",
@@ -950,6 +1256,18 @@
           "id": "hexylena",
           "url": "https://training.galaxyproject.org/training-material/api/contributors/hexylena.json",
           "page": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/"
+        },
+        {
+          "name": "DASH UK",
+          "joined": "2023-10",
+          "avatar": "https://github.com/galaxyproject/training-material/blob/main/shared/images/dash.png?raw=true",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/ELIXIR-UK-DaSH.json",
+          "funder": true,
+          "funding_system": "ukri",
+          "funding_id": "MR/V038966/1",
+          "funding_statement": "This Fellowship was funded through the ELIXIR-UK DaSH project as part of the UKRI Innovation Scholars: Data Science Training in Health and Bioscience call (DaSH). (MR/V038966/1). The project aims to embed Research Data Management (RDM) know-how into UK universities and institutes by producing and delivering training in FAIR data stewardship using ELIXIR-UK knowledge and resources.",
+          "id": "ELIXIR-UK-DaSH",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/ELIXIR-UK-DaSH/"
         }
       ],
       "urls": {
@@ -1249,6 +1567,9 @@
           "Laura190",
           "kkamieniecka",
           "poterlowicz-lab"
+        ],
+        "funding": [
+          "ELIXIR-UK-DaSH"
         ]
       },
       "subtopic": "fair-data",
@@ -1355,6 +1676,18 @@
           "id": "poterlowicz-lab",
           "url": "https://training.galaxyproject.org/training-material/api/contributors/poterlowicz-lab.json",
           "page": "https://training.galaxyproject.org/training-material/hall-of-fame/poterlowicz-lab/"
+        },
+        {
+          "name": "DASH UK",
+          "joined": "2023-10",
+          "avatar": "https://github.com/galaxyproject/training-material/blob/main/shared/images/dash.png?raw=true",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/ELIXIR-UK-DaSH.json",
+          "funder": true,
+          "funding_system": "ukri",
+          "funding_id": "MR/V038966/1",
+          "funding_statement": "This Fellowship was funded through the ELIXIR-UK DaSH project as part of the UKRI Innovation Scholars: Data Science Training in Health and Bioscience call (DaSH). (MR/V038966/1). The project aims to embed Research Data Management (RDM) know-how into UK universities and institutes by producing and delivering training in FAIR data stewardship using ELIXIR-UK knowledge and resources.",
+          "id": "ELIXIR-UK-DaSH",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/ELIXIR-UK-DaSH/"
         }
       ],
       "urls": {
@@ -1392,6 +1725,9 @@
           "Laura190",
           "kkamieniecka",
           "poterlowicz-lab"
+        ],
+        "funding": [
+          "ELIXIR-UK-DaSH"
         ]
       },
       "subtopic": "fair-data",
@@ -1492,6 +1828,18 @@
           "id": "poterlowicz-lab",
           "url": "https://training.galaxyproject.org/training-material/api/contributors/poterlowicz-lab.json",
           "page": "https://training.galaxyproject.org/training-material/hall-of-fame/poterlowicz-lab/"
+        },
+        {
+          "name": "DASH UK",
+          "joined": "2023-10",
+          "avatar": "https://github.com/galaxyproject/training-material/blob/main/shared/images/dash.png?raw=true",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/ELIXIR-UK-DaSH.json",
+          "funder": true,
+          "funding_system": "ukri",
+          "funding_id": "MR/V038966/1",
+          "funding_statement": "This Fellowship was funded through the ELIXIR-UK DaSH project as part of the UKRI Innovation Scholars: Data Science Training in Health and Bioscience call (DaSH). (MR/V038966/1). The project aims to embed Research Data Management (RDM) know-how into UK universities and institutes by producing and delivering training in FAIR data stewardship using ELIXIR-UK knowledge and resources.",
+          "id": "ELIXIR-UK-DaSH",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/ELIXIR-UK-DaSH/"
         }
       ],
       "urls": {

@@ -6,63 +6,42 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>New Feature: Pan-Galactic Tool Search</title>
         
-            <!--
-<script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
--->
-<!-- We let users opt-out, so if they've opted in, we need to append the plausible script to the body -->
-
-<script>
-var scriptElement = document.createElement("script");
-scriptElement.async = true;
-scriptElement.defer = true;
-scriptElement.setAttribute("data-domain", "training.galaxyproject.org");
-scriptElement.src = "https://plausible.galaxyproject.eu/js/plausible.js";
-
-// Appending the script element to the body
-if(localStorage.getItem('plausible-opt-out') !== 'opt-out' && navigator.doNotTrack !== "1") {
-	console.log("Plausible: opt-in");
-	// Wait for the document to be available
-	document.addEventListener("DOMContentLoaded", function(event) {
-		document.body.appendChild(scriptElement);
-	});
-}
-</script>
-
-<!-- JavaScript Error Monitoring, and performance tracking. -->
-<!--
+            <!-- JavaScript Error Monitoring, and performance tracking. -->
 <script
   src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
   integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
   crossorigin="anonymous"
 ></script>
--->
 <script type="text/javascript">
-var scriptElement = document.createElement("script");
-scriptElement.src = "https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js";
-scriptElement.integrity = "sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43";
-scriptElement.crossOrigin = "anonymous";
-
 if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack !== "1") {
 	console.log("Sentry: opt-in");
-	// Appending the script element to the body
-	document.addEventListener("DOMContentLoaded", function(event) {
-		document.body.appendChild(scriptElement);
-	});
-		
 	Sentry.init({
-	  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
-	  release: "galaxy-training-network@2752a665e9cde64fc46b07701823f4c6cbe561b8",
-	  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
-	  sampleRate: 0.1,
-	  tracesSampleRate: 0.1,
-	  // Capture Replay for no sessions by default
-	  replaysSessionSampleRate: 0.01,
-	  // plus for 1% of sessions with an error
-	  replaysOnErrorSampleRate: 0.01,
-	  // PII OFF
-	  sendDefaultPii: false, // Off by default but just in case.
-	  environment: "production",
+		dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+		release: "galaxy-training-network@dc7204bc447eca1a8a7410a3ad547549d9454270",
+		integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+		sampleRate: 0.1,
+		tracesSampleRate: 0.1,
+		// Capture Replay for no sessions by default
+		replaysSessionSampleRate: 0.01,
+		// plus for 1% of sessions with an error
+		replaysOnErrorSampleRate: 0.01,
+		// PII OFF
+		sendDefaultPii: false, // Off by default but just in case.
+		environment: "production",
 	});
+}
+</script>
+
+<!-- Page view tracking -->
+<script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
+<script>
+if(localStorage.getItem('plausible-opt-out') !== 'opt-out' && navigator.doNotTrack !== "1") {
+	localStorage.removeItem("plausible_ignore")
+	console.log("Plausible: opt-in");
+} else {
+	// if they're opting-out, or DNT
+	// we might get one page by accident but we won't get future ones.
+	localStorage.setItem("plausible_ignore", "true")
 }
 </script>
 
@@ -76,8 +55,8 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
         <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
         <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
-        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1698801183' as='script'>
-<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1698801183' as='script'>
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1698855886' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1698855886' as='script'>
         <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
         <link rel="manifest" href="/training-material/manifest.json">
         <meta name="theme-color" content="#2c3143"/>
@@ -104,7 +83,7 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
         
     </head>
     <body data-spy="scroll" data-target="#toc" data-brightness="auto" data-contrast="auto">
-        <script src='/training-material/assets/js/bundle.theme.js?v=1698801183'></script>
+        <script src='/training-material/assets/js/bundle.theme.js?v=1698855886'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
@@ -188,7 +167,7 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
         
 
 		<a href="/training-material/preferences.html" class="dropdown-item">
-			<i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Themes have moved <span class="badge badge-secondary">New</span>
+			<i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> User Preferences <span class="badge badge-secondary">New</span>
 		</a>
 
         <div class="dropdown-item">
@@ -267,9 +246,9 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
 
 
 
-<span class="label label-default tutorial_tag" id="new feature" style="--color-primary: #b3b5ff; --color-darker: #9b9eff; --color-dimmed: #a7a9ff;">new feature</span>
+<span class="label label-default tutorial_tag" id="new feature" style="--color-primary: #d9daff; --color-darker: #bdbfff; --color-dimmed: #cbcdff;">new feature</span>
 
-<span class="label label-default tutorial_tag" id="gtn" style="--color-primary: #ffef92; --color-darker: #ead500; --color-dimmed: #f8e300;">gtn</span>
+<span class="label label-default tutorial_tag" id="gtn" style="--color-primary: #fff7d0; --color-darker: #f2dd00; --color-dimmed: #ffeb50;">gtn</span>
 
 
 <hr/>
@@ -445,9 +424,9 @@ across the Galaxy.</p>
 	<p>
 	12 October 2023 &nbsp;
 	
-	<span class="label label-default tutorial_tag" style="--color-primary: #ffef92; --color-darker: #ead500; --color-dimmed: #f8e300;">gtn</span>
+	<span class="label label-default tutorial_tag" style="--color-primary: #fff7d0; --color-darker: #f2dd00; --color-dimmed: #ffeb50;">gtn</span>
 	
-	<span class="label label-default tutorial_tag" style="--color-primary: #00d862; --color-darker: #00c057; --color-dimmed: #00cc5c;">singlecell</span>
+	<span class="label label-default tutorial_tag" style="--color-primary: #00fe75; --color-darker: #00e267; --color-dimmed: #00f06e;">singlecell</span>
 	
 	</p>
 	<p class="card-text">
@@ -466,9 +445,9 @@ across the Galaxy.</p>
 	<p>
 	5 October 2023 &nbsp;
 	
-	<span class="label label-default tutorial_tag" style="--color-primary: #b3b5ff; --color-darker: #9b9eff; --color-dimmed: #a7a9ff;">new feature</span>
+	<span class="label label-default tutorial_tag" style="--color-primary: #d9daff; --color-darker: #bdbfff; --color-dimmed: #cbcdff;">new feature</span>
 	
-	<span class="label label-default tutorial_tag" style="--color-primary: #ffef92; --color-darker: #ead500; --color-dimmed: #f8e300;">gtn</span>
+	<span class="label label-default tutorial_tag" style="--color-primary: #fff7d0; --color-darker: #f2dd00; --color-dimmed: #ffeb50;">gtn</span>
 	
 	</p>
 	<p class="card-text">
@@ -487,9 +466,9 @@ across the Galaxy.</p>
 	<p>
 	20 July 2023 &nbsp;
 	
-	<span class="label label-default tutorial_tag" style="--color-primary: #b3b5ff; --color-darker: #9b9eff; --color-dimmed: #a7a9ff;">new feature</span>
+	<span class="label label-default tutorial_tag" style="--color-primary: #d9daff; --color-darker: #bdbfff; --color-dimmed: #cbcdff;">new feature</span>
 	
-	<span class="label label-default tutorial_tag" style="--color-primary: #ffef92; --color-darker: #ead500; --color-dimmed: #f8e300;">gtn</span>
+	<span class="label label-default tutorial_tag" style="--color-primary: #fff7d0; --color-darker: #f2dd00; --color-dimmed: #ffeb50;">gtn</span>
 	
 	</p>
 	<p class="card-text">
@@ -508,9 +487,9 @@ across the Galaxy.</p>
 	<p>
 	27 June 2023 &nbsp;
 	
-	<span class="label label-default tutorial_tag" style="--color-primary: #b7b4ff; --color-darker: #a09cff; --color-dimmed: #aba8ff;">new topic</span>
+	<span class="label label-default tutorial_tag" style="--color-primary: #dbdaff; --color-darker: #c0beff; --color-dimmed: #cdccff;">new topic</span>
 	
-	<span class="label label-default tutorial_tag" style="--color-primary: #ff98ec; --color-darker: #ff70e7; --color-dimmed: #ff85e9;">new community</span>
+	<span class="label label-default tutorial_tag" style="--color-primary: #ffcef5; --color-darker: #ffa8ee; --color-dimmed: #ffbbf1;">new community</span>
 	
 	</p>
 	<p class="card-text">
@@ -528,9 +507,9 @@ across the Galaxy.</p>
 	<p>
 	21 June 2023 &nbsp;
 	
-	<span class="label label-default tutorial_tag" style="--color-primary: #b7b4ff; --color-darker: #a09cff; --color-dimmed: #aba8ff;">new topic</span>
+	<span class="label label-default tutorial_tag" style="--color-primary: #dbdaff; --color-darker: #c0beff; --color-dimmed: #cdccff;">new topic</span>
 	
-	<span class="label label-default tutorial_tag" style="--color-primary: #ffa91e; --color-darker: #e59600; --color-dimmed: #f39f00;">new tutorial</span>
+	<span class="label label-default tutorial_tag" style="--color-primary: #ffd5b3; --color-darker: #ffb561; --color-dimmed: #ffc590;">new tutorial</span>
 	
 	</p>
 	<p class="card-text">
@@ -561,7 +540,7 @@ across the Galaxy.</p>
 				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
 				</p>
 				<p>
-				Revision <a href="https://github.com/galaxyproject/training-material/commit/2752a665e9cde64fc46b07701823f4c6cbe561b8">2752a66</a>, built with Jekyll (4.3.2 | production)
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/dc7204bc447eca1a8a7410a3ad547549d9454270">dc7204b</a>, built with Jekyll (4.3.2 | production)
 				</p>
 			</div>
 			<div class="col-sm-6" style="text-align: right">
@@ -593,7 +572,7 @@ across the Galaxy.</p>
 </footer>
 
 
-        <script src='/training-material/assets/js/bundle.main.js?v=1698801183'></script>
+        <script src='/training-material/assets/js/bundle.main.js?v=1698855886'></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
 </html>

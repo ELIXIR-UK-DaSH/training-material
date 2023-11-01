@@ -1333,6 +1333,7 @@
   {
     "name": "Khaled Jum’ah",
     "email": "k.jumah@bradford.ac.uk",
+    "orcid": "0000-0001-5481-8893",
     "joined": "2022-09",
     "id": "Khaled196",
     "url": "https://training.galaxyproject.org/training-material/api/contributors/Khaled196.json",
@@ -1769,6 +1770,13 @@
     "id": "mwolfien",
     "url": "https://training.galaxyproject.org/training-material/api/contributors/mwolfien.json",
     "page": "https://training.galaxyproject.org/training-material/hall-of-fame/mwolfien/"
+  },
+  {
+    "name": "Munazah Andrabi",
+    "joined": "2023-09",
+    "id": "smza",
+    "url": "https://training.galaxyproject.org/training-material/api/contributors/smza.json",
+    "page": "https://training.galaxyproject.org/training-material/hall-of-fame/smza/"
   },
   {
     "name": "Myles Bilong",
@@ -2219,6 +2227,13 @@
     "page": "https://training.galaxyproject.org/training-material/hall-of-fame/sbenateau/"
   },
   {
+    "name": "Sonal Henson",
+    "joined": "2023-09",
+    "id": "sonalhenson",
+    "url": "https://training.galaxyproject.org/training-material/api/contributors/sonalhenson.json",
+    "page": "https://training.galaxyproject.org/training-material/hall-of-fame/sonalhenson/"
+  },
+  {
     "name": "Shian Su",
     "joined": "2019-02",
     "id": "Shians",
@@ -2375,6 +2390,13 @@
     "id": "sylviamahara",
     "url": "https://training.galaxyproject.org/training-material/api/contributors/sylviamahara.json",
     "page": "https://training.galaxyproject.org/training-material/hall-of-fame/sylviamahara/"
+  },
+  {
+    "name": "Tim Beck",
+    "joined": "2023-09",
+    "id": "tb143",
+    "url": "https://training.galaxyproject.org/training-material/api/contributors/tb143.json",
+    "page": "https://training.galaxyproject.org/training-material/hall-of-fame/tb143/"
   },
   {
     "name": "Thomas Duigou",
@@ -2654,6 +2676,14 @@
     "page": "https://training.galaxyproject.org/training-material/hall-of-fame/yvanlebras/"
   },
   {
+    "name": "Sandra Ng",
+    "email": "s.ng@qmul.ac.uk",
+    "joined": "2023-07",
+    "id": "SNG888",
+    "url": "https://training.galaxyproject.org/training-material/api/contributors/SNG888.json",
+    "page": "https://training.galaxyproject.org/training-material/hall-of-fame/SNG888/"
+  },
+  {
     "name": "The Carpentries",
     "joined": "2021-09",
     "id": "carpentries",
@@ -2661,17 +2691,18 @@
     "page": "https://training.galaxyproject.org/training-material/hall-of-fame/carpentries/"
   },
   {
-    "name": "Erasmus+ Programme",
+    "name": "Gallantries Project",
     "joined": "2020-09",
-    "avatar": "https://www.erasmusplus.nl/assets/images/logo.png",
+    "avatar": "https://gallantries.github.io/assets/images/gallantries-logo.png",
     "github": false,
     "funder": true,
-    "url": "https://training.galaxyproject.org/training-material/api/contributors/erasmusplus.json",
+    "url": "https://training.galaxyproject.org/training-material/api/contributors/gallantries.json",
+    "funder_name": "Erasmus+ Programme",
     "funding_id": "2020-1-NL01-KA203-064717",
     "funding_system": "erasmusplus",
-    "funding_statement": "This project (<a href=\"https://ec.europa.eu/programmes/erasmus-plus/projects/eplus-project-details/#project/2020-1-NL01-KA203-064717\"><code class=\"language-plaintext highlighter-rouge\">2020-1-NL01-KA203-064717</code></a>) is funded with the support of the Erasmus+ programme of the European Union. Their funding has supported a large number of tutorials within the GTN across a wide array of topics.\n<img src=\"https://gallantries.github.io/assets/images/logosbeneficaireserasmusright_en.jpg\" alt=\"eu flag with the text: with the support of the erasmus programme of the european union\" />",
-    "id": "erasmusplus",
-    "page": "https://training.galaxyproject.org/training-material/hall-of-fame/erasmusplus/"
+    "funding_statement": "This project (<a href=\"https://ec.europa.eu/programmes/erasmus-plus/projects/eplus-project-details/#project/2020-1-NL01-KA203-064717\"><code class=\"language-plaintext highlighter-rouge\">2020-1-NL01-KA203-064717</code></a>) is funded with the support of the Erasmus+ programme of the European Union. Their funding has supported a large number of tutorials within the GTN across a wide array of topics.\n<img src=\"https://gallantries.github.io/assets/images/logosbeneficaireserasmusright_en.jpg\" alt=\"eu flag with the text: with the support of the erasmus programme of the european union\" />\n<img src=\"https://www.erasmusplus.nl/assets/images/logo.png\" alt=\"erasmus plus logo\" />",
+    "id": "gallantries",
+    "page": "https://training.galaxyproject.org/training-material/hall-of-fame/gallantries/"
   },
   {
     "name": "Avans Hogeschool",
@@ -2825,5 +2856,17 @@
     "funding_statement": "Co-funded by the European Union",
     "id": "biont",
     "page": "https://training.galaxyproject.org/training-material/hall-of-fame/biont/"
+  },
+  {
+    "name": "DASH UK",
+    "joined": "2023-10",
+    "avatar": "https://github.com/galaxyproject/training-material/blob/main/shared/images/dash.png?raw=true",
+    "url": "https://training.galaxyproject.org/training-material/api/contributors/ELIXIR-UK-DaSH.json",
+    "funder": true,
+    "funding_system": "ukri",
+    "funding_id": "MR/V038966/1",
+    "funding_statement": "This Fellowship was funded through the ELIXIR-UK DaSH project as part of the UKRI Innovation Scholars: Data Science Training in Health and Bioscience call (DaSH). (MR/V038966/1). The project aims to embed Research Data Management (RDM) know-how into UK universities and institutes by producing and delivering training in FAIR data stewardship using ELIXIR-UK knowledge and resources.",
+    "id": "ELIXIR-UK-DaSH",
+    "page": "https://training.galaxyproject.org/training-material/hall-of-fame/ELIXIR-UK-DaSH/"
   }
 ]

@@ -6,63 +6,42 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Galaxy Training!</title>
         
-            <!--
-<script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
--->
-<!-- We let users opt-out, so if they've opted in, we need to append the plausible script to the body -->
-
-<script>
-var scriptElement = document.createElement("script");
-scriptElement.async = true;
-scriptElement.defer = true;
-scriptElement.setAttribute("data-domain", "training.galaxyproject.org");
-scriptElement.src = "https://plausible.galaxyproject.eu/js/plausible.js";
-
-// Appending the script element to the body
-if(localStorage.getItem('plausible-opt-out') !== 'opt-out' && navigator.doNotTrack !== "1") {
-	console.log("Plausible: opt-in");
-	// Wait for the document to be available
-	document.addEventListener("DOMContentLoaded", function(event) {
-		document.body.appendChild(scriptElement);
-	});
-}
-</script>
-
-<!-- JavaScript Error Monitoring, and performance tracking. -->
-<!--
+            <!-- JavaScript Error Monitoring, and performance tracking. -->
 <script
   src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
   integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
   crossorigin="anonymous"
 ></script>
--->
 <script type="text/javascript">
-var scriptElement = document.createElement("script");
-scriptElement.src = "https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js";
-scriptElement.integrity = "sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43";
-scriptElement.crossOrigin = "anonymous";
-
 if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack !== "1") {
 	console.log("Sentry: opt-in");
-	// Appending the script element to the body
-	document.addEventListener("DOMContentLoaded", function(event) {
-		document.body.appendChild(scriptElement);
-	});
-		
 	Sentry.init({
-	  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
-	  release: "galaxy-training-network@2752a665e9cde64fc46b07701823f4c6cbe561b8",
-	  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
-	  sampleRate: 0.1,
-	  tracesSampleRate: 0.1,
-	  // Capture Replay for no sessions by default
-	  replaysSessionSampleRate: 0.01,
-	  // plus for 1% of sessions with an error
-	  replaysOnErrorSampleRate: 0.01,
-	  // PII OFF
-	  sendDefaultPii: false, // Off by default but just in case.
-	  environment: "production",
+		dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+		release: "galaxy-training-network@dc7204bc447eca1a8a7410a3ad547549d9454270",
+		integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+		sampleRate: 0.1,
+		tracesSampleRate: 0.1,
+		// Capture Replay for no sessions by default
+		replaysSessionSampleRate: 0.01,
+		// plus for 1% of sessions with an error
+		replaysOnErrorSampleRate: 0.01,
+		// PII OFF
+		sendDefaultPii: false, // Off by default but just in case.
+		environment: "production",
 	});
+}
+</script>
+
+<!-- Page view tracking -->
+<script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
+<script>
+if(localStorage.getItem('plausible-opt-out') !== 'opt-out' && navigator.doNotTrack !== "1") {
+	localStorage.removeItem("plausible_ignore")
+	console.log("Plausible: opt-in");
+} else {
+	// if they're opting-out, or DNT
+	// we might get one page by accident but we won't get future ones.
+	localStorage.setItem("plausible_ignore", "true")
 }
 </script>
 
@@ -75,8 +54,8 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
         <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
-        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1698801183' as='script'>
-<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1698801183' as='script'>
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1698855886' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1698855886' as='script'>
         <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
         <link rel="manifest" href="/training-material/manifest.json">
         <meta name="theme-color" content="#2c3143"/>
@@ -101,7 +80,7 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
         
     </head>
     <body data-brightness="auto" data-contrast="auto">
-        <script src='/training-material/assets/js/bundle.theme.js?v=1698801183'></script>
+        <script src='/training-material/assets/js/bundle.theme.js?v=1698855886'></script>
         <section class="tutorials-list by_tag_prokaryote topic-type-">
 
 
@@ -150,7 +129,7 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=prokaryote" class="label label-default tutorial_tag" style="--color-primary: #beb2ff; --color-darker: #aa99ff; --color-dimmed: #b4a5ff;" title="Click to show all tutorials tagged prokaryote">prokaryote</a>
+              <a href="/training-material/search?query=prokaryote" class="label label-default tutorial_tag" style="--color-primary: #ded8ff; --color-darker: #c6bcff; --color-dimmed: #d2caff;" title="Click to show all tutorials tagged prokaryote">prokaryote</a>
               
             
             </div>
@@ -323,7 +302,7 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=prokaryote" class="label label-default tutorial_tag" style="--color-primary: #beb2ff; --color-darker: #aa99ff; --color-dimmed: #b4a5ff;" title="Click to show all tutorials tagged prokaryote">prokaryote</a>
+              <a href="/training-material/search?query=prokaryote" class="label label-default tutorial_tag" style="--color-primary: #ded8ff; --color-darker: #c6bcff; --color-dimmed: #d2caff;" title="Click to show all tutorials tagged prokaryote">prokaryote</a>
               
             
             </div>
@@ -588,9 +567,9 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=prokaryote" class="label label-default tutorial_tag" style="--color-primary: #beb2ff; --color-darker: #aa99ff; --color-dimmed: #b4a5ff;" title="Click to show all tutorials tagged prokaryote">prokaryote</a>
+              <a href="/training-material/search?query=prokaryote" class="label label-default tutorial_tag" style="--color-primary: #ded8ff; --color-darker: #c6bcff; --color-dimmed: #d2caff;" title="Click to show all tutorials tagged prokaryote">prokaryote</a>
               
-              <a href="/training-material/search?query=one-health" class="label label-default tutorial_tag" style="--color-primary: #85d000; --color-darker: #76b900; --color-dimmed: #7dc400;" title="Click to show all tutorials tagged one-health">one-health</a>
+              <a href="/training-material/search?query=one-health" class="label label-default tutorial_tag" style="--color-primary: #9df400; --color-darker: #8bd900; --color-dimmed: #94e700;" title="Click to show all tutorials tagged one-health">one-health</a>
               
             
             </div>
@@ -763,11 +742,11 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=prokaryote" class="label label-default tutorial_tag" style="--color-primary: #beb2ff; --color-darker: #aa99ff; --color-dimmed: #b4a5ff;" title="Click to show all tutorials tagged prokaryote">prokaryote</a>
+              <a href="/training-material/search?query=prokaryote" class="label label-default tutorial_tag" style="--color-primary: #ded8ff; --color-darker: #c6bcff; --color-dimmed: #d2caff;" title="Click to show all tutorials tagged prokaryote">prokaryote</a>
               
-              <a href="/training-material/search?query=one-health" class="label label-default tutorial_tag" style="--color-primary: #85d000; --color-darker: #76b900; --color-dimmed: #7dc400;" title="Click to show all tutorials tagged one-health">one-health</a>
+              <a href="/training-material/search?query=one-health" class="label label-default tutorial_tag" style="--color-primary: #9df400; --color-darker: #8bd900; --color-dimmed: #94e700;" title="Click to show all tutorials tagged one-health">one-health</a>
               
-              <a href="/training-material/search?query=phylogenetics" class="label label-default tutorial_tag" style="--color-primary: #00d855; --color-darker: #00c14b; --color-dimmed: #00cd50;" title="Click to show all tutorials tagged phylogenetics">phylogenetics</a>
+              <a href="/training-material/search?query=phylogenetics" class="label label-default tutorial_tag" style="--color-primary: #00fe66; --color-darker: #00e25a; --color-dimmed: #00f060;" title="Click to show all tutorials tagged phylogenetics">phylogenetics</a>
               
             
             </div>
@@ -975,7 +954,7 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=prokaryote" class="label label-default tutorial_tag" style="--color-primary: #beb2ff; --color-darker: #aa99ff; --color-dimmed: #b4a5ff;" title="Click to show all tutorials tagged prokaryote">prokaryote</a>
+              <a href="/training-material/search?query=prokaryote" class="label label-default tutorial_tag" style="--color-primary: #ded8ff; --color-darker: #c6bcff; --color-dimmed: #d2caff;" title="Click to show all tutorials tagged prokaryote">prokaryote</a>
               
             
             </div>
@@ -1306,7 +1285,7 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=prokaryote" class="label label-default tutorial_tag" style="--color-primary: #beb2ff; --color-darker: #aa99ff; --color-dimmed: #b4a5ff;" title="Click to show all tutorials tagged prokaryote">prokaryote</a>
+              <a href="/training-material/search?query=prokaryote" class="label label-default tutorial_tag" style="--color-primary: #ded8ff; --color-darker: #c6bcff; --color-dimmed: #d2caff;" title="Click to show all tutorials tagged prokaryote">prokaryote</a>
               
             
             </div>
@@ -1627,17 +1606,17 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=evolution" class="label label-default tutorial_tag" style="--color-primary: #ff9eca; --color-darker: #ff79bc; --color-dimmed: #ff8cc3;" title="Click to show all tutorials tagged evolution">evolution</a>
+              <a href="/training-material/search?query=evolution" class="label label-default tutorial_tag" style="--color-primary: #ffd0e4; --color-darker: #ffacd1; --color-dimmed: #ffbeda;" title="Click to show all tutorials tagged evolution">evolution</a>
               
-              <a href="/training-material/search?query=annotation" class="label label-default tutorial_tag" style="--color-primary: #66d400; --color-darker: #5abd00; --color-dimmed: #60c800;" title="Click to show all tutorials tagged annotation">annotation</a>
+              <a href="/training-material/search?query=annotation" class="label label-default tutorial_tag" style="--color-primary: #79f900; --color-darker: #6bde00; --color-dimmed: #72ec00;" title="Click to show all tutorials tagged annotation">annotation</a>
               
-              <a href="/training-material/search?query=vgp" class="label label-default tutorial_tag" style="--color-primary: #ff9ae5; --color-darker: #ff71df; --color-dimmed: #ff87e2;" title="Click to show all tutorials tagged vgp">vgp</a>
+              <a href="/training-material/search?query=vgp" class="label label-default tutorial_tag" style="--color-primary: #ffcff1; --color-darker: #ffa9e8; --color-dimmed: #ffbcec;" title="Click to show all tutorials tagged vgp">vgp</a>
               
-              <a href="/training-material/search?query=cookbook" class="label label-default tutorial_tag" style="--color-primary: #00d4a4; --color-darker: #00bd92; --color-dimmed: #00c99b;" title="Click to show all tutorials tagged cookbook">cookbook</a>
+              <a href="/training-material/search?query=cookbook" class="label label-default tutorial_tag" style="--color-primary: #00fac2; --color-darker: #00deac; --color-dimmed: #00ecb7;" title="Click to show all tutorials tagged cookbook">cookbook</a>
               
-              <a href="/training-material/search?query=eukaryote" class="label label-default tutorial_tag" style="--color-primary: #4ad700; --color-darker: #41bf00; --color-dimmed: #45cb00;" title="Click to show all tutorials tagged eukaryote">eukaryote</a>
+              <a href="/training-material/search?query=eukaryote" class="label label-default tutorial_tag" style="--color-primary: #58fc00; --color-darker: #4ee100; --color-dimmed: #53ee00;" title="Click to show all tutorials tagged eukaryote">eukaryote</a>
               
-              <a href="/training-material/search?query=prokaryote" class="label label-default tutorial_tag" style="--color-primary: #beb2ff; --color-darker: #aa99ff; --color-dimmed: #b4a5ff;" title="Click to show all tutorials tagged prokaryote">prokaryote</a>
+              <a href="/training-material/search?query=prokaryote" class="label label-default tutorial_tag" style="--color-primary: #ded8ff; --color-darker: #c6bcff; --color-dimmed: #d2caff;" title="Click to show all tutorials tagged prokaryote">prokaryote</a>
               
             
             </div>
@@ -1832,7 +1811,7 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=prokaryote" class="label label-default tutorial_tag" style="--color-primary: #beb2ff; --color-darker: #aa99ff; --color-dimmed: #b4a5ff;" title="Click to show all tutorials tagged prokaryote">prokaryote</a>
+              <a href="/training-material/search?query=prokaryote" class="label label-default tutorial_tag" style="--color-primary: #ded8ff; --color-darker: #c6bcff; --color-dimmed: #d2caff;" title="Click to show all tutorials tagged prokaryote">prokaryote</a>
               
             
             </div>
@@ -2005,9 +1984,9 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=prokaryote" class="label label-default tutorial_tag" style="--color-primary: #beb2ff; --color-darker: #aa99ff; --color-dimmed: #b4a5ff;" title="Click to show all tutorials tagged prokaryote">prokaryote</a>
+              <a href="/training-material/search?query=prokaryote" class="label label-default tutorial_tag" style="--color-primary: #ded8ff; --color-darker: #c6bcff; --color-dimmed: #d2caff;" title="Click to show all tutorials tagged prokaryote">prokaryote</a>
               
-              <a href="/training-material/search?query=one-health" class="label label-default tutorial_tag" style="--color-primary: #85d000; --color-darker: #76b900; --color-dimmed: #7dc400;" title="Click to show all tutorials tagged one-health">one-health</a>
+              <a href="/training-material/search?query=one-health" class="label label-default tutorial_tag" style="--color-primary: #9df400; --color-darker: #8bd900; --color-dimmed: #94e700;" title="Click to show all tutorials tagged one-health">one-health</a>
               
             
             </div>
@@ -2248,7 +2227,7 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
             
             
               
-              <a href="/training-material/search?query=prokaryote" class="label label-default tutorial_tag" style="--color-primary: #beb2ff; --color-darker: #aa99ff; --color-dimmed: #b4a5ff;" title="Click to show all tutorials tagged prokaryote">prokaryote</a>
+              <a href="/training-material/search?query=prokaryote" class="label label-default tutorial_tag" style="--color-primary: #ded8ff; --color-darker: #c6bcff; --color-dimmed: #d2caff;" title="Click to show all tutorials tagged prokaryote">prokaryote</a>
               
             
             </div>
@@ -2406,6 +2385,6 @@ if(localStorage.getItem('sentry-opt-out') !== 'opt-out' && navigator.doNotTrack 
 </section>
 
 
-        <script src='/training-material/assets/js/bundle.main.js?v=1698801183'></script>
+        <script src='/training-material/assets/js/bundle.main.js?v=1698855886'></script>
     </body>
 </html>
