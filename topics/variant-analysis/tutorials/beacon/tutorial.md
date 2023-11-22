@@ -96,14 +96,25 @@ In this tutorial we will show an example on how to create both of those typs of 
 > ```
 > version: '3.6'
 > services:
->
->  mongo-client:
->    image: mongo:3.6
->    restart: unless-stopped
->    volumes:
->      - ./beacon/db:/data/db
->    ports:
->      - "27017:27017"
+> 
+>   mongo-client:
+>     image: mongo:3.6
+>     restart: unless-stopped
+>     volumes:
+>       - ./beacon/db:/data/db
+>     ports:
+>       - "27017:27017"
+> 
+>   mongo-express:
+>     image: mongo-express
+>     restart: unless-stopped
+>     environment:
+>       - ME_CONFIG_MONGODB_SERVER=mongo-client
+>       - ME_CONFIG_MONGODB_PORT=27017
+>       - ME_CONFIG_BASICAUTH_USERNAME=admin
+>       - ME_CONFIG_BASICAUTH_PASSWORD=adminpass
+>     ports:
+>       - "8081:8081"
 > ```
 > 5. create the path 'beacon/db' in your directory using 'mkdir' tool
 > ```
