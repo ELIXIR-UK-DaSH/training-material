@@ -103,7 +103,7 @@
       {
         "name": "graphicsmagick_image_montage",
         "owner": "bgruening",
-        "revisions": "39881709807e",
+        "revisions": "a0f01c777820",
         "tool_panel_section_label": "Ecology",
         "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
       },
@@ -137,7 +137,7 @@
       }
     ]
   },
-  "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: graphicsmagick_image_montage\n  owner: bgruening\n  revisions: 39881709807e\n  tool_panel_section_label: Ecology\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: cdo_operations\n  owner: climate\n  revisions: d5355f6fa02b\n  tool_panel_section_label: Ecology\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: xarray_coords_info\n  owner: ecology\n  revisions: 3e73f657a998\n  tool_panel_section_label: Ecology\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: xarray_mapplot\n  owner: ecology\n  revisions: dc05bf0af58f\n  tool_panel_section_label: Ecology\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: xarray_metadata_info\n  owner: ecology\n  revisions: e8650cdf092f\n  tool_panel_section_label: Ecology\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
+  "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: graphicsmagick_image_montage\n  owner: bgruening\n  revisions: a0f01c777820\n  tool_panel_section_label: Ecology\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: cdo_operations\n  owner: climate\n  revisions: d5355f6fa02b\n  tool_panel_section_label: Ecology\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: xarray_coords_info\n  owner: ecology\n  revisions: 3e73f657a998\n  tool_panel_section_label: Ecology\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: xarray_mapplot\n  owner: ecology\n  revisions: dc05bf0af58f\n  tool_panel_section_label: Ecology\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: xarray_metadata_info\n  owner: ecology\n  revisions: e8650cdf092f\n  tool_panel_section_label: Ecology\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
   "tours": false,
   "video": false,
   "translations": {

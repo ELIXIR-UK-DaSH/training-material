@@ -171,7 +171,7 @@
           {
             "name": "graphicsmagick_image_montage",
             "owner": "bgruening",
-            "revisions": "39881709807e",
+            "revisions": "a0f01c777820",
             "tool_panel_section_label": "Climate",
             "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
           },
@@ -233,7 +233,7 @@
           }
         ]
       },
-      "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: graphicsmagick_image_montage\n  owner: bgruening\n  revisions: 39881709807e\n  tool_panel_section_label: Climate\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: climate_stripes\n  owner: climate\n  revisions: c6f2435d680b\n  tool_panel_section_label: Climate\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: xarray_coords_info\n  owner: ecology\n  revisions: 6015f30a7258\n  tool_panel_section_label: Climate\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: xarray_mapplot\n  owner: ecology\n  revisions: d7479b6dfbe8\n  tool_panel_section_label: Climate\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: xarray_metadata_info\n  owner: ecology\n  revisions: e8650cdf092f\n  tool_panel_section_label: Climate\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: xarray_netcdf2netcdf\n  owner: ecology\n  revisions: 1a91e551f3a9\n  tool_panel_section_label: Climate\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: xarray_select\n  owner: ecology\n  revisions: 6baac361495b\n  tool_panel_section_label: Climate\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: regex_find_replace\n  owner: galaxyp\n  revisions: ae8c4b2488e7\n  tool_panel_section_label: Climate\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: ggplot2_point\n  owner: iuc\n  revisions: e3a675da7fd0\n  tool_panel_section_label: Climate\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
+      "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: graphicsmagick_image_montage\n  owner: bgruening\n  revisions: a0f01c777820\n  tool_panel_section_label: Climate\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: climate_stripes\n  owner: climate\n  revisions: c6f2435d680b\n  tool_panel_section_label: Climate\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: xarray_coords_info\n  owner: ecology\n  revisions: 6015f30a7258\n  tool_panel_section_label: Climate\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: xarray_mapplot\n  owner: ecology\n  revisions: d7479b6dfbe8\n  tool_panel_section_label: Climate\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: xarray_metadata_info\n  owner: ecology\n  revisions: e8650cdf092f\n  tool_panel_section_label: Climate\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: xarray_netcdf2netcdf\n  owner: ecology\n  revisions: 1a91e551f3a9\n  tool_panel_section_label: Climate\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: xarray_select\n  owner: ecology\n  revisions: 6baac361495b\n  tool_panel_section_label: Climate\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: regex_find_replace\n  owner: galaxyp\n  revisions: ae8c4b2488e7\n  tool_panel_section_label: Climate\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: ggplot2_point\n  owner: iuc\n  revisions: e3a675da7fd0\n  tool_panel_section_label: Climate\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
       "tours": false,
       "video": true,
       "translations": {
@@ -1057,6 +1057,11 @@
           {
             "url": "https://usegalaxy.eu",
             "name": "UseGalaxy.eu",
+            "usegalaxy": "true"
+          },
+          {
+            "url": "https://usegalaxy.fr/",
+            "name": "UseGalaxy.fr",
             "usegalaxy": "true"
           },
           {
