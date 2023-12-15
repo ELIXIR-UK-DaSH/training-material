@@ -84,64 +84,50 @@
   "materials": [
     {
       "layout": "tutorial_hands_on",
-      "title": "Sequence data submission to ENA",
+      "title": "FAIR in a nutshell",
       "abbreviations": {
-        "ENA": "European Nucleotide Archive"
+        "FAIR": "Findable, Accessible, Interoperable, Reusable"
       },
       "zenodo_link": "",
       "questions": [
-        "I am new to sequence submission to a repository.",
-        "How do I submit sequences and metadata to ENA using the Webin portal and cURL?"
+        "What do the FAIR principles stand for [Wilkinson et al. 2016](https://www.nature.com/articles/sdata201618)?",
+        "How to make data FAIR?"
       ],
       "objectives": [
-        "To populate ENA metadata objects through the Webin portal",
-        "To submit raw reads to ENA using FTP"
+        "Learn the FAIR principles",
+        "Recognise the relationship between FAIR and Open data"
       ],
-      "time_estimation": "1H",
+      "time_estimation": "10M",
       "key_points": [
-        "Use ENA Webin interactive portal to submit metadata",
-        "Preparation of metadata and sequence data for the submission",
-        "Use cURL to submit read fastq files"
-      ],
-      "requirements": [
-        {
-          "type": "none",
-          "title": "Web browser"
-        },
-        {
-          "type": "none",
-          "title": "A linux-based machine or linux emulator"
-        },
-        {
-          "type": "none",
-          "title": "Read data in fastq format"
-        }
+        "FAIR data are data which meet principles of findability, accessibility, interoperability, and reusability (FAIR).",
+        "FAIR data are as open as possible, and as closed as necessary.",
+        "The main objective of FAIR data is to increase data reuse by researchers."
       ],
       "tags": [
-        "FAIR",
-        "ENA"
+        "fair",
+        "open",
+        "data stewardship"
       ],
       "priority": 1,
       "contributions": {
         "authorship": [
-          "sonalhenson"
+          "kkamieniecka",
+          "poterlowicz-lab"
         ],
         "editing": [
-          "kkamieniecka",
-          "smza",
-          "poterlowicz-lab"
+          "hexylena"
         ],
         "funding": [
           "ELIXIR-UK-DaSH"
         ]
       },
       "subtopic": "fair-data",
-      "short_id": null,
-      "url": "/topics/fair/tutorials/fair-ena/tutorial.html",
+      "short_id": "T00351",
+      "url": "/topics/fair/tutorials/fair-intro/tutorial.html",
       "topic_name": "fair",
-      "tutorial_name": "fair-ena",
-      "dir": "topics/fair/tutorials/fair-ena",
-      "id": "fair/fair-ena",
+      "tutorial_name": "fair-intro",
+      "dir": "topics/fair/tutorials/fair-intro",
+      "id": "fair/fair-intro",
       "video_library": {
         "tutorial": null,
         "slides": null,
@@ -151,7 +137,7 @@
       },
       "hands_on": true,
       "slides": false,
-      "api": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/fair-ena/tutorial.json",
+      "api": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/fair-intro/tutorial.json",
       "tools": [
 
       ],
@@ -182,13 +168,6 @@
       "type": "tutorial",
       "contributors": [
         {
-          "name": "Sonal Henson",
-          "joined": "2023-09",
-          "id": "sonalhenson",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/sonalhenson.json",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/sonalhenson/"
-        },
-        {
           "name": "Katarzyna Kamieniecka",
           "twitter": "katemurat",
           "orcid": "0009-0004-2454-5950",
@@ -199,13 +178,6 @@
           "page": "https://training.galaxyproject.org/training-material/hall-of-fame/kkamieniecka/"
         },
         {
-          "name": "Munazah Andrabi",
-          "joined": "2023-09",
-          "id": "smza",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/smza.json",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/smza/"
-        },
-        {
           "name": "Krzysztof Poterlowicz",
           "twitter": "bioinfbrad",
           "orcid": "0000-0001-6173-5674",
@@ -214,6 +186,26 @@
           "id": "poterlowicz-lab",
           "url": "https://training.galaxyproject.org/training-material/api/contributors/poterlowicz-lab.json",
           "page": "https://training.galaxyproject.org/training-material/hall-of-fame/poterlowicz-lab/"
+        },
+        {
+          "name": "Helena Rasche",
+          "email": "hexylena@galaxians.org",
+          "orcid": "0000-0001-9760-8992",
+          "maintainer_contact": "gitter",
+          "matrix": "hexylena:matrix.org",
+          "joined": "2017-09",
+          "elixir_node": "nl",
+          "fediverse": "https://galaxians.garden/hexylena",
+          "fediverse_flavor": "akkoma",
+          "contact_for_training": false,
+          "location": {
+            "country": "NL",
+            "lat": 51.91,
+            "lon": 4.46
+          },
+          "id": "hexylena",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/hexylena.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/"
         },
         {
           "name": "DASH UK",
@@ -229,8 +221,130 @@
         }
       ],
       "urls": {
-        "hands_on": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/fair-ena/tutorial.json",
-        "slides": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/fair-ena/tutorial.json"
+        "hands_on": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/fair-intro/tutorial.json",
+        "slides": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/fair-intro/tutorial.json"
+      }
+    },
+    {
+      "layout": "tutorial_hands_on",
+      "title": "Making clinical datasets FAIR",
+      "abbreviations": {
+        "FAIR": "Findable, Accessible, Interoperable, Reusable",
+        "DOI": "Digital Object Identifier"
+      },
+      "zenodo_link": "",
+      "questions": [
+        "Why make clinical data FAIR?",
+        "How to make clinical data FAIR?",
+        "test"
+      ],
+      "objectives": [
+        "Learn how to make clinical datasets FAIR",
+        "Recognise why FAIR datasets are important"
+      ],
+      "time_estimation": "1H",
+      "key_points": [
+        "FAIR data are data that meet principles of findability, accessibility, interoperability, and reusability (FAIR)."
+      ],
+      "tags": [
+        "fair",
+        "open",
+        "data stewardship"
+      ],
+      "priority": 1,
+      "contributions": {
+        "authorship": [
+          "SNG888"
+        ],
+        "editing": [
+          "kkamieniecka",
+          "tb143"
+        ]
+      },
+      "subtopic": "fair-data",
+      "requirements": [
+        {
+          "type": "internal",
+          "topic_name": "fair",
+          "tutorials": [
+            "fair-intro"
+          ]
+        }
+      ],
+      "short_id": "T00368",
+      "url": "/topics/fair/tutorials/fair-clinical/tutorial.html",
+      "topic_name": "fair",
+      "tutorial_name": "fair-clinical",
+      "dir": "topics/fair/tutorials/fair-clinical",
+      "id": "fair/fair-clinical",
+      "video_library": {
+        "tutorial": null,
+        "slides": null,
+        "demo": null,
+        "both": null,
+        "session": null
+      },
+      "hands_on": true,
+      "slides": false,
+      "api": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/fair-clinical/tutorial.json",
+      "tools": [
+
+      ],
+      "supported_servers": [
+
+      ],
+      "topic_name_human": "FAIR Data, Workflows, and Research",
+      "admin_install": {
+        "install_tool_dependencies": true,
+        "install_repository_dependencies": true,
+        "install_resolver_dependencies": true,
+        "tools": [
+
+        ]
+      },
+      "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools: []\n",
+      "tours": false,
+      "video": false,
+      "translations": {
+        "tutorial": [
+
+        ],
+        "slides": [
+
+        ],
+        "video": false
+      },
+      "type": "tutorial",
+      "contributors": [
+        {
+          "name": "Sandra Ng",
+          "email": "s.ng@qmul.ac.uk",
+          "joined": "2023-07",
+          "id": "SNG888",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/SNG888.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/SNG888/"
+        },
+        {
+          "name": "Katarzyna Kamieniecka",
+          "twitter": "katemurat",
+          "orcid": "0009-0004-2454-5950",
+          "joined": "2018-08",
+          "elixir_node": "uk",
+          "id": "kkamieniecka",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/kkamieniecka.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/kkamieniecka/"
+        },
+        {
+          "name": "Tim Beck",
+          "joined": "2023-09",
+          "id": "tb143",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/tb143.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/tb143/"
+        }
+      ],
+      "urls": {
+        "hands_on": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/fair-clinical/tutorial.json",
+        "slides": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/fair-clinical/tutorial.json"
       }
     },
     {
@@ -469,172 +583,64 @@
     },
     {
       "layout": "tutorial_hands_on",
-      "title": "Making clinical datasets FAIR",
+      "title": "Sequence data submission to ENA",
       "abbreviations": {
-        "FAIR": "Findable, Accessible, Interoperable, Reusable",
-        "DOI": "Digital Object Identifier"
+        "ENA": "European Nucleotide Archive"
       },
       "zenodo_link": "",
       "questions": [
-        "Why make clinical data FAIR?",
-        "How to make clinical data FAIR?",
-        "test"
+        "I am new to sequence submission to a repository.",
+        "How do I submit sequences and metadata to ENA using the Webin portal and cURL?"
       ],
       "objectives": [
-        "Learn how to make clinical datasets FAIR",
-        "Recognise why FAIR datasets are important"
+        "To populate ENA metadata objects through the Webin portal",
+        "To submit raw reads to ENA using FTP"
       ],
       "time_estimation": "1H",
       "key_points": [
-        "FAIR data are data that meet principles of findability, accessibility, interoperability, and reusability (FAIR)."
+        "Use ENA Webin interactive portal to submit metadata",
+        "Preparation of metadata and sequence data for the submission",
+        "Use cURL to submit read fastq files"
       ],
-      "tags": [
-        "fair",
-        "open",
-        "data stewardship"
-      ],
-      "priority": 1,
-      "contributions": {
-        "authorship": [
-          "SNG888"
-        ],
-        "editing": [
-          "kkamieniecka",
-          "tb143"
-        ]
-      },
-      "subtopic": "fair-data",
       "requirements": [
         {
-          "type": "internal",
-          "topic_name": "fair",
-          "tutorials": [
-            "fair-intro"
-          ]
-        }
-      ],
-      "short_id": "T00368",
-      "url": "/topics/fair/tutorials/fair-clinical/tutorial.html",
-      "topic_name": "fair",
-      "tutorial_name": "fair-clinical",
-      "dir": "topics/fair/tutorials/fair-clinical",
-      "id": "fair/fair-clinical",
-      "video_library": {
-        "tutorial": null,
-        "slides": null,
-        "demo": null,
-        "both": null,
-        "session": null
-      },
-      "hands_on": true,
-      "slides": false,
-      "api": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/fair-clinical/tutorial.json",
-      "tools": [
-
-      ],
-      "supported_servers": [
-
-      ],
-      "topic_name_human": "FAIR Data, Workflows, and Research",
-      "admin_install": {
-        "install_tool_dependencies": true,
-        "install_repository_dependencies": true,
-        "install_resolver_dependencies": true,
-        "tools": [
-
-        ]
-      },
-      "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools: []\n",
-      "tours": false,
-      "video": false,
-      "translations": {
-        "tutorial": [
-
-        ],
-        "slides": [
-
-        ],
-        "video": false
-      },
-      "type": "tutorial",
-      "contributors": [
-        {
-          "name": "Sandra Ng",
-          "email": "s.ng@qmul.ac.uk",
-          "joined": "2023-07",
-          "id": "SNG888",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/SNG888.json",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/SNG888/"
+          "type": "none",
+          "title": "Web browser"
         },
         {
-          "name": "Katarzyna Kamieniecka",
-          "twitter": "katemurat",
-          "orcid": "0009-0004-2454-5950",
-          "joined": "2018-08",
-          "elixir_node": "uk",
-          "id": "kkamieniecka",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/kkamieniecka.json",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/kkamieniecka/"
+          "type": "none",
+          "title": "A linux-based machine or linux emulator"
         },
         {
-          "name": "Tim Beck",
-          "joined": "2023-09",
-          "id": "tb143",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/tb143.json",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/tb143/"
+          "type": "none",
+          "title": "Read data in fastq format"
         }
-      ],
-      "urls": {
-        "hands_on": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/fair-clinical/tutorial.json",
-        "slides": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/fair-clinical/tutorial.json"
-      }
-    },
-    {
-      "layout": "tutorial_hands_on",
-      "title": "FAIR in a nutshell",
-      "abbreviations": {
-        "FAIR": "Findable, Accessible, Interoperable, Reusable"
-      },
-      "zenodo_link": "",
-      "questions": [
-        "What do the FAIR principles stand for [Wilkinson et al. 2016](https://www.nature.com/articles/sdata201618)?",
-        "How to make data FAIR?"
-      ],
-      "objectives": [
-        "Learn the FAIR principles",
-        "Recognise the relationship between FAIR and Open data"
-      ],
-      "time_estimation": "10M",
-      "key_points": [
-        "FAIR data are data which meet principles of findability, accessibility, interoperability, and reusability (FAIR).",
-        "FAIR data are as open as possible, and as closed as necessary.",
-        "The main objective of FAIR data is to increase data reuse by researchers."
       ],
       "tags": [
-        "fair",
-        "open",
-        "data stewardship"
+        "FAIR",
+        "ENA"
       ],
       "priority": 1,
       "contributions": {
         "authorship": [
-          "kkamieniecka",
-          "poterlowicz-lab"
+          "sonalhenson"
         ],
         "editing": [
-          "hexylena"
+          "kkamieniecka",
+          "smza",
+          "poterlowicz-lab"
         ],
         "funding": [
           "ELIXIR-UK-DaSH"
         ]
       },
       "subtopic": "fair-data",
-      "short_id": "T00351",
-      "url": "/topics/fair/tutorials/fair-intro/tutorial.html",
+      "short_id": null,
+      "url": "/topics/fair/tutorials/fair-ena/tutorial.html",
       "topic_name": "fair",
-      "tutorial_name": "fair-intro",
-      "dir": "topics/fair/tutorials/fair-intro",
-      "id": "fair/fair-intro",
+      "tutorial_name": "fair-ena",
+      "dir": "topics/fair/tutorials/fair-ena",
+      "id": "fair/fair-ena",
       "video_library": {
         "tutorial": null,
         "slides": null,
@@ -644,7 +650,7 @@
       },
       "hands_on": true,
       "slides": false,
-      "api": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/fair-intro/tutorial.json",
+      "api": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/fair-ena/tutorial.json",
       "tools": [
 
       ],
@@ -675,6 +681,13 @@
       "type": "tutorial",
       "contributors": [
         {
+          "name": "Sonal Henson",
+          "joined": "2023-09",
+          "id": "sonalhenson",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/sonalhenson.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/sonalhenson/"
+        },
+        {
           "name": "Katarzyna Kamieniecka",
           "twitter": "katemurat",
           "orcid": "0009-0004-2454-5950",
@@ -683,6 +696,13 @@
           "id": "kkamieniecka",
           "url": "https://training.galaxyproject.org/training-material/api/contributors/kkamieniecka.json",
           "page": "https://training.galaxyproject.org/training-material/hall-of-fame/kkamieniecka/"
+        },
+        {
+          "name": "Munazah Andrabi",
+          "joined": "2023-09",
+          "id": "smza",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/smza.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/smza/"
         },
         {
           "name": "Krzysztof Poterlowicz",
@@ -693,26 +713,6 @@
           "id": "poterlowicz-lab",
           "url": "https://training.galaxyproject.org/training-material/api/contributors/poterlowicz-lab.json",
           "page": "https://training.galaxyproject.org/training-material/hall-of-fame/poterlowicz-lab/"
-        },
-        {
-          "name": "Helena Rasche",
-          "email": "hexylena@galaxians.org",
-          "orcid": "0000-0001-9760-8992",
-          "maintainer_contact": "gitter",
-          "matrix": "hexylena:matrix.org",
-          "joined": "2017-09",
-          "elixir_node": "nl",
-          "fediverse": "https://galaxians.garden/hexylena",
-          "fediverse_flavor": "akkoma",
-          "contact_for_training": false,
-          "location": {
-            "country": "NL",
-            "lat": 51.91,
-            "lon": 4.46
-          },
-          "id": "hexylena",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/hexylena.json",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/"
         },
         {
           "name": "DASH UK",
@@ -728,8 +728,8 @@
         }
       ],
       "urls": {
-        "hands_on": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/fair-intro/tutorial.json",
-        "slides": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/fair-intro/tutorial.json"
+        "hands_on": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/fair-ena/tutorial.json",
+        "slides": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/fair-ena/tutorial.json"
       }
     },
     {
@@ -1125,6 +1125,110 @@
     },
     {
       "layout": "tutorial_hands_on",
+      "title": "Best practices for workflows in GitHub repositories",
+      "time_estimation": "30M",
+      "questions": [
+        "What are Workflow Best Practices",
+        "How does RO-Crate help?"
+      ],
+      "objectives": [
+        "Generate a workflow test using Planemo",
+        "Understand how testing can be automated with GitHub Actions"
+      ],
+      "key_points": [
+        "repo2rocrate lets you easily generate templated out metadata for your workflow",
+        "Generating tests is easy and something everyone should do."
+      ],
+      "tags": [
+        "ro-crate"
+      ],
+      "priority": 3,
+      "contributions": {
+        "authorship": [
+          "simleo"
+        ],
+        "funding": [
+          "by-covid"
+        ]
+      },
+      "license": "Apache-2.0",
+      "subtopic": "ro-crate",
+      "notebook": {
+        "language": "bash"
+      },
+      "short_id": "T00339",
+      "url": "/topics/fair/tutorials/ro-crate-galaxy-best-practices/tutorial.html",
+      "topic_name": "fair",
+      "tutorial_name": "ro-crate-galaxy-best-practices",
+      "dir": "topics/fair/tutorials/ro-crate-galaxy-best-practices",
+      "id": "fair/ro-crate-galaxy-best-practices",
+      "video_library": {
+        "tutorial": null,
+        "slides": null,
+        "demo": null,
+        "both": null,
+        "session": null
+      },
+      "hands_on": true,
+      "slides": false,
+      "api": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/ro-crate-galaxy-best-practices/tutorial.json",
+      "tools": [
+
+      ],
+      "supported_servers": [
+
+      ],
+      "topic_name_human": "FAIR Data, Workflows, and Research",
+      "admin_install": {
+        "install_tool_dependencies": true,
+        "install_repository_dependencies": true,
+        "install_resolver_dependencies": true,
+        "tools": [
+
+        ]
+      },
+      "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools: []\n",
+      "tours": false,
+      "video": false,
+      "translations": {
+        "tutorial": [
+
+        ],
+        "slides": [
+
+        ],
+        "video": false
+      },
+      "type": "tutorial",
+      "contributors": [
+        {
+          "name": "Simone Leo",
+          "joined": "2023-04",
+          "elixir_node": "it",
+          "orcid": "0000-0001-8271-5429",
+          "id": "simleo",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/simleo.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/simleo/"
+        },
+        {
+          "name": "BeYond-COVID",
+          "joined": "2023-04",
+          "funder": true,
+          "funding_id": "101046203",
+          "funding_system": "cordis",
+          "funding_statement": "BY-COVID is an EC funded project that tackles the data challenges that can hinder effective pandemic response.\n\nThis project has received funding from the European Union’s Horizon Europe research and innovation programme under grant agreement № 101046203 (BY-COVID)",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/by-covid.json",
+          "id": "by-covid",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/by-covid/"
+        }
+      ],
+      "urls": {
+        "hands_on": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/ro-crate-galaxy-best-practices/tutorial.json",
+        "slides": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/ro-crate-galaxy-best-practices/tutorial.json"
+      }
+    },
+    {
+      "layout": "tutorial_hands_on",
       "title": "FAIR Galaxy Training Material",
       "abbreviations": {
         "FAIR": "Findable, Accessible, Interoperable, Reusable",
@@ -1277,43 +1381,58 @@
     },
     {
       "layout": "tutorial_hands_on",
-      "title": "Best practices for workflows in GitHub repositories",
+      "title": "Submitting workflows to LifeMonitor",
       "time_estimation": "30M",
       "questions": [
-        "What are Workflow Best Practices",
-        "How does RO-Crate help?"
+        "What is LifeMonitor?",
+        "How is it useful to me?",
+        "How can I automate things?"
       ],
       "objectives": [
-        "Generate a workflow test using Planemo",
-        "Understand how testing can be automated with GitHub Actions"
+        "Setup Life Monitor"
       ],
       "key_points": [
-        "repo2rocrate lets you easily generate templated out metadata for your workflow",
-        "Generating tests is easy and something everyone should do."
+        "Automation helps us keep workflows re-usable and reproducible.",
+        "LifeMonitor helps you monitor and periodically test your workflow.",
+        "New workflow releases will automatically be propagated to WorkflowHub, saving you time."
       ],
       "tags": [
         "ro-crate"
       ],
-      "priority": 3,
+      "priority": 4,
       "contributions": {
         "authorship": [
-          "simleo"
+          "ilveroluca",
+          "simleo",
+          "kikkomep"
+        ],
+        "editing": [
+          "hexylena"
         ],
         "funding": [
           "by-covid"
         ]
       },
+      "requirements": [
+        {
+          "type": "internal",
+          "topic_name": "fair",
+          "tutorials": [
+            "ro-crate-galaxy-best-practices"
+          ]
+        }
+      ],
       "license": "Apache-2.0",
       "subtopic": "ro-crate",
-      "notebook": {
-        "language": "bash"
+      "abbreviations": {
+        "LM": "Life Monitor"
       },
-      "short_id": "T00339",
-      "url": "/topics/fair/tutorials/ro-crate-galaxy-best-practices/tutorial.html",
+      "short_id": "T00342",
+      "url": "/topics/fair/tutorials/ro-crate-submitting-life-monitor/tutorial.html",
       "topic_name": "fair",
-      "tutorial_name": "ro-crate-galaxy-best-practices",
-      "dir": "topics/fair/tutorials/ro-crate-galaxy-best-practices",
-      "id": "fair/ro-crate-galaxy-best-practices",
+      "tutorial_name": "ro-crate-submitting-life-monitor",
+      "dir": "topics/fair/tutorials/ro-crate-submitting-life-monitor",
+      "id": "fair/ro-crate-submitting-life-monitor",
       "video_library": {
         "tutorial": null,
         "slides": null,
@@ -1323,7 +1442,7 @@
       },
       "hands_on": true,
       "slides": false,
-      "api": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/ro-crate-galaxy-best-practices/tutorial.json",
+      "api": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/ro-crate-submitting-life-monitor/tutorial.json",
       "tools": [
 
       ],
@@ -1354,6 +1473,14 @@
       "type": "tutorial",
       "contributors": [
         {
+          "name": "Luca Pireddu",
+          "joined": "2023-04",
+          "orcid": "0000-0002-4663-5613",
+          "id": "ilveroluca",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/ilveroluca.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/ilveroluca/"
+        },
+        {
           "name": "Simone Leo",
           "joined": "2023-04",
           "elixir_node": "it",
@@ -1361,6 +1488,35 @@
           "id": "simleo",
           "url": "https://training.galaxyproject.org/training-material/api/contributors/simleo.json",
           "page": "https://training.galaxyproject.org/training-material/hall-of-fame/simleo/"
+        },
+        {
+          "name": "Marco Enrico Piras",
+          "joined": "2023-04",
+          "orcid": "0000-0002-5207-0030",
+          "elixir_node": "it",
+          "id": "kikkomep",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/kikkomep.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/kikkomep/"
+        },
+        {
+          "name": "Helena Rasche",
+          "email": "hexylena@galaxians.org",
+          "orcid": "0000-0001-9760-8992",
+          "maintainer_contact": "gitter",
+          "matrix": "hexylena:matrix.org",
+          "joined": "2017-09",
+          "elixir_node": "nl",
+          "fediverse": "https://galaxians.garden/hexylena",
+          "fediverse_flavor": "akkoma",
+          "contact_for_training": false,
+          "location": {
+            "country": "NL",
+            "lat": 51.91,
+            "lon": 4.46
+          },
+          "id": "hexylena",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/hexylena.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/"
         },
         {
           "name": "BeYond-COVID",
@@ -1375,8 +1531,8 @@
         }
       ],
       "urls": {
-        "hands_on": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/ro-crate-galaxy-best-practices/tutorial.json",
-        "slides": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/ro-crate-galaxy-best-practices/tutorial.json"
+        "hands_on": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/ro-crate-submitting-life-monitor/tutorial.json",
+        "slides": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/ro-crate-submitting-life-monitor/tutorial.json"
       }
     },
     {
@@ -1537,162 +1693,6 @@
       "urls": {
         "hands_on": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/bioimage-metadata/tutorial.json",
         "slides": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/bioimage-metadata/tutorial.json"
-      }
-    },
-    {
-      "layout": "tutorial_hands_on",
-      "title": "Submitting workflows to LifeMonitor",
-      "time_estimation": "30M",
-      "questions": [
-        "What is LifeMonitor?",
-        "How is it useful to me?",
-        "How can I automate things?"
-      ],
-      "objectives": [
-        "Setup Life Monitor"
-      ],
-      "key_points": [
-        "Automation helps us keep workflows re-usable and reproducible.",
-        "LifeMonitor helps you monitor and periodically test your workflow.",
-        "New workflow releases will automatically be propagated to WorkflowHub, saving you time."
-      ],
-      "tags": [
-        "ro-crate"
-      ],
-      "priority": 4,
-      "contributions": {
-        "authorship": [
-          "ilveroluca",
-          "simleo",
-          "kikkomep"
-        ],
-        "editing": [
-          "hexylena"
-        ],
-        "funding": [
-          "by-covid"
-        ]
-      },
-      "requirements": [
-        {
-          "type": "internal",
-          "topic_name": "fair",
-          "tutorials": [
-            "ro-crate-galaxy-best-practices"
-          ]
-        }
-      ],
-      "license": "Apache-2.0",
-      "subtopic": "ro-crate",
-      "abbreviations": {
-        "LM": "Life Monitor"
-      },
-      "short_id": "T00342",
-      "url": "/topics/fair/tutorials/ro-crate-submitting-life-monitor/tutorial.html",
-      "topic_name": "fair",
-      "tutorial_name": "ro-crate-submitting-life-monitor",
-      "dir": "topics/fair/tutorials/ro-crate-submitting-life-monitor",
-      "id": "fair/ro-crate-submitting-life-monitor",
-      "video_library": {
-        "tutorial": null,
-        "slides": null,
-        "demo": null,
-        "both": null,
-        "session": null
-      },
-      "hands_on": true,
-      "slides": false,
-      "api": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/ro-crate-submitting-life-monitor/tutorial.json",
-      "tools": [
-
-      ],
-      "supported_servers": [
-
-      ],
-      "topic_name_human": "FAIR Data, Workflows, and Research",
-      "admin_install": {
-        "install_tool_dependencies": true,
-        "install_repository_dependencies": true,
-        "install_resolver_dependencies": true,
-        "tools": [
-
-        ]
-      },
-      "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools: []\n",
-      "tours": false,
-      "video": false,
-      "translations": {
-        "tutorial": [
-
-        ],
-        "slides": [
-
-        ],
-        "video": false
-      },
-      "type": "tutorial",
-      "contributors": [
-        {
-          "name": "Luca Pireddu",
-          "joined": "2023-04",
-          "orcid": "0000-0002-4663-5613",
-          "id": "ilveroluca",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/ilveroluca.json",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/ilveroluca/"
-        },
-        {
-          "name": "Simone Leo",
-          "joined": "2023-04",
-          "elixir_node": "it",
-          "orcid": "0000-0001-8271-5429",
-          "id": "simleo",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/simleo.json",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/simleo/"
-        },
-        {
-          "name": "Marco Enrico Piras",
-          "joined": "2023-04",
-          "orcid": "0000-0002-5207-0030",
-          "elixir_node": "it",
-          "id": "kikkomep",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/kikkomep.json",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/kikkomep/"
-        },
-        {
-          "name": "Helena Rasche",
-          "email": "hexylena@galaxians.org",
-          "orcid": "0000-0001-9760-8992",
-          "maintainer_contact": "gitter",
-          "matrix": "hexylena:matrix.org",
-          "joined": "2017-09",
-          "elixir_node": "nl",
-          "fediverse": "https://galaxians.garden/hexylena",
-          "fediverse_flavor": "akkoma",
-          "contact_for_training": false,
-          "location": {
-            "country": "NL",
-            "lat": 51.91,
-            "lon": 4.46
-          },
-          "id": "hexylena",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/hexylena.json",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/"
-        },
-        {
-          "name": "BeYond-COVID",
-          "joined": "2023-04",
-          "funder": true,
-          "funding_id": "101046203",
-          "funding_system": "cordis",
-          "funding_statement": "BY-COVID is an EC funded project that tackles the data challenges that can hinder effective pandemic response.\n\nThis project has received funding from the European Union’s Horizon Europe research and innovation programme under grant agreement № 101046203 (BY-COVID)",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/by-covid.json",
-          "id": "by-covid",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/by-covid/"
-        }
-      ],
-      "urls": {
-        "hands_on": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/ro-crate-submitting-life-monitor/tutorial.json",
-        "slides": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/ro-crate-submitting-life-monitor/tutorial.json"
       }
     },
     {
