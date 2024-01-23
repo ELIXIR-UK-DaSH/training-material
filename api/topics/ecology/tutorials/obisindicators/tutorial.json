@@ -788,13 +788,13 @@
       {
         "name": "obisindicators",
         "owner": "ecology",
-        "revisions": "4e7c1fb5e894",
+        "revisions": "393957ecc97d",
         "tool_panel_section_label": "Ecology",
         "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
       }
     ]
   },
-  "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: text_processing\n  owner: bgruening\n  revisions: d698c222f354\n  tool_panel_section_label: Ecology\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: obisindicators\n  owner: ecology\n  revisions: 1015a0070bac\n  tool_panel_section_label: Ecology\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: obisindicators\n  owner: ecology\n  revisions: 4e7c1fb5e894\n  tool_panel_section_label: Ecology\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
+  "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: text_processing\n  owner: bgruening\n  revisions: d698c222f354\n  tool_panel_section_label: Ecology\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: obisindicators\n  owner: ecology\n  revisions: 1015a0070bac\n  tool_panel_section_label: Ecology\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: obisindicators\n  owner: ecology\n  revisions: 393957ecc97d\n  tool_panel_section_label: Ecology\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
   "tours": false,
   "video": false,
   "translations": {
