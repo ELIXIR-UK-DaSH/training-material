@@ -3336,7 +3336,7 @@
             }
           ],
           "gtn_id": "single-cell/scrna-case_alevin-combine-datasets",
-          "title": "Combining datasets after pre-processing",
+          "title": "Combining single cell datasets after pre-processing",
           "captioned": true
         },
         "slides": null,
@@ -4608,7 +4608,7 @@
             }
           ],
           "gtn_id": "single-cell/scrna-case_basic-pipeline",
-          "title": "Filter, Plot and Explore Single-cell RNA-seq Data",
+          "title": "Filter, plot and explore single-cell RNA-seq data (Scanpy)",
           "captioned": true
         },
         "slides": null,
@@ -5212,7 +5212,7 @@
             }
           ],
           "gtn_id": "single-cell/scrna-case_JUPYTER-trajectories",
-          "title": "Inferring Trajectories using Scanpy (Python)",
+          "title": "Inferring single cell trajectories (Scanpy, Python)",
           "captioned": true
         },
         "slides": null,
@@ -5899,7 +5899,7 @@
             }
           ],
           "gtn_id": "single-cell/scrna-case_monocle3-trajectories",
-          "title": "Inferring trajectories using Monocle3",
+          "title": "Inferring single cell trajectories (Monocle3)",
           "captioned": true
         },
         "session": null
