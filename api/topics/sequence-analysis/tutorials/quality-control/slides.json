@@ -1380,11 +1380,7 @@
       }
     ],
     "inexact": [
-      {
-        "url": "https://usegalaxy.fr/",
-        "name": "UseGalaxy.fr",
-        "usegalaxy": "true"
-      }
+
     ]
   },
   "topic_name_human": "Sequence analysis",
