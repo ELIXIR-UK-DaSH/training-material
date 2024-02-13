@@ -178,7 +178,7 @@
       {
         "name": "kraken2",
         "owner": "iuc",
-        "revisions": "e674066930b2",
+        "revisions": "20e2f64aa1fe",
         "tool_panel_section_label": "Metagenomics",
         "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
       },
@@ -198,7 +198,7 @@
       }
     ]
   },
-  "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: taxonomy_krona_chart\n  owner: crs4\n  revisions: e9005d1f3cfd\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: fastqc\n  owner: devteam\n  revisions: 3d0c7bdf12f5\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: fastp\n  owner: iuc\n  revisions: 65b93b623c77\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: kraken2\n  owner: iuc\n  revisions: e674066930b2\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: krakentools_kreport2krona\n  owner: iuc\n  revisions: 88d274322340\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: porechop\n  owner: iuc\n  revisions: 543cbeef3949\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
+  "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: taxonomy_krona_chart\n  owner: crs4\n  revisions: e9005d1f3cfd\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: fastqc\n  owner: devteam\n  revisions: 3d0c7bdf12f5\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: fastp\n  owner: iuc\n  revisions: 65b93b623c77\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: kraken2\n  owner: iuc\n  revisions: 20e2f64aa1fe\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: krakentools_kreport2krona\n  owner: iuc\n  revisions: 88d274322340\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: porechop\n  owner: iuc\n  revisions: 543cbeef3949\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
   "tours": false,
   "video": false,
   "translations": {
