@@ -418,10 +418,6 @@
         ],
         "inexact": [
           {
-            "url": "http://143.169.238.104/galaxy/",
-            "name": "Biomina"
-          },
-          {
             "url": "https://galaxytrakr.org/",
             "name": "GalaxyTrakr",
             "usegalaxy": "false"
