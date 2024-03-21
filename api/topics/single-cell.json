@@ -246,6 +246,11 @@
       "supported_servers": {
         "exact": [
           {
+            "url": "https://galaxy.metacentrum.cz/",
+            "name": "MetaCentrum",
+            "usegalaxy": "false"
+          },
+          {
             "url": "https://usegalaxy.eu",
             "name": "UseGalaxy.eu",
             "usegalaxy": "true"
@@ -536,6 +541,11 @@
       "supported_servers": {
         "exact": [
           {
+            "url": "https://galaxy.metacentrum.cz/",
+            "name": "MetaCentrum",
+            "usegalaxy": "false"
+          },
+          {
             "url": "https://usegalaxy.eu",
             "name": "UseGalaxy.eu",
             "usegalaxy": "true"
@@ -756,6 +766,11 @@
 
         ],
         "inexact": [
+          {
+            "url": "https://galaxy.metacentrum.cz/",
+            "name": "MetaCentrum",
+            "usegalaxy": "false"
+          },
           {
             "url": "https://usegalaxy.org.au",
             "name": "UseGalaxy.org.au",
@@ -1070,7 +1085,11 @@
           }
         ],
         "inexact": [
-
+          {
+            "url": "https://galaxy.metacentrum.cz/",
+            "name": "MetaCentrum",
+            "usegalaxy": "false"
+          }
         ]
       },
       "topic_name_human": "Single Cell",
@@ -1318,7 +1337,11 @@
           }
         ],
         "inexact": [
-
+          {
+            "url": "https://galaxy.metacentrum.cz/",
+            "name": "MetaCentrum",
+            "usegalaxy": "false"
+          }
         ]
       },
       "topic_name_human": "Single Cell",
@@ -1864,6 +1887,11 @@
         ],
         "inexact": [
           {
+            "url": "https://galaxy.metacentrum.cz/",
+            "name": "MetaCentrum",
+            "usegalaxy": "false"
+          },
+          {
             "url": "https://usegalaxy.be/",
             "name": "UseGalaxy.be",
             "usegalaxy": "true"
@@ -2364,6 +2392,11 @@
         ],
         "inexact": [
           {
+            "url": "https://galaxy.metacentrum.cz/",
+            "name": "MetaCentrum",
+            "usegalaxy": "false"
+          },
+          {
             "url": "https://usegalaxy.be/",
             "name": "UseGalaxy.be",
             "usegalaxy": "true"
@@ -2639,7 +2672,11 @@
           }
         ],
         "inexact": [
-
+          {
+            "url": "https://galaxy.metacentrum.cz/",
+            "name": "MetaCentrum",
+            "usegalaxy": "false"
+          }
         ]
       },
       "topic_name_human": "Single Cell",
@@ -3836,6 +3873,11 @@
         ],
         "inexact": [
           {
+            "url": "https://galaxy.metacentrum.cz/",
+            "name": "MetaCentrum",
+            "usegalaxy": "false"
+          },
+          {
             "url": "https://usegalaxy.fr/",
             "name": "UseGalaxy.fr",
             "usegalaxy": "true"
@@ -4904,6 +4946,11 @@
         ],
         "inexact": [
           {
+            "url": "https://galaxy.metacentrum.cz/",
+            "name": "MetaCentrum",
+            "usegalaxy": "false"
+          },
+          {
             "url": "https://usegalaxy.be/",
             "name": "UseGalaxy.be",
             "usegalaxy": "true"
@@ -5423,6 +5470,11 @@
       ],
       "supported_servers": {
         "exact": [
+          {
+            "url": "https://galaxy.metacentrum.cz/",
+            "name": "MetaCentrum",
+            "usegalaxy": "false"
+          },
           {
             "url": "https://usegalaxy.eu",
             "name": "UseGalaxy.eu",
