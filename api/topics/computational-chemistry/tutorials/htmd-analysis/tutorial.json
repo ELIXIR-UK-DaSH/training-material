@@ -180,9 +180,9 @@
     ],
     "inexact": [
       {
-        "url": "https://galaxy.metacentrum.cz/",
-        "name": "MetaCentrum",
-        "usegalaxy": "false"
+        "url": "https://usegalaxy.cz/",
+        "name": "UseGalaxy.cz",
+        "usegalaxy": "true"
       },
       {
         "url": "https://usegalaxy.eu",

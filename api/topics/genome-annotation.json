@@ -276,9 +276,9 @@
             "usegalaxy": "false"
           },
           {
-            "url": "https://galaxy.metacentrum.cz/",
-            "name": "MetaCentrum",
-            "usegalaxy": "false"
+            "url": "https://usegalaxy.cz/",
+            "name": "UseGalaxy.cz",
+            "usegalaxy": "true"
           },
           {
             "url": "https://usegalaxy.fr/",
@@ -485,9 +485,9 @@
       "supported_servers": {
         "exact": [
           {
-            "url": "https://galaxy.metacentrum.cz/",
-            "name": "MetaCentrum",
-            "usegalaxy": "false"
+            "url": "https://usegalaxy.cz/",
+            "name": "UseGalaxy.cz",
+            "usegalaxy": "true"
           },
           {
             "url": "https://usegalaxy.eu",
@@ -826,9 +826,9 @@
         ],
         "inexact": [
           {
-            "url": "https://galaxy.metacentrum.cz/",
-            "name": "MetaCentrum",
-            "usegalaxy": "false"
+            "url": "https://usegalaxy.cz/",
+            "name": "UseGalaxy.cz",
+            "usegalaxy": "true"
           },
           {
             "url": "https://usegalaxy.eu",
@@ -1095,9 +1095,9 @@
             "usegalaxy": "false"
           },
           {
-            "url": "https://galaxy.metacentrum.cz/",
-            "name": "MetaCentrum",
-            "usegalaxy": "false"
+            "url": "https://usegalaxy.cz/",
+            "name": "UseGalaxy.cz",
+            "usegalaxy": "true"
           }
         ]
       },
@@ -1511,9 +1511,9 @@
         ],
         "inexact": [
           {
-            "url": "https://galaxy.metacentrum.cz/",
-            "name": "MetaCentrum",
-            "usegalaxy": "false"
+            "url": "https://usegalaxy.cz/",
+            "name": "UseGalaxy.cz",
+            "usegalaxy": "true"
           }
         ]
       },
@@ -1803,13 +1803,13 @@
         ],
         "inexact": [
           {
-            "url": "https://galaxy.metacentrum.cz/",
-            "name": "MetaCentrum",
-            "usegalaxy": "false"
-          },
-          {
             "url": "https://usegalaxy.be/",
             "name": "UseGalaxy.be",
+            "usegalaxy": "true"
+          },
+          {
+            "url": "https://usegalaxy.cz/",
+            "name": "UseGalaxy.cz",
             "usegalaxy": "true"
           },
           {
@@ -2319,9 +2319,9 @@
         ],
         "inexact": [
           {
-            "url": "https://galaxy.metacentrum.cz/",
-            "name": "MetaCentrum",
-            "usegalaxy": "false"
+            "url": "https://usegalaxy.cz/",
+            "name": "UseGalaxy.cz",
+            "usegalaxy": "true"
           },
           {
             "url": "https://usegalaxy.eu",
@@ -2542,9 +2542,9 @@
         ],
         "inexact": [
           {
-            "url": "https://galaxy.metacentrum.cz/",
-            "name": "MetaCentrum",
-            "usegalaxy": "false"
+            "url": "https://usegalaxy.cz/",
+            "name": "UseGalaxy.cz",
+            "usegalaxy": "true"
           },
           {
             "url": "https://usegalaxy.org.au",
@@ -2716,9 +2716,9 @@
       "supported_servers": {
         "exact": [
           {
-            "url": "https://galaxy.metacentrum.cz/",
-            "name": "MetaCentrum",
-            "usegalaxy": "false"
+            "url": "https://usegalaxy.cz/",
+            "name": "UseGalaxy.cz",
+            "usegalaxy": "true"
           },
           {
             "url": "https://usegalaxy.eu",
@@ -2928,9 +2928,9 @@
         ],
         "inexact": [
           {
-            "url": "https://galaxy.metacentrum.cz/",
-            "name": "MetaCentrum",
-            "usegalaxy": "false"
+            "url": "https://usegalaxy.cz/",
+            "name": "UseGalaxy.cz",
+            "usegalaxy": "true"
           },
           {
             "url": "https://usegalaxy.eu",
@@ -3138,13 +3138,13 @@
         ],
         "inexact": [
           {
-            "url": "https://galaxy.metacentrum.cz/",
-            "name": "MetaCentrum",
-            "usegalaxy": "false"
-          },
-          {
             "url": "https://usegalaxy.be/",
             "name": "UseGalaxy.be",
+            "usegalaxy": "true"
+          },
+          {
+            "url": "https://usegalaxy.cz/",
+            "name": "UseGalaxy.cz",
             "usegalaxy": "true"
           },
           {
@@ -3445,13 +3445,13 @@
         ],
         "inexact": [
           {
-            "url": "https://galaxy.metacentrum.cz/",
-            "name": "MetaCentrum",
-            "usegalaxy": "false"
-          },
-          {
             "url": "https://usegalaxy.be/",
             "name": "UseGalaxy.be",
+            "usegalaxy": "true"
+          },
+          {
+            "url": "https://usegalaxy.cz/",
+            "name": "UseGalaxy.cz",
             "usegalaxy": "true"
           },
           {
