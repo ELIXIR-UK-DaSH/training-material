@@ -656,7 +656,7 @@
           {
             "name": "metaquantome_db",
             "owner": "galaxyp",
-            "revisions": "860429737408",
+            "revisions": "e63db1aa82ee",
             "tool_panel_section_label": "Proteomics",
             "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
           },
@@ -670,7 +670,7 @@
           {
             "name": "metaquantome_expand",
             "owner": "galaxyp",
-            "revisions": "4187b6df1a40",
+            "revisions": "767c1d761aaf",
             "tool_panel_section_label": "Proteomics",
             "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
           },
@@ -684,7 +684,7 @@
           {
             "name": "metaquantome_filter",
             "owner": "galaxyp",
-            "revisions": "a1daafbf5233",
+            "revisions": "35cc7ca0bdc7",
             "tool_panel_section_label": "Proteomics",
             "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
           },
@@ -698,7 +698,7 @@
           {
             "name": "metaquantome_sample",
             "owner": "galaxyp",
-            "revisions": "40ca115438d2",
+            "revisions": "06f6826d380c",
             "tool_panel_section_label": "Proteomics",
             "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
           },
@@ -712,7 +712,7 @@
           {
             "name": "metaquantome_stat",
             "owner": "galaxyp",
-            "revisions": "b648e45fd3cf",
+            "revisions": "b9d453dca8d3",
             "tool_panel_section_label": "Proteomics",
             "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
           },
@@ -726,13 +726,13 @@
           {
             "name": "metaquantome_viz",
             "owner": "galaxyp",
-            "revisions": "eb811f3018ea",
+            "revisions": "8bd7734309f6",
             "tool_panel_section_label": "Proteomics",
             "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
           }
         ]
       },
-      "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: metaquantome_db\n  owner: galaxyp\n  revisions: 7c45aa1c9464\n  tool_panel_section_label: Proteomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: metaquantome_db\n  owner: galaxyp\n  revisions: '860429737408'\n  tool_panel_section_label: Proteomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: metaquantome_expand\n  owner: galaxyp\n  revisions: eb65ab160a10\n  tool_panel_section_label: Proteomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: metaquantome_expand\n  owner: galaxyp\n  revisions: 4187b6df1a40\n  tool_panel_section_label: Proteomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: metaquantome_filter\n  owner: galaxyp\n  revisions: 7d1c20b315ff\n  tool_panel_section_label: Proteomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: metaquantome_filter\n  owner: galaxyp\n  revisions: a1daafbf5233\n  tool_panel_section_label: Proteomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: metaquantome_sample\n  owner: galaxyp\n  revisions: 49a957fb353a\n  tool_panel_section_label: Proteomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: metaquantome_sample\n  owner: galaxyp\n  revisions: 40ca115438d2\n  tool_panel_section_label: Proteomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: metaquantome_stat\n  owner: galaxyp\n  revisions: 982a442a98dd\n  tool_panel_section_label: Proteomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: metaquantome_stat\n  owner: galaxyp\n  revisions: b648e45fd3cf\n  tool_panel_section_label: Proteomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: metaquantome_viz\n  owner: galaxyp\n  revisions: 02da24eac445\n  tool_panel_section_label: Proteomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: metaquantome_viz\n  owner: galaxyp\n  revisions: eb811f3018ea\n  tool_panel_section_label: Proteomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
+      "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: metaquantome_db\n  owner: galaxyp\n  revisions: 7c45aa1c9464\n  tool_panel_section_label: Proteomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: metaquantome_db\n  owner: galaxyp\n  revisions: e63db1aa82ee\n  tool_panel_section_label: Proteomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: metaquantome_expand\n  owner: galaxyp\n  revisions: eb65ab160a10\n  tool_panel_section_label: Proteomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: metaquantome_expand\n  owner: galaxyp\n  revisions: 767c1d761aaf\n  tool_panel_section_label: Proteomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: metaquantome_filter\n  owner: galaxyp\n  revisions: 7d1c20b315ff\n  tool_panel_section_label: Proteomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: metaquantome_filter\n  owner: galaxyp\n  revisions: 35cc7ca0bdc7\n  tool_panel_section_label: Proteomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: metaquantome_sample\n  owner: galaxyp\n  revisions: 49a957fb353a\n  tool_panel_section_label: Proteomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: metaquantome_sample\n  owner: galaxyp\n  revisions: 06f6826d380c\n  tool_panel_section_label: Proteomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: metaquantome_stat\n  owner: galaxyp\n  revisions: 982a442a98dd\n  tool_panel_section_label: Proteomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: metaquantome_stat\n  owner: galaxyp\n  revisions: b9d453dca8d3\n  tool_panel_section_label: Proteomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: metaquantome_viz\n  owner: galaxyp\n  revisions: 02da24eac445\n  tool_panel_section_label: Proteomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: metaquantome_viz\n  owner: galaxyp\n  revisions: 8bd7734309f6\n  tool_panel_section_label: Proteomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
       "tours": false,
       "video": false,
       "translations": {

@@ -544,13 +544,13 @@
           {
             "name": "red",
             "owner": "iuc",
-            "revisions": "18a46265455b",
+            "revisions": "db57bc3b57af",
             "tool_panel_section_label": "Genome Annotation",
             "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
           }
         ]
       },
-      "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: repeat_masker\n  owner: bgruening\n  revisions: ba6d2c32f797\n  tool_panel_section_label: Genome Annotation\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: repeatmodeler\n  owner: csbl\n  revisions: 8661b2607b7e\n  tool_panel_section_label: Genome Annotation\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: bedtools\n  owner: iuc\n  revisions: a1a923cd89e8\n  tool_panel_section_label: Genome Annotation\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: red\n  owner: iuc\n  revisions: 18a46265455b\n  tool_panel_section_label: Genome Annotation\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
+      "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: repeat_masker\n  owner: bgruening\n  revisions: ba6d2c32f797\n  tool_panel_section_label: Genome Annotation\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: repeatmodeler\n  owner: csbl\n  revisions: 8661b2607b7e\n  tool_panel_section_label: Genome Annotation\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: bedtools\n  owner: iuc\n  revisions: a1a923cd89e8\n  tool_panel_section_label: Genome Annotation\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: red\n  owner: iuc\n  revisions: db57bc3b57af\n  tool_panel_section_label: Genome Annotation\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
       "tours": false,
       "video": false,
       "translations": {
