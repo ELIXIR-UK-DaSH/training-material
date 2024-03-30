@@ -126,11 +126,7 @@
       }
     ],
     "inexact": [
-      {
-        "url": "https://usegalaxy.cz/",
-        "name": "UseGalaxy.cz",
-        "usegalaxy": "true"
-      }
+
     ]
   },
   "topic_name_human": "Single Cell",
