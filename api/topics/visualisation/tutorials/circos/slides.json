@@ -168,6 +168,11 @@
   "supported_servers": {
     "exact": [
       {
+        "url": "https://mississippi.sorbonne-universite.fr",
+        "name": "MISSISSIPPI",
+        "usegalaxy": "false"
+      },
+      {
         "url": "https://usegalaxy.eu",
         "name": "UseGalaxy.eu",
         "usegalaxy": "true"
@@ -184,11 +189,6 @@
       }
     ],
     "inexact": [
-      {
-        "url": "https://mississippi.sorbonne-universite.fr",
-        "name": "MISSISSIPPI",
-        "usegalaxy": "false"
-      },
       {
         "url": "https://usegalaxy.be/",
         "name": "UseGalaxy.be",
