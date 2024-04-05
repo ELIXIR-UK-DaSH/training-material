@@ -26,7 +26,9 @@ contributions:
   editing:
   - kkamieniecka
   - tb143
-    
+  - poterlowicz-lab
+  funding:
+    - elixir-uk-dash
 subtopic: fair-data
 
 requirements:
@@ -37,8 +39,6 @@ requirements:
 
 ---
 
-
-# Introduction
 
 The life science community is generally very good at sharing omics data on platforms such as [GEO](https://www.ncbi.nlm.nih.gov/geo/) and [ArrayExpress](https://www.ebi.ac.uk/biostudies/arrayexpress).  However, the metadata and clinical data associated with the omics datasets are often incredibly sparse.  Tracking down the meta- and clinical data of omics datasets can be time-consuming for both data owner and researcher and is a significant hurdle when trying to explore enriched omics data.
 
