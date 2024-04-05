@@ -1,7 +1,7 @@
 ---
 layout: tutorial_hands_on
 title: Regional GAM
-zenodo_link: "https://zenodo.org/record/1324204#.W2BmRn7fNE4"
+zenodo_link: "https://zenodo.org/record/1324204"
 edam_ontology: ["topic_0610"]
 questions:
     - "What are abundance and trends of a butterfly species?"
@@ -26,8 +26,6 @@ contributors:
     - bebatut
     - sbenateau
 ---
-
-# Introduction
 
 
 This tutorial will show you how to study species abundance through the computation of a flight curve, abundance index, and trends. It will explain you how to use different [regionalGAM](https://github.com/RetoSchmucki/regionalGAM) tools on Galaxy allowing you to deal with datasets containing abundance information for various species per site and per date through a couple of years.

@@ -36,8 +36,6 @@ subtopic: workflows
 ---
 
 
-# Introduction
-
 
 Workflows are a powerful Galaxy feature that allows you to scale up your analysis by performing an end-to-end analysis with a single click of a button. In order to aid interpretation of workflow results, *workflow reports* may be configured to combine and display the most important analysis results in a single, customizable view.
 
@@ -321,7 +319,11 @@ Well done! You have created a customized workflow report with text and workflow 
   - peeks into dataset (useful for large files that cannot be included in their entirety in the report)
   - ..and more!
 
+## Make your reports nicer!
 
+{% snippet faqs/galaxy/reports_tables.md %}
+
+{% snippet faqs/galaxy/reports_collapsible_box.md %}
 
 # Share or publish your workflow report
 
