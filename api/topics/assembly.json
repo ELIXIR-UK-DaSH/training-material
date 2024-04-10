@@ -170,6 +170,11 @@
       "supported_servers": {
         "exact": [
           {
+            "url": "https://galaxy.mesocentre.uca.fr",
+            "name": "Galaxy@AuBi",
+            "usegalaxy": "false"
+          },
+          {
             "url": "https://usegalaxy.org",
             "name": "UseGalaxy.org (Main)",
             "usegalaxy": "true"
@@ -181,11 +186,6 @@
           }
         ],
         "inexact": [
-          {
-            "url": "https://galaxy.mesocentre.uca.fr",
-            "name": "Galaxy@AuBi",
-            "usegalaxy": "false"
-          },
           {
             "url": "https://usegalaxy.be/",
             "name": "UseGalaxy.be",
@@ -1410,11 +1410,6 @@
           }
         ],
         "inexact": [
-          {
-            "url": "https://mississippi.sorbonne-universite.fr",
-            "name": "MISSISSIPPI",
-            "usegalaxy": "false"
-          },
           {
             "url": "https://usegalaxy.be/",
             "name": "UseGalaxy.be",
@@ -3853,11 +3848,6 @@
           {
             "url": "https://galaxy.hyphy.org/",
             "name": "HyPhy HIV NGS Tools",
-            "usegalaxy": "false"
-          },
-          {
-            "url": "https://mississippi.sorbonne-universite.fr",
-            "name": "MISSISSIPPI",
             "usegalaxy": "false"
           },
           {
