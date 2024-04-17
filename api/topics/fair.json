@@ -84,6 +84,255 @@
   "materials": [
     {
       "layout": "tutorial_hands_on",
+      "title": "Sequence data submission to ENA",
+      "abbreviations": {
+        "ENA": "European Nucleotide Archive"
+      },
+      "zenodo_link": "",
+      "questions": [
+        "I am new to sequence submission to a repository.",
+        "How do I submit sequences and metadata to ENA using the Webin portal and cURL?"
+      ],
+      "objectives": [
+        "To populate ENA metadata objects through the Webin portal",
+        "To submit raw reads to ENA using FTP"
+      ],
+      "time_estimation": "1H",
+      "key_points": [
+        "Use ENA Webin interactive portal to submit metadata",
+        "Preparation of metadata and sequence data for the submission",
+        "Use cURL to submit read fastq files"
+      ],
+      "requirements": [
+        {
+          "type": "none",
+          "title": "Web browser"
+        },
+        {
+          "type": "none",
+          "title": "A linux-based machine or linux emulator"
+        },
+        {
+          "type": "none",
+          "title": "Read data in fastq format"
+        }
+      ],
+      "tags": [
+        "FAIR",
+        "ENA"
+      ],
+      "priority": 1,
+      "contributions": {
+        "authorship": [
+          "sonalhenson"
+        ],
+        "editing": [
+          "kkamieniecka",
+          "smza",
+          "poterlowicz-lab"
+        ],
+        "funding": [
+          "ELIXIR-UK-DaSH"
+        ]
+      },
+      "subtopic": "fair-data",
+      "short_id": null,
+      "url": "/topics/fair/tutorials/fair-ena/tutorial.html",
+      "topic_name": "fair",
+      "tutorial_name": "fair-ena",
+      "dir": "topics/fair/tutorials/fair-ena",
+      "id": "fair/fair-ena",
+      "video_library": {
+        "tutorial": null,
+        "slides": null,
+        "demo": null,
+        "both": null,
+        "session": null
+      },
+      "hands_on": true,
+      "slides": false,
+      "api": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/fair-ena/tutorial.json",
+      "tools": [
+
+      ],
+      "supported_servers": [
+
+      ],
+      "topic_name_human": "FAIR Data, Workflows, and Research",
+      "admin_install": {
+        "install_tool_dependencies": true,
+        "install_repository_dependencies": true,
+        "install_resolver_dependencies": true,
+        "tools": [
+
+        ]
+      },
+      "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools: []\n",
+      "tours": false,
+      "video": false,
+      "translations": {
+        "tutorial": [
+
+        ],
+        "slides": [
+
+        ],
+        "video": false
+      },
+      "type": "tutorial",
+      "contributors": [
+        {
+          "name": "Sonal Henson",
+          "joined": "2023-09",
+          "id": "sonalhenson",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/sonalhenson.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/sonalhenson/"
+        },
+        {
+          "name": "Katarzyna Kamieniecka",
+          "twitter": "katemurat",
+          "orcid": "0009-0004-2454-5950",
+          "joined": "2018-08",
+          "elixir_node": "uk",
+          "id": "kkamieniecka",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/kkamieniecka.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/kkamieniecka/"
+        },
+        {
+          "name": "Munazah Andrabi",
+          "joined": "2023-09",
+          "id": "smza",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/smza.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/smza/"
+        },
+        {
+          "name": "Krzysztof Poterlowicz",
+          "twitter": "bioinfbrad",
+          "orcid": "0000-0001-6173-5674",
+          "joined": "2017-09",
+          "elixir_node": "uk",
+          "id": "poterlowicz-lab",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/poterlowicz-lab.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/poterlowicz-lab/"
+        },
+        {
+          "name": "DASH UK",
+          "joined": "2023-10",
+          "avatar": "https://github.com/galaxyproject/training-material/blob/main/shared/images/dash.png?raw=true",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/ELIXIR-UK-DaSH.json",
+          "funder": true,
+          "funding_system": "ukri",
+          "funding_id": "MR/V038966/1",
+          "funding_statement": "This Fellowship was funded through the ELIXIR-UK DaSH project as part of the UKRI Innovation Scholars: Data Science Training in Health and Bioscience call (DaSH). (MR/V038966/1). The project aims to embed Research Data Management (RDM) know-how into UK universities and institutes by producing and delivering training in FAIR data stewardship using ELIXIR-UK knowledge and resources.",
+          "id": "ELIXIR-UK-DaSH",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/ELIXIR-UK-DaSH/"
+        }
+      ],
+      "urls": {
+        "hands_on": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/fair-ena/tutorial.json",
+        "slides": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/fair-ena/tutorial.json"
+      }
+    },
+    {
+      "layout": "tutorial_hands_on",
+      "title": "Workflow Run RO-Crate Introduction",
+      "time_estimation": "30M",
+      "questions": [
+
+      ],
+      "objectives": [
+
+      ],
+      "key_points": [
+
+      ],
+      "tags": [
+        "ro-crate"
+      ],
+      "priority": 1,
+      "contributions": {
+        "authorship": [
+          "simleo"
+        ],
+        "funding": [
+          "by-covid"
+        ]
+      },
+      "license": "Apache-2.0",
+      "subtopic": "ro-crate",
+      "short_id": "T00343",
+      "url": "/topics/fair/tutorials/ro-crate-workflow-run-ro-crate/tutorial.html",
+      "topic_name": "fair",
+      "tutorial_name": "ro-crate-workflow-run-ro-crate",
+      "dir": "topics/fair/tutorials/ro-crate-workflow-run-ro-crate",
+      "id": "fair/ro-crate-workflow-run-ro-crate",
+      "video_library": {
+        "tutorial": null,
+        "slides": null,
+        "demo": null,
+        "both": null,
+        "session": null
+      },
+      "hands_on": true,
+      "slides": false,
+      "api": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/ro-crate-workflow-run-ro-crate/tutorial.json",
+      "tools": [
+
+      ],
+      "supported_servers": [
+
+      ],
+      "topic_name_human": "FAIR Data, Workflows, and Research",
+      "admin_install": {
+        "install_tool_dependencies": true,
+        "install_repository_dependencies": true,
+        "install_resolver_dependencies": true,
+        "tools": [
+
+        ]
+      },
+      "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools: []\n",
+      "tours": false,
+      "video": false,
+      "translations": {
+        "tutorial": [
+
+        ],
+        "slides": [
+
+        ],
+        "video": false
+      },
+      "type": "tutorial",
+      "contributors": [
+        {
+          "name": "Simone Leo",
+          "joined": "2023-04",
+          "elixir_node": "it",
+          "orcid": "0000-0001-8271-5429",
+          "id": "simleo",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/simleo.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/simleo/"
+        },
+        {
+          "name": "BeYond-COVID",
+          "joined": "2023-04",
+          "funder": true,
+          "funding_id": "101046203",
+          "funding_system": "cordis",
+          "funding_statement": "BY-COVID is an EC funded project that tackles the data challenges that can hinder effective pandemic response.\n\nThis project has received funding from the European Union’s Horizon Europe research and innovation programme under grant agreement № 101046203 (BY-COVID)",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/by-covid.json",
+          "id": "by-covid",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/by-covid/"
+        }
+      ],
+      "urls": {
+        "hands_on": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/ro-crate-workflow-run-ro-crate/tutorial.json",
+        "slides": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/ro-crate-workflow-run-ro-crate/tutorial.json"
+      }
+    },
+    {
+      "layout": "tutorial_hands_on",
       "title": "FAIR in a nutshell",
       "abbreviations": {
         "FAIR": "Findable, Accessible, Interoperable, Reusable"
@@ -485,24 +734,31 @@
     },
     {
       "layout": "tutorial_hands_on",
-      "title": "Workflow Run RO-Crate Introduction",
+      "title": "RO-Crate in Python",
       "time_estimation": "30M",
       "questions": [
-
+        "What data is contained within an RO-Crate",
+        "How can I create an RO-Crate myself?"
       ],
       "objectives": [
-
+        "Create a custom, annotated RO-Crate",
+        "Use ORCIDs and other linked data to annotate datasets contained within the crate"
       ],
       "key_points": [
-
+        "RO-Crates can be created by hand with essentially arbitrary data, using the rocrate python module",
+        "However the rocrate command line tool adds several commands to make it easier to automatically generate crates based on existing folder structures."
       ],
       "tags": [
         "ro-crate"
       ],
-      "priority": 1,
+      "priority": 2,
       "contributions": {
         "authorship": [
-          "simleo"
+          "simleo",
+          "kinow"
+        ],
+        "editing": [
+          "hexylena"
         ],
         "funding": [
           "by-covid"
@@ -510,12 +766,15 @@
       },
       "license": "Apache-2.0",
       "subtopic": "ro-crate",
-      "short_id": "T00343",
-      "url": "/topics/fair/tutorials/ro-crate-workflow-run-ro-crate/tutorial.html",
+      "notebook": {
+        "language": "python"
+      },
+      "short_id": "T00341",
+      "url": "/topics/fair/tutorials/ro-crate-in-python/tutorial.html",
       "topic_name": "fair",
-      "tutorial_name": "ro-crate-workflow-run-ro-crate",
-      "dir": "topics/fair/tutorials/ro-crate-workflow-run-ro-crate",
-      "id": "fair/ro-crate-workflow-run-ro-crate",
+      "tutorial_name": "ro-crate-in-python",
+      "dir": "topics/fair/tutorials/ro-crate-in-python",
+      "id": "fair/ro-crate-in-python",
       "video_library": {
         "tutorial": null,
         "slides": null,
@@ -525,7 +784,7 @@
       },
       "hands_on": true,
       "slides": false,
-      "api": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/ro-crate-workflow-run-ro-crate/tutorial.json",
+      "api": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/ro-crate-in-python/tutorial.json",
       "tools": [
 
       ],
@@ -565,257 +824,33 @@
           "page": "https://training.galaxyproject.org/training-material/hall-of-fame/simleo/"
         },
         {
-          "name": "BeYond-COVID",
+          "name": "Bruno P. Kinoshita",
           "joined": "2023-04",
-          "funder": true,
-          "funding_id": "101046203",
-          "funding_system": "cordis",
-          "funding_statement": "BY-COVID is an EC funded project that tackles the data challenges that can hinder effective pandemic response.\n\nThis project has received funding from the European Union’s Horizon Europe research and innovation programme under grant agreement № 101046203 (BY-COVID)",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/by-covid.json",
-          "id": "by-covid",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/by-covid/"
-        }
-      ],
-      "urls": {
-        "hands_on": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/ro-crate-workflow-run-ro-crate/tutorial.json",
-        "slides": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/ro-crate-workflow-run-ro-crate/tutorial.json"
-      }
-    },
-    {
-      "layout": "tutorial_hands_on",
-      "title": "Sequence data submission to ENA",
-      "abbreviations": {
-        "ENA": "European Nucleotide Archive"
-      },
-      "zenodo_link": "",
-      "questions": [
-        "I am new to sequence submission to a repository.",
-        "How do I submit sequences and metadata to ENA using the Webin portal and cURL?"
-      ],
-      "objectives": [
-        "To populate ENA metadata objects through the Webin portal",
-        "To submit raw reads to ENA using FTP"
-      ],
-      "time_estimation": "1H",
-      "key_points": [
-        "Use ENA Webin interactive portal to submit metadata",
-        "Preparation of metadata and sequence data for the submission",
-        "Use cURL to submit read fastq files"
-      ],
-      "requirements": [
-        {
-          "type": "none",
-          "title": "Web browser"
+          "orcid": "0000-0001-8250-4074",
+          "elixir_node": "es",
+          "id": "kinow",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/kinow.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/kinow/"
         },
         {
-          "type": "none",
-          "title": "A linux-based machine or linux emulator"
-        },
-        {
-          "type": "none",
-          "title": "Read data in fastq format"
-        }
-      ],
-      "tags": [
-        "FAIR",
-        "ENA"
-      ],
-      "priority": 1,
-      "contributions": {
-        "authorship": [
-          "sonalhenson"
-        ],
-        "editing": [
-          "kkamieniecka",
-          "smza",
-          "poterlowicz-lab"
-        ],
-        "funding": [
-          "ELIXIR-UK-DaSH"
-        ]
-      },
-      "subtopic": "fair-data",
-      "short_id": null,
-      "url": "/topics/fair/tutorials/fair-ena/tutorial.html",
-      "topic_name": "fair",
-      "tutorial_name": "fair-ena",
-      "dir": "topics/fair/tutorials/fair-ena",
-      "id": "fair/fair-ena",
-      "video_library": {
-        "tutorial": null,
-        "slides": null,
-        "demo": null,
-        "both": null,
-        "session": null
-      },
-      "hands_on": true,
-      "slides": false,
-      "api": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/fair-ena/tutorial.json",
-      "tools": [
-
-      ],
-      "supported_servers": [
-
-      ],
-      "topic_name_human": "FAIR Data, Workflows, and Research",
-      "admin_install": {
-        "install_tool_dependencies": true,
-        "install_repository_dependencies": true,
-        "install_resolver_dependencies": true,
-        "tools": [
-
-        ]
-      },
-      "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools: []\n",
-      "tours": false,
-      "video": false,
-      "translations": {
-        "tutorial": [
-
-        ],
-        "slides": [
-
-        ],
-        "video": false
-      },
-      "type": "tutorial",
-      "contributors": [
-        {
-          "name": "Sonal Henson",
-          "joined": "2023-09",
-          "id": "sonalhenson",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/sonalhenson.json",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/sonalhenson/"
-        },
-        {
-          "name": "Katarzyna Kamieniecka",
-          "twitter": "katemurat",
-          "orcid": "0009-0004-2454-5950",
-          "joined": "2018-08",
-          "elixir_node": "uk",
-          "id": "kkamieniecka",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/kkamieniecka.json",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/kkamieniecka/"
-        },
-        {
-          "name": "Munazah Andrabi",
-          "joined": "2023-09",
-          "id": "smza",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/smza.json",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/smza/"
-        },
-        {
-          "name": "Krzysztof Poterlowicz",
-          "twitter": "bioinfbrad",
-          "orcid": "0000-0001-6173-5674",
+          "name": "Helena Rasche",
+          "email": "hexylena@galaxians.org",
+          "orcid": "0000-0001-9760-8992",
+          "maintainer_contact": "gitter",
+          "matrix": "hexylena:matrix.org",
           "joined": "2017-09",
-          "elixir_node": "uk",
-          "id": "poterlowicz-lab",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/poterlowicz-lab.json",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/poterlowicz-lab/"
-        },
-        {
-          "name": "DASH UK",
-          "joined": "2023-10",
-          "avatar": "https://github.com/galaxyproject/training-material/blob/main/shared/images/dash.png?raw=true",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/ELIXIR-UK-DaSH.json",
-          "funder": true,
-          "funding_system": "ukri",
-          "funding_id": "MR/V038966/1",
-          "funding_statement": "This Fellowship was funded through the ELIXIR-UK DaSH project as part of the UKRI Innovation Scholars: Data Science Training in Health and Bioscience call (DaSH). (MR/V038966/1). The project aims to embed Research Data Management (RDM) know-how into UK universities and institutes by producing and delivering training in FAIR data stewardship using ELIXIR-UK knowledge and resources.",
-          "id": "ELIXIR-UK-DaSH",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/ELIXIR-UK-DaSH/"
-        }
-      ],
-      "urls": {
-        "hands_on": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/fair-ena/tutorial.json",
-        "slides": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/fair-ena/tutorial.json"
-      }
-    },
-    {
-      "layout": "tutorial_hands_on",
-      "title": "Exporting Workflow Run RO-Crates from Galaxy",
-      "time_estimation": "30m",
-      "questions": [
-        "What is a Workflow Run Crate?",
-        "How can I export a Galaxy Workflow Run Crate?"
-      ],
-      "objectives": [
-        "Understanding, viewing and creating Galaxy Workflow Run Crates"
-      ],
-      "key_points": [
-        "Galaxy Workflow Run Crates help you keep provenance of a workflow run / invocation.",
-        "Galaxy Workflow Run Crates give extra context to the standard workflow run export",
-        "Galaxy Workflow Run Crates can be exported from the top menu, **User -> Workflow Invocations**."
-      ],
-      "tags": [
-        "ro-crate",
-        "workflows"
-      ],
-      "priority": 2,
-      "contributions": {
-        "authorship": [
-          "pauldg"
-        ],
-        "funding": [
-          "by-covid"
-        ]
-      },
-      "license": "Apache-2.0",
-      "subtopic": "ro-crate",
-      "short_id": "T00340",
-      "url": "/topics/fair/tutorials/ro-crate-in-galaxy/tutorial.html",
-      "topic_name": "fair",
-      "tutorial_name": "ro-crate-in-galaxy",
-      "dir": "topics/fair/tutorials/ro-crate-in-galaxy",
-      "id": "fair/ro-crate-in-galaxy",
-      "video_library": {
-        "tutorial": null,
-        "slides": null,
-        "demo": null,
-        "both": null,
-        "session": null
-      },
-      "hands_on": true,
-      "slides": false,
-      "api": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/ro-crate-in-galaxy/tutorial.json",
-      "tools": [
-
-      ],
-      "supported_servers": [
-
-      ],
-      "topic_name_human": "FAIR Data, Workflows, and Research",
-      "admin_install": {
-        "install_tool_dependencies": true,
-        "install_repository_dependencies": true,
-        "install_resolver_dependencies": true,
-        "tools": [
-
-        ]
-      },
-      "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools: []\n",
-      "tours": false,
-      "video": false,
-      "translations": {
-        "tutorial": [
-
-        ],
-        "slides": [
-
-        ],
-        "video": false
-      },
-      "type": "tutorial",
-      "contributors": [
-        {
-          "name": "Paul De Geest",
-          "joined": "2023-04",
-          "elixir_node": "be",
-          "orcid": "0000-0002-8940-4946",
-          "id": "pauldg",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/pauldg.json",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/pauldg/"
+          "elixir_node": "nl",
+          "fediverse": "https://galaxians.garden/hexylena",
+          "fediverse_flavor": "akkoma",
+          "contact_for_training": false,
+          "location": {
+            "country": "NL",
+            "lat": 51.91,
+            "lon": 4.46
+          },
+          "id": "hexylena",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/hexylena.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/"
         },
         {
           "name": "BeYond-COVID",
@@ -830,8 +865,8 @@
         }
       ],
       "urls": {
-        "hands_on": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/ro-crate-in-galaxy/tutorial.json",
-        "slides": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/ro-crate-in-galaxy/tutorial.json"
+        "hands_on": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/ro-crate-in-python/tutorial.json",
+        "slides": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/ro-crate-in-python/tutorial.json"
       }
     },
     {
@@ -988,31 +1023,28 @@
     },
     {
       "layout": "tutorial_hands_on",
-      "title": "RO-Crate in Python",
-      "time_estimation": "30M",
+      "title": "Exporting Workflow Run RO-Crates from Galaxy",
+      "time_estimation": "30m",
       "questions": [
-        "What data is contained within an RO-Crate",
-        "How can I create an RO-Crate myself?"
+        "What is a Workflow Run Crate?",
+        "How can I export a Galaxy Workflow Run Crate?"
       ],
       "objectives": [
-        "Create a custom, annotated RO-Crate",
-        "Use ORCIDs and other linked data to annotate datasets contained within the crate"
+        "Understanding, viewing and creating Galaxy Workflow Run Crates"
       ],
       "key_points": [
-        "RO-Crates can be created by hand with essentially arbitrary data, using the rocrate python module",
-        "However the rocrate command line tool adds several commands to make it easier to automatically generate crates based on existing folder structures."
+        "Galaxy Workflow Run Crates help you keep provenance of a workflow run / invocation.",
+        "Galaxy Workflow Run Crates give extra context to the standard workflow run export",
+        "Galaxy Workflow Run Crates can be exported from the top menu, **User -> Workflow Invocations**."
       ],
       "tags": [
-        "ro-crate"
+        "ro-crate",
+        "workflows"
       ],
       "priority": 2,
       "contributions": {
         "authorship": [
-          "simleo",
-          "kinow"
-        ],
-        "editing": [
-          "hexylena"
+          "pauldg"
         ],
         "funding": [
           "by-covid"
@@ -1020,15 +1052,12 @@
       },
       "license": "Apache-2.0",
       "subtopic": "ro-crate",
-      "notebook": {
-        "language": "python"
-      },
-      "short_id": "T00341",
-      "url": "/topics/fair/tutorials/ro-crate-in-python/tutorial.html",
+      "short_id": "T00340",
+      "url": "/topics/fair/tutorials/ro-crate-in-galaxy/tutorial.html",
       "topic_name": "fair",
-      "tutorial_name": "ro-crate-in-python",
-      "dir": "topics/fair/tutorials/ro-crate-in-python",
-      "id": "fair/ro-crate-in-python",
+      "tutorial_name": "ro-crate-in-galaxy",
+      "dir": "topics/fair/tutorials/ro-crate-in-galaxy",
+      "id": "fair/ro-crate-in-galaxy",
       "video_library": {
         "tutorial": null,
         "slides": null,
@@ -1038,7 +1067,7 @@
       },
       "hands_on": true,
       "slides": false,
-      "api": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/ro-crate-in-python/tutorial.json",
+      "api": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/ro-crate-in-galaxy/tutorial.json",
       "tools": [
 
       ],
@@ -1069,42 +1098,13 @@
       "type": "tutorial",
       "contributors": [
         {
-          "name": "Simone Leo",
+          "name": "Paul De Geest",
           "joined": "2023-04",
-          "elixir_node": "it",
-          "orcid": "0000-0001-8271-5429",
-          "id": "simleo",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/simleo.json",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/simleo/"
-        },
-        {
-          "name": "Bruno P. Kinoshita",
-          "joined": "2023-04",
-          "orcid": "0000-0001-8250-4074",
-          "elixir_node": "es",
-          "id": "kinow",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/kinow.json",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/kinow/"
-        },
-        {
-          "name": "Helena Rasche",
-          "email": "hexylena@galaxians.org",
-          "orcid": "0000-0001-9760-8992",
-          "maintainer_contact": "gitter",
-          "matrix": "hexylena:matrix.org",
-          "joined": "2017-09",
-          "elixir_node": "nl",
-          "fediverse": "https://galaxians.garden/hexylena",
-          "fediverse_flavor": "akkoma",
-          "contact_for_training": false,
-          "location": {
-            "country": "NL",
-            "lat": 51.91,
-            "lon": 4.46
-          },
-          "id": "hexylena",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/hexylena.json",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/"
+          "elixir_node": "be",
+          "orcid": "0000-0002-8940-4946",
+          "id": "pauldg",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/pauldg.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/pauldg/"
         },
         {
           "name": "BeYond-COVID",
@@ -1119,8 +1119,8 @@
         }
       ],
       "urls": {
-        "hands_on": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/ro-crate-in-python/tutorial.json",
-        "slides": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/ro-crate-in-python/tutorial.json"
+        "hands_on": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/ro-crate-in-galaxy/tutorial.json",
+        "slides": "https://training.galaxyproject.org/training-material/api/topics/fair/tutorials/ro-crate-in-galaxy/tutorial.json"
       }
     },
     {
