@@ -423,6 +423,10 @@
         ],
         "inexact": [
           {
+            "url": "https://galaxy.pasteur.fr/",
+            "name": "Galaxy@Pasteur"
+          },
+          {
             "url": "https://galaxytrakr.org/",
             "name": "GalaxyTrakr",
             "usegalaxy": "false"
