@@ -76,59 +76,11 @@
   "dir": "topics/metagenomics/tutorials/mothur-miseq-sop-short",
   "id": "metagenomics/mothur-miseq-sop-short",
   "video_library": {
-    "tutorial": {
-      "description": "This lecture briefly introduces 16S sequencing, a popular technique used for taxonomic profiling of microbial communities.",
-      "materials": [
-        {
-          "link": "topics/metagenomics/tutorials/mothur-miseq-sop-short/tutorial.html",
-          "type": "Tutorial"
-        }
-      ],
-      "tags": [
-        "metagenomics"
-      ],
-      "type": "Tutorial",
-      "versions": [
-        {
-          "link": "CGSBeCW3rpA",
-          "speakers": [
-            "shiltemann"
-          ],
-          "captions": [
-            "shiltemann"
-          ],
-          "date": "2023-05-19",
-          "length": "1H37M",
-          "galaxy_version": "23.01"
-        },
-        {
-          "captions": [
-            "shiltemann"
-          ],
-          "date": "2021-02-15",
-          "galaxy_version": "21.01",
-          "length": "1H40M",
-          "link": "mto4Nl-q7Kk",
-          "speakers": [
-            "shiltemann"
-          ]
-        }
-      ],
-      "gtn_id": "metagenomics/mothur-miseq-sop-short",
-      "title": "metagenomics/mothur-miseq-sop-short/tutorial",
-      "captioned": true
-    },
+    "tutorial": null,
     "slides": null,
     "demo": null,
     "both": null,
-    "session": {
-      "title": "16S taxonomic profiling",
-      "description": "To determine the composition of a microbiome sample, sequencing of the 16S rRNA gene\nis often used. This allows us to identify the bacterial species present in our sample.\nThis lecture and practical session introduces you to 16S analysis in Galaxy using the\nmothur tool suite.\n",
-      "videos": [
-        "metagenomics/introduction/slides",
-        "metagenomics/mothur-miseq-sop-short/tutorial"
-      ]
-    }
+    "session": null
   },
   "hands_on": true,
   "slides": false,

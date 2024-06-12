@@ -55,8 +55,8 @@ if(localStorage.getItem('plausible-opt-out') !== 'opt-out' && navigator.doNotTra
         <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
         <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
-        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1718068675' as='script'>
-<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1718068675' as='script'>
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1718155072' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1718155072' as='script'>
         <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
         <link rel="manifest" href="/training-material/manifest.json">
         <meta name="theme-color" content="#2c3143"/>
@@ -82,7 +82,7 @@ if(localStorage.getItem('plausible-opt-out') !== 'opt-out' && navigator.doNotTra
         
     </head>
     <body data-spy="scroll" data-target="#toc" data-brightness="auto" data-contrast="auto">
-        <script src='/training-material/assets/js/bundle.theme.js?v=1718068675'></script>
+        <script src='/training-material/assets/js/bundle.theme.js?v=1718155072'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
@@ -309,22 +309,46 @@ if(localStorage.getItem('plausible-opt-out') !== 'opt-out' && navigator.doNotTra
         all_topics: [
             {
                 label: "All topic",
-                data: [],
+                data: [{x:"2024-06", y: 1 } ],
                 fill: false,
             }
         ]
     };
     var data_notes = {
-        all_topics: [0,0,0,0,0,0]
+        all_topics: [0,0,0,0,1,0]
     };
     var labels_notes = ["0","1","2","3","4","5"];
+</script>
+
+<script>
+    var topic_data =
+    {
+        label: "Transcriptomics",
+        data: [{x:"2024-06", y: 1 } ],
+        fill: false,
+    };
+    fdbk_over_month['topic-transcriptomics'] = [topic_data];
+    fdbk_over_month['all_topics'].push(topic_data);
+    data_notes['topic-transcriptomics'] = [0,0,0,0,1,0];
+</script>
+
+<script>
+    var tuto_data =
+    {
+        label: "3: RNA-seq genes to pathways",
+        data: [{x:"2024-06", y: 1 } ],
+        fill: false,
+    };
+    fdbk_over_month['tuto-rna-seq-genes-to-pathways'] = [tuto_data];
+    fdbk_over_month['topic-transcriptomics'].push(tuto_data);
+    data_notes['tuto-rna-seq-genes-to-pathways'] = [0,0,0,0,1,0];
 </script>
 
 <div class="container main-content">
     <section>
         <h1>GTN Feedback</h1>
 
-        <p>Aggregation of feedback submitted since  using the embed feedback form
+        <p>Aggregation of feedback submitted since 2024-06 using the embed feedback form
             at the bottom of tutorials. Thank you everyone who submitted feedback!
         </p>
 
@@ -335,7 +359,7 @@ if(localStorage.getItem('plausible-opt-out') !== 'opt-out' && navigator.doNotTra
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">0 responses</h5>
+                            <h5 class="card-title">1 responses</h5>
                             
                             <canvas id="allFdbkOverMonthGraph" width="400" height="400">
 <script>
@@ -363,6 +387,147 @@ if(localStorage.getItem('plausible-opt-out') !== 'opt-out' && navigator.doNotTra
             </div>
 
             <h2>By topic</h2>
+            
+                
+                
+                
+                <h3 id="topic-transcriptomics">Transcriptomics  <a href="/training-material/topics/transcriptomics"><i class="fas fa-external-link-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy_instance</span></a></h3>
+                <div class="row">
+                    <!-- feedback over time  -->
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">1 responses</h5>
+                                
+                                <canvas id="transcriptomics-topic-fdbkOverMonthGraph" width="400" height="400">
+<script>
+    if ( counter > 4) {
+        window.addEventListener('DOMContentLoaded', (event) => {
+            drawFdbkOverMonthGraph("transcriptomics-topic-fdbkOverMonthGraph", fdbk_over_month['topic-transcriptomics']);
+        });
+    } else {
+        drawFdbkOverMonthGraph("transcriptomics-topic-fdbkOverMonthGraph", fdbk_over_month['topic-transcriptomics']);
+    }
+</script>
+                                </canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- feedback notes  -->
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Rating Distribution</h5>
+                                
+                                <canvas id="transcriptomics-topic-fdbkNoteGraph" width="400" height="400">
+<script>
+    if ( counter > 4) {
+        window.addEventListener('DOMContentLoaded', (event) => {
+            drawFdbkNoteGraph("transcriptomics-topic-fdbkNoteGraph", data_notes['topic-transcriptomics'], labels_notes);
+        });
+    } else {
+        drawFdbkNoteGraph("transcriptomics-topic-fdbkNoteGraph", data_notes['topic-transcriptomics'], labels_notes);
+    }
+    counter = counter + 1;
+</script>
+                                </canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="accordion" id="accordion-transcriptomics">
+                
+                    
+                    
+                    
+                        
+                        
+                        <div class="accordion-card card" id="tutorial-rna-seq-genes-to-pathways">
+                            <div class="card-header" id="heading-rna-seq-genes-to-pathways">
+                                <div class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse-rna-seq-genes-to-pathways" aria-expanded="false" aria-controls="collapse-rna-seq-genes-to-pathways">
+                                        3: RNA-seq genes to pathways
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div id="collapse-rna-seq-genes-to-pathways" class="collapse" aria-labelledby="heading-rna-seq-genes-to-pathways" data-parent="#accordion-transcriptomics">
+                                <div class="card-body">
+                                    
+                                    <div class="row">
+                                        <!-- feedback over time  -->
+                                        <div class="col-md-6">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">1 responses</h5>
+                                                    
+                                                    <canvas id="rna-seq-genes-to-pathways-tutorial-fdbkOverMonthGraph" width="400" height="400">
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        drawFdbkOverMonthGraph("rna-seq-genes-to-pathways-tutorial-fdbkOverMonthGraph", fdbk_over_month['tuto-rna-seq-genes-to-pathways']);
+    });
+</script>
+                                                    </canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- feedback notes  -->
+                                        <div class="col-md-6">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Rating Distribution</h5>
+                                                    
+                                                    <canvas id="rna-seq-genes-to-pathways-tutorial-fdbkNoteGraph" width="400" height="400">
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        drawFdbkNoteGraph("rna-seq-genes-to-pathways-tutorial-fdbkNoteGraph", data_notes['tuto-rna-seq-genes-to-pathways'], labels_notes);
+    });
+</script>
+                                                    </canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <a href="/training-material/topics/transcriptomics/tutorials/rna-seq-genes-to-pathways/tutorial.html">View this Tutorial</a>
+                                    
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="card">
+                                                <div class="card-body">
+
+                                                    <h5 class="card-title">Detailed feedback</h5>
+                                                    <table class="table table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Date</th>
+                                                                <th>What did you like?</th>
+                                                                <th>What could be improved?</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            
+                                                            
+                                                                
+                                                                    
+                                                                
+                                                            
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                
+                </div>
+                
             
         </div>
 
@@ -411,7 +576,7 @@ if(localStorage.getItem('plausible-opt-out') !== 'opt-out' && navigator.doNotTra
 </footer>
 
 
-        <script src='/training-material/assets/js/bundle.main.js?v=1718068675'></script>
+        <script src='/training-material/assets/js/bundle.main.js?v=1718155072'></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
 </html>

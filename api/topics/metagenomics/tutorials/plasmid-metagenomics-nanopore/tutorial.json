@@ -65,42 +65,7 @@
   "dir": "topics/metagenomics/tutorials/plasmid-metagenomics-nanopore",
   "id": "metagenomics/plasmid-metagenomics-nanopore",
   "video_library": {
-    "tutorial": {
-      "description": "This tutorial will guide you through the process of assembling your Nanopore-sequenced bacterial samples and determining the presence of antibiotic resistance genes.",
-      "materials": [
-        {
-          "link": "topics/metagenomics/tutorials/plasmid-metagenomics-nanopore/tutorial.html",
-          "title": "Antibiotic resistance detection of plasmid data",
-          "type": "Tutorial"
-        },
-        {
-          "link": "topics/metagenomics/tutorials/nanopore-16S-metagenomics/tutorial.html",
-          "title": "16S Microbial analysis with Nanopore data",
-          "type": "Related Tutorial"
-        }
-      ],
-      "tags": [
-        "metagenomics"
-      ],
-      "type": "Tutorial",
-      "versions": [
-        {
-          "captions": [
-            "bebatut"
-          ],
-          "date": "2021-02-15",
-          "galaxy_version": "21.01",
-          "length": "45M",
-          "link": "ECIl8ZU1Wko",
-          "speakers": [
-            "willemdek11"
-          ]
-        }
-      ],
-      "gtn_id": "metagenomics/plasmid-metagenomics-nanopore",
-      "title": "metagenomics/plasmid-metagenomics-nanopore/tutorial",
-      "captioned": true
-    },
+    "tutorial": null,
     "slides": null,
     "demo": null,
     "both": null,
