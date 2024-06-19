@@ -3169,6 +3169,141 @@
       }
     },
     {
+      "layout": "tutorial_slides",
+      "logo": "GTN",
+      "video": true,
+      "title": "Options for using Galaxy",
+      "zenodo_link": "",
+      "questions": [
+        "Which Galaxy instance should I use?"
+      ],
+      "objectives": null,
+      "time_estimation": null,
+      "key_points": null,
+      "subtopic": "next-steps",
+      "contributors": [
+        {
+          "name": "Dave Clements",
+          "joined": "2017-09",
+          "orcid": "0000-0002-9970-6657",
+          "id": "tnabtaf",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/tnabtaf.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/tnabtaf/"
+        },
+        {
+          "name": "Anthony Bretaudeau",
+          "email": "anthony.bretaudeau@inrae.fr",
+          "twitter": "abretau",
+          "matrix": "abretaud:matrix.org",
+          "orcid": "0000-0003-0914-2470",
+          "joined": "2017-09",
+          "elixir_node": "fr",
+          "contact_for_training": true,
+          "location": {
+            "country": "FR",
+            "lat": 48.11,
+            "lon": -1.64
+          },
+          "fediverse": "https://genomic.social/@abretaud",
+          "fediverse_flavor": "mastodon",
+          "id": "abretaud",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/abretaud.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/abretaud/"
+        },
+        {
+          "name": "Anne Pajon",
+          "joined": "2017-09",
+          "id": "pajanne",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/pajanne.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/pajanne/"
+        },
+        {
+          "name": "Nicola Soranzo",
+          "matrix": "nsoranzo:matrix.org",
+          "orcid": "0000-0003-3627-5340",
+          "twitter": "NicolaSoranzo",
+          "joined": "2017-09",
+          "elixir_node": "uk",
+          "id": "nsoranzo",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/nsoranzo.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/nsoranzo/"
+        },
+        {
+          "name": "Alaa Elghamry",
+          "joined": "2021-11",
+          "id": "alaaelghamry",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/alaaelghamry.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/alaaelghamry/"
+        }
+      ],
+      "short_id": "S00075",
+      "url": "/topics/introduction/tutorials/options-for-using-galaxy/slides.html",
+      "topic_name": "introduction",
+      "tutorial_name": "options-for-using-galaxy",
+      "dir": "topics/introduction/tutorials/options-for-using-galaxy",
+      "id": "introduction/options-for-using-galaxy",
+      "video_library": {
+        "tutorial": null,
+        "slides": null,
+        "demo": null,
+        "both": null,
+        "session": null
+      },
+      "hands_on": false,
+      "slides": true,
+      "api": "https://training.galaxyproject.org/training-material/api/topics/introduction/tutorials/options-for-using-galaxy/tutorial.json",
+      "tools": [
+
+      ],
+      "supported_servers": {
+        "exact": [
+
+        ],
+        "inexact": [
+          {
+            "name": "UseGalaxy.eu",
+            "url": "https://usegalaxy.eu",
+            "usegalaxy": true
+          },
+          {
+            "name": "UseGalaxy.org",
+            "url": "https://usegalaxy.org",
+            "usegalaxy": true
+          },
+          {
+            "name": "UseGalaxy.org.au",
+            "url": "https://usegalaxy.org.au",
+            "usegalaxy": true
+          }
+        ]
+      },
+      "topic_name_human": "Introduction to Galaxy Analyses",
+      "admin_install": {
+        "install_tool_dependencies": true,
+        "install_repository_dependencies": true,
+        "install_resolver_dependencies": true,
+        "tools": [
+
+        ]
+      },
+      "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools: []\n",
+      "tours": false,
+      "translations": {
+        "tutorial": [
+
+        ],
+        "slides": [
+
+        ],
+        "video": true
+      },
+      "type": "tutorial",
+      "urls": {
+        "hands_on": "https://training.galaxyproject.org/training-material/api/topics/introduction/tutorials/options-for-using-galaxy/slides.json",
+        "slides": "https://training.galaxyproject.org/training-material/api/topics/introduction/tutorials/options-for-using-galaxy/slides.json"
+      }
+    },
+    {
       "layout": "introduction_slides",
       "logo": "GTN",
       "title": "Introduction to Galaxy",
@@ -3386,46 +3521,32 @@
       }
     },
     {
-      "layout": "tutorial_slides",
-      "logo": "GTN",
-      "video": true,
-      "title": "Options for using Galaxy",
+      "layout": "tutorial_hands_on",
+      "title": "IGV Introduction",
+      "draft": true,
       "zenodo_link": "",
-      "questions": [
-        "Which Galaxy instance should I use?"
-      ],
+      "questions": null,
       "objectives": null,
-      "time_estimation": null,
+      "time_estimation": "2H",
       "key_points": null,
       "subtopic": "next-steps",
       "contributors": [
         {
-          "name": "Dave Clements",
+          "name": "Anton Nekrutenko",
+          "email": "anton@nekrut.org",
           "joined": "2017-09",
-          "orcid": "0000-0002-9970-6657",
-          "id": "tnabtaf",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/tnabtaf.json",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/tnabtaf/"
+          "id": "nekrut",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/nekrut.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/nekrut/"
         },
         {
-          "name": "Anthony Bretaudeau",
-          "email": "anthony.bretaudeau@inrae.fr",
-          "twitter": "abretau",
-          "matrix": "abretaud:matrix.org",
-          "orcid": "0000-0003-0914-2470",
+          "name": "Joachim Wolff",
+          "email": "wolffj@informatik.uni-freiburg.de",
           "joined": "2017-09",
-          "elixir_node": "fr",
-          "contact_for_training": true,
-          "location": {
-            "country": "FR",
-            "lat": 48.11,
-            "lon": -1.64
-          },
-          "fediverse": "https://genomic.social/@abretaud",
-          "fediverse_flavor": "mastodon",
-          "id": "abretaud",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/abretaud.json",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/abretaud/"
+          "elixir_node": "de",
+          "id": "joachimwolff",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/joachimwolff.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/joachimwolff/"
         },
         {
           "name": "Anne Pajon",
@@ -3433,32 +3554,14 @@
           "id": "pajanne",
           "url": "https://training.galaxyproject.org/training-material/api/contributors/pajanne.json",
           "page": "https://training.galaxyproject.org/training-material/hall-of-fame/pajanne/"
-        },
-        {
-          "name": "Nicola Soranzo",
-          "matrix": "nsoranzo:matrix.org",
-          "orcid": "0000-0003-3627-5340",
-          "twitter": "NicolaSoranzo",
-          "joined": "2017-09",
-          "elixir_node": "uk",
-          "id": "nsoranzo",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/nsoranzo.json",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/nsoranzo/"
-        },
-        {
-          "name": "Alaa Elghamry",
-          "joined": "2021-11",
-          "id": "alaaelghamry",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/alaaelghamry.json",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/alaaelghamry/"
         }
       ],
-      "short_id": "S00075",
-      "url": "/topics/introduction/tutorials/options-for-using-galaxy/slides.html",
+      "short_id": "T00193",
+      "url": "/topics/introduction/tutorials/igv-introduction/tutorial.html",
       "topic_name": "introduction",
-      "tutorial_name": "options-for-using-galaxy",
-      "dir": "topics/introduction/tutorials/options-for-using-galaxy",
-      "id": "introduction/options-for-using-galaxy",
+      "tutorial_name": "igv-introduction",
+      "dir": "topics/introduction/tutorials/igv-introduction",
+      "id": "introduction/igv-introduction",
       "video_library": {
         "tutorial": null,
         "slides": null,
@@ -3466,9 +3569,9 @@
         "both": null,
         "session": null
       },
-      "hands_on": false,
-      "slides": true,
-      "api": "https://training.galaxyproject.org/training-material/api/topics/introduction/tutorials/options-for-using-galaxy/tutorial.json",
+      "hands_on": true,
+      "slides": false,
+      "api": "https://training.galaxyproject.org/training-material/api/topics/introduction/tutorials/igv-introduction/tutorial.json",
       "tools": [
 
       ],
@@ -3505,6 +3608,7 @@
       },
       "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools: []\n",
       "tours": false,
+      "video": false,
       "translations": {
         "tutorial": [
 
@@ -3512,12 +3616,15 @@
         "slides": [
 
         ],
-        "video": true
+        "video": false
       },
       "type": "tutorial",
+      "tags": [
+        "work-in-progress"
+      ],
       "urls": {
-        "hands_on": "https://training.galaxyproject.org/training-material/api/topics/introduction/tutorials/options-for-using-galaxy/slides.json",
-        "slides": "https://training.galaxyproject.org/training-material/api/topics/introduction/tutorials/options-for-using-galaxy/slides.json"
+        "hands_on": "https://training.galaxyproject.org/training-material/api/topics/introduction/tutorials/igv-introduction/tutorial.json",
+        "slides": "https://training.galaxyproject.org/training-material/api/topics/introduction/tutorials/igv-introduction/tutorial.json"
       }
     },
     {
@@ -3630,113 +3737,6 @@
       "urls": {
         "hands_on": "https://training.galaxyproject.org/training-material/api/topics/introduction/tutorials/dummy/tutorial.json",
         "slides": "https://training.galaxyproject.org/training-material/api/topics/introduction/tutorials/dummy/tutorial.json"
-      }
-    },
-    {
-      "layout": "tutorial_hands_on",
-      "title": "IGV Introduction",
-      "draft": true,
-      "zenodo_link": "",
-      "questions": null,
-      "objectives": null,
-      "time_estimation": "2H",
-      "key_points": null,
-      "subtopic": "next-steps",
-      "contributors": [
-        {
-          "name": "Anton Nekrutenko",
-          "email": "anton@nekrut.org",
-          "joined": "2017-09",
-          "id": "nekrut",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/nekrut.json",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/nekrut/"
-        },
-        {
-          "name": "Joachim Wolff",
-          "email": "wolffj@informatik.uni-freiburg.de",
-          "joined": "2017-09",
-          "elixir_node": "de",
-          "id": "joachimwolff",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/joachimwolff.json",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/joachimwolff/"
-        },
-        {
-          "name": "Anne Pajon",
-          "joined": "2017-09",
-          "id": "pajanne",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/pajanne.json",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/pajanne/"
-        }
-      ],
-      "short_id": "T00193",
-      "url": "/topics/introduction/tutorials/igv-introduction/tutorial.html",
-      "topic_name": "introduction",
-      "tutorial_name": "igv-introduction",
-      "dir": "topics/introduction/tutorials/igv-introduction",
-      "id": "introduction/igv-introduction",
-      "video_library": {
-        "tutorial": null,
-        "slides": null,
-        "demo": null,
-        "both": null,
-        "session": null
-      },
-      "hands_on": true,
-      "slides": false,
-      "api": "https://training.galaxyproject.org/training-material/api/topics/introduction/tutorials/igv-introduction/tutorial.json",
-      "tools": [
-
-      ],
-      "supported_servers": {
-        "exact": [
-
-        ],
-        "inexact": [
-          {
-            "name": "UseGalaxy.eu",
-            "url": "https://usegalaxy.eu",
-            "usegalaxy": true
-          },
-          {
-            "name": "UseGalaxy.org",
-            "url": "https://usegalaxy.org",
-            "usegalaxy": true
-          },
-          {
-            "name": "UseGalaxy.org.au",
-            "url": "https://usegalaxy.org.au",
-            "usegalaxy": true
-          }
-        ]
-      },
-      "topic_name_human": "Introduction to Galaxy Analyses",
-      "admin_install": {
-        "install_tool_dependencies": true,
-        "install_repository_dependencies": true,
-        "install_resolver_dependencies": true,
-        "tools": [
-
-        ]
-      },
-      "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools: []\n",
-      "tours": false,
-      "video": false,
-      "translations": {
-        "tutorial": [
-
-        ],
-        "slides": [
-
-        ],
-        "video": false
-      },
-      "type": "tutorial",
-      "tags": [
-        "work-in-progress"
-      ],
-      "urls": {
-        "hands_on": "https://training.galaxyproject.org/training-material/api/topics/introduction/tutorials/igv-introduction/tutorial.json",
-        "slides": "https://training.galaxyproject.org/training-material/api/topics/introduction/tutorials/igv-introduction/tutorial.json"
       }
     }
   ]
