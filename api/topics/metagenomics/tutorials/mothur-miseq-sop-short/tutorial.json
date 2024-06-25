@@ -301,7 +301,7 @@
       {
         "name": "mothur_classify_otu",
         "owner": "iuc",
-        "revisions": "02446d12c359",
+        "revisions": "ff1bc0299372",
         "tool_panel_section_label": "Metagenomics",
         "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
       },
@@ -315,42 +315,42 @@
       {
         "name": "mothur_cluster",
         "owner": "iuc",
-        "revisions": "528f950d1044",
+        "revisions": "6366f4483b35",
         "tool_panel_section_label": "Metagenomics",
         "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
       },
       {
         "name": "mothur_cluster_split",
         "owner": "iuc",
-        "revisions": "1b7fd1678230",
+        "revisions": "19f45bdbffd9",
         "tool_panel_section_label": "Metagenomics",
         "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
       },
       {
         "name": "mothur_count_groups",
         "owner": "iuc",
-        "revisions": "03c86648a52e",
+        "revisions": "dc3826bfc1ed",
         "tool_panel_section_label": "Metagenomics",
         "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
       },
       {
         "name": "mothur_count_seqs",
         "owner": "iuc",
-        "revisions": "7a6f9c899221",
+        "revisions": "ffee46220ddd",
         "tool_panel_section_label": "Metagenomics",
         "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
       },
       {
         "name": "mothur_dist_seqs",
         "owner": "iuc",
-        "revisions": "0554c9338ca0",
+        "revisions": "4d76fba83f24",
         "tool_panel_section_label": "Metagenomics",
         "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
       },
       {
         "name": "mothur_dist_shared",
         "owner": "iuc",
-        "revisions": "f25598da7174",
+        "revisions": "418100660ba3",
         "tool_panel_section_label": "Metagenomics",
         "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
       },
@@ -371,21 +371,21 @@
       {
         "name": "mothur_make_shared",
         "owner": "iuc",
-        "revisions": "0851ae17c58e",
+        "revisions": "d0967ae326be",
         "tool_panel_section_label": "Metagenomics",
         "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
       },
       {
         "name": "mothur_pre_cluster",
         "owner": "iuc",
-        "revisions": "05183ee20cf8",
+        "revisions": "6532c3424bfe",
         "tool_panel_section_label": "Metagenomics",
         "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
       },
       {
         "name": "mothur_rarefaction_single",
         "owner": "iuc",
-        "revisions": "af521db77c56",
+        "revisions": "47264675a4ea",
         "tool_panel_section_label": "Metagenomics",
         "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
       },
@@ -406,7 +406,7 @@
       {
         "name": "mothur_remove_seqs",
         "owner": "iuc",
-        "revisions": "5097ac2cbfc3",
+        "revisions": "d38f2ac5db71",
         "tool_panel_section_label": "Metagenomics",
         "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
       },
@@ -427,7 +427,7 @@
       {
         "name": "mothur_summary_seqs",
         "owner": "iuc",
-        "revisions": "609770e516fa",
+        "revisions": "600c14c6dcc5",
         "tool_panel_section_label": "Metagenomics",
         "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
       },
@@ -441,14 +441,14 @@
       {
         "name": "mothur_tree_shared",
         "owner": "iuc",
-        "revisions": "43e2715e98c9",
+        "revisions": "8bca555fbcaf",
         "tool_panel_section_label": "Metagenomics",
         "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
       },
       {
         "name": "mothur_unique_seqs",
         "owner": "iuc",
-        "revisions": "d466580cd706",
+        "revisions": "a033f325ad8d",
         "tool_panel_section_label": "Metagenomics",
         "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
       },
@@ -475,7 +475,7 @@
       }
     ]
   },
-  "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: xy_plot\n  owner: devteam\n  revisions: ecb437f1d298\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_chimera_vsearch\n  owner: iuc\n  revisions: 12e856482d26\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_classify_otu\n  owner: iuc\n  revisions: 02446d12c359\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_classify_seqs\n  owner: iuc\n  revisions: '09bf9e496c64'\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_cluster\n  owner: iuc\n  revisions: 528f950d1044\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_cluster_split\n  owner: iuc\n  revisions: 1b7fd1678230\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_count_groups\n  owner: iuc\n  revisions: 03c86648a52e\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_count_seqs\n  owner: iuc\n  revisions: 7a6f9c899221\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_dist_seqs\n  owner: iuc\n  revisions: 0554c9338ca0\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_dist_shared\n  owner: iuc\n  revisions: f25598da7174\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_filter_seqs\n  owner: iuc\n  revisions: 3524ca06478e\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_heatmap_sim\n  owner: iuc\n  revisions: 7f5707dd6073\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_make_shared\n  owner: iuc\n  revisions: '0851ae17c58e'\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_pre_cluster\n  owner: iuc\n  revisions: '05183ee20cf8'\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_rarefaction_single\n  owner: iuc\n  revisions: af521db77c56\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_remove_groups\n  owner: iuc\n  revisions: 498dc0671d9e\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_remove_lineage\n  owner: iuc\n  revisions: 947faa8b3205\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_remove_seqs\n  owner: iuc\n  revisions: 5097ac2cbfc3\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_screen_seqs\n  owner: iuc\n  revisions: 63b74bfc8052\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_sub_sample\n  owner: iuc\n  revisions: 67cb43432196\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_summary_seqs\n  owner: iuc\n  revisions: 609770e516fa\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_summary_single\n  owner: iuc\n  revisions: 2344ed181ae6\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_tree_shared\n  owner: iuc\n  revisions: 43e2715e98c9\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_unique_seqs\n  owner: iuc\n  revisions: d466580cd706\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_venn\n  owner: iuc\n  revisions: 4db54b1c1d83\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: newick_utils\n  owner: iuc\n  revisions: b4163d2f64ab\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: collapse_collections\n  owner: nml\n  revisions: 830961c48e42\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
+  "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: xy_plot\n  owner: devteam\n  revisions: ecb437f1d298\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_chimera_vsearch\n  owner: iuc\n  revisions: 12e856482d26\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_classify_otu\n  owner: iuc\n  revisions: ff1bc0299372\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_classify_seqs\n  owner: iuc\n  revisions: '09bf9e496c64'\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_cluster\n  owner: iuc\n  revisions: 6366f4483b35\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_cluster_split\n  owner: iuc\n  revisions: 19f45bdbffd9\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_count_groups\n  owner: iuc\n  revisions: dc3826bfc1ed\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_count_seqs\n  owner: iuc\n  revisions: ffee46220ddd\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_dist_seqs\n  owner: iuc\n  revisions: 4d76fba83f24\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_dist_shared\n  owner: iuc\n  revisions: 418100660ba3\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_filter_seqs\n  owner: iuc\n  revisions: 3524ca06478e\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_heatmap_sim\n  owner: iuc\n  revisions: 7f5707dd6073\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_make_shared\n  owner: iuc\n  revisions: d0967ae326be\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_pre_cluster\n  owner: iuc\n  revisions: 6532c3424bfe\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_rarefaction_single\n  owner: iuc\n  revisions: 47264675a4ea\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_remove_groups\n  owner: iuc\n  revisions: 498dc0671d9e\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_remove_lineage\n  owner: iuc\n  revisions: 947faa8b3205\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_remove_seqs\n  owner: iuc\n  revisions: d38f2ac5db71\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_screen_seqs\n  owner: iuc\n  revisions: 63b74bfc8052\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_sub_sample\n  owner: iuc\n  revisions: 67cb43432196\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_summary_seqs\n  owner: iuc\n  revisions: 600c14c6dcc5\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_summary_single\n  owner: iuc\n  revisions: 2344ed181ae6\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_tree_shared\n  owner: iuc\n  revisions: 8bca555fbcaf\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_unique_seqs\n  owner: iuc\n  revisions: a033f325ad8d\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: mothur_venn\n  owner: iuc\n  revisions: 4db54b1c1d83\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: newick_utils\n  owner: iuc\n  revisions: b4163d2f64ab\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: collapse_collections\n  owner: nml\n  revisions: 830961c48e42\n  tool_panel_section_label: Metagenomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
   "tours": false,
   "video": false,
   "translations": {
