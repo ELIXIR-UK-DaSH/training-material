@@ -421,25 +421,18 @@
     },
     {
       "layout": "tutorial_hands_on",
-      "title": "DNA Methylation data analysis",
-      "zenodo_link": "https://zenodo.org/record/557099",
-      "edam_ontology": [
-        "topic_3173"
-      ],
+      "title": "Hi-C analysis of Drosophila melanogaster cells using HiCExplorer",
+      "zenodo_link": "https://doi.org/10.5281/zenodo.1183661",
       "questions": [
-        "What is methylation and why it cannot be recognised by a normal NGS procedure?",
-        "Can a different methylation influence the expression of a gene? How?",
-        "Which tools you can use to analyse methylation data?"
+        "Why is a Hi-C analysis useful?",
+        "What is 'chromosome conformation capture'?",
+        "What are main steps in order to generate and plot a Hi-C contact matrix?"
       ],
-      "objectives": [
-        "Learn how to analyse methylation data",
-        "Get a first intuition what are common pitfalls."
-      ],
-      "time_estimation": "3h",
+      "time_estimation": "1h",
       "key_points": [
-        "The output of a methylation NGS is having a different distribution of the four bases. This is caused by the bisulfite treatment of the DNA.",
-        "If there is a different level of methylation in the loci of a gene this can be a hint that something is wrong.",
-        "To get useful results you need -- data, data and data!"
+        "Hi-C helps to investigate the 3D structure of the genome and to uncover folding principles of chromatin.",
+        "In order to build a Hi-C contact matrix the reads have to be mapped to the reference genome.",
+        "Based on a contact matrix open and closed chromatin (A/B compartments) and topological associating domains (TADs) can be computed."
       ],
       "contributors": [
         {
@@ -452,19 +445,33 @@
           "page": "https://training.galaxyproject.org/training-material/hall-of-fame/joachimwolff/"
         },
         {
-          "name": "Devon Ryan",
+          "name": "Fidel Ramirez",
           "joined": "2017-09",
-          "id": "dpryan79",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/dpryan79.json",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/dpryan79/"
+          "id": "fidelram",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/fidelram.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/fidelram/"
+        },
+        {
+          "name": "Vivek Bhardwaj",
+          "joined": "2017-09",
+          "id": "vivekbhr",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/vivekbhr.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/vivekbhr/"
+        },
+        {
+          "name": "Ekaterina Polkh",
+          "joined": "2017-09",
+          "id": "polkhe",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/polkhe.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/polkhe/"
         }
       ],
-      "short_id": "T00142",
-      "url": "/topics/epigenetics/tutorials/methylation-seq/tutorial.html",
+      "short_id": "T00141",
+      "url": "/topics/epigenetics/tutorials/hicexplorer/tutorial.html",
       "topic_name": "epigenetics",
-      "tutorial_name": "methylation-seq",
-      "dir": "topics/epigenetics/tutorials/methylation-seq",
-      "id": "epigenetics/methylation-seq",
+      "tutorial_name": "hicexplorer",
+      "dir": "topics/epigenetics/tutorials/hicexplorer",
+      "id": "epigenetics/hicexplorer",
       "video_library": {
         "tutorial": null,
         "slides": null,
@@ -476,13 +483,13 @@
       "slides": false,
       "workflows": [
         {
-          "workflow": "methylation-seq.ga",
-          "tests": true,
-          "url": "https://training.galaxyproject.org/training-material/topics/epigenetics/tutorials/methylation-seq/workflows/methylation-seq.ga",
-          "path": "topics/epigenetics/tutorials/methylation-seq/workflows/methylation-seq.ga",
-          "wfid": "epigenetics-methylation-seq",
-          "wfname": "methylation-seq",
-          "trs_endpoint": "https://training.galaxyproject.org/training-material/api/ga4gh/trs/v2/tools/epigenetics-methylation-seq/versions/methylation-seq",
+          "workflow": "Galaxy-Workflow-Galaxy_Hi-C.ga",
+          "tests": false,
+          "url": "https://training.galaxyproject.org/training-material/topics/epigenetics/tutorials/hicexplorer/workflows/Galaxy-Workflow-Galaxy_Hi-C.ga",
+          "path": "topics/epigenetics/tutorials/hicexplorer/workflows/Galaxy-Workflow-Galaxy_Hi-C.ga",
+          "wfid": "epigenetics-hicexplorer",
+          "wfname": "galaxy-workflow-galaxy_hi-c",
+          "trs_endpoint": "https://training.galaxyproject.org/training-material/api/ga4gh/trs/v2/tools/epigenetics-hicexplorer/versions/galaxy-workflow-galaxy_hi-c",
           "license": null,
           "creators": [
 
@@ -490,57 +497,23 @@
           "test_results": null
         }
       ],
-      "api": "https://training.galaxyproject.org/training-material/api/topics/epigenetics/tutorials/methylation-seq/tutorial.json",
+      "api": "https://training.galaxyproject.org/training-material/api/topics/epigenetics/tutorials/hicexplorer/tutorial.json",
       "tools": [
-        "toolshed.g2.bx.psu.edu/repos/bgruening/deeptools_compute_matrix/deeptools_compute_matrix/2.5.1.1.0",
-        "toolshed.g2.bx.psu.edu/repos/bgruening/deeptools_plot_profile/deeptools_plot_profile/2.5.1.1.0",
-        "toolshed.g2.bx.psu.edu/repos/bgruening/pileometh/pileometh/0.3.0",
-        "toolshed.g2.bx.psu.edu/repos/bgruening/replace_column_by_key_value_file/replace_column_with_key_value_file/0.1",
-        "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_awk_tool/1.1.0",
-        "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_tail_tool/1.1.0",
-        "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.68",
-        "toolshed.g2.bx.psu.edu/repos/iuc/bwameth/bwameth/0.2.0.3",
-        "toolshed.g2.bx.psu.edu/repos/rnateam/metilene/metilene/0.2.6.1"
+        "toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hicbuildmatrix/hicexplorer_hicbuildmatrix/2.1.0",
+        "toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hiccorrectmatrix/hicexplorer_hiccorrectmatrix/2.1.0",
+        "toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hicfindtads/hicexplorer_hicfindtads/2.1.0",
+        "toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hicmergematrixbins/hicexplorer_hicmergematrixbins/2.1.0",
+        "toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hicpca/hicexplorer_hicpca/2.1.0",
+        "toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hicplotmatrix/hicexplorer_hicplotmatrix/2.1.0",
+        "toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hicplottads/hicexplorer_hicplottads/2.1.0",
+        "toolshed.g2.bx.psu.edu/repos/crs4/bwa_mem/bwa_mem/0.8.0"
       ],
       "supported_servers": {
         "exact": [
-          {
-            "url": "https://usegalaxy.eu",
-            "name": "UseGalaxy.eu",
-            "usegalaxy": "true"
-          },
-          {
-            "url": "https://usegalaxy.org",
-            "name": "UseGalaxy.org (Main)",
-            "usegalaxy": "true"
-          }
+
         ],
         "inexact": [
-          {
-            "url": "https://galaxy.hyphy.org/",
-            "name": "HyPhy HIV NGS Tools",
-            "usegalaxy": "false"
-          },
-          {
-            "url": "https://usegalaxy.be/",
-            "name": "UseGalaxy.be",
-            "usegalaxy": "true"
-          },
-          {
-            "url": "https://usegalaxy.cz/",
-            "name": "UseGalaxy.cz",
-            "usegalaxy": "true"
-          },
-          {
-            "url": "https://usegalaxy.no/",
-            "name": "UseGalaxy.no",
-            "usegalaxy": "true"
-          },
-          {
-            "url": "https://usegalaxy.org.au",
-            "name": "UseGalaxy.org.au",
-            "usegalaxy": "true"
-          }
+
         ]
       },
       "topic_name_human": "Epigenetics",
@@ -550,71 +523,57 @@
         "install_resolver_dependencies": true,
         "tools": [
           {
-            "name": "deeptools_compute_matrix",
+            "name": "hicexplorer_hicbuildmatrix",
             "owner": "bgruening",
-            "revisions": "fd1275e01605",
+            "revisions": "707f691c974c",
             "tool_panel_section_label": "Epigenetics",
             "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
           },
           {
-            "name": "deeptools_plot_profile",
+            "name": "hicexplorer_hiccorrectmatrix",
             "owner": "bgruening",
-            "revisions": "aac8444d6681",
+            "revisions": "f7d344dacfeb",
             "tool_panel_section_label": "Epigenetics",
             "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
           },
           {
-            "name": "pileometh",
+            "name": "hicexplorer_hicfindtads",
             "owner": "bgruening",
-            "revisions": "906db57d5d65",
+            "revisions": "43332e51a712",
             "tool_panel_section_label": "Epigenetics",
             "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
           },
           {
-            "name": "replace_column_by_key_value_file",
+            "name": "hicexplorer_hicmergematrixbins",
             "owner": "bgruening",
-            "revisions": "cc18bac5afdb",
+            "revisions": "8926550196ce",
             "tool_panel_section_label": "Epigenetics",
             "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
           },
           {
-            "name": "text_processing",
+            "name": "hicexplorer_hicpca",
             "owner": "bgruening",
-            "revisions": "e39fceb6ab85",
+            "revisions": "ea50f7bba657",
             "tool_panel_section_label": "Epigenetics",
             "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
           },
           {
-            "name": "text_processing",
+            "name": "hicexplorer_hicplotmatrix",
             "owner": "bgruening",
-            "revisions": "d698c222f354",
+            "revisions": "d398f5373c70",
             "tool_panel_section_label": "Epigenetics",
             "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
           },
           {
-            "name": "fastqc",
-            "owner": "devteam",
-            "revisions": "484e86282f4b",
-            "tool_panel_section_label": "Epigenetics",
-            "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
-          },
-          {
-            "name": "bwameth",
-            "owner": "iuc",
-            "revisions": "a6ea26c1f225",
-            "tool_panel_section_label": "Epigenetics",
-            "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
-          },
-          {
-            "name": "metilene",
-            "owner": "rnateam",
-            "revisions": "37abd09a0ae6",
+            "name": "hicexplorer_hicplottads",
+            "owner": "bgruening",
+            "revisions": "94fff1a6a899",
             "tool_panel_section_label": "Epigenetics",
             "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
           }
         ]
       },
-      "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: deeptools_compute_matrix\n  owner: bgruening\n  revisions: fd1275e01605\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: deeptools_plot_profile\n  owner: bgruening\n  revisions: aac8444d6681\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: pileometh\n  owner: bgruening\n  revisions: 906db57d5d65\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: replace_column_by_key_value_file\n  owner: bgruening\n  revisions: cc18bac5afdb\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: text_processing\n  owner: bgruening\n  revisions: e39fceb6ab85\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: text_processing\n  owner: bgruening\n  revisions: d698c222f354\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: fastqc\n  owner: devteam\n  revisions: 484e86282f4b\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: bwameth\n  owner: iuc\n  revisions: a6ea26c1f225\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: metilene\n  owner: rnateam\n  revisions: 37abd09a0ae6\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
+      "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: hicexplorer_hicbuildmatrix\n  owner: bgruening\n  revisions: 707f691c974c\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: hicexplorer_hiccorrectmatrix\n  owner: bgruening\n  revisions: f7d344dacfeb\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: hicexplorer_hicfindtads\n  owner: bgruening\n  revisions: 43332e51a712\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: hicexplorer_hicmergematrixbins\n  owner: bgruening\n  revisions: 8926550196ce\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: hicexplorer_hicpca\n  owner: bgruening\n  revisions: ea50f7bba657\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: hicexplorer_hicplotmatrix\n  owner: bgruening\n  revisions: d398f5373c70\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: hicexplorer_hicplottads\n  owner: bgruening\n  revisions: 94fff1a6a899\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
       "tours": false,
       "video": false,
       "translations": {
@@ -628,8 +587,8 @@
       },
       "type": "tutorial",
       "urls": {
-        "hands_on": "https://training.galaxyproject.org/training-material/api/topics/epigenetics/tutorials/methylation-seq/tutorial.json",
-        "slides": "https://training.galaxyproject.org/training-material/api/topics/epigenetics/tutorials/methylation-seq/tutorial.json"
+        "hands_on": "https://training.galaxyproject.org/training-material/api/topics/epigenetics/tutorials/hicexplorer/tutorial.json",
+        "slides": "https://training.galaxyproject.org/training-material/api/topics/epigenetics/tutorials/hicexplorer/tutorial.json"
       }
     },
     {
@@ -946,57 +905,58 @@
     },
     {
       "layout": "tutorial_hands_on",
-      "title": "Hi-C analysis of Drosophila melanogaster cells using HiCExplorer",
-      "zenodo_link": "https://doi.org/10.5281/zenodo.1183661",
+      "title": "Infinium Human Methylation BeadChip",
+      "zenodo_link": "https://zenodo.org/record/1251211#.WwREQ1Mvz-Y",
       "questions": [
-        "Why is a Hi-C analysis useful?",
-        "What is 'chromosome conformation capture'?",
-        "What are main steps in order to generate and plot a Hi-C contact matrix?"
+        "Which DNA regions and positions are diffrentialy methylated in pre MAPKi treatment and post MAPKi resistance Melanomas GSE65183?",
+        "How to analyse and visualise Infinium Human Methylation BeadChip's?"
       ],
       "time_estimation": "1h",
+      "objectives": [
+        "Learn how to perform reproducible Infinium Human Methylation BeadChip analysis",
+        "Visualise differentially methylated positions using UCSC browser"
+      ],
       "key_points": [
-        "Hi-C helps to investigate the 3D structure of the genome and to uncover folding principles of chromatin.",
-        "In order to build a Hi-C contact matrix the reads have to be mapped to the reference genome.",
-        "Based on a contact matrix open and closed chromatin (A/B compartments) and topological associating domains (TADs) can be computed."
+        "Infinium Human Methylation BeadChip is an array based technology to generate DNA methylation profiling at individual CpG loci in the human genome based on Illumina’s bead technology.",
+        "Time and cost efficiency followed by high sample output, and overall quantitative accuracy and reproducibility made Infinium Human Methylation BeadChip one of the most widely used arrays on the market."
       ],
       "contributors": [
         {
-          "name": "Joachim Wolff",
-          "email": "wolffj@informatik.uni-freiburg.de",
-          "joined": "2017-09",
-          "elixir_node": "de",
-          "id": "joachimwolff",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/joachimwolff.json",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/joachimwolff/"
+          "name": "Katarzyna Kamieniecka",
+          "twitter": "katemurat",
+          "orcid": "0009-0004-2454-5950",
+          "joined": "2018-08",
+          "elixir_node": "uk",
+          "id": "kkamieniecka",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/kkamieniecka.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/kkamieniecka/"
         },
         {
-          "name": "Fidel Ramirez",
-          "joined": "2017-09",
-          "id": "fidelram",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/fidelram.json",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/fidelram/"
+          "name": "Khaled Jum’ah",
+          "email": "k.jumah@bradford.ac.uk",
+          "orcid": "0000-0001-5481-8893",
+          "joined": "2022-09",
+          "id": "Khaled196",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/Khaled196.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/Khaled196/"
         },
         {
-          "name": "Vivek Bhardwaj",
+          "name": "Krzysztof Poterlowicz",
+          "twitter": "bioinfbrad",
+          "orcid": "0000-0001-6173-5674",
           "joined": "2017-09",
-          "id": "vivekbhr",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/vivekbhr.json",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/vivekbhr/"
-        },
-        {
-          "name": "Ekaterina Polkh",
-          "joined": "2017-09",
-          "id": "polkhe",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/polkhe.json",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/polkhe/"
+          "elixir_node": "uk",
+          "id": "poterlowicz-lab",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/poterlowicz-lab.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/poterlowicz-lab/"
         }
       ],
-      "short_id": "T00141",
-      "url": "/topics/epigenetics/tutorials/hicexplorer/tutorial.html",
+      "short_id": "T00139",
+      "url": "/topics/epigenetics/tutorials/ewas-suite/tutorial.html",
       "topic_name": "epigenetics",
-      "tutorial_name": "hicexplorer",
-      "dir": "topics/epigenetics/tutorials/hicexplorer",
-      "id": "epigenetics/hicexplorer",
+      "tutorial_name": "ewas-suite",
+      "dir": "topics/epigenetics/tutorials/ewas-suite",
+      "id": "epigenetics/ewas-suite",
       "video_library": {
         "tutorial": null,
         "slides": null,
@@ -1005,37 +965,63 @@
         "session": null
       },
       "hands_on": true,
-      "slides": false,
+      "slides": true,
       "workflows": [
         {
-          "workflow": "Galaxy-Workflow-Galaxy_Hi-C.ga",
-          "tests": false,
-          "url": "https://training.galaxyproject.org/training-material/topics/epigenetics/tutorials/hicexplorer/workflows/Galaxy-Workflow-Galaxy_Hi-C.ga",
-          "path": "topics/epigenetics/tutorials/hicexplorer/workflows/Galaxy-Workflow-Galaxy_Hi-C.ga",
-          "wfid": "epigenetics-hicexplorer",
-          "wfname": "galaxy-workflow-galaxy_hi-c",
-          "trs_endpoint": "https://training.galaxyproject.org/training-material/api/ga4gh/trs/v2/tools/epigenetics-hicexplorer/versions/galaxy-workflow-galaxy_hi-c",
-          "license": null,
+          "workflow": "Infinium-Human-Methylation-BeadChip.ga",
+          "tests": true,
+          "url": "https://training.galaxyproject.org/training-material/topics/epigenetics/tutorials/ewas-suite/workflows/Infinium-Human-Methylation-BeadChip.ga",
+          "path": "topics/epigenetics/tutorials/ewas-suite/workflows/Infinium-Human-Methylation-BeadChip.ga",
+          "wfid": "epigenetics-ewas-suite",
+          "wfname": "infinium-human-methylation-beadchip",
+          "trs_endpoint": "https://training.galaxyproject.org/training-material/api/ga4gh/trs/v2/tools/epigenetics-ewas-suite/versions/infinium-human-methylation-beadchip",
+          "license": "AGPL-3.0-or-later",
           "creators": [
-
+            {
+              "class": "Person",
+              "identifier": "0009-0004-2454-5950",
+              "name": "Katarzyna Kamieniecka"
+            },
+            {
+              "class": "Person",
+              "identifier": "0000-0001-5481-8893",
+              "name": "Khaled Jum'ah"
+            },
+            {
+              "class": "Organization",
+              "name": "poterlowicz-lab",
+              "url": "https://github.com/ELIXIR-UK-DaSH"
+            }
           ],
           "test_results": null
         }
       ],
-      "api": "https://training.galaxyproject.org/training-material/api/topics/epigenetics/tutorials/hicexplorer/tutorial.json",
+      "api": "https://training.galaxyproject.org/training-material/api/topics/epigenetics/tutorials/ewas-suite/tutorial.json",
       "tools": [
-        "toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hicbuildmatrix/hicexplorer_hicbuildmatrix/2.1.0",
-        "toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hiccorrectmatrix/hicexplorer_hiccorrectmatrix/2.1.0",
-        "toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hicfindtads/hicexplorer_hicfindtads/2.1.0",
-        "toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hicmergematrixbins/hicexplorer_hicmergematrixbins/2.1.0",
-        "toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hicpca/hicexplorer_hicpca/2.1.0",
-        "toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hicplotmatrix/hicexplorer_hicplotmatrix/2.1.0",
-        "toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hicplottads/hicexplorer_hicplottads/2.1.0",
-        "toolshed.g2.bx.psu.edu/repos/crs4/bwa_mem/bwa_mem/0.8.0"
+        "Cut1",
+        "Remove beginning1",
+        "toolshed.g2.bx.psu.edu/repos/kpbioteam/chipeakanno_annopeaks/chipeakanno_annopeaks/0.1.0",
+        "toolshed.g2.bx.psu.edu/repos/kpbioteam/clusterprofiler_bitr/clusterprofiler_bitr/0.1.0",
+        "toolshed.g2.bx.psu.edu/repos/kpbioteam/clusterprofiler_go/clusterprofiler_go/0.1.0",
+        "toolshed.g2.bx.psu.edu/repos/kpbioteam/ewastools/minfi_analysis/2.1.0"
       ],
       "supported_servers": {
         "exact": [
-
+          {
+            "url": "https://usegalaxy.cz/",
+            "name": "UseGalaxy.cz",
+            "usegalaxy": "true"
+          },
+          {
+            "url": "https://usegalaxy.eu",
+            "name": "UseGalaxy.eu",
+            "usegalaxy": "true"
+          },
+          {
+            "url": "https://usegalaxy.no/",
+            "name": "UseGalaxy.no",
+            "usegalaxy": "true"
+          }
         ],
         "inexact": [
 
@@ -1048,57 +1034,36 @@
         "install_resolver_dependencies": true,
         "tools": [
           {
-            "name": "hicexplorer_hicbuildmatrix",
-            "owner": "bgruening",
-            "revisions": "707f691c974c",
+            "name": "chipeakanno_annopeaks",
+            "owner": "kpbioteam",
+            "revisions": "104882a2de00",
             "tool_panel_section_label": "Epigenetics",
             "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
           },
           {
-            "name": "hicexplorer_hiccorrectmatrix",
-            "owner": "bgruening",
-            "revisions": "f7d344dacfeb",
+            "name": "clusterprofiler_bitr",
+            "owner": "kpbioteam",
+            "revisions": "762c61c71874",
             "tool_panel_section_label": "Epigenetics",
             "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
           },
           {
-            "name": "hicexplorer_hicfindtads",
-            "owner": "bgruening",
-            "revisions": "43332e51a712",
+            "name": "clusterprofiler_go",
+            "owner": "kpbioteam",
+            "revisions": "5299be80cafb",
             "tool_panel_section_label": "Epigenetics",
             "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
           },
           {
-            "name": "hicexplorer_hicmergematrixbins",
-            "owner": "bgruening",
-            "revisions": "8926550196ce",
-            "tool_panel_section_label": "Epigenetics",
-            "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
-          },
-          {
-            "name": "hicexplorer_hicpca",
-            "owner": "bgruening",
-            "revisions": "ea50f7bba657",
-            "tool_panel_section_label": "Epigenetics",
-            "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
-          },
-          {
-            "name": "hicexplorer_hicplotmatrix",
-            "owner": "bgruening",
-            "revisions": "d398f5373c70",
-            "tool_panel_section_label": "Epigenetics",
-            "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
-          },
-          {
-            "name": "hicexplorer_hicplottads",
-            "owner": "bgruening",
-            "revisions": "94fff1a6a899",
+            "name": "ewastools",
+            "owner": "kpbioteam",
+            "revisions": "369fef559cfc",
             "tool_panel_section_label": "Epigenetics",
             "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
           }
         ]
       },
-      "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: hicexplorer_hicbuildmatrix\n  owner: bgruening\n  revisions: 707f691c974c\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: hicexplorer_hiccorrectmatrix\n  owner: bgruening\n  revisions: f7d344dacfeb\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: hicexplorer_hicfindtads\n  owner: bgruening\n  revisions: 43332e51a712\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: hicexplorer_hicmergematrixbins\n  owner: bgruening\n  revisions: 8926550196ce\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: hicexplorer_hicpca\n  owner: bgruening\n  revisions: ea50f7bba657\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: hicexplorer_hicplotmatrix\n  owner: bgruening\n  revisions: d398f5373c70\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: hicexplorer_hicplottads\n  owner: bgruening\n  revisions: 94fff1a6a899\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
+      "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: chipeakanno_annopeaks\n  owner: kpbioteam\n  revisions: 104882a2de00\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: clusterprofiler_bitr\n  owner: kpbioteam\n  revisions: 762c61c71874\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: clusterprofiler_go\n  owner: kpbioteam\n  revisions: 5299be80cafb\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: ewastools\n  owner: kpbioteam\n  revisions: 369fef559cfc\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
       "tours": false,
       "video": false,
       "translations": {
@@ -1112,8 +1077,8 @@
       },
       "type": "tutorial",
       "urls": {
-        "hands_on": "https://training.galaxyproject.org/training-material/api/topics/epigenetics/tutorials/hicexplorer/tutorial.json",
-        "slides": "https://training.galaxyproject.org/training-material/api/topics/epigenetics/tutorials/hicexplorer/tutorial.json"
+        "hands_on": "https://training.galaxyproject.org/training-material/api/topics/epigenetics/tutorials/ewas-suite/tutorial.json",
+        "slides": "https://training.galaxyproject.org/training-material/api/topics/epigenetics/tutorials/ewas-suite/tutorial.json"
       }
     },
     {
@@ -1430,184 +1395,6 @@
     },
     {
       "layout": "tutorial_hands_on",
-      "title": "Infinium Human Methylation BeadChip",
-      "zenodo_link": "https://zenodo.org/record/1251211#.WwREQ1Mvz-Y",
-      "questions": [
-        "Which DNA regions and positions are diffrentialy methylated in pre MAPKi treatment and post MAPKi resistance Melanomas GSE65183?",
-        "How to analyse and visualise Infinium Human Methylation BeadChip's?"
-      ],
-      "time_estimation": "1h",
-      "objectives": [
-        "Learn how to perform reproducible Infinium Human Methylation BeadChip analysis",
-        "Visualise differentially methylated positions using UCSC browser"
-      ],
-      "key_points": [
-        "Infinium Human Methylation BeadChip is an array based technology to generate DNA methylation profiling at individual CpG loci in the human genome based on Illumina’s bead technology.",
-        "Time and cost efficiency followed by high sample output, and overall quantitative accuracy and reproducibility made Infinium Human Methylation BeadChip one of the most widely used arrays on the market."
-      ],
-      "contributors": [
-        {
-          "name": "Katarzyna Kamieniecka",
-          "twitter": "katemurat",
-          "orcid": "0009-0004-2454-5950",
-          "joined": "2018-08",
-          "elixir_node": "uk",
-          "id": "kkamieniecka",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/kkamieniecka.json",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/kkamieniecka/"
-        },
-        {
-          "name": "Khaled Jum’ah",
-          "email": "k.jumah@bradford.ac.uk",
-          "orcid": "0000-0001-5481-8893",
-          "joined": "2022-09",
-          "id": "Khaled196",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/Khaled196.json",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/Khaled196/"
-        },
-        {
-          "name": "Krzysztof Poterlowicz",
-          "twitter": "bioinfbrad",
-          "orcid": "0000-0001-6173-5674",
-          "joined": "2017-09",
-          "elixir_node": "uk",
-          "id": "poterlowicz-lab",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/poterlowicz-lab.json",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/poterlowicz-lab/"
-        }
-      ],
-      "short_id": "T00139",
-      "url": "/topics/epigenetics/tutorials/ewas-suite/tutorial.html",
-      "topic_name": "epigenetics",
-      "tutorial_name": "ewas-suite",
-      "dir": "topics/epigenetics/tutorials/ewas-suite",
-      "id": "epigenetics/ewas-suite",
-      "video_library": {
-        "tutorial": null,
-        "slides": null,
-        "demo": null,
-        "both": null,
-        "session": null
-      },
-      "hands_on": true,
-      "slides": true,
-      "workflows": [
-        {
-          "workflow": "Infinium-Human-Methylation-BeadChip.ga",
-          "tests": true,
-          "url": "https://training.galaxyproject.org/training-material/topics/epigenetics/tutorials/ewas-suite/workflows/Infinium-Human-Methylation-BeadChip.ga",
-          "path": "topics/epigenetics/tutorials/ewas-suite/workflows/Infinium-Human-Methylation-BeadChip.ga",
-          "wfid": "epigenetics-ewas-suite",
-          "wfname": "infinium-human-methylation-beadchip",
-          "trs_endpoint": "https://training.galaxyproject.org/training-material/api/ga4gh/trs/v2/tools/epigenetics-ewas-suite/versions/infinium-human-methylation-beadchip",
-          "license": "AGPL-3.0-or-later",
-          "creators": [
-            {
-              "class": "Person",
-              "identifier": "0009-0004-2454-5950",
-              "name": "Katarzyna Kamieniecka"
-            },
-            {
-              "class": "Person",
-              "identifier": "0000-0001-5481-8893",
-              "name": "Khaled Jum'ah"
-            },
-            {
-              "class": "Organization",
-              "name": "poterlowicz-lab",
-              "url": "https://github.com/ELIXIR-UK-DaSH"
-            }
-          ],
-          "test_results": null
-        }
-      ],
-      "api": "https://training.galaxyproject.org/training-material/api/topics/epigenetics/tutorials/ewas-suite/tutorial.json",
-      "tools": [
-        "Cut1",
-        "Remove beginning1",
-        "toolshed.g2.bx.psu.edu/repos/kpbioteam/chipeakanno_annopeaks/chipeakanno_annopeaks/0.1.0",
-        "toolshed.g2.bx.psu.edu/repos/kpbioteam/clusterprofiler_bitr/clusterprofiler_bitr/0.1.0",
-        "toolshed.g2.bx.psu.edu/repos/kpbioteam/clusterprofiler_go/clusterprofiler_go/0.1.0",
-        "toolshed.g2.bx.psu.edu/repos/kpbioteam/ewastools/minfi_analysis/2.1.0"
-      ],
-      "supported_servers": {
-        "exact": [
-          {
-            "url": "https://usegalaxy.cz/",
-            "name": "UseGalaxy.cz",
-            "usegalaxy": "true"
-          },
-          {
-            "url": "https://usegalaxy.eu",
-            "name": "UseGalaxy.eu",
-            "usegalaxy": "true"
-          },
-          {
-            "url": "https://usegalaxy.no/",
-            "name": "UseGalaxy.no",
-            "usegalaxy": "true"
-          }
-        ],
-        "inexact": [
-
-        ]
-      },
-      "topic_name_human": "Epigenetics",
-      "admin_install": {
-        "install_tool_dependencies": true,
-        "install_repository_dependencies": true,
-        "install_resolver_dependencies": true,
-        "tools": [
-          {
-            "name": "chipeakanno_annopeaks",
-            "owner": "kpbioteam",
-            "revisions": "104882a2de00",
-            "tool_panel_section_label": "Epigenetics",
-            "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
-          },
-          {
-            "name": "clusterprofiler_bitr",
-            "owner": "kpbioteam",
-            "revisions": "762c61c71874",
-            "tool_panel_section_label": "Epigenetics",
-            "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
-          },
-          {
-            "name": "clusterprofiler_go",
-            "owner": "kpbioteam",
-            "revisions": "5299be80cafb",
-            "tool_panel_section_label": "Epigenetics",
-            "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
-          },
-          {
-            "name": "ewastools",
-            "owner": "kpbioteam",
-            "revisions": "369fef559cfc",
-            "tool_panel_section_label": "Epigenetics",
-            "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
-          }
-        ]
-      },
-      "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: chipeakanno_annopeaks\n  owner: kpbioteam\n  revisions: 104882a2de00\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: clusterprofiler_bitr\n  owner: kpbioteam\n  revisions: 762c61c71874\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: clusterprofiler_go\n  owner: kpbioteam\n  revisions: 5299be80cafb\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: ewastools\n  owner: kpbioteam\n  revisions: 369fef559cfc\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
-      "tours": false,
-      "video": false,
-      "translations": {
-        "tutorial": [
-
-        ],
-        "slides": [
-
-        ],
-        "video": false
-      },
-      "type": "tutorial",
-      "urls": {
-        "hands_on": "https://training.galaxyproject.org/training-material/api/topics/epigenetics/tutorials/ewas-suite/tutorial.json",
-        "slides": "https://training.galaxyproject.org/training-material/api/topics/epigenetics/tutorials/ewas-suite/tutorial.json"
-      }
-    },
-    {
-      "layout": "tutorial_hands_on",
       "redirect_from": [
         "/topics/chip-seq/tutorials/tal1-binding-site-identification/tutorial",
         "/short/epigenetics/tal1-binding-site-identification",
@@ -1918,39 +1705,51 @@
       }
     },
     {
-      "layout": "introduction_slides",
-      "logo": "GTN",
-      "priority": 1,
-      "title": "Introduction to ChIP-Seq data analysis",
+      "layout": "tutorial_hands_on",
+      "title": "DNA Methylation data analysis",
+      "zenodo_link": "https://zenodo.org/record/557099",
+      "edam_ontology": [
+        "topic_3173"
+      ],
+      "questions": [
+        "What is methylation and why it cannot be recognised by a normal NGS procedure?",
+        "Can a different methylation influence the expression of a gene? How?",
+        "Which tools you can use to analyse methylation data?"
+      ],
+      "objectives": [
+        "Learn how to analyse methylation data",
+        "Get a first intuition what are common pitfalls."
+      ],
+      "time_estimation": "3h",
+      "key_points": [
+        "The output of a methylation NGS is having a different distribution of the four bases. This is caused by the bisulfite treatment of the DNA.",
+        "If there is a different level of methylation in the loci of a gene this can be a hint that something is wrong.",
+        "To get useful results you need -- data, data and data!"
+      ],
       "contributors": [
         {
-          "name": "Bérénice Batut",
-          "email": "berenice.batut@gmail.com",
-          "twitter": "bebatut",
-          "linkedin": "berenicebatut",
-          "matrix": "bebatut:matrix.org",
-          "orcid": "0000-0001-9852-1987",
+          "name": "Joachim Wolff",
+          "email": "wolffj@informatik.uni-freiburg.de",
           "joined": "2017-09",
           "elixir_node": "de",
-          "contact_for_training": true,
-          "location": {
-            "country": "FR",
-            "lat": 45.77,
-            "lon": 3.08
-          },
-          "fediverse": "https://piaille.fr/@bebatut",
-          "fediverse_flavor": "mastodon",
-          "id": "bebatut",
-          "url": "https://training.galaxyproject.org/training-material/api/contributors/bebatut.json",
-          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/"
+          "id": "joachimwolff",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/joachimwolff.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/joachimwolff/"
+        },
+        {
+          "name": "Devon Ryan",
+          "joined": "2017-09",
+          "id": "dpryan79",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/dpryan79.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/dpryan79/"
         }
       ],
-      "short_id": "S00059",
-      "url": "/topics/epigenetics/tutorials/introduction-chip-seq/slides.html",
+      "short_id": "T00142",
+      "url": "/topics/epigenetics/tutorials/methylation-seq/tutorial.html",
       "topic_name": "epigenetics",
-      "tutorial_name": "introduction-chip-seq",
-      "dir": "topics/epigenetics/tutorials/introduction-chip-seq",
-      "id": "epigenetics/introduction-chip-seq",
+      "tutorial_name": "methylation-seq",
+      "dir": "topics/epigenetics/tutorials/methylation-seq",
+      "id": "epigenetics/methylation-seq",
       "video_library": {
         "tutorial": null,
         "slides": null,
@@ -1958,31 +1757,74 @@
         "both": null,
         "session": null
       },
-      "hands_on": false,
-      "slides": true,
-      "api": "https://training.galaxyproject.org/training-material/api/topics/epigenetics/tutorials/introduction-chip-seq/tutorial.json",
-      "tools": [
+      "hands_on": true,
+      "slides": false,
+      "workflows": [
+        {
+          "workflow": "methylation-seq.ga",
+          "tests": true,
+          "url": "https://training.galaxyproject.org/training-material/topics/epigenetics/tutorials/methylation-seq/workflows/methylation-seq.ga",
+          "path": "topics/epigenetics/tutorials/methylation-seq/workflows/methylation-seq.ga",
+          "wfid": "epigenetics-methylation-seq",
+          "wfname": "methylation-seq",
+          "trs_endpoint": "https://training.galaxyproject.org/training-material/api/ga4gh/trs/v2/tools/epigenetics-methylation-seq/versions/methylation-seq",
+          "license": null,
+          "creators": [
 
+          ],
+          "test_results": null
+        }
+      ],
+      "api": "https://training.galaxyproject.org/training-material/api/topics/epigenetics/tutorials/methylation-seq/tutorial.json",
+      "tools": [
+        "toolshed.g2.bx.psu.edu/repos/bgruening/deeptools_compute_matrix/deeptools_compute_matrix/2.5.1.1.0",
+        "toolshed.g2.bx.psu.edu/repos/bgruening/deeptools_plot_profile/deeptools_plot_profile/2.5.1.1.0",
+        "toolshed.g2.bx.psu.edu/repos/bgruening/pileometh/pileometh/0.3.0",
+        "toolshed.g2.bx.psu.edu/repos/bgruening/replace_column_by_key_value_file/replace_column_with_key_value_file/0.1",
+        "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_awk_tool/1.1.0",
+        "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_tail_tool/1.1.0",
+        "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.68",
+        "toolshed.g2.bx.psu.edu/repos/iuc/bwameth/bwameth/0.2.0.3",
+        "toolshed.g2.bx.psu.edu/repos/rnateam/metilene/metilene/0.2.6.1"
       ],
       "supported_servers": {
         "exact": [
-
+          {
+            "url": "https://usegalaxy.eu",
+            "name": "UseGalaxy.eu",
+            "usegalaxy": "true"
+          },
+          {
+            "url": "https://usegalaxy.org",
+            "name": "UseGalaxy.org (Main)",
+            "usegalaxy": "true"
+          }
         ],
         "inexact": [
           {
-            "name": "UseGalaxy.eu",
-            "url": "https://usegalaxy.eu",
-            "usegalaxy": true
+            "url": "https://galaxy.hyphy.org/",
+            "name": "HyPhy HIV NGS Tools",
+            "usegalaxy": "false"
           },
           {
-            "name": "UseGalaxy.org",
-            "url": "https://usegalaxy.org",
-            "usegalaxy": true
+            "url": "https://usegalaxy.be/",
+            "name": "UseGalaxy.be",
+            "usegalaxy": "true"
           },
           {
-            "name": "UseGalaxy.org.au",
+            "url": "https://usegalaxy.cz/",
+            "name": "UseGalaxy.cz",
+            "usegalaxy": "true"
+          },
+          {
+            "url": "https://usegalaxy.no/",
+            "name": "UseGalaxy.no",
+            "usegalaxy": "true"
+          },
+          {
             "url": "https://usegalaxy.org.au",
-            "usegalaxy": true
+            "name": "UseGalaxy.org.au",
+            "usegalaxy": "true"
           }
         ]
       },
@@ -1992,10 +1834,72 @@
         "install_repository_dependencies": true,
         "install_resolver_dependencies": true,
         "tools": [
-
+          {
+            "name": "deeptools_compute_matrix",
+            "owner": "bgruening",
+            "revisions": "fd1275e01605",
+            "tool_panel_section_label": "Epigenetics",
+            "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+          },
+          {
+            "name": "deeptools_plot_profile",
+            "owner": "bgruening",
+            "revisions": "aac8444d6681",
+            "tool_panel_section_label": "Epigenetics",
+            "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+          },
+          {
+            "name": "pileometh",
+            "owner": "bgruening",
+            "revisions": "906db57d5d65",
+            "tool_panel_section_label": "Epigenetics",
+            "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+          },
+          {
+            "name": "replace_column_by_key_value_file",
+            "owner": "bgruening",
+            "revisions": "cc18bac5afdb",
+            "tool_panel_section_label": "Epigenetics",
+            "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+          },
+          {
+            "name": "text_processing",
+            "owner": "bgruening",
+            "revisions": "e39fceb6ab85",
+            "tool_panel_section_label": "Epigenetics",
+            "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+          },
+          {
+            "name": "text_processing",
+            "owner": "bgruening",
+            "revisions": "d698c222f354",
+            "tool_panel_section_label": "Epigenetics",
+            "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+          },
+          {
+            "name": "fastqc",
+            "owner": "devteam",
+            "revisions": "484e86282f4b",
+            "tool_panel_section_label": "Epigenetics",
+            "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+          },
+          {
+            "name": "bwameth",
+            "owner": "iuc",
+            "revisions": "a6ea26c1f225",
+            "tool_panel_section_label": "Epigenetics",
+            "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+          },
+          {
+            "name": "metilene",
+            "owner": "rnateam",
+            "revisions": "37abd09a0ae6",
+            "tool_panel_section_label": "Epigenetics",
+            "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+          }
         ]
       },
-      "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools: []\n",
+      "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: deeptools_compute_matrix\n  owner: bgruening\n  revisions: fd1275e01605\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: deeptools_plot_profile\n  owner: bgruening\n  revisions: aac8444d6681\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: pileometh\n  owner: bgruening\n  revisions: 906db57d5d65\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: replace_column_by_key_value_file\n  owner: bgruening\n  revisions: cc18bac5afdb\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: text_processing\n  owner: bgruening\n  revisions: e39fceb6ab85\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: text_processing\n  owner: bgruening\n  revisions: d698c222f354\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: fastqc\n  owner: devteam\n  revisions: 484e86282f4b\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: bwameth\n  owner: iuc\n  revisions: a6ea26c1f225\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: metilene\n  owner: rnateam\n  revisions: 37abd09a0ae6\n  tool_panel_section_label: Epigenetics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
       "tours": false,
       "video": false,
       "translations": {
@@ -2009,8 +1913,8 @@
       },
       "type": "tutorial",
       "urls": {
-        "hands_on": "https://training.galaxyproject.org/training-material/api/topics/epigenetics/tutorials/introduction-chip-seq/slides.json",
-        "slides": "https://training.galaxyproject.org/training-material/api/topics/epigenetics/tutorials/introduction-chip-seq/slides.json"
+        "hands_on": "https://training.galaxyproject.org/training-material/api/topics/epigenetics/tutorials/methylation-seq/tutorial.json",
+        "slides": "https://training.galaxyproject.org/training-material/api/topics/epigenetics/tutorials/methylation-seq/tutorial.json"
       }
     },
     {
@@ -2107,6 +2011,102 @@
       "urls": {
         "hands_on": "https://training.galaxyproject.org/training-material/api/topics/epigenetics/tutorials/introduction-dna-methylation/slides.json",
         "slides": "https://training.galaxyproject.org/training-material/api/topics/epigenetics/tutorials/introduction-dna-methylation/slides.json"
+      }
+    },
+    {
+      "layout": "introduction_slides",
+      "logo": "GTN",
+      "priority": 1,
+      "title": "Introduction to ChIP-Seq data analysis",
+      "contributors": [
+        {
+          "name": "Bérénice Batut",
+          "email": "berenice.batut@gmail.com",
+          "twitter": "bebatut",
+          "linkedin": "berenicebatut",
+          "matrix": "bebatut:matrix.org",
+          "orcid": "0000-0001-9852-1987",
+          "joined": "2017-09",
+          "elixir_node": "de",
+          "contact_for_training": true,
+          "location": {
+            "country": "FR",
+            "lat": 45.77,
+            "lon": 3.08
+          },
+          "fediverse": "https://piaille.fr/@bebatut",
+          "fediverse_flavor": "mastodon",
+          "id": "bebatut",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/bebatut.json",
+          "page": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/"
+        }
+      ],
+      "short_id": "S00059",
+      "url": "/topics/epigenetics/tutorials/introduction-chip-seq/slides.html",
+      "topic_name": "epigenetics",
+      "tutorial_name": "introduction-chip-seq",
+      "dir": "topics/epigenetics/tutorials/introduction-chip-seq",
+      "id": "epigenetics/introduction-chip-seq",
+      "video_library": {
+        "tutorial": null,
+        "slides": null,
+        "demo": null,
+        "both": null,
+        "session": null
+      },
+      "hands_on": false,
+      "slides": true,
+      "api": "https://training.galaxyproject.org/training-material/api/topics/epigenetics/tutorials/introduction-chip-seq/tutorial.json",
+      "tools": [
+
+      ],
+      "supported_servers": {
+        "exact": [
+
+        ],
+        "inexact": [
+          {
+            "name": "UseGalaxy.eu",
+            "url": "https://usegalaxy.eu",
+            "usegalaxy": true
+          },
+          {
+            "name": "UseGalaxy.org",
+            "url": "https://usegalaxy.org",
+            "usegalaxy": true
+          },
+          {
+            "name": "UseGalaxy.org.au",
+            "url": "https://usegalaxy.org.au",
+            "usegalaxy": true
+          }
+        ]
+      },
+      "topic_name_human": "Epigenetics",
+      "admin_install": {
+        "install_tool_dependencies": true,
+        "install_repository_dependencies": true,
+        "install_resolver_dependencies": true,
+        "tools": [
+
+        ]
+      },
+      "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools: []\n",
+      "tours": false,
+      "video": false,
+      "translations": {
+        "tutorial": [
+
+        ],
+        "slides": [
+
+        ],
+        "video": false
+      },
+      "type": "tutorial",
+      "urls": {
+        "hands_on": "https://training.galaxyproject.org/training-material/api/topics/epigenetics/tutorials/introduction-chip-seq/slides.json",
+        "slides": "https://training.galaxyproject.org/training-material/api/topics/epigenetics/tutorials/introduction-chip-seq/slides.json"
       }
     }
   ]
