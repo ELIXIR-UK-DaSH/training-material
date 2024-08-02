@@ -87,7 +87,8 @@
     "inexact": [
       {
         "url": "https://galaxy.pasteur.fr/",
-        "name": "Galaxy@Pasteur"
+        "name": "Galaxy@Pasteur",
+        "usegalaxy": "false"
       },
       {
         "url": "https://galaxytrakr.org/",
@@ -98,6 +99,11 @@
         "url": "https://mississippi.sorbonne-universite.fr",
         "name": "MISSISSIPPI",
         "usegalaxy": "false"
+      },
+      {
+        "url": "https://usegalaxy.be/",
+        "name": "UseGalaxy.be",
+        "usegalaxy": "true"
       },
       {
         "url": "https://usegalaxy.cz/",

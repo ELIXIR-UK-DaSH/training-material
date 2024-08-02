@@ -274,6 +274,11 @@
       "supported_servers": {
         "exact": [
           {
+            "url": "https://galaxy.pasteur.fr/",
+            "name": "Galaxy@Pasteur",
+            "usegalaxy": "false"
+          },
+          {
             "url": "https://mississippi.sorbonne-universite.fr",
             "name": "MISSISSIPPI",
             "usegalaxy": "false"
@@ -295,6 +300,11 @@
           }
         ],
         "inexact": [
+          {
+            "url": "https://usegalaxy.be/",
+            "name": "UseGalaxy.be",
+            "usegalaxy": "true"
+          },
           {
             "url": "https://usegalaxy.cz/",
             "name": "UseGalaxy.cz",
@@ -565,6 +575,11 @@
             "url": "https://galaxy.mesocentre.uca.fr",
             "name": "Galaxy@AuBi",
             "usegalaxy": "false"
+          },
+          {
+            "url": "https://usegalaxy.be/",
+            "name": "UseGalaxy.be",
+            "usegalaxy": "true"
           },
           {
             "url": "https://usegalaxy.eu",
