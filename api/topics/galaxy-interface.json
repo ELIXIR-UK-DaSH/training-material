@@ -216,11 +216,6 @@
       "supported_servers": {
         "exact": [
           {
-            "url": "https://usegalaxy.be/",
-            "name": "UseGalaxy.be",
-            "usegalaxy": "true"
-          },
-          {
             "url": "https://usegalaxy.eu",
             "name": "UseGalaxy.eu",
             "usegalaxy": "true"
@@ -379,11 +374,6 @@
       "supported_servers": {
         "exact": [
           {
-            "url": "https://usegalaxy.be/",
-            "name": "UseGalaxy.be",
-            "usegalaxy": "true"
-          },
-          {
             "url": "https://usegalaxy.cz/",
             "name": "UseGalaxy.cz",
             "usegalaxy": "true"
@@ -533,11 +523,6 @@
       ],
       "supported_servers": {
         "exact": [
-          {
-            "url": "https://usegalaxy.be/",
-            "name": "UseGalaxy.be",
-            "usegalaxy": "true"
-          },
           {
             "url": "https://usegalaxy.cz/",
             "name": "UseGalaxy.cz",
@@ -740,11 +725,6 @@
             "url": "https://galaxy.hyphy.org/",
             "name": "HyPhy HIV NGS Tools",
             "usegalaxy": "false"
-          },
-          {
-            "url": "https://usegalaxy.be/",
-            "name": "UseGalaxy.be",
-            "usegalaxy": "true"
           },
           {
             "url": "https://usegalaxy.cz/",
@@ -1121,11 +1101,6 @@
             "usegalaxy": "false"
           },
           {
-            "url": "https://usegalaxy.be/",
-            "name": "UseGalaxy.be",
-            "usegalaxy": "true"
-          },
-          {
             "url": "https://usegalaxy.cz/",
             "name": "UseGalaxy.cz",
             "usegalaxy": "true"
@@ -1408,11 +1383,6 @@
       ],
       "supported_servers": {
         "exact": [
-          {
-            "url": "https://usegalaxy.be/",
-            "name": "UseGalaxy.be",
-            "usegalaxy": "true"
-          },
           {
             "url": "https://usegalaxy.org",
             "name": "UseGalaxy.org (Main)",
@@ -2246,11 +2216,6 @@
       ],
       "supported_servers": {
         "exact": [
-          {
-            "url": "https://usegalaxy.be/",
-            "name": "UseGalaxy.be",
-            "usegalaxy": "true"
-          },
           {
             "url": "https://usegalaxy.eu",
             "name": "UseGalaxy.eu",
@@ -3280,11 +3245,6 @@
             "url": "https://mississippi.sorbonne-universite.fr",
             "name": "MISSISSIPPI",
             "usegalaxy": "false"
-          },
-          {
-            "url": "https://usegalaxy.be/",
-            "name": "UseGalaxy.be",
-            "usegalaxy": "true"
           },
           {
             "url": "https://usegalaxy.cz/",
