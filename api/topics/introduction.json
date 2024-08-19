@@ -429,6 +429,11 @@
             "usegalaxy": "false"
           },
           {
+            "url": "https://mississippi.sorbonne-universite.fr",
+            "name": "MISSISSIPPI",
+            "usegalaxy": "false"
+          },
+          {
             "url": "https://usegalaxy.cz/",
             "name": "UseGalaxy.cz",
             "usegalaxy": "true"
@@ -1820,6 +1825,11 @@
             "url": "https://galaxy.mesocentre.uca.fr",
             "name": "Galaxy@AuBi",
             "usegalaxy": "false"
+          },
+          {
+            "url": "https://mississippi.sorbonne-universite.fr",
+            "name": "MISSISSIPPI",
+            "usegalaxy": "false"
           }
         ]
       },
@@ -2027,6 +2037,11 @@
           }
         ],
         "inexact": [
+          {
+            "url": "https://mississippi.sorbonne-universite.fr",
+            "name": "MISSISSIPPI",
+            "usegalaxy": "false"
+          },
           {
             "url": "https://usegalaxy.cz/",
             "name": "UseGalaxy.cz",
@@ -2651,6 +2666,11 @@
             "usegalaxy": "false"
           },
           {
+            "url": "https://mississippi.sorbonne-universite.fr",
+            "name": "MISSISSIPPI",
+            "usegalaxy": "false"
+          },
+          {
             "url": "https://usegalaxy.cz/",
             "name": "UseGalaxy.cz",
             "usegalaxy": "true"
@@ -2810,6 +2830,11 @@
           }
         ],
         "inexact": [
+          {
+            "url": "https://mississippi.sorbonne-universite.fr",
+            "name": "MISSISSIPPI",
+            "usegalaxy": "false"
+          },
           {
             "url": "https://usegalaxy.cz/",
             "name": "UseGalaxy.cz",
@@ -3031,6 +3056,11 @@
           }
         ],
         "inexact": [
+          {
+            "url": "https://mississippi.sorbonne-universite.fr",
+            "name": "MISSISSIPPI",
+            "usegalaxy": "false"
+          },
           {
             "url": "https://usegalaxy.cz/",
             "name": "UseGalaxy.cz",
