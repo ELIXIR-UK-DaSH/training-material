@@ -124,7 +124,7 @@
       {
         "name": "openbabel_addh",
         "owner": "bgruening",
-        "revisions": "6e4b7e0c61a6",
+        "revisions": "7b6fd1c273cd",
         "tool_panel_section_label": "Computational chemistry",
         "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
       },
@@ -151,7 +151,7 @@
       }
     ]
   },
-  "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: align_it\n  owner: bgruening\n  revisions: 06d9381593a4\n  tool_panel_section_label: Computational chemistry\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: openbabel_addh\n  owner: bgruening\n  revisions: 6e4b7e0c61a6\n  tool_panel_section_label: Computational chemistry\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: rdconf\n  owner: bgruening\n  revisions: 5c501eb8d56c\n  tool_panel_section_label: Computational chemistry\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: split_file_to_collection\n  owner: bgruening\n  revisions: 6cbe2f30c2d7\n  tool_panel_section_label: Computational chemistry\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: text_processing\n  owner: bgruening\n  revisions: d698c222f354\n  tool_panel_section_label: Computational chemistry\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
+  "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: align_it\n  owner: bgruening\n  revisions: 06d9381593a4\n  tool_panel_section_label: Computational chemistry\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: openbabel_addh\n  owner: bgruening\n  revisions: 7b6fd1c273cd\n  tool_panel_section_label: Computational chemistry\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: rdconf\n  owner: bgruening\n  revisions: 5c501eb8d56c\n  tool_panel_section_label: Computational chemistry\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: split_file_to_collection\n  owner: bgruening\n  revisions: 6cbe2f30c2d7\n  tool_panel_section_label: Computational chemistry\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: text_processing\n  owner: bgruening\n  revisions: d698c222f354\n  tool_panel_section_label: Computational chemistry\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
   "tours": false,
   "video": false,
   "translations": {

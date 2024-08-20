@@ -349,6 +349,11 @@
       "supported_servers": {
         "exact": [
           {
+            "url": "https://usegalaxy.be/",
+            "name": "UseGalaxy.be",
+            "usegalaxy": "true"
+          },
+          {
             "url": "https://usegalaxy.eu",
             "name": "UseGalaxy.eu",
             "usegalaxy": "true"
@@ -582,6 +587,11 @@
       ],
       "supported_servers": {
         "exact": [
+          {
+            "url": "https://usegalaxy.be/",
+            "name": "UseGalaxy.be",
+            "usegalaxy": "true"
+          },
           {
             "url": "https://usegalaxy.org",
             "name": "UseGalaxy.org (Main)",
@@ -1431,6 +1441,11 @@
         ],
         "inexact": [
           {
+            "url": "https://usegalaxy.be/",
+            "name": "UseGalaxy.be",
+            "usegalaxy": "true"
+          },
+          {
             "url": "https://usegalaxy.cz/",
             "name": "UseGalaxy.cz",
             "usegalaxy": "true"
@@ -1687,6 +1702,11 @@
       ],
       "supported_servers": {
         "exact": [
+          {
+            "url": "https://usegalaxy.be/",
+            "name": "UseGalaxy.be",
+            "usegalaxy": "true"
+          },
           {
             "url": "https://usegalaxy.eu",
             "name": "UseGalaxy.eu",
@@ -1988,6 +2008,11 @@
             "usegalaxy": "false"
           },
           {
+            "url": "https://usegalaxy.be/",
+            "name": "UseGalaxy.be",
+            "usegalaxy": "true"
+          },
+          {
             "url": "https://usegalaxy.cz/",
             "name": "UseGalaxy.cz",
             "usegalaxy": "true"
@@ -2255,7 +2280,11 @@
       ],
       "supported_servers": {
         "exact": [
-
+          {
+            "url": "https://usegalaxy.be/",
+            "name": "UseGalaxy.be",
+            "usegalaxy": "true"
+          }
         ],
         "inexact": [
           {
@@ -2540,6 +2569,11 @@
         ],
         "inexact": [
           {
+            "url": "https://usegalaxy.be/",
+            "name": "UseGalaxy.be",
+            "usegalaxy": "true"
+          },
+          {
             "url": "https://usegalaxy.no/",
             "name": "UseGalaxy.no",
             "usegalaxy": "true"
@@ -2588,7 +2622,7 @@
           {
             "name": "bcftools_norm",
             "owner": "iuc",
-            "revisions": "1ca7418e46ee",
+            "revisions": "aaac3ed89508",
             "tool_panel_section_label": "Variant Analysis",
             "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
           },
@@ -2643,7 +2677,7 @@
           }
         ]
       },
-      "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: bwa\n  owner: devteam\n  revisions: e188dc7a68e6\n  tool_panel_section_label: Variant Analysis\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: fastqc\n  owner: devteam\n  revisions: 5ec9f6bceaee\n  tool_panel_section_label: Variant Analysis\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: freebayes\n  owner: devteam\n  revisions: a5937157062f\n  tool_panel_section_label: Variant Analysis\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: samtools_rmdup\n  owner: devteam\n  revisions: 586f9e1cdb2b\n  tool_panel_section_label: Variant Analysis\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: bcftools_norm\n  owner: iuc\n  revisions: 1ca7418e46ee\n  tool_panel_section_label: Variant Analysis\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: gemini_inheritance\n  owner: iuc\n  revisions: 2c68e29c3527\n  tool_panel_section_label: Variant Analysis\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: gemini_load\n  owner: iuc\n  revisions: 2270a8b83c12\n  tool_panel_section_label: Variant Analysis\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: multiqc\n  owner: iuc\n  revisions: abfd8a6544d7\n  tool_panel_section_label: Variant Analysis\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: samtools_view\n  owner: iuc\n  revisions: 5826298f6a73\n  tool_panel_section_label: Variant Analysis\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: snpeff\n  owner: iuc\n  revisions: 9473cd297a76\n  tool_panel_section_label: Variant Analysis\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: snpeff\n  owner: iuc\n  revisions: 9473cd297a76\n  tool_panel_section_label: Variant Analysis\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: trimmomatic\n  owner: pjbriggs\n  revisions: d94aff5ee623\n  tool_panel_section_label: Variant Analysis\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
+      "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: bwa\n  owner: devteam\n  revisions: e188dc7a68e6\n  tool_panel_section_label: Variant Analysis\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: fastqc\n  owner: devteam\n  revisions: 5ec9f6bceaee\n  tool_panel_section_label: Variant Analysis\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: freebayes\n  owner: devteam\n  revisions: a5937157062f\n  tool_panel_section_label: Variant Analysis\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: samtools_rmdup\n  owner: devteam\n  revisions: 586f9e1cdb2b\n  tool_panel_section_label: Variant Analysis\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: bcftools_norm\n  owner: iuc\n  revisions: aaac3ed89508\n  tool_panel_section_label: Variant Analysis\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: gemini_inheritance\n  owner: iuc\n  revisions: 2c68e29c3527\n  tool_panel_section_label: Variant Analysis\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: gemini_load\n  owner: iuc\n  revisions: 2270a8b83c12\n  tool_panel_section_label: Variant Analysis\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: multiqc\n  owner: iuc\n  revisions: abfd8a6544d7\n  tool_panel_section_label: Variant Analysis\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: samtools_view\n  owner: iuc\n  revisions: 5826298f6a73\n  tool_panel_section_label: Variant Analysis\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: snpeff\n  owner: iuc\n  revisions: 9473cd297a76\n  tool_panel_section_label: Variant Analysis\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: snpeff\n  owner: iuc\n  revisions: 9473cd297a76\n  tool_panel_section_label: Variant Analysis\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: trimmomatic\n  owner: pjbriggs\n  revisions: d94aff5ee623\n  tool_panel_section_label: Variant Analysis\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
       "tours": false,
       "video": false,
       "translations": {
@@ -3314,6 +3348,11 @@
       "supported_servers": {
         "exact": [
           {
+            "url": "https://usegalaxy.be/",
+            "name": "UseGalaxy.be",
+            "usegalaxy": "true"
+          },
+          {
             "url": "https://usegalaxy.eu",
             "name": "UseGalaxy.eu",
             "usegalaxy": "true"
@@ -3519,6 +3558,11 @@
       ],
       "supported_servers": {
         "exact": [
+          {
+            "url": "https://usegalaxy.be/",
+            "name": "UseGalaxy.be",
+            "usegalaxy": "true"
+          },
           {
             "url": "https://usegalaxy.eu",
             "name": "UseGalaxy.eu",
