@@ -215,11 +215,6 @@
             "usegalaxy": "true"
           },
           {
-            "url": "https://usegalaxy.fr/",
-            "name": "UseGalaxy.fr",
-            "usegalaxy": "true"
-          },
-          {
             "url": "https://usegalaxy.no/",
             "name": "UseGalaxy.no",
             "usegalaxy": "true"
@@ -494,13 +489,13 @@
           {
             "name": "intermine_galaxy_exchange",
             "owner": "iuc",
-            "revisions": "c24014d80001",
+            "revisions": "faef2b1622a3",
             "tool_panel_section_label": "Using Galaxy and Managing your Data",
             "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
           }
         ]
       },
-      "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: intermine_galaxy_exchange\n  owner: iuc\n  revisions: c24014d80001\n  tool_panel_section_label: Using Galaxy and Managing your Data\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
+      "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: intermine_galaxy_exchange\n  owner: iuc\n  revisions: faef2b1622a3\n  tool_panel_section_label: Using Galaxy and Managing your Data\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
       "tours": false,
       "video": false,
       "translations": {
@@ -623,11 +618,6 @@
           {
             "url": "https://usegalaxy.eu",
             "name": "UseGalaxy.eu",
-            "usegalaxy": "true"
-          },
-          {
-            "url": "https://usegalaxy.fr/",
-            "name": "UseGalaxy.fr",
             "usegalaxy": "true"
           },
           {
@@ -994,11 +984,6 @@
             "url": "https://mississippi.sorbonne-universite.fr",
             "name": "MISSISSIPPI",
             "usegalaxy": "false"
-          },
-          {
-            "url": "https://usegalaxy.fr/",
-            "name": "UseGalaxy.fr",
-            "usegalaxy": "true"
           }
         ]
       },
@@ -1212,11 +1197,6 @@
           {
             "url": "https://usegalaxy.eu",
             "name": "UseGalaxy.eu",
-            "usegalaxy": "true"
-          },
-          {
-            "url": "https://usegalaxy.fr/",
-            "name": "UseGalaxy.fr",
             "usegalaxy": "true"
           },
           {
@@ -2234,11 +2214,6 @@
             "usegalaxy": "true"
           },
           {
-            "url": "https://usegalaxy.fr/",
-            "name": "UseGalaxy.fr",
-            "usegalaxy": "true"
-          },
-          {
             "url": "https://usegalaxy.org",
             "name": "UseGalaxy.org (Main)",
             "usegalaxy": "true"
@@ -2581,11 +2556,6 @@
             "usegalaxy": "true"
           },
           {
-            "url": "https://usegalaxy.fr/",
-            "name": "UseGalaxy.fr",
-            "usegalaxy": "true"
-          },
-          {
             "url": "https://usegalaxy.no/",
             "name": "UseGalaxy.no",
             "usegalaxy": "true"
@@ -2875,11 +2845,6 @@
           {
             "url": "https://usegalaxy.eu",
             "name": "UseGalaxy.eu",
-            "usegalaxy": "true"
-          },
-          {
-            "url": "https://usegalaxy.fr/",
-            "name": "UseGalaxy.fr",
             "usegalaxy": "true"
           },
           {
