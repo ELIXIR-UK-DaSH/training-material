@@ -96,11 +96,6 @@
     ],
     "inexact": [
       {
-        "url": "https://galaxy.hyphy.org/",
-        "name": "HyPhy HIV NGS Tools",
-        "usegalaxy": "false"
-      },
-      {
         "url": "https://usegalaxy.be/",
         "name": "UseGalaxy.be",
         "usegalaxy": "true"
@@ -108,11 +103,6 @@
       {
         "url": "https://usegalaxy.cz/",
         "name": "UseGalaxy.cz",
-        "usegalaxy": "true"
-      },
-      {
-        "url": "https://usegalaxy.no/",
-        "name": "UseGalaxy.no",
         "usegalaxy": "true"
       },
       {
