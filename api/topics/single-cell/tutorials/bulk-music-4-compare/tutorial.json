@@ -119,13 +119,13 @@
       {
         "name": "music_compare",
         "owner": "bgruening",
-        "revisions": "4447ed460308",
+        "revisions": "7009462b958f",
         "tool_panel_section_label": "Single Cell",
         "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
       }
     ]
   },
-  "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: music_compare\n  owner: bgruening\n  revisions: 4447ed460308\n  tool_panel_section_label: Single Cell\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
+  "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: music_compare\n  owner: bgruening\n  revisions: 7009462b958f\n  tool_panel_section_label: Single Cell\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
   "tours": false,
   "video": false,
   "translations": {

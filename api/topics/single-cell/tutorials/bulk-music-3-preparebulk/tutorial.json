@@ -130,14 +130,14 @@
       {
         "name": "music_construct_eset",
         "owner": "bgruening",
-        "revisions": "282819d09a4f",
+        "revisions": "7022ce682d2f",
         "tool_panel_section_label": "Single Cell",
         "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
       },
       {
         "name": "music_manipulate_eset",
         "owner": "bgruening",
-        "revisions": "22232092be53",
+        "revisions": "192355cd1641",
         "tool_panel_section_label": "Single Cell",
         "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
       },
@@ -199,7 +199,7 @@
       }
     ]
   },
-  "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: music_construct_eset\n  owner: bgruening\n  revisions: 282819d09a4f\n  tool_panel_section_label: Single Cell\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: music_manipulate_eset\n  owner: bgruening\n  revisions: 22232092be53\n  tool_panel_section_label: Single Cell\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: text_processing\n  owner: bgruening\n  revisions: d698c222f354\n  tool_panel_section_label: Single Cell\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: text_processing\n  owner: bgruening\n  revisions: d698c222f354\n  tool_panel_section_label: Single Cell\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: text_processing\n  owner: bgruening\n  revisions: d698c222f354\n  tool_panel_section_label: Single Cell\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: text_processing\n  owner: bgruening\n  revisions: d698c222f354\n  tool_panel_section_label: Single Cell\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: regex_find_replace\n  owner: galaxyp\n  revisions: 399da6b5ec21\n  tool_panel_section_label: Single Cell\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: annotatemyids\n  owner: iuc\n  revisions: fe3ca740a485\n  tool_panel_section_label: Single Cell\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: column_remove_by_header\n  owner: iuc\n  revisions: 2040e4c2750a\n  tool_panel_section_label: Single Cell\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: table_compute\n  owner: iuc\n  revisions: 3bf5661c0280\n  tool_panel_section_label: Single Cell\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
+  "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: music_construct_eset\n  owner: bgruening\n  revisions: 7022ce682d2f\n  tool_panel_section_label: Single Cell\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: music_manipulate_eset\n  owner: bgruening\n  revisions: 192355cd1641\n  tool_panel_section_label: Single Cell\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: text_processing\n  owner: bgruening\n  revisions: d698c222f354\n  tool_panel_section_label: Single Cell\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: text_processing\n  owner: bgruening\n  revisions: d698c222f354\n  tool_panel_section_label: Single Cell\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: text_processing\n  owner: bgruening\n  revisions: d698c222f354\n  tool_panel_section_label: Single Cell\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: text_processing\n  owner: bgruening\n  revisions: d698c222f354\n  tool_panel_section_label: Single Cell\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: regex_find_replace\n  owner: galaxyp\n  revisions: 399da6b5ec21\n  tool_panel_section_label: Single Cell\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: annotatemyids\n  owner: iuc\n  revisions: fe3ca740a485\n  tool_panel_section_label: Single Cell\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: column_remove_by_header\n  owner: iuc\n  revisions: 2040e4c2750a\n  tool_panel_section_label: Single Cell\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: table_compute\n  owner: iuc\n  revisions: 3bf5661c0280\n  tool_panel_section_label: Single Cell\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
   "tours": false,
   "video": false,
   "translations": {
