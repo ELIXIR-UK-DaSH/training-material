@@ -2579,6 +2579,11 @@
             "url": "https://usegalaxy.cz/",
             "name": "UseGalaxy.cz",
             "usegalaxy": "true"
+          },
+          {
+            "url": "https://usegalaxy.org",
+            "name": "UseGalaxy.org (Main)",
+            "usegalaxy": "true"
           }
         ]
       },
@@ -3294,6 +3299,11 @@
           {
             "url": "https://usegalaxy.cz/",
             "name": "UseGalaxy.cz",
+            "usegalaxy": "true"
+          },
+          {
+            "url": "https://usegalaxy.org",
+            "name": "UseGalaxy.org (Main)",
             "usegalaxy": "true"
           }
         ]
